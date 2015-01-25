@@ -233,12 +233,27 @@ if( instance_exists( obj_Gesture1 ) &amp;&amp; instance_exists( obj_Client ) &am
         var inst = instance_create( x, y, obj_Sword );
         inst.direction = obj_Gesture0.direction;
         inst.image_angle = obj_Gesture0.direction;
+        
+        buffer_seek( obj_Client.Buffer, buffer_seek_start, 0 );
+        buffer_write( obj_Client.Buffer, buffer_u8, 5 );
+        buffer_write( obj_Client.Buffer, buffer_s16, x );
+        buffer_write( obj_Client.Buffer, buffer_s16, y );
+        buffer_write( obj_Client.Buffer, buffer_s16, obj_Gesture0.direction );
+        network_send_packet( obj_Client.Socket, obj_Client.Buffer, buffer_tell( obj_Client.Buffer ) );
     }
     else if( obj_Gesture1.Released &amp;&amp; obj_Gesture1.max_dist &gt; 32 )
     {
         var inst = instance_create( x, y, obj_Ball );
         inst.direction = obj_Gesture1.direction;
         inst.speed = 10;
+        
+        buffer_seek( obj_Client.Buffer, buffer_seek_start, 0 );
+        buffer_write( obj_Client.Buffer, buffer_u8, 6 );
+        buffer_write( obj_Client.Buffer, buffer_s16, x );
+        buffer_write( obj_Client.Buffer, buffer_s16, y );
+        buffer_write( obj_Client.Buffer, buffer_s16, obj_Gesture1.direction );
+        buffer_write( obj_Client.Buffer, buffer_s8, 10 );
+        network_send_packet( obj_Client.Socket, obj_Client.Buffer, buffer_tell( obj_Client.Buffer ) );
     }
 }
 </string>

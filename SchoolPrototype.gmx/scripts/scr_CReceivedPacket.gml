@@ -30,12 +30,31 @@ switch( msgid ) {
         var _netID = buffer_read( buffer, buffer_u8 );
         var _x = buffer_read( buffer, buffer_s16 );
         var _y = buffer_read( buffer, buffer_s16 );
-        inst = instance_create( _x, _y, obj_Player );
+        var inst = instance_create( _x, _y, obj_Player );
         inst.netID = _netID;
     case 4:     // Delete Player
         var _netID = buffer_read( buffer, buffer_u8 );
         with( obj_Player )
             if( netID == _netID )
                 instance_destroy();
+        break;
+    case 5:     // Swing
+        //var _netID = buffer_read( buffer, buffer_u8 );
+        var _x = buffer_read( buffer, buffer_s16 );
+        var _y = buffer_read( buffer, buffer_s16 );
+        var _direction = buffer_read( buffer, buffer_s16 );
+        var inst = instance_create( _x, _y, obj_Sword );
+        inst.direction = _direction;
+        inst.image_angle = _direction;
+        break;
+    case 6:     // Shoot
+        //var _netID = buffer_read( buffer, buffer_u8 );
+        var _x = buffer_read( buffer, buffer_s16 );
+        var _y = buffer_read( buffer, buffer_s16 );
+        var _direction = buffer_read( buffer, buffer_s16 );
+        var _speed = buffer_read( buffer, buffer_u8 );
+        var inst = instance_create( _x, _y, obj_Ball );
+        inst.direction = _direction;
+        inst.speed = _speed;
         break;
 }

@@ -32,6 +32,34 @@ switch( msgid ) {
             if( socket != ds_list_find_value( SocketList, s ) )
                 network_send_packet( ds_list_find_value( SocketList, s ), Buffer, buffer_tell( Buffer ) );
         break;
+    case 5:
+        var _x = buffer_read( buffer, buffer_s16 );
+        var _y = buffer_read( buffer, buffer_s16 );
+        var _direction = buffer_read( buffer, buffer_s16 );
+        buffer_seek( Buffer, buffer_seek_start, 0 );
+        buffer_write( Buffer, buffer_u8, 5 );
+        buffer_write( Buffer, buffer_s16, _x );
+        buffer_write( Buffer, buffer_s16, _y );
+        buffer_write( Buffer, buffer_s16, _direction );
+        for( var s = 0; s < ds_list_size( SocketList ); ++s )
+            if( socket != ds_list_find_value( SocketList, s ) )
+                network_send_packet( ds_list_find_value( SocketList, s ), Buffer, buffer_tell( Buffer ) );
+        break;
+    case 6:
+        var _x = buffer_read( buffer, buffer_s16 );
+        var _y = buffer_read( buffer, buffer_s16 );
+        var _direction = buffer_read( buffer, buffer_s16 );
+        var _speed = buffer_read( buffer, buffer_u8 );
+        buffer_seek( Buffer, buffer_seek_start, 0 );
+        buffer_write( Buffer, buffer_u8, 6 );
+        buffer_write( Buffer, buffer_s16, _x );
+        buffer_write( Buffer, buffer_s16, _y );
+        buffer_write( Buffer, buffer_s16, _direction );
+        buffer_write( Buffer, buffer_u8, _speed );
+        for( var s = 0; s < ds_list_size( SocketList ); ++s )
+            if( socket != ds_list_find_value( SocketList, s ) )
+                network_send_packet( ds_list_find_value( SocketList, s ), Buffer, buffer_tell( Buffer ) );
+        break;
     default:
         for( var s = 0; s < ds_list_size( SocketList ); ++s )
             network_send_packet( ds_list_find_value( SocketList, s ), buffer, 1024 );
