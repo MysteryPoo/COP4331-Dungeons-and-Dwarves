@@ -92,6 +92,11 @@ switch( type_event )
     case network_type_connect:
         var socket = ds_map_find_value( async_load , "socket" );
         ds_list_add( SocketList , socket );
+        var buffer = buffer_create( buffer_sizeof( buffer_u8 ), buffer_fixed, 1 );
+        buffer_write( buffer, buffer_u8, 3 );
+        buffer_seek( buffer, buffer_seek_start, 0 );
+        scr_SReceivedPacket( buffer, socket );
+        buffer_delete( buffer );
         break;
     case network_type_disconnect:
         var socket = ds_map_find_value( async_load , "socket" );
@@ -100,6 +105,11 @@ switch( type_event )
         {
             ds_list_delete( SocketList , findsocket );
         }
+        var buffer = buffer_create( buffer_sizeof( buffer_u8 ), buffer_fixed, 1 );
+        buffer_write( buffer, buffer_u8, 4 );
+        buffer_seek( buffer, buffer_seek_start, 0 );
+        scr_SReceivedPacket( buffer, socket );
+        buffer_delete( buffer );
         break;
     case network_type_data:
         var buffer = ds_map_find_value( async_load , "buffer" );

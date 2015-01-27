@@ -3,7 +3,7 @@
   <spriteName>spr_player</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>2</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -172,7 +172,7 @@ else if( netID == obj_Client.netID )
     buffer_write( obj_Client.Buffer, buffer_s16, direction );
     buffer_write( obj_Client.Buffer, buffer_s8, speed );
     if( network_send_packet( obj_Client.Socket, obj_Client.Buffer, buffer_tell( obj_Client.Buffer ) ) )
-        PacketTimer = 5;
+        PacketTimer = 1;
 }
 </string>
           </argument>
@@ -197,7 +197,7 @@ else if( netID == obj_Client.netID )
             <string>/// Gesture 0
 if( instance_exists( obj_Gesture0 ) &amp;&amp; instance_exists( obj_Client ) &amp;&amp; obj_Client.netID == netID )
 {
-    if( obj_Gesture0.Touched )
+    if( obj_Gesture0.Touched &amp;&amp; obj_Gesture0.dist &gt; 16 )
     {
         direction = obj_Gesture0.direction;
         speed = 5 * obj_Gesture0.scale;
@@ -230,14 +230,14 @@ if( instance_exists( obj_Gesture1 ) &amp;&amp; instance_exists( obj_Client ) &am
 {
     if( !instance_exists( obj_Sword ) &amp;&amp; obj_Gesture1.Released &amp;&amp; obj_Gesture1.max_dist &lt; 32 )
     {
-        var inst = instance_create( x, y, obj_Sword );
+        var inst = instance_create( x, y - 16, obj_Sword );
         inst.direction = obj_Gesture0.direction;
         inst.image_angle = obj_Gesture0.direction;
         
         buffer_seek( obj_Client.Buffer, buffer_seek_start, 0 );
         buffer_write( obj_Client.Buffer, buffer_u8, 5 );
-        buffer_write( obj_Client.Buffer, buffer_s16, x );
-        buffer_write( obj_Client.Buffer, buffer_s16, y );
+        buffer_write( obj_Client.Buffer, buffer_s16, inst.x );
+        buffer_write( obj_Client.Buffer, buffer_s16, inst.y );
         buffer_write( obj_Client.Buffer, buffer_s16, obj_Gesture0.direction );
         network_send_packet( obj_Client.Socket, obj_Client.Buffer, buffer_tell( obj_Client.Buffer ) );
     }
@@ -280,15 +280,31 @@ if( instance_exists( obj_Gesture1 ) &amp;&amp; instance_exists( obj_Client ) &am
 if( State != "Dead" )
 {
     move_bounce_solid( true );
-    /*
-    direction = point_direction( x, y, GoalX, GoalY );
-    mp_potential_settings( 270, 5, 50, true );
-    if( MoveAttemptTimer &lt; 15 * point_distance( x, y, GoalX, GoalY ) / 32 &amp;&amp; !mp_potential_step( GoalX, GoalY, max_speed, false ) )
-    {
-        ++MoveAttemptTimer;
-    }
-    */
 }
+else
+    speed = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Image Angle
+//image_angle = direction + 90;
 </string>
           </argument>
         </arguments>
@@ -342,32 +358,6 @@ if( sprite_index == spr_player_death )
     image_speed = 0;
     image_index = image_number - 1;
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>draw_self();
-draw_text( 100, 10, "MoveAttemptTimer: " + string( MoveAttemptTimer ) );
-//draw_text( x, y + 16, string( netID ) );
-draw_text( x, y + 32, string( GoalX ) );
 </string>
           </argument>
         </arguments>

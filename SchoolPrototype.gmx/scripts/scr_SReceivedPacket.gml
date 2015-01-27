@@ -32,6 +32,33 @@ switch( msgid ) {
             if( socket != ds_list_find_value( SocketList, s ) )
                 network_send_packet( ds_list_find_value( SocketList, s ), Buffer, buffer_tell( Buffer ) );
         break;
+    case 3:
+        // New client
+        // Send current list to new client
+        buffer_seek( Buffer, buffer_seek_start, 0 );
+        buffer_write( Buffer, buffer_u8, 3 );
+        buffer_write( Buffer, buffer_u8, ds_list_size( SocketList ) - 1 );
+        for( var s = 0; s < ds_list_size( SocketList ); ++s )
+            buffer_write( Buffer, buffer_u8, ds_list_find_value( SocketList, s ) );
+        network_send_packet( socket, Buffer, buffer_tell( Buffer ) );
+        // Send new client to current clients
+        buffer_seek( Buffer, buffer_seek_start, 0 );
+        buffer_write( Buffer, buffer_u8, 3 );
+        buffer_write( Buffer, buffer_u8, 1 );
+        buffer_write( Buffer, buffer_u8, socket );
+        for( var s = 0; s < ds_list_size( SocketList ); ++s )
+            if( socket != ds_list_find_value( SocketList, s ) )
+                network_send_packet( ds_list_find_value( SocketList, s ), Buffer, buffer_tell( Buffer ) );
+        break;
+    case 4:
+        // Delete client
+        buffer_seek( Buffer, buffer_seek_start, 0 );
+        buffer_write( Buffer, buffer_u8, 4 );
+        buffer_write( Buffer, buffer_u8, socket );
+        for( var s = 0; s < ds_list_size( SocketList ); ++s )
+            if( socket != ds_list_find_value( SocketList, s ) )
+                network_send_packet( ds_list_find_value( SocketList, s ), Buffer, buffer_tell( Buffer ) );
+        break;
     case 5:
         var _x = buffer_read( buffer, buffer_s16 );
         var _y = buffer_read( buffer, buffer_s16 );

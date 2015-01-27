@@ -14,12 +14,17 @@
     <sprite>sprites\spr_ball</sprite>
     <sprite>sprites\spr_Swing</sprite>
   </sprites>
-  <backgrounds name="background"/>
+  <backgrounds name="background">
+    <background>background\bg_floor</background>
+  </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\scr_SReceivedPacket.gml</script>
     <script>scripts\scr_CReceivedPacket.gml</script>
   </scripts>
+  <fonts name="fonts">
+    <font>fonts\fnt_DEMO</font>
+  </fonts>
   <objects name="objects">
     <object>objects\obj_Wall</object>
     <object>objects\obj_Player</object>
@@ -30,6 +35,7 @@
     <object>objects\obj_Ball</object>
     <object>objects\obj_Server</object>
     <object>objects\obj_Sword</object>
+    <object>objects\obj_DEMO</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_Main</room>

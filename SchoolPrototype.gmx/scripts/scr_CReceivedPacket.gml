@@ -27,11 +27,13 @@ switch( msgid ) {
             }
         break;
     case 3:     // Create New Player
-        var _netID = buffer_read( buffer, buffer_u8 );
-        var _x = buffer_read( buffer, buffer_s16 );
-        var _y = buffer_read( buffer, buffer_s16 );
-        var inst = instance_create( _x, _y, obj_Player );
-        inst.netID = _netID;
+        var _list = buffer_read( buffer, buffer_u8 );
+        for( var s = 0; s < _list; ++s )
+        {
+            var _netID = buffer_read( buffer, buffer_u8 );
+            var inst = instance_create( -100, 0, obj_Player );
+            inst.netID = _netID;
+        }
     case 4:     // Delete Player
         var _netID = buffer_read( buffer, buffer_u8 );
         with( obj_Player )
