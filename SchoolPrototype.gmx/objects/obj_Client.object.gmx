@@ -39,6 +39,7 @@ Type = buffer_fixed;
 Alignment = 1;
 Buffer = buffer_create( Size , Type , Alignment );
 netID = -1;
+PingTimer = 30 * 4;
 </string>
           </argument>
         </arguments>
@@ -64,6 +65,51 @@ netID = -1;
             <string>/// Cleanup
 network_destroy( Socket );
 buffer_delete( Buffer );
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Ping Timer
+if( PingTimer &gt; 0 )
+    --PingTimer;
+if( PingTimer == 0 )
+{
+    if( isConnected &lt; 0 )
+    {
+        var Type, IPAddress, Port;
+        Type = network_socket_tcp;
+        IPAddress = "184.91.74.235";
+        //IPAddress = "127.0.0.1";
+        Port = 6969;
+        isConnected = network_connect( Socket , IPAddress , Port );
+        PingTimer = 30 * 4;
+    }
+    else
+    {
+        PingTimer = 30;
+        buffer_seek( Buffer, buffer_seek_start, 0 );
+        buffer_write( Buffer, buffer_u8, 1 );
+        network_send_packet( Socket, Buffer, buffer_tell( Buffer ) );
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -119,7 +165,10 @@ switch( type_event )
           <argument>
             <kind>1</kind>
             <string>/// Debug
-draw_text( 5 , 5 , "Client Connected: " + string( isConnected ) );
+if( isConnected &gt; -1 )
+    draw_text( 5 , 5 , "Client Connected: YES" );
+else
+    draw_text( 5 , 5 , "Client Connected: NO" );
 draw_text( 5, 32, "My network ID: " + string( netID ) );
 </string>
           </argument>

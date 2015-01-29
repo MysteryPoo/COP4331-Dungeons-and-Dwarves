@@ -19,7 +19,7 @@ with( obj_Player )
 if( !found )
 {
     var inst = instance_create( 320, 224, obj_Player );
-    inst.netID = obj_Client.netID;
+    global.MyInst = inst;
 }</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
@@ -98,7 +98,6 @@ if( !found )
     <instance objName="obj_Wall" x="448" y="32" name="inst_D80E26A2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Wall" x="448" y="352" name="inst_A979E4FF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Wall" x="480" y="256" name="inst_AFDE68C1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Wall" x="480" y="224" name="inst_7A171E30" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Wall" x="480" y="160" name="inst_ED541598" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Wall" x="480" y="128" name="inst_A91B6664" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Wall" x="480" y="96" name="inst_FE058C5D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -116,9 +115,11 @@ if( !found )
     <instance objName="obj_Wall" x="480" y="192" name="inst_3FA329AF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Wall" x="480" y="288" name="inst_349BB1A2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Saw" x="224" y="160" name="inst_2FCA04E1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Saw" x="160" y="160" name="inst_3278F365" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Saw" x="160" y="288" name="inst_3278F365" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Client" x="512" y="0" name="inst_538E8357" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_DEMO" x="96" y="480" name="inst_0DEF38A7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Key" x="96" y="96" name="inst_84640ECA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Door" x="480" y="224" name="inst_6E8C8E7A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_floor" x="32" y="32" w="64" h="64" xo="0" yo="0" id="10000023" name="inst_14633F18" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -155,6 +156,7 @@ if( !found )
     <tile bgName="bg_floor" x="288" y="288" w="64" h="64" xo="0" yo="0" id="10000054" name="inst_6C5CA5A8" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_floor" x="352" y="288" w="64" h="64" xo="0" yo="0" id="10000055" name="inst_08B1B103" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_floor" x="416" y="288" w="64" h="64" xo="0" yo="0" id="10000056" name="inst_F0509C57" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_floor" x="480" y="192" w="64" h="64" xo="0" yo="0" id="10000057" name="inst_937060C6" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
   </tiles>
   <PhysicsWorld>0</PhysicsWorld>
   <PhysicsWorldTop>0</PhysicsWorldTop>

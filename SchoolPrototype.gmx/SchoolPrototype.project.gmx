@@ -13,6 +13,8 @@
     <sprite>sprites\spr_saw</sprite>
     <sprite>sprites\spr_ball</sprite>
     <sprite>sprites\spr_Swing</sprite>
+    <sprite>sprites\spr_door</sprite>
+    <sprite>sprites\spr_key</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_floor</background>
@@ -36,6 +38,8 @@
     <object>objects\obj_Server</object>
     <object>objects\obj_Sword</object>
     <object>objects\obj_DEMO</object>
+    <object>objects\obj_Door</object>
+    <object>objects\obj_Key</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_Main</room>

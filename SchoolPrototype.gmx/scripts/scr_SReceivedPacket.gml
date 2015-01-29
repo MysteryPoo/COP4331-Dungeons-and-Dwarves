@@ -91,4 +91,3 @@ switch( msgid ) {
         for( var s = 0; s < ds_list_size( SocketList ); ++s )
             network_send_packet( ds_list_find_value( SocketList, s ), buffer, 1024 );
 }
-

@@ -5,6 +5,7 @@ switch( msgid ) {
     case 1:    // Get network ID
         var _netID = buffer_read( buffer, buffer_u8 );
         netID = _netID;
+        global.MyInst.netID = _netID;
         break;
         /*
     case 1:     // Ping
