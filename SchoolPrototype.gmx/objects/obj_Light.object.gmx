@@ -25,21 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Connection
-var Type, IPAddress, Port;
-Type = network_socket_tcp;
-IPAddress = "184.91.74.235";
-//IPAddress = "127.0.0.1";
-Port = 6969;
-Socket = network_create_socket( Type );
-isConnected = network_connect( Socket , IPAddress , Port );
-var Size , Type , Alignment;
-Size = 1024;
-Type = buffer_fixed;
-Alignment = 1;
-Buffer = buffer_create( Size , Type , Alignment );
-netID = -1;
-PingTimer = 30 * 4;
+            <string>/// Surface
+Surface = surface_create( view_wview[ 0 ], view_hview[ 0 ] );
+surface_set_target( Surface );
+draw_rectangle( 0, 0, view_wview[ 0 ], view_hview[ 0 ], false );
+surface_reset_target();
 </string>
           </argument>
         </arguments>
@@ -62,9 +52,8 @@ PingTimer = 30 * 4;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Cleanup
-network_destroy( Socket );
-buffer_delete( Buffer );
+            <string>/// Cleanup Surface
+surface_free( Surface );
 </string>
           </argument>
         </arguments>
@@ -87,61 +76,9 @@ buffer_delete( Buffer );
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Ping Timer
-if( PingTimer &gt; 0 )
-    --PingTimer;
-if( PingTimer == 0 )
-{
-    if( isConnected &lt; 0 )
-    {
-        var Type, IPAddress, Port;
-        Type = network_socket_tcp;
-        IPAddress = "184.91.74.235";
-        //IPAddress = "127.0.0.1";
-        Port = 6969;
-        isConnected = network_connect( Socket , IPAddress , Port );
-        PingTimer = 30 * 10;
-    }
-    else
-    {
-        PingTimer = 30;
-        buffer_seek( Buffer, buffer_seek_start, 0 );
-        buffer_write( Buffer, buffer_u8, 1 );
-        network_send_packet( Socket, Buffer, buffer_tell( Buffer ) );
-    }
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="68">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Process packet
-var type_event = ds_map_find_value( async_load , "type" );
-switch( type_event )
-{
-    case network_type_data:
-        var buffer = ds_map_find_value( async_load , "buffer" );
-        buffer_seek( buffer , buffer_seek_start , 0 );
-        scr_CReceivedPacket( buffer );
-        break;
-}
+            <string>/// Set position
+x = view_xview[ 0 ];
+y = view_yview[ 0 ];
 </string>
           </argument>
         </arguments>
@@ -164,12 +101,119 @@ switch( type_event )
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Debug
-if( isConnected &gt; -1 )
-    draw_text( 5 , 5 , "Client Connected: YES" );
-else
-    draw_text( 5 , 5 , "Client Connected: NO" );
-draw_text( 5, 32, "My network ID: " + string( netID ) );
+            <string>/// Set Surface
+surface_set_target( Surface );
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Draw Darkness
+draw_set_alpha( 0.85 );
+draw_set_color( c_black );
+draw_rectangle( 0, 0, view_wview[ 0 ], view_hview[ 0 ], false );
+draw_set_alpha( 1 );
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Draw Light
+draw_set_blend_mode( bm_subtract );
+draw_set_color( c_white );
+with( obj_Player )
+{
+    for( var c = 1; c &lt; 4; ++c )
+    {
+        draw_set_alpha( 1 / c );
+        draw_circle( x, y - 8, 16 * c * random_range( 0.9, 1 ), false );
+    }
+}
+with( obj_Torch )
+{
+    for( var c = 1; c &lt; 4; ++c )
+    {
+        draw_set_alpha( 1 / c );
+        draw_circle( x, y, 8 * c * random_range( 0.9, 1 ), false );
+    }
+}
+draw_set_alpha( 1 );
+draw_set_blend_mode( bm_normal );
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Reset Surface
+surface_reset_target();
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Draw the surface
+if( surface_exists( Surface ) )
+    draw_surface( Surface, x, y );
 </string>
           </argument>
         </arguments>

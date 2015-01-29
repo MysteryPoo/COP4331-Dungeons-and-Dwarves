@@ -120,6 +120,14 @@ if( !found )
     <instance objName="obj_DEMO" x="96" y="480" name="inst_0DEF38A7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Key" x="96" y="96" name="inst_84640ECA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Door" x="480" y="224" name="inst_6E8C8E7A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Light" x="288" y="416" name="inst_5F4DD518" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="96" y="32" name="inst_C734CAB6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="288" y="32" name="inst_191D89A0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="192" y="96" name="inst_14131169" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="192" y="352" name="inst_6B643E5F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="480" y="160" name="inst_9A1F7DE1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="480" y="288" name="inst_B0297355" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="32" y="192" name="inst_418E395A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_floor" x="32" y="32" w="64" h="64" xo="0" yo="0" id="10000023" name="inst_14633F18" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

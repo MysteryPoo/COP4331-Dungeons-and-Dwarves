@@ -331,6 +331,31 @@ else
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Check door
+if( hasKey )
+    if( distance_to_object( obj_Door ) &lt; 32 )
+        with( obj_Door )
+            instance_destroy();
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="4" ename="obj_Key">
       <action>
@@ -351,35 +376,8 @@ else
             <kind>1</kind>
             <string>/// Pick up key
 hasKey = true;
-obj_Door.solid = false;
 with( other )
     instance_destroy();
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_Door">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Open door
-if( hasKey )
-    with( other )
-        instance_destroy();
 </string>
           </argument>
         </arguments>
