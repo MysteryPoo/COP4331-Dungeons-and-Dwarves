@@ -62,8 +62,8 @@ Touched = false;
 if( device_mouse_check_button_pressed( 0, mb_left ) )
 {
     /// Enable gesture tracking
-    mxs = device_mouse_x( 0 );
-    mys = device_mouse_y( 0 );
+    mxs = device_mouse_x( 0 ) - view_xview[ 0 ];
+    mys = device_mouse_y( 0 ) - view_yview[ 0 ];
     dist = 0;
     max_dist = 0;
     scale = 0;
@@ -73,8 +73,8 @@ if( device_mouse_check_button( 0, mb_left ) )
 {
     Touched = true;
     /// Update Touch
-    mx = device_mouse_x( 0 );
-    my = device_mouse_y( 0 );
+    mx = device_mouse_x( 0 ) - view_xview[ 0 ];
+    my = device_mouse_y( 0 ) - view_yview[ 0 ];
     dist = point_distance( mxs, mys, mx, my );
     if( dist &gt; max_dist )
         max_dist = dist;
@@ -113,10 +113,14 @@ if( device_mouse_check_button_released( 0, mb_left ) )
           <argument>
             <kind>1</kind>
             <string>/// Debug draw
-draw_circle( mxs, mys, 8, false );
-draw_circle( mxs, mys, max_dist, true );
-draw_arrow( mxs, mys, mx, my, 10 );
-draw_text( mxs, mys, string( direction ) );
+var sx = mxs + view_xview[ 0 ];
+var sy = mys + view_yview[ 0 ];
+var xx = mx + view_xview[ 0 ];
+var yy = my + view_yview[ 0 ];
+draw_circle( sx, sy, 8, false );
+draw_circle( sx, sy, max_dist, true );
+draw_arrow( sx, sy, xx, yy, 10 );
+draw_text( sx, sy, string( direction ) );
 </string>
           </argument>
         </arguments>

@@ -34,6 +34,50 @@ surface_reset_target();
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Alpha
+Alpha = 0.85;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Flicker
+Flicker = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="1" enumb="0">
       <action>
@@ -59,7 +103,32 @@ surface_free( Surface );
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Reinitialize
+instance_create( 0, 0, obj_Light );
+instance_destroy();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="1">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -79,6 +148,54 @@ surface_free( Surface );
             <string>/// Set position
 x = view_xview[ 0 ];
 y = view_yview[ 0 ];
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Reinitialize
+if( os_is_paused() )
+{
+    alarm[ 0 ] = 1;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Flicker
+if( ++Flicker &gt; 360 )
+    Flicker = 0;
 </string>
           </argument>
         </arguments>
@@ -124,7 +241,7 @@ surface_set_target( Surface );
           <argument>
             <kind>1</kind>
             <string>/// Draw Darkness
-draw_set_alpha( 0.85 );
+draw_set_alpha( Alpha );
 draw_set_color( c_black );
 draw_rectangle( 0, 0, view_wview[ 0 ], view_hview[ 0 ], false );
 draw_set_alpha( 1 );
@@ -153,18 +270,28 @@ draw_set_blend_mode( bm_subtract );
 draw_set_color( c_white );
 with( obj_Player )
 {
-    for( var c = 1; c &lt; 4; ++c )
+    if( hasTorch )
     {
-        draw_set_alpha( 1 / c );
-        draw_circle( x, y - 8, 16 * c * random_range( 0.9, 1 ), false );
+        for( var c = 1; c &lt; 4; ++c )
+        {
+            draw_set_alpha( 1 / c );
+            draw_circle( x - view_xview[ 0 ], y - view_yview[ 0 ] - 8, 16 * c * random_range( 0.9, 1 ), false );
+        }
+        draw_set_alpha( 0.05 );
+        draw_circle( x - view_xview[ 0 ], y - view_yview[ 0 ] - 8, 128 * random_range( 0.9, 1 ), false );
     }
 }
 with( obj_Torch )
 {
-    for( var c = 1; c &lt; 4; ++c )
+    if( On )
     {
-        draw_set_alpha( 1 / c );
-        draw_circle( x, y, 8 * c * random_range( 0.9, 1 ), false );
+        for( var c = 1; c &lt; 15; ++c )
+        {
+            draw_set_alpha( 1 / c );
+            draw_circle( x - view_xview[ 0 ], y - view_yview[ 0 ], 8 * c + power( -1, c ) * 2 * dsin( 5 * c / 3 * other.Flicker ), false );
+        }
+        draw_set_alpha( 0.05 );
+        draw_circle( x - view_xview[ 0 ], y - view_yview[ 0 ] - 8, 128 + 8 * dsin( 10 * other.Flicker ), false );
     }
 }
 draw_set_alpha( 1 );

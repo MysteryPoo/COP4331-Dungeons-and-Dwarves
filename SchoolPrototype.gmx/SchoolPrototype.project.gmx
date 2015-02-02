@@ -16,6 +16,8 @@
     <sprite>sprites\spr_door</sprite>
     <sprite>sprites\spr_key</sprite>
     <sprite>sprites\spr_torch</sprite>
+    <sprite>sprites\spr_Pit</sprite>
+    <sprite>sprites\spr_Bridge</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_floor</background>
@@ -29,25 +31,38 @@
     <font>fonts\fnt_DEMO</font>
   </fonts>
   <objects name="objects">
-    <object>objects\obj_Wall</object>
-    <object>objects\obj_Player</object>
-    <object>objects\obj_Gesture0</object>
-    <object>objects\obj_Gesture1</object>
-    <object>objects\obj_Saw</object>
-    <object>objects\obj_Client</object>
-    <object>objects\obj_Ball</object>
-    <object>objects\obj_Server</object>
-    <object>objects\obj_Sword</object>
     <object>objects\obj_DEMO</object>
-    <object>objects\obj_Door</object>
-    <object>objects\obj_Key</object>
-    <object>objects\obj_Light</object>
-    <object>objects\obj_Torch</object>
+    <objects name="Generic">
+      <object>objects\obj_Torch</object>
+      <object>objects\obj_Sword</object>
+      <object>objects\obj_Player</object>
+      <object>objects\obj_Ball</object>
+      <object>objects\obj_Saw</object>
+      <object>objects\obj_Wall</object>
+      <object>objects\obj_Door</object>
+      <object>objects\obj_Key</object>
+    </objects>
+    <objects name="Engine">
+      <object>objects\obj_Light</object>
+      <object>objects\obj_Server</object>
+      <object>objects\obj_Client</object>
+      <object>objects\obj_Gesture0</object>
+      <object>objects\obj_Gesture1</object>
+    </objects>
+    <objects name="Bridge">
+      <object>objects\obj_Bridge</object>
+      <object>objects\obj_BridgeGenerator</object>
+      <object>objects\obj_Pit</object>
+      <object>objects\obj_TorchOn</object>
+      <object>objects\obj_Exit</object>
+    </objects>
   </objects>
   <rooms name="rooms">
+    <room>rooms\rm_Bridge</room>
     <room>rooms\rm_Main</room>
     <room>rooms\rm_Server</room>
     <room>rooms\rm_Client</room>
+    <room>rooms\rm_Victory</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

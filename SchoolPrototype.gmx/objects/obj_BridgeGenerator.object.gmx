@@ -8,7 +8,7 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="8" enumb="0">
+    <event eventtype="0" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -25,15 +25,23 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Demo text
-draw_set_font( fnt_DEMO );
-draw_set_colour( c_red );
-draw_set_halign( fa_center );
-draw_text( view_wview[ 0 ] / 2 , 50, "PROTOTYPE" );
-draw_text( view_wview[ 0 ] / 2, view_hview[ 0 ] - 50, "Graphics &amp; Gameplay NOT final" );
-draw_set_font( -1 );
-draw_set_colour( c_green );
-draw_set_halign( fa_left );
+            <string>/// Randomize holes in bridge
+var nextX = x;
+var Section;
+Section[ 3 ] = 0;
+for( var s = 0; s &lt; 10; ++s )
+{
+    Section[ 2 ] = instance_create( nextX, y, obj_Bridge );
+    Section[ 1 ] = instance_create( nextX, y + 32, obj_Bridge );
+    Section[ 0 ] = instance_create( nextX, y + 64, obj_Bridge );
+    breakSec = choose( 0, 1, 2 );
+    Section[ breakSec ].image_index = 1;
+    instance_create( nextX + 32, y, obj_Bridge );
+    instance_create( nextX + 32, y + 32, obj_Bridge );
+    instance_create( nextX + 32, y + 64, obj_Bridge );
+    nextX += 64;
+}
+Section = 0;
 </string>
           </argument>
         </arguments>

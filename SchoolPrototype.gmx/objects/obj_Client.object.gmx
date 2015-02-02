@@ -114,6 +114,37 @@ if( PingTimer == 0 )
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Player Packet
+if( instance_exists( obj_Player ) )
+{
+    buffer_seek( Buffer, buffer_seek_start, 0 );
+    buffer_write( Buffer, buffer_u8, 2 );
+    buffer_write( Buffer, buffer_s16, obj_Player.x );
+    buffer_write( Buffer, buffer_s16, obj_Player.y );
+    buffer_write( Buffer, buffer_s16, obj_Player.direction );
+    buffer_write( Buffer, buffer_s8, obj_Player.speed );
+    network_send_packet( Socket, Buffer, buffer_tell( Buffer ) );
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="7" enumb="68">
       <action>
