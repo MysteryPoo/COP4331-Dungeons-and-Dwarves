@@ -272,13 +272,13 @@ with( obj_Player )
 {
     if( hasTorch )
     {
-        for( var c = 1; c &lt; 4; ++c )
+        for( var c = 1; c &lt; 15; ++c )
         {
             draw_set_alpha( 1 / c );
-            draw_circle( x - view_xview[ 0 ], y - view_yview[ 0 ] - 8, 16 * c * random_range( 0.9, 1 ), false );
+            draw_circle( x - view_xview[ 0 ], y - view_yview[ 0 ], 8 * c + power( -1, c ) * 2 * dsin( 5 * c / 3 * other.Flicker ), false );
         }
         draw_set_alpha( 0.05 );
-        draw_circle( x - view_xview[ 0 ], y - view_yview[ 0 ] - 8, 128 * random_range( 0.9, 1 ), false );
+        draw_circle( x - view_xview[ 0 ], y - view_yview[ 0 ] - 8, 128 + 8 * dsin( 10 * other.Flicker ), false );
     }
 }
 with( obj_Torch )
@@ -293,6 +293,16 @@ with( obj_Torch )
         draw_set_alpha( 0.05 );
         draw_circle( x - view_xview[ 0 ], y - view_yview[ 0 ] - 8, 128 + 8 * dsin( 10 * other.Flicker ), false );
     }
+}
+with( obj_Guard )
+{
+    for( var c = 1; c &lt; 15; ++c )
+    {
+        draw_set_alpha( 1 / c );
+        draw_circle( x - view_xview[ 0 ], y - view_yview[ 0 ], 8 * c + power( -1, c ) * 2 * dsin( 5 * c / 3 * other.Flicker ), false );
+    }
+    draw_set_alpha( 0.05 );
+    draw_circle( x - view_xview[ 0 ], y - view_yview[ 0 ] - 8, 128 + 8 * dsin( 10 * other.Flicker ), false );
 }
 draw_set_alpha( 1 );
 draw_set_blend_mode( bm_normal );

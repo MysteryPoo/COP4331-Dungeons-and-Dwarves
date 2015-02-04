@@ -25,73 +25,6 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Goal Position
-GoalX = x;
-GoalY = y;
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Move attempt
-MoveAttemptTimer = 0;
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// max_speed
-max_speed = 0;
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
             <string>/// State
 State = "Alive";
 </string>
@@ -116,28 +49,6 @@ State = "Alive";
             <kind>1</kind>
             <string>/// Network ID
 netID = -1;
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Next packet timer
-PacketTimer = 10;
 </string>
           </argument>
         </arguments>
@@ -186,6 +97,28 @@ hasTorch = false;
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// mySword
+mySword = noone;
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="3" enumb="0">
       <action>
@@ -207,7 +140,7 @@ hasTorch = false;
             <string>/// Gesture 0
 if( instance_exists( obj_Gesture0 ) &amp;&amp; global.MyInst = id )
 {
-    if( obj_Gesture0.Touched &amp;&amp; obj_Gesture0.dist &gt; 16 )
+    if( obj_Gesture0.Touched )
     {
         direction = obj_Gesture0.direction;
         speed = 5 * obj_Gesture0.scale;
@@ -238,17 +171,17 @@ if( instance_exists( obj_Gesture0 ) &amp;&amp; global.MyInst = id )
             <string>/// Gesture 1
 if( instance_exists( obj_Gesture1 ) &amp;&amp; global.MyInst = id )
 {
-    if( !instance_exists( obj_Sword ) &amp;&amp; obj_Gesture1.Released &amp;&amp; obj_Gesture1.max_dist &lt; 32 )
+    if( mySword == noone &amp;&amp; obj_Gesture1.Released &amp;&amp; obj_Gesture1.max_dist &lt; 32 )
     {
-        var inst = instance_create( x, y - 16, obj_Sword );
-        inst.direction = obj_Gesture0.direction;
-        inst.image_angle = obj_Gesture0.direction;
+        mySword = instance_create( x, y - 16, obj_Sword );
+        mySword.direction = obj_Gesture0.direction;
+        mySword.image_angle = obj_Gesture0.direction;
         if( instance_exists( obj_Client ) )
         {
             buffer_seek( obj_Client.Buffer, buffer_seek_start, 0 );
             buffer_write( obj_Client.Buffer, buffer_u8, 5 );
-            buffer_write( obj_Client.Buffer, buffer_s16, inst.x );
-            buffer_write( obj_Client.Buffer, buffer_s16, inst.y );
+            buffer_write( obj_Client.Buffer, buffer_s16, mySword.x );
+            buffer_write( obj_Client.Buffer, buffer_s16, mySword.y );
             buffer_write( obj_Client.Buffer, buffer_s16, obj_Gesture0.direction );
             network_send_packet( obj_Client.Socket, obj_Client.Buffer, buffer_tell( obj_Client.Buffer ) );
         }
@@ -317,33 +250,17 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Image Angle
-//image_angle = direction + 90;
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
             <string>/// Check door
 if( hasKey &amp;&amp; instance_exists( Door_Exit ) )
     if( distance_to_object( Door_Exit ) &lt; 32 )
         with( Door_Exit )
             instance_destroy();
+with( obj_Door )
+{
+    if( distance_to_object( obj_Player ) &lt; 32 )
+        if( other.hasKey &amp;&amp; Type == "Exit" )
+            instance_destroy();
+}
 </string>
           </argument>
         </arguments>
@@ -400,6 +317,60 @@ sprite_index = spr_player_death;
         </arguments>
       </action>
     </event>
+    <event eventtype="4" ename="obj_Sword">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Die
+if( other.id != mySword )
+{
+    State = "Dead";
+    sprite_index = spr_player_death;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_Torch">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Pick up torch
+hasTorch = true;
+with( other )
+    instance_destroy();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="7" enumb="7">
       <action>
         <libid>1</libid>
@@ -420,8 +391,15 @@ sprite_index = spr_player_death;
             <string>/// Stop animation
 if( sprite_index == spr_player_death )
 {
-    image_speed = 0;
-    image_index = image_number - 1;
+    /*
+    sprite_index = spr_player;
+    x = global.StartX;
+    y = global.StartY;
+    State = "Alive";
+    */
+    room_goto( room );
+    //image_speed = 0;
+    //image_index = image_number - 1;
 }
 </string>
           </argument>

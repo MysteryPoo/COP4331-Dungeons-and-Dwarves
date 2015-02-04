@@ -11,6 +11,8 @@
   <colour>0</colour>
   <showcolour>-1</showcolour>
   <code>/// Place the player
+global.StartX = 64;
+global.StartY = 160;
 var inst = instance_create( 64, 160, obj_Player );
 global.MyInst = inst;</code>
   <enableViews>-1</enableViews>
@@ -265,16 +267,16 @@ global.MyInst = inst;</code>
     <instance objName="obj_Torch" x="320" y="448" name="inst_83265855" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Torch" x="320" y="320" name="inst_BFA6A348" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Torch" x="256" y="96" name="inst_73E0DCFB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="32" y="672" name="inst_8743018B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="32" y="832" name="inst_D7A46326" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="32" y="672" name="Torch_Sa" locked="0" code="On = false;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="32" y="832" name="Torch_Se" locked="0" code="On = false;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Torch" x="32" y="960" name="inst_771A80BA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Torch" x="128" y="1056" name="inst_05878EA6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Torch" x="352" y="832" name="inst_67BEDAE8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Torch" x="352" y="1056" name="inst_FCBF950F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="480" y="384" name="Torch_1" locked="0" code="On = false;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="640" y="384" name="Torch_2" locked="0" code="On = false;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="864" y="384" name="Torch_3" locked="0" code="On = false;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_TorchOn" x="576" y="896" name="inst_E0572EE5" locked="0" code="TorchID = Torch_1;&#xA;DoorID = Door_1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="576" y="288" name="Torch_1a" locked="0" code="On = false;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="576" y="480" name="Torch_1b" locked="0" code="On = false;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="736" y="288" name="Torch_2a" locked="0" code="On = false;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_TorchOn" x="576" y="896" name="inst_E0572EE5" locked="0" code="TorchID = ds_list_create();&#xA;ds_list_add( TorchID, Torch_1a, Torch_1b );&#xA;DoorID = Door_1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Wall" x="704" y="832" name="inst_E64AC3AF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Wall" x="736" y="832" name="inst_8682B400" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Wall" x="768" y="832" name="inst_321F2A27" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -314,8 +316,8 @@ global.MyInst = inst;</code>
     <instance objName="obj_Pit" x="960" y="736" name="inst_E50E4A5B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
     <instance objName="obj_Pit" x="960" y="768" name="inst_224C8739" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
     <instance objName="obj_Pit" x="960" y="800" name="inst_92B47A68" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_TorchOn" x="928" y="896" name="inst_43400BB5" locked="0" code="TorchID = Torch_2;&#xA;DoorID = Door_2;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_TorchOn" x="1248" y="896" name="inst_250A2067" locked="0" code="TorchID = Torch_3;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_TorchOn" x="928" y="896" name="inst_43400BB5" locked="0" code="TorchID = ds_list_create();&#xA;ds_list_add( TorchID, Torch_2a, Torch_2b );&#xA;DoorID = Door_2;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_TorchOn" x="1248" y="896" name="inst_250A2067" locked="0" code="TorchID = ds_list_create();&#xA;ds_list_add( TorchID, Torch_3a, Torch_3b );&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Wall" x="736" y="864" name="inst_CA29F24D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Wall" x="736" y="896" name="inst_34D7BA9E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Wall" x="736" y="928" name="inst_F94D957E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -410,15 +412,43 @@ global.MyInst = inst;</code>
     <instance objName="obj_Key" x="1184" y="896" name="inst_22C4A67E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Wall" x="192" y="256" name="inst_03236FEF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Wall" x="192" y="448" name="inst_9C92A750" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Wall" x="192" y="704" name="inst_6032D73F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Wall" x="256" y="672" name="inst_6032D73F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Wall" x="160" y="864" name="inst_AA974BF7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Wall" x="224" y="864" name="inst_D6454342" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="192" y="704" name="inst_FFBEE38F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="160" y="864" name="inst_0E528429" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="224" y="864" name="inst_F741426B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="256" y="672" name="Torch_Sb" locked="0" code="On = false;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="160" y="864" name="Torch_Sc" locked="0" code="On = false;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="224" y="864" name="Torch_Sd" locked="0" code="On = false;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Torch" x="192" y="448" name="inst_285D8CC4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Torch" x="192" y="256" name="inst_422D3F8A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Saw" x="928" y="1024" name="inst_D7D5C6B5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Wall" x="64" y="544" name="inst_9E13CCD4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Wall" x="96" y="544" name="inst_77A319F1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Wall" x="128" y="544" name="inst_07528F33" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Wall" x="160" y="544" name="inst_FD434B2B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Wall" x="224" y="544" name="inst_B7825041" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Wall" x="256" y="544" name="inst_8AF2C9A5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Wall" x="288" y="544" name="inst_07CF9DC4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Wall" x="320" y="544" name="inst_411481CB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Door" x="192" y="544" name="Door_3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Wall" x="576" y="480" name="inst_D0970E65" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Wall" x="576" y="288" name="inst_56C4CCB5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Wall" x="736" y="288" name="inst_BCF8182F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Wall" x="736" y="480" name="inst_46DE1395" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Wall" x="864" y="288" name="inst_CCC855FB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Wall" x="864" y="480" name="inst_D6CE34AA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="736" y="480" name="Torch_2b" locked="0" code="On = false;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="864" y="288" name="Torch_3a" locked="0" code="On = false;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="864" y="480" name="Torch_3b" locked="0" code="On = false;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_TorchOn" x="320" y="384" name="inst_39B08C3D" locked="0" code="DoorID = Door_3;&#xA;TorchID = ds_list_create();&#xA;ds_list_add( TorchID, Torch_Ea, Torch_Eb, Torch_Sa, Torch_Sb, Torch_Sc, Torch_Sd );&#xA;ds_list_add( TorchID, Torch_Se );&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Wall" x="416" y="288" name="inst_E7122C70" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Wall" x="416" y="480" name="inst_C5BEDCB9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="416" y="288" name="Torch_Ea" locked="0" code="On = false;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="416" y="480" name="Torch_Eb" locked="0" code="On = false;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Wall" x="896" y="960" name="inst_1A5EE397" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Wall" x="928" y="960" name="inst_62F1060C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Wall" x="960" y="960" name="inst_32DA7BB4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Saw" x="864" y="864" name="inst_B8D68C91" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Saw" x="992" y="928" name="inst_9506F891" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_floor" x="32" y="96" w="64" h="64" xo="0" yo="0" id="10000058" name="inst_9BB65D7F" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
