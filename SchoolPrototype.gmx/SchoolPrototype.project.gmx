@@ -10,7 +10,6 @@
     <sprite>sprites\spr_wall_accent</sprite>
     <sprite>sprites\spr_player</sprite>
     <sprite>sprites\spr_player_death</sprite>
-    <sprite>sprites\spr_saw</sprite>
     <sprite>sprites\spr_ball</sprite>
     <sprite>sprites\spr_Swing</sprite>
     <sprite>sprites\spr_door</sprite>
@@ -20,6 +19,12 @@
     <sprite>sprites\spr_Bridge</sprite>
     <sprite>sprites\spr_ice</sprite>
     <sprite>sprites\spr_switch</sprite>
+    <sprite>sprites\spr_bomb</sprite>
+    <sprites name="Traps">
+      <sprite>sprites\spr_saw</sprite>
+      <sprite>sprites\spr_launcher</sprite>
+      <sprite>sprites\spr_arrow</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_floor</background>
@@ -35,16 +40,9 @@
     <font>fonts\fnt_DEMO</font>
   </fonts>
   <objects name="objects">
-    <object>objects\obj_DEMO</object>
-    <objects name="Generic">
-      <object>objects\obj_Torch</object>
+    <objects name="Weapons">
       <object>objects\obj_Sword</object>
-      <object>objects\obj_Player</object>
-      <object>objects\obj_Ball</object>
-      <object>objects\obj_Saw</object>
-      <object>objects\obj_Wall</object>
-      <object>objects\obj_Door</object>
-      <object>objects\obj_Key</object>
+      <object>objects\obj_Bomb</object>
     </objects>
     <objects name="Engine">
       <object>objects\obj_Light</object>
@@ -52,13 +50,30 @@
       <object>objects\obj_Client</object>
       <object>objects\obj_Gesture0</object>
       <object>objects\obj_Gesture1</object>
+      <object>objects\obj_Accel</object>
+    </objects>
+    <object>objects\obj_DEMO</object>
+    <objects name="Generic">
+      <object>objects\obj_Torch</object>
+      <object>objects\obj_Button</object>
+      <object>objects\obj_Player</object>
+      <object>objects\obj_Ball</object>
+      <object>objects\obj_Wall</object>
+      <object>objects\obj_Door</object>
+      <object>objects\obj_Exit</object>
+      <object>objects\obj_Key</object>
+      <objects name="Traps">
+        <object>objects\obj_Saw</object>
+        <object>objects\obj_Launcher</object>
+        <object>objects\obj_Arrow</object>
+      </objects>
+      <object>objects\obj_Trigger</object>
     </objects>
     <objects name="Bridge">
       <object>objects\obj_Bridge</object>
       <object>objects\obj_BridgeGenerator</object>
       <object>objects\obj_Pit</object>
       <object>objects\obj_TorchOn</object>
-      <object>objects\obj_Exit</object>
     </objects>
     <objects name="Ice">
       <object>objects\obj_Ice</object>
@@ -67,11 +82,10 @@
       <object>objects\obj_TorchOff</object>
       <object>objects\obj_Guard</object>
     </objects>
-    <object>objects\obj_Button</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\rm_Ice</room>
     <room>rooms\rm_Select</room>
+    <room>rooms\rm_Ice</room>
     <room>rooms\rm_Sneak</room>
     <room>rooms\rm_Bridge</room>
     <room>rooms\rm_Main</room>
