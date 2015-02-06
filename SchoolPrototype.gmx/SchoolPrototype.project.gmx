@@ -25,6 +25,7 @@
       <sprite>sprites\spr_launcher</sprite>
       <sprite>sprites\spr_arrow</sprite>
     </sprites>
+    <sprite>sprites\spr_crumbled_wall</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_floor</background>
@@ -68,6 +69,7 @@
         <object>objects\obj_Arrow</object>
       </objects>
       <object>objects\obj_Trigger</object>
+      <object>objects\obj_Crumbled_Wall</object>
     </objects>
     <objects name="Bridge">
       <object>objects\obj_Bridge</object>
@@ -85,6 +87,7 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_Select</room>
+    <room>rooms\rm_Bomb</room>
     <room>rooms\rm_Ice</room>
     <room>rooms\rm_Sneak</room>
     <room>rooms\rm_Bridge</room>

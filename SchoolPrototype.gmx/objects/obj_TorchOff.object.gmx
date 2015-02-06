@@ -86,7 +86,6 @@ if( image_index == 0 )
         On = false;
     with( Sneak_Torch )
         On = true;
-    Sneak_Torch.On = true
     image_blend = c_lime;
     image_index = 1;
     with( obj_Guard )

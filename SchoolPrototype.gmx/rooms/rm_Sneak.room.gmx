@@ -89,7 +89,7 @@ show_message_async( "Don't get caught by the spectre!" );</code>
     <instance objName="obj_Wall" x="224" y="288" name="inst_D7756D20" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Wall" x="224" y="320" name="inst_F69E0A3B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Key" x="352" y="256" name="inst_0FA1FEEF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Door" x="864" y="416" name="inst_C8A8C8BC" locked="0" code="Type = &quot;Exit&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Door" x="864" y="416" name="inst_C8A8C8BC" locked="0" code="Exit = true;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Wall" x="960" y="416" name="inst_20C0366E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Wall" x="960" y="384" name="inst_A5BD153B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Wall" x="960" y="480" name="inst_283BC265" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
