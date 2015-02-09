@@ -52,8 +52,7 @@ image_speed = 0;
             <string>/// Reset Player
 if( image_index == 1 )
 {
-    other.x = 64;
-    other.y = 160;
+    other.State = "Fall";
 }
 </string>
           </argument>

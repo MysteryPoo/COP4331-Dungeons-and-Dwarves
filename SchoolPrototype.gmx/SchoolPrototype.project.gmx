@@ -11,7 +11,6 @@
     <sprite>sprites\spr_player</sprite>
     <sprite>sprites\spr_player_death</sprite>
     <sprite>sprites\spr_ball</sprite>
-    <sprite>sprites\spr_Swing</sprite>
     <sprite>sprites\spr_door</sprite>
     <sprite>sprites\spr_key</sprite>
     <sprite>sprites\spr_torch</sprite>
@@ -19,13 +18,17 @@
     <sprite>sprites\spr_Bridge</sprite>
     <sprite>sprites\spr_ice</sprite>
     <sprite>sprites\spr_switch</sprite>
-    <sprite>sprites\spr_bomb</sprite>
     <sprites name="Traps">
       <sprite>sprites\spr_saw</sprite>
       <sprite>sprites\spr_launcher</sprite>
-      <sprite>sprites\spr_arrow</sprite>
     </sprites>
     <sprite>sprites\spr_crumbled_wall</sprite>
+    <sprites name="Weapons">
+      <sprite>sprites\spr_bomb</sprite>
+      <sprite>sprites\spr_Swing</sprite>
+      <sprite>sprites\spr_arrow</sprite>
+      <sprite>sprites\spr_spike</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_floor</background>
@@ -44,14 +47,16 @@
     <objects name="Weapons">
       <object>objects\obj_Sword</object>
       <object>objects\obj_Bomb</object>
+      <object>objects\obj_Arrow</object>
+      <object>objects\obj_Spike</object>
     </objects>
     <objects name="Engine">
       <object>objects\obj_Light</object>
+      <object>objects\obj_Light_Vec</object>
       <object>objects\obj_Server</object>
       <object>objects\obj_Client</object>
       <object>objects\obj_Gesture0</object>
       <object>objects\obj_Gesture1</object>
-      <object>objects\obj_Accel</object>
     </objects>
     <object>objects\obj_DEMO</object>
     <objects name="Generic">
@@ -66,7 +71,7 @@
       <objects name="Traps">
         <object>objects\obj_Saw</object>
         <object>objects\obj_Launcher</object>
-        <object>objects\obj_Arrow</object>
+        <object>objects\obj_TripWire</object>
       </objects>
       <object>objects\obj_Trigger</object>
       <object>objects\obj_Crumbled_Wall</object>
@@ -87,6 +92,7 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_Select</room>
+    <room>rooms\rm_LightingTest</room>
     <room>rooms\rm_Bomb</room>
     <room>rooms\rm_Ice</room>
     <room>rooms\rm_Sneak</room>

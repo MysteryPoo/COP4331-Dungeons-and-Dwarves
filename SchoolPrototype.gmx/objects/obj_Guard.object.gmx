@@ -142,7 +142,16 @@ if( !instance_exists( mySword ) &amp;&amp; distance_to_object( obj_Player ) &lt;
           <argument>
             <kind>1</kind>
             <string>/// Detect Player
-if( distance_to_object( obj_Player ) &lt; 128 )
+if( distance_to_object( obj_Player ) &lt; 128 &amp;&amp; ( obj_Player.hasTorch || obj_TorchOff.image_index == 0 ) )
+{
+    var inst = collision_line( x, y, obj_Player.x, obj_Player.y, obj_Wall, false, false );
+    if( inst == noone )
+    {
+        PlayerDetected = true;
+        path_end();
+    }
+}
+else if( distance_to_object( obj_Player ) &lt; 32 &amp;&amp; !obj_Player.hasTorch )
 {
     var inst = collision_line( x, y, obj_Player.x, obj_Player.y, obj_Wall, false, false );
     if( inst == noone )
