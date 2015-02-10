@@ -32,7 +32,7 @@ image_speed = 0;
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_Guard">
+    <event eventtype="4" ename="obj_Spectre">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -88,7 +88,7 @@ if( image_index == 0 )
         On = true;
     image_blend = c_lime;
     image_index = 1;
-    with( obj_Guard )
+    with( obj_Spectre )
     {
         if( path_index != path_Guard_LightsOn )
             path_start( path_Guard_LightsOn, 3, 3, true );

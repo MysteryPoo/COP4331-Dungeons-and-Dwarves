@@ -25,8 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Image Properties
-image_blend = c_blue;
+            <string>/// Image properties
+image_blend = c_red;
 </string>
           </argument>
         </arguments>
@@ -47,8 +47,8 @@ image_blend = c_blue;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Path
-path_start( path_Avoidance_small, 3, 1, false );
+            <string>/// PlayerDetected
+PlayerDetected = false;
 </string>
           </argument>
         </arguments>
@@ -69,8 +69,8 @@ path_start( path_Avoidance_small, 3, 1, false );
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// State
-State = "Patrol";
+            <string>/// Path Position
+PathPosition = 0;
 </string>
           </argument>
         </arguments>
@@ -93,7 +93,6 @@ State = "Patrol";
             <kind>1</kind>
             <string>/// mySword
 mySword = noone;
-SwingCooldown = 0;
 </string>
           </argument>
         </arguments>
@@ -116,126 +115,19 @@ SwingCooldown = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Patrol
-if( State == "Patrol" )
-{
-    switch( direction )
-    {
-        case 0:
-            var x1 = x + 32;
-            var x2 = x + 32 * 4;
-            var y1 = y - 32 * 2;
-            var y2 = y + 32 * 2;
-            var inst = collision_rectangle( x1, y1, x2, y2, obj_Dwarf, false, false );
-            if( inst != noone )
-            {
-                with( obj_Guard )
-                {
-                    State = "Chase";
-                    path_end();
-                }
-            }
-            break;
-        case 90:
-            var x1 = x - 32 * 2;
-            var x2 = x + 32 * 2;
-            var y1 = y - 32;
-            var y2 = y - 32 * 4;
-            var inst = collision_rectangle( x1, y1, x2, y2, obj_Dwarf, false, false );
-            if( inst != noone )
-            {
-                with( obj_Guard )
-                {
-                    State = "Chase";
-                    path_end();
-                }
-            }
-            break;
-        case 180:
-            var x1 = x - 32;
-            var x2 = x - 32 * 4;
-            var y1 = y - 32 * 2;
-            var y2 = y + 32 * 2;
-            var inst = collision_rectangle( x1, y1, x2, y2, obj_Dwarf, false, false );
-            if( inst != noone )
-            {
-                with( obj_Guard )
-                {
-                    State = "Chase";
-                    path_end();
-                }
-            }
-            break;
-        case 270:
-            var x1 = x - 32 * 2;
-            var x2 = x + 32 * 2;
-            var y1 = y + 32;
-            var y2 = y + 32 * 4;
-            var inst = collision_rectangle( x1, y1, x2, y2, obj_Dwarf, false, false );
-            if( inst != noone )
-            {
-                with( obj_Guard )
-                {
-                    State = "Chase";
-                    path_end();
-                }
-            }
-            break;
-    }
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Chase
-if( State == "Chase" )
-{
-    mp_potential_step( obj_Dwarf.x, obj_Dwarf.y, 4, false );
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
             <string>/// Hit player
-if( State == "Chase" &amp;&amp; SwingCooldown == 0
-    &amp;&amp; !instance_exists( mySword ) &amp;&amp; distance_to_object( obj_Dwarf ) &lt; 32 )
+if( !instance_exists( mySword ) &amp;&amp; distance_to_object( obj_Player ) &lt; 32 )
+{
+    mySword = instance_create( x, y - 8, obj_Sword );
+    mySword.image_angle = point_direction( x, y, obj_Player.x, obj_Player.y );
+    mySword.Owner = id;
+}
+/// Hit player
+if( !instance_exists( mySword ) &amp;&amp; distance_to_object( obj_Dwarf ) &lt; 32 )
 {
     mySword = instance_create( x, y - 8, obj_Sword );
     mySword.image_angle = point_direction( x, y, obj_Dwarf.x, obj_Dwarf.y );
     mySword.Owner = id;
-    SwingCooldown = 60;
 }
 </string>
           </argument>
@@ -257,9 +149,82 @@ if( State == "Chase" &amp;&amp; SwingCooldown == 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// SwingCooldown
-if( SwingCooldown &gt; 0 )
-    --SwingCooldown;
+            <string>/// Detect Player
+if( distance_to_object( obj_Player ) &lt; 128 &amp;&amp; ( obj_Player.hasTorch || obj_TorchOff.image_index == 0 ) )
+{
+    var inst = collision_line( x, y, obj_Player.x, obj_Player.y, obj_Wall, false, false );
+    if( inst == noone )
+    {
+        PlayerDetected = true;
+        path_end();
+    }
+}
+else if( distance_to_object( obj_Player ) &lt; 32 &amp;&amp; !obj_Player.hasTorch )
+{
+    var inst = collision_line( x, y, obj_Player.x, obj_Player.y, obj_Wall, false, false );
+    if( inst == noone )
+    {
+        PlayerDetected = true;
+        path_end();
+    }
+}
+else
+    PlayerDetected = false;
+if( PlayerDetected )
+{
+    direction = point_direction( x, y, obj_Player.x, obj_Player.y );
+    speed = 5;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="8">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Stop the path
+path_end();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Draw Debug
+draw_self();
+if( PlayerDetected )
+    draw_text( x, y, "Player is detected" );
 </string>
           </argument>
         </arguments>

@@ -245,7 +245,7 @@ if( State == "Move" )
     }
     else
         sprite_index = spr_dwarf_walk_s;
-    if( place_meeting( x, y, obj_Ice2 ) )
+    if( place_meeting( x, y, obj_Ice ) )
         State = "Ice_Start";
     if( MaxSpeed &gt; 0 )
         speed = min( ++speed, MaxSpeed );
@@ -456,15 +456,7 @@ with( other )
             <string>/// Stop animation
 if( sprite_index == spr_player_death )
 {
-    /*
-    sprite_index = spr_player;
-    x = global.StartX;
-    y = global.StartY;
-    State = "Alive";
-    */
     room_goto( room );
-    //image_speed = 0;
-    //image_index = image_number - 1;
 }
 </string>
           </argument>
