@@ -119,6 +119,28 @@ MaxSpeed = 0;
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// MySword
+mySword = noone;
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="3" enumb="0">
       <action>
@@ -254,13 +276,13 @@ if( State == "Move" )
           <argument>
             <kind>1</kind>
             <string>/// Gesture 1
-if( State == "Alive" )
+if( State != "Death" )
 {
     if( instance_exists( obj_Gesture1 ) &amp;&amp; global.MyInst = id )
     {
         if( !instance_exists( mySword ) &amp;&amp; obj_Gesture1.Released &amp;&amp; obj_Gesture1.max_dist &lt; 32 )
         {
-            var mySword = instance_create( x, y - 16, obj_Sword );
+            mySword = instance_create( x, y - 16, obj_Sword );
             mySword.direction = obj_Gesture0.direction;
             mySword.image_angle = obj_Gesture0.direction;
             mySword.Owner = id;
