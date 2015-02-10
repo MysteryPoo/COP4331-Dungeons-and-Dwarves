@@ -46,6 +46,7 @@
   </backgrounds>
   <paths name="paths">
     <path>paths\path_Guard_LightsOn</path>
+    <path>paths\path_Avoidance_small</path>
   </paths>
   <scripts name="scripts">
     <script>scripts\scr_SReceivedPacket.gml</script>
@@ -97,14 +98,18 @@
     </objects>
     <objects name="Ice">
       <object>objects\obj_Ice</object>
-      <object>objects\obj_Ice2</object>
     </objects>
     <objects name="Sneak">
       <object>objects\obj_TorchOff</object>
+      <object>objects\obj_Spectre</object>
+    </objects>
+    <objects name="Avoidance">
+      <object>objects\obj_Waypoint</object>
       <object>objects\obj_Guard</object>
     </objects>
   </objects>
   <rooms name="rooms">
+    <room>rooms\rm_Avoidance</room>
     <room>rooms\rm_Select</room>
     <room>rooms\rm_Bomb</room>
     <room>rooms\rm_Ice</room>
@@ -114,7 +119,6 @@
     <room>rooms\rm_Server</room>
     <room>rooms\rm_Client</room>
     <room>rooms\rm_Victory</room>
-    <room>rooms\rm_LightingTest</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
