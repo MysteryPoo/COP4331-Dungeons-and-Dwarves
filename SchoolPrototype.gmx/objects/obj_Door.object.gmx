@@ -52,7 +52,7 @@ Exit = false;
             <string>/// Exit
 if( Exit )
 {
-    var player = instance_nearest( x, y, obj_Player );
+    var player = instance_nearest( x, y, obj_Dwarf );
     if( player != noone )
     {
         if( player.hasKey &amp;&amp; distance_to_object( player ) &lt; 32 )

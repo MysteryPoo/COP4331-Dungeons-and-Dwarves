@@ -47,28 +47,6 @@ image_blend = c_red;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// mySword
-mySword = noone;
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
             <string>/// PlayerDetected
 PlayerDetected = false;
 </string>
@@ -118,8 +96,16 @@ PathPosition = 0;
             <string>/// Hit player
 if( !instance_exists( mySword ) &amp;&amp; distance_to_object( obj_Player ) &lt; 32 )
 {
-    mySword = instance_create( x, y - 8, obj_Sword );
+    var mySword = instance_create( x, y - 8, obj_Sword );
     mySword.image_angle = point_direction( x, y, obj_Player.x, obj_Player.y );
+    mySword.Owner = id;
+}
+/// Hit player
+if( !instance_exists( mySword ) &amp;&amp; distance_to_object( obj_Dwarf ) &lt; 32 )
+{
+    var mySword = instance_create( x, y - 8, obj_Sword );
+    mySword.image_angle = point_direction( x, y, obj_Dwarf.x, obj_Dwarf.y );
+    mySword.Owner = id;
 }
 </string>
           </argument>
@@ -189,7 +175,8 @@ if( PlayerDetected )
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>path_end();
+            <string>/// Stop the path
+path_end();
 </string>
           </argument>
         </arguments>

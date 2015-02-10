@@ -29,6 +29,17 @@
       <sprite>sprites\spr_arrow</sprite>
       <sprite>sprites\spr_spike</sprite>
     </sprites>
+    <sprites name="Dwarf">
+      <sprites name="Idle">
+        <sprite>sprites\spr_dwarf_idle_s</sprite>
+        <sprite>sprites\spr_dwarf_idle_n</sprite>
+      </sprites>
+      <sprites name="Walk">
+        <sprite>sprites\spr_dwarf_walk_s</sprite>
+        <sprite>sprites\spr_dwarf_walk_e</sprite>
+        <sprite>sprites\spr_dwarf_walk_n</sprite>
+      </sprites>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_floor</background>
@@ -57,12 +68,14 @@
       <object>objects\obj_Client</object>
       <object>objects\obj_Gesture0</object>
       <object>objects\obj_Gesture1</object>
+      <object>objects\obj_Time</object>
     </objects>
     <object>objects\obj_DEMO</object>
     <objects name="Generic">
       <object>objects\obj_Torch</object>
       <object>objects\obj_Button</object>
       <object>objects\obj_Player</object>
+      <object>objects\obj_Dwarf</object>
       <object>objects\obj_Ball</object>
       <object>objects\obj_Wall</object>
       <object>objects\obj_Door</object>
@@ -84,6 +97,7 @@
     </objects>
     <objects name="Ice">
       <object>objects\obj_Ice</object>
+      <object>objects\obj_Ice2</object>
     </objects>
     <objects name="Sneak">
       <object>objects\obj_TorchOff</object>
@@ -92,7 +106,6 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_Select</room>
-    <room>rooms\rm_LightingTest</room>
     <room>rooms\rm_Bomb</room>
     <room>rooms\rm_Ice</room>
     <room>rooms\rm_Sneak</room>
@@ -101,6 +114,7 @@
     <room>rooms\rm_Server</room>
     <room>rooms\rm_Client</room>
     <room>rooms\rm_Victory</room>
+    <room>rooms\rm_LightingTest</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

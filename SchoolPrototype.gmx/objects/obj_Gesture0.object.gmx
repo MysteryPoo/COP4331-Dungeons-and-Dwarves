@@ -2,7 +2,7 @@
 <object>
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
-  <visible>-1</visible>
+  <visible>0</visible>
   <depth>0</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
@@ -87,14 +87,14 @@ if( device_mouse_check_button( 0, mb_left ) )
     else if( max_dist &gt; 64 )
         scale = dist / max_dist;
     direction = point_direction( mxs, mys, mx, my );
-    visible = true;
+    //visible = true;
 }
 
 if( device_mouse_check_button_released( 0, mb_left ) )
 {
     /// Disable gesture tracking
     scale = 0;
-    visible = false;
+    //visible = false;
 }
 </string>
           </argument>

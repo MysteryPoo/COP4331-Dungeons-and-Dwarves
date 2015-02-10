@@ -13,7 +13,7 @@
   <code>/// Place the player
 global.StartX = 64;
 global.StartY = 160;
-var inst = instance_create( 64, 160, obj_Player );
+var inst = instance_create( 64, 160, obj_Dwarf );
 global.MyInst = inst;</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
@@ -45,7 +45,7 @@ global.MyInst = inst;</code>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
   </backgrounds>
   <views>
-    <view visible="-1" objName="obj_Player" xview="0" yview="0" wview="512" hview="384" xport="0" yport="0" wport="1024" hport="768" hborder="256" vborder="192" hspeed="-1" vspeed="-1"/>
+    <view visible="-1" objName="obj_Dwarf" xview="0" yview="0" wview="512" hview="384" xport="0" yport="0" wport="1024" hport="768" hborder="256" vborder="192" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
@@ -443,6 +443,8 @@ global.MyInst = inst;</code>
     <instance objName="obj_Wall" x="960" y="480" name="inst_2F8C9CF5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Wall" x="1344" y="480" name="inst_505928E2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_TripWire" x="608" y="960" name="inst_BA19236B" locked="0" code="Launcher = TripWire_Bridge_1;&#xA;" scaleX="1" scaleY="7" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="1184" y="480" name="inst_10E8CE15" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Time" x="96" y="0" name="inst_DFB96EBF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_floor" x="32" y="96" w="64" h="64" xo="0" yo="0" id="10000058" name="inst_9BB65D7F" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
