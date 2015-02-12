@@ -62,7 +62,7 @@ if( image_index == 1 )
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_Player">
+    <event eventtype="4" ename="obj_Dwarf">
       <action>
         <libid>1</libid>
         <id>603</id>

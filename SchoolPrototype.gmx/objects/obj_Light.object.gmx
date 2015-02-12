@@ -282,7 +282,7 @@ with( obj_Torch )
         draw_circle( x - view_xview[ 0 ], y - view_yview[ 0 ] - 8, 128 + 8 * dsin( 10 * other.Flicker ), false );
     }
 }
-with( obj_Guard )
+with( obj_Spectre )
 {
     for( var c = 1; c &lt; 15; ++c )
     {
