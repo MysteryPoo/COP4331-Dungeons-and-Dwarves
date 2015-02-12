@@ -142,6 +142,65 @@ mySword = noone;
         </arguments>
       </action>
     </event>
+    <event eventtype="3" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Collisions
+var foundCollision;
+
+//find a collision through frame movement
+foundCollision = collision_rectangle(bbox_left + min(0, -hspeed), bbox_top + min(0, -vspeed), bbox_right + max(0, -hspeed), bbox_bottom + max(0, -vspeed), obj_Wall, false, true);
+
+if( foundCollision ){//collision detected
+
+    //return to previous position
+    x = xprevious;
+    y = yprevious;
+    
+    //advance position to meet obstruction
+    if( vspeed &gt; 0 ){//Player is descending
+        move_contact_solid(270, vspeed);
+        if( !place_free(x, y + 1) ){
+            vspeed = 0;
+        }  
+    }else if( vspeed &lt; 0 ){//player is ascending
+        move_contact_solid(90, -vspeed);
+        if( !place_free(x, y - 1) ){
+            vspeed = 0;
+        }  
+    }
+    if( hspeed &gt; 0 ){//player is moving right
+        move_contact_solid(0, hspeed);
+        if( !place_free(x + 1, y) ){
+            hspeed = 0;
+        }  
+    }else if( hspeed &lt; 0 ){//player is moving left
+        move_contact_solid(180, -hspeed);
+        if( !place_free(x - 1, y) ){
+            hspeed = 0;
+        }  
+    }
+    
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -231,6 +290,7 @@ if( State == "Move_Start" )
 }
 if( State == "Move" )
 {
+    // Direction animation
     if( direction &lt; 45 || direction &gt; 315 )
     {
         sprite_index = spr_dwarf_walk_e;
@@ -245,15 +305,21 @@ if( State == "Move" )
     }
     else
         sprite_index = spr_dwarf_walk_s;
+    // End of animation direction
+    // Are we on ice?
     if( place_meeting( x, y, obj_Ice ) )
         State = "Ice_Start";
+    // End ice check
+    // Ramp up speed ( no instantaneous velocities )
     if( MaxSpeed &gt; 0 )
         speed = min( ++speed, MaxSpeed );
     else
         speed = max( --speed, 0 );
+    // End of acceleration
+    // Are we Idle?
     if( speed == 0 )
         State = "Idle_Start";
-    move_bounce_solid( true );
+    // End idle check
 }
 </string>
           </argument>
