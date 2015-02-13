@@ -116,13 +116,6 @@ mySword = noone;
           <argument>
             <kind>1</kind>
             <string>/// Hit player
-if( !instance_exists( mySword ) &amp;&amp; distance_to_object( obj_Player ) &lt; 32 )
-{
-    mySword = instance_create( x, y - 8, obj_Sword );
-    mySword.image_angle = point_direction( x, y, obj_Player.x, obj_Player.y );
-    mySword.Owner = id;
-}
-/// Hit player
 if( !instance_exists( mySword ) &amp;&amp; distance_to_object( obj_Dwarf ) &lt; 32 )
 {
     mySword = instance_create( x, y - 8, obj_Sword );
@@ -150,18 +143,18 @@ if( !instance_exists( mySword ) &amp;&amp; distance_to_object( obj_Dwarf ) &lt; 
           <argument>
             <kind>1</kind>
             <string>/// Detect Player
-if( distance_to_object( obj_Player ) &lt; 128 &amp;&amp; ( obj_Player.hasTorch || obj_TorchOff.image_index == 0 ) )
+if( distance_to_object( obj_Dwarf ) &lt; 128 &amp;&amp; ( obj_Dwarf.hasTorch || obj_TorchOff.image_index == 0 ) )
 {
-    var inst = collision_line( x, y, obj_Player.x, obj_Player.y, obj_Wall, false, false );
+    var inst = collision_line( x, y, obj_Dwarf.x, obj_Dwarf.y, obj_Wall, false, false );
     if( inst == noone )
     {
         PlayerDetected = true;
         path_end();
     }
 }
-else if( distance_to_object( obj_Player ) &lt; 32 &amp;&amp; !obj_Player.hasTorch )
+else if( distance_to_object( obj_Dwarf ) &lt; 32 &amp;&amp; !obj_Dwarf.hasTorch )
 {
-    var inst = collision_line( x, y, obj_Player.x, obj_Player.y, obj_Wall, false, false );
+    var inst = collision_line( x, y, obj_Dwarf.x, obj_Dwarf.y, obj_Wall, false, false );
     if( inst == noone )
     {
         PlayerDetected = true;
@@ -172,7 +165,7 @@ else
     PlayerDetected = false;
 if( PlayerDetected )
 {
-    direction = point_direction( x, y, obj_Player.x, obj_Player.y );
+    direction = point_direction( x, y, obj_Dwarf.x, obj_Dwarf.y );
     speed = 5;
 }
 </string>
