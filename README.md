@@ -1,11 +1,29 @@
 # Dungeons and Dwarves
-### Last update: 2/11/2015
+### Last Readme update: 2/13/2015
 
 # Table of Contents
 * [Project Overview](#overview)
+* [Promoting Changes and Commit Messages](#promotion)
 * [Github and Repo Management](#github-rules)
 
 ## <a name="overview"></a>Project Overview
+Project repository for the Spring 2015 final project in COP4331.  A multiplayer dungeon crawling game for desktops and Android devices.  If you've arrived at a fork, the main repository can be found [here](https://github.com/MysteryPoo/SchoolPrototype).
+
+## <a name="promotion"></a>Promoting Changes and Commit Messages
+<p> When commiting changes, format your commit message as follows: </p>
+* The title of the commit should have one of the following labels, followed by the name of the file modified:
+  - Feature
+     * Adding a new feature (level, GUI, etc)
+  - Bug Fix
+     * Adding a solution to a bug in the code
+  - Trivial
+     * Quality-of-Life changes (changing code to meet develpoment standards for example)
+  - Enhancement
+     * Enhancing a current feature with improved functionality
+  - Code Removal
+     * Ideally rare.  Removing whole files or large sections of code.  Please discuss with team and particularly Matt first.
+
+* The description in the commit message should contain a detailed explanation of what was changed.  Anyone should be able to clearly know what your changes are by reading the description.
 
 ## <a name="github-rules"></a>Github and Repo Management
 This assumes you've installed and configured git on Windows.  See [this link](http://git-scm.com/book/en/v2/Getting-Started-Installing-Git#Installing-on-Windows) and follow the instructions for installing the Github for Windows client.
