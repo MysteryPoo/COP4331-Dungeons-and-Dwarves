@@ -107,7 +107,6 @@
       <object>objects\obj_Spectre</object>
     </objects>
     <objects name="Avoidance">
-      <object>objects\obj_Waypoint</object>
       <object>objects\obj_Guard</object>
     </objects>
   </objects>
