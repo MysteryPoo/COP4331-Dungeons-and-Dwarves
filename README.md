@@ -48,12 +48,14 @@ This assumes you've installed and configured git on Windows.  See [this link](ht
 5. In the Github for Windows client, click the 'Sync' button in the top right corner
   
 ### <a name="github-commit"></a>Committing Changes
-
-1. Navigate to the branch you would like to commit changes to.
-2. Select uncommitted changes section and show details.
-3. Enter a summary and detailed description according to the development standards listed previously.
-4. Click the "Commit to <branch-name>" button.
-5. If you want to push your changes to your remote fork, click the Sync button.
+1. In the Github for Windows client, navigate to the local repository you'd like to apply changes to.
+2. In the Uncommitted Changes section, select the file(s) you would like to update from the right hand window.  For each file, click the arrow to expand the diff view.  You should see the file contents with red removals and green additions to the file.
+3. The two leftmost columns in the diff view shows comparison of the line numbers in the two versions of the file.  The left column is the line number in the current most recent commit, the right column is the line number in the uncommitted version of the file with your changes.
+4. Select the changes you would like to commit.  Clicking one of the leftmost columns with the line numbers will select an individual line.  Clicking to the right of this, on the '+' or '-' characters, will select an entire block.  The lines that will be selected are highlighted before you click.
+5. Enter your commit message according to the standards described above.
+6. Double (triple) check your selections for each file.
+7. Click the "Commit to branch-name" icon.
+8. Click the "Sync" button in the top right corner if you'd like to push your changes to your remote repository.
 
 ### <a name="github-merge"></a>Merging Changes
 <p>If you're working on a local development branch (the reccommended way to work) you'll eventually want to merge the changes from that branch into your master.</p>
