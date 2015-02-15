@@ -11,12 +11,10 @@
   <colour>0</colour>
   <showcolour>-1</showcolour>
   <code>/// Place the player
-global.StartX = 96;
-global.StartY = 64;
-var inst = instance_create( 96, 64, obj_Dwarf );
-global.MyInst = inst;
-
-show_message_async( "Don't get caught by the spectre!" );</code>
+global.StartX = 112;
+global.StartY = 80;
+var inst = instance_create( global.StartX, global.StartY, obj_Dwarf );
+global.MyInst = inst;</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
