@@ -219,7 +219,7 @@ if( foundCollision ){//collision detected
           <argument>
             <kind>1</kind>
             <string>/// Process Input
-if( instance_exists( obj_Gesture0 ) &amp;&amp; global.MyInst = id )
+if( State != "Ice" &amp;&amp; instance_exists( obj_Gesture0 ) &amp;&amp; global.MyInst = id )
 {
     if( obj_Gesture0.Touched )
     {
@@ -228,6 +228,67 @@ if( instance_exists( obj_Gesture0 ) &amp;&amp; global.MyInst = id )
     }
     else
         MaxSpeed = 0;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Gesture 1
+if( State != "Death" )
+{
+    if( instance_exists( obj_Gesture1 ) &amp;&amp; global.MyInst = id )
+    {
+        if( !instance_exists( mySword ) &amp;&amp; obj_Gesture1.Released &amp;&amp; obj_Gesture1.max_dist &lt; 32 )
+        {
+            mySword = instance_create( x, y - 16, obj_Sword );
+            mySword.direction = obj_Gesture0.direction;
+            mySword.image_angle = obj_Gesture0.direction;
+            mySword.Owner = id;
+            if( instance_exists( obj_Client ) )
+            {
+                buffer_seek( obj_Client.Buffer, buffer_seek_start, 0 );
+                buffer_write( obj_Client.Buffer, buffer_u8, 5 );
+                buffer_write( obj_Client.Buffer, buffer_s16, mySword.x );
+                buffer_write( obj_Client.Buffer, buffer_s16, mySword.y );
+                buffer_write( obj_Client.Buffer, buffer_s16, obj_Gesture0.direction );
+                network_send_packet( obj_Client.Socket, obj_Client.Buffer, buffer_tell( obj_Client.Buffer ) );
+            }
+        }
+        else if( obj_Gesture1.Released &amp;&amp; obj_Gesture1.max_dist &gt; 32 )
+        {
+            var inst = instance_create( x, y - 16, obj_Spike );
+            inst.direction = obj_Gesture1.direction;
+            //inst.image_angle = inst.direction;
+            //inst.speed = 10;
+            inst.Owner = id;
+            if( instance_exists( obj_Client ) )
+            {
+                buffer_seek( obj_Client.Buffer, buffer_seek_start, 0 );
+                buffer_write( obj_Client.Buffer, buffer_u8, 6 );
+                buffer_write( obj_Client.Buffer, buffer_s16, x );
+                buffer_write( obj_Client.Buffer, buffer_s16, y );
+                buffer_write( obj_Client.Buffer, buffer_s16, obj_Gesture1.direction );
+                buffer_write( obj_Client.Buffer, buffer_s8, 10 );
+                network_send_packet( obj_Client.Socket, obj_Client.Buffer, buffer_tell( obj_Client.Buffer ) );
+            }
+        }
+    }
 }
 </string>
           </argument>
@@ -341,46 +402,18 @@ if( State == "Move" )
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Gesture 1
-if( State != "Death" )
+            <string>/// Ice
+if( State == "Ice_Start" )
 {
-    if( instance_exists( obj_Gesture1 ) &amp;&amp; global.MyInst = id )
-    {
-        if( !instance_exists( mySword ) &amp;&amp; obj_Gesture1.Released &amp;&amp; obj_Gesture1.max_dist &lt; 32 )
-        {
-            mySword = instance_create( x, y - 16, obj_Sword );
-            mySword.direction = obj_Gesture0.direction;
-            mySword.image_angle = obj_Gesture0.direction;
-            mySword.Owner = id;
-            if( instance_exists( obj_Client ) )
-            {
-                buffer_seek( obj_Client.Buffer, buffer_seek_start, 0 );
-                buffer_write( obj_Client.Buffer, buffer_u8, 5 );
-                buffer_write( obj_Client.Buffer, buffer_s16, mySword.x );
-                buffer_write( obj_Client.Buffer, buffer_s16, mySword.y );
-                buffer_write( obj_Client.Buffer, buffer_s16, obj_Gesture0.direction );
-                network_send_packet( obj_Client.Socket, obj_Client.Buffer, buffer_tell( obj_Client.Buffer ) );
-            }
-        }
-        else if( obj_Gesture1.Released &amp;&amp; obj_Gesture1.max_dist &gt; 32 )
-        {
-            var inst = instance_create( x, y - 16, obj_Spike );
-            inst.direction = obj_Gesture1.direction;
-            //inst.image_angle = inst.direction;
-            //inst.speed = 10;
-            inst.Owner = id;
-            if( instance_exists( obj_Client ) )
-            {
-                buffer_seek( obj_Client.Buffer, buffer_seek_start, 0 );
-                buffer_write( obj_Client.Buffer, buffer_u8, 6 );
-                buffer_write( obj_Client.Buffer, buffer_s16, x );
-                buffer_write( obj_Client.Buffer, buffer_s16, y );
-                buffer_write( obj_Client.Buffer, buffer_s16, obj_Gesture1.direction );
-                buffer_write( obj_Client.Buffer, buffer_s8, 10 );
-                network_send_packet( obj_Client.Socket, obj_Client.Buffer, buffer_tell( obj_Client.Buffer ) );
-            }
-        }
-    }
+    State = "Ice";
+    MaxSpeed = 0;
+    // Maybe we'll add a sliding animation
+    // The player could be like, "Whoa.... whoa! AAH!! Whoa!"
+}
+if( State == "Ice" )
+{
+    if( !place_meeting( x, y, obj_Ice ) )
+        State = "Move_Start";
 }
 </string>
           </argument>
