@@ -77,7 +77,6 @@
     <objects name="Generic">
       <object>objects\obj_Torch</object>
       <object>objects\obj_Button</object>
-      <object>objects\obj_Player</object>
       <object>objects\obj_Dwarf</object>
       <object>objects\obj_Ball</object>
       <object>objects\obj_Wall</object>
