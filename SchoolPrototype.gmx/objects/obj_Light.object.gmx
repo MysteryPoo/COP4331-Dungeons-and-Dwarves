@@ -292,6 +292,15 @@ with( obj_Spectre )
     draw_set_alpha( 0.05 );
     draw_circle( x - view_xview[ 0 ], y - view_yview[ 0 ] - 8, 128 + 8 * dsin( 10 * other.Flicker ), false );
 }
+with( obj_Guard )
+{
+    draw_set_alpha( 0.5 );
+    draw_triangle_colour(x, y, x + 32 * 2.5 * dcos( direction - 45 ),
+                        y - 32 * 2.5 * dsin( direction - 45 ),
+                        x + 32 * 2.5 * dcos( direction + 45 ),
+                        y - 32 * 2.5 * dsin( direction + 45 ),
+                        c_yellow, c_yellow, c_yellow, false);
+}
 draw_set_alpha( 1 );
 draw_set_blend_mode( bm_normal );
 </string>
