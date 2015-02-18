@@ -181,6 +181,10 @@ else if( keyboard_check_released( vk_numpad2 ) )
     visible = true;
     max_dist = 100;
 }
+if( keyboard_check_released( 192 ) )
+{
+    obj_Dwarf.God = !obj_Dwarf.God;
+}
 </string>
           </argument>
         </arguments>
