@@ -286,9 +286,11 @@ if( State != "Death" )
             {
                 buffer_seek( obj_Client.Buffer, buffer_seek_start, 0 );
                 buffer_write( obj_Client.Buffer, buffer_u8, 5 );
+                buffer_write( obj_Client.Buffer, buffer_string, object_get_name( mySword.object_index ) );
                 buffer_write( obj_Client.Buffer, buffer_s16, mySword.x );
                 buffer_write( obj_Client.Buffer, buffer_s16, mySword.y );
                 buffer_write( obj_Client.Buffer, buffer_s16, obj_Gesture0.direction );
+                buffer_write( obj_Client.Buffer, buffer_u8, 0 );
                 network_send_packet( obj_Client.Socket, obj_Client.Buffer, buffer_tell( obj_Client.Buffer ) );
             }
         }
@@ -302,11 +304,12 @@ if( State != "Death" )
             if( instance_exists( obj_Client ) )
             {
                 buffer_seek( obj_Client.Buffer, buffer_seek_start, 0 );
-                buffer_write( obj_Client.Buffer, buffer_u8, 6 );
+                buffer_write( obj_Client.Buffer, buffer_u8, 5 );
+                buffer_write( obj_Client.Buffer, buffer_string, object_get_name( inst.object_index ) );
                 buffer_write( obj_Client.Buffer, buffer_s16, x );
                 buffer_write( obj_Client.Buffer, buffer_s16, y );
                 buffer_write( obj_Client.Buffer, buffer_s16, obj_Gesture1.direction );
-                buffer_write( obj_Client.Buffer, buffer_s8, 10 );
+                buffer_write( obj_Client.Buffer, buffer_s8, 0 );
                 network_send_packet( obj_Client.Socket, obj_Client.Buffer, buffer_tell( obj_Client.Buffer ) );
             }
         }
