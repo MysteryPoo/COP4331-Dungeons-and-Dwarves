@@ -12,7 +12,7 @@ switch( msgid ) {
         var time = buffer_read( buffer , buffer_u32 );
         var Ping = current_time - time;
         break;*/
-    case 2:     // Update Position
+    case 2:     // Update Player Position
         var _updates = buffer_read( buffer, buffer_u8 );
         repeat( _updates )
         {
@@ -79,14 +79,30 @@ switch( msgid ) {
             }
         }
         break;
-    case 5:     // Swing
-        //var _netID = buffer_read( buffer, buffer_u8 );
-        var _x = buffer_read( buffer, buffer_s16 );
-        var _y = buffer_read( buffer, buffer_s16 );
-        var _direction = buffer_read( buffer, buffer_s16 );
-        var inst = instance_create( _x, _y, obj_Sword );
-        inst.direction = _direction;
-        inst.image_angle = _direction;
+    case 5:     // Update Player Attacks
+        var _updates = buffer_read( buffer, buffer_u8 );
+        repeat( _updates )
+        {
+            var _socket = buffer_read( buffer, buffer_u8 );
+            var _Object = buffer_read( buffer, buffer_string );
+            var _x = buffer_read( buffer, buffer_s16 );
+            var _y = buffer_read( buffer, buffer_s16 );
+            var _dir = buffer_read( buffer, buffer_s16 );
+            var _speed = buffer_read( buffer, buffer_s8 );
+            for( var s = 0; s < ds_list_size( SocketList ); ++s )
+            {
+                var _lMap = SocketList[| s ];
+                if( _lMap[? "Socket" ] == _socket )
+                {
+                    var _aMap = _lMap[? "AttackMap" ];
+                    _aMap[? "Object" ] = _Object;
+                    _aMap[? "X" ] = _x;
+                    _aMap[? "Y" ] = _y;
+                    _aMap[? "Direction" ] = _dir;
+                    _aMap[? "Speed" ] = _speed;
+                }
+            }
+        }
         break;
     case 6:     // Shoot
         //var _netID = buffer_read( buffer, buffer_u8 );

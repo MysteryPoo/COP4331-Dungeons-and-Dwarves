@@ -250,6 +250,7 @@ for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
     var _inst = _lMap[? "Instance" ];
     if( instance_exists( _inst ) )
     {
+        // Update Position of instance
         var _pMap = _lMap[? "PositionMap" ];
         with( _inst )
         {
@@ -261,6 +262,20 @@ for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
                 MaxSpeed = 0;
             else
                 MaxSpeed = _speed;
+        }
+        // Create an attack if applicable
+        var _aMap = _lMap[? "AttackMap" ];
+        if( _aMap[? "Object" ] != "noone" )
+        {
+            var _Object = asset_get_index( _aMap[? "Object" ] );
+            if( _Object != -1 )
+            {
+                var _attack = instance_create( _aMap[? "X" ], _aMap[? "Y" ], _Object );
+                _attack.Owner = _inst;
+                _attack.direction = _aMap[? "Direction" ];
+                _attack.speed = _aMap[? "Speed" ];
+                _aMap[? "Object" ] = "noone";
+            }
         }
     }
 }
