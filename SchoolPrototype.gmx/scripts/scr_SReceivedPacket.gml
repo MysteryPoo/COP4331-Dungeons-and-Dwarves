@@ -90,37 +90,23 @@ switch( msgid ) {
         }
         break;
     case 5: // Client made an attack
-        if( ds_exists( AttackArray[ socket ], ds_type_map ) )
-            ds_map_destroy( AttackArray[ socket ] );
-        var _aMap = ds_map_create();
-        AttackArray[ socket ] = _aMap;
-        _aMap[? "Object" ] = buffer_read( buffer, buffer_string );
-        _aMap[? "X" ] = buffer_read( buffer, buffer_s16 );
-        _aMap[? "Y" ] = buffer_read( buffer, buffer_s16 );
-        _aMap[? "Direction" ] = buffer_read( buffer, buffer_s16 );
-        /* Send the packet
-        buffer_seek( Buffer, buffer_seek_start, 0 );
-        buffer_write( Buffer, buffer_u8, 5 );
-        buffer_write( Buffer, buffer_s16, _x );
-        buffer_write( Buffer, buffer_s16, _y );
-        buffer_write( Buffer, buffer_s16, _direction );
-        for( var s = 0; s < ds_list_size( SocketList ); ++s )
-            if( socket != ds_list_find_value( SocketList, s ) )
-                network_send_packet( ds_list_find_value( SocketList, s ), Buffer, buffer_tell( Buffer ) );*/
-        break;
-    case 6: // Received a ranged attack from client -- DEPRECATE
+        var _Object = buffer_read( buffer, buffer_string );
         var _x = buffer_read( buffer, buffer_s16 );
         var _y = buffer_read( buffer, buffer_s16 );
-        var _direction = buffer_read( buffer, buffer_s16 );
+        var _dir = buffer_read( buffer, buffer_s16 );
         var _speed = buffer_read( buffer, buffer_u8 );
-        buffer_seek( Buffer, buffer_seek_start, 0 );
-        buffer_write( Buffer, buffer_u8, 6 );
-        buffer_write( Buffer, buffer_s16, _x );
-        buffer_write( Buffer, buffer_s16, _y );
-        buffer_write( Buffer, buffer_s16, _direction );
-        buffer_write( Buffer, buffer_u8, _speed );
         for( var s = 0; s < ds_list_size( SocketList ); ++s )
-            if( socket != ds_list_find_value( SocketList, s ) )
-                network_send_packet( ds_list_find_value( SocketList, s ), Buffer, buffer_tell( Buffer ) );
+        {
+            var _lMap = SocketList[| s ];
+            if( _lMap[? "Socket" ] == socket )
+            {
+                var _aMap = _lMap[? "AttackMap" ];
+                _aMap[? "Object" ] = _Object;
+                _aMap[? "X" ] = _x;
+                _aMap[? "Y" ] = _y;
+                _aMap[? "Direction" ] = _dir;
+                _aMap[? "Speed" ] = _speed;
+            }
+        }
         break;
 }

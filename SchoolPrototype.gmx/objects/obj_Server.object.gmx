@@ -177,11 +177,12 @@ if( UpdateTimer &gt; 0 )
 if( UpdateTimer == 0 )
 {
     UpdateTimer = 10;
+    var ListSize = ds_list_size( SocketList );
     // Create position snapshot packet
     buffer_seek( Buffer, buffer_seek_start, 0 );
     buffer_write( Buffer, buffer_u8, 2 );
-    buffer_write( Buffer, buffer_u8, ds_list_size( SocketList ) );
-    for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
+    buffer_write( Buffer, buffer_u8, ListSize );
+    for( var s = 0; s &lt; ListSize; ++s )
     {
         var _lMap = SocketList[| s ];
         var _pMap = _lMap[? "PositionMap" ];
@@ -191,10 +192,31 @@ if( UpdateTimer == 0 )
         buffer_write( Buffer, buffer_s16, _pMap[? "Direction" ] );
         buffer_write( Buffer, buffer_s8, _pMap[? "Speed" ] );
     }
-    for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
+    for( var s = 0; s &lt; ListSize; ++s )
     {
         var _lMap = SocketList[| s ];
         network_send_packet( _lMap[? "Socket" ] , Buffer, buffer_tell( Buffer ) );
+    }
+    // Create attack snapshot packet
+    buffer_seek( Buffer, buffer_seek_start, 0 );
+    buffer_write( Buffer, buffer_u8, 5 );
+    buffer_write( Buffer, buffer_u8, ListSize );
+    for( var s = 0; s &lt; ListSize; ++s )
+    {
+        var _lMap = SocketList[| s ];
+        var _aMap = _lMap[? "AttackMap" ];
+        buffer_write( Buffer, buffer_u8, _lMap[? "Socket" ] );
+        buffer_write( Buffer, buffer_string, _aMap[? "Object" ] );
+        buffer_write( Buffer, buffer_s16, _aMap[? "X" ] );
+        buffer_write( Buffer, buffer_s16, _aMap[? "Y" ] );
+        buffer_write( Buffer, buffer_s16, _aMap[? "Direction" ] );
+        buffer_write( Buffer, buffer_u8, _aMap[? "Speed" ] );
+        _aMap[? "Object" ] = "noone";
+    }
+    for( var s = 0; s &lt; ListSize; ++s )
+    {
+        var _lMap = SocketList[| s ];
+        network_send_packet( _lMap[? "Socket" ], Buffer, buffer_tell( Buffer ) );
     }
 }
 </string>
