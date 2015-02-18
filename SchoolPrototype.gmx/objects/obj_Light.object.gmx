@@ -243,19 +243,6 @@ draw_set_alpha( 1 );
             <string>/// Draw Light
 draw_set_blend_mode( bm_subtract );
 draw_set_color( c_white );
-with( obj_Player )
-{
-    if( hasTorch )
-    {
-        for( var c = 1; c &lt; 15; ++c )
-        {
-            draw_set_alpha( 1 / c );
-            draw_circle( x - view_xview[ 0 ], y - view_yview[ 0 ], 8 * c + power( -1, c ) * 2 * dsin( 5 * c / 3 * other.Flicker ), false );
-        }
-        draw_set_alpha( 0.05 );
-        draw_circle( x - view_xview[ 0 ], y - view_yview[ 0 ] - 8, 128 + 8 * dsin( 10 * other.Flicker ), false );
-    }
-}
 with( obj_Dwarf )
 {
     if( hasTorch )
