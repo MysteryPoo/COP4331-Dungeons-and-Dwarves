@@ -28,8 +28,8 @@
             <string>/// Connection
 var Type, IPAddress, Port;
 Type = network_socket_tcp;
-IPAddress = "184.91.74.235";
-//IPAddress = "127.0.0.1";
+//IPAddress = "184.91.74.235";
+IPAddress = "127.0.0.1";
 Port = 6969;
 Socket = network_create_socket( Type );
 isConnected = network_connect( Socket , IPAddress , Port );
@@ -40,6 +40,51 @@ Alignment = 1;
 Buffer = buffer_create( Size , Type , Alignment );
 netID = -1;
 PingTimer = 30 * 4;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Connection State
+State = "Connecting";
+StateTimer = 30 * 4;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// SocketList
+SocketList = ds_list_create();
 </string>
           </argument>
         </arguments>
@@ -65,6 +110,14 @@ PingTimer = 30 * 4;
             <string>/// Cleanup
 network_destroy( Socket );
 buffer_delete( Buffer );
+for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
+{
+    var _lMap = SocketList[| s ];
+    ds_map_destroy( _lMap[? "PositionMap" ] );
+    ds_map_destroy( _lMap[? "AttackMap" ] );
+    ds_map_destroy( _lMap );
+}
+ds_list_destroy( SocketList );
 </string>
           </argument>
         </arguments>
@@ -87,26 +140,86 @@ buffer_delete( Buffer );
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Ping Timer
-if( PingTimer &gt; 0 )
-    --PingTimer;
-if( PingTimer == 0 )
+            <string>/// State Timer
+if( StateTimer &gt; 0 )
+    --StateTimer;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Connecting
+if( State == "Connecting" )
 {
-    if( isConnected &lt; 0 )
+    if( StateTimer == 0 )
     {
-        var Type, IPAddress, Port;
-        Type = network_socket_tcp;
-        IPAddress = "184.91.74.235";
-        //IPAddress = "127.0.0.1";
-        Port = 6969;
-        isConnected = network_connect( Socket , IPAddress , Port );
-        PingTimer = 30 * 10;
+        if( isConnected &lt; 0 )
+        {
+            var Type, IPAddress, Port;
+            Type = network_socket_tcp;
+            //IPAddress = "184.91.74.235";
+            IPAddress = "127.0.0.1";
+            Port = 6969;
+            isConnected = network_connect( Socket , IPAddress , Port );
+            StateTimer = 30 * 4;
+        }
+        else
+        {
+            State = "Connected";
+            StateTimer = 30;
+            buffer_seek( Buffer, buffer_seek_start, 0 );
+            buffer_write( Buffer, buffer_u8, 1 );
+            //network_send_packet( Socket, Buffer, buffer_tell( Buffer ) );
+        }
     }
-    else
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Connected
+if( State == "Connected" )
+{
+    var _me = global.MyInst;
+    if( instance_exists( _me ) )
     {
-        PingTimer = 30;
         buffer_seek( Buffer, buffer_seek_start, 0 );
-        buffer_write( Buffer, buffer_u8, 1 );
+        buffer_write( Buffer, buffer_u8, 2 );
+        buffer_write( Buffer, buffer_s16, _me.x );
+        buffer_write( Buffer, buffer_s16, _me.y );
+        buffer_write( Buffer, buffer_s16, _me.direction );
+        buffer_write( Buffer, buffer_s8, _me.speed );
         network_send_packet( Socket, Buffer, buffer_tell( Buffer ) );
     }
 }
@@ -130,16 +243,26 @@ if( PingTimer == 0 )
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Player Packet
-if( instance_exists( obj_Player ) )
+            <string>/// Update player positions
+for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
 {
-    buffer_seek( Buffer, buffer_seek_start, 0 );
-    buffer_write( Buffer, buffer_u8, 2 );
-    buffer_write( Buffer, buffer_s16, obj_Player.x );
-    buffer_write( Buffer, buffer_s16, obj_Player.y );
-    buffer_write( Buffer, buffer_s16, obj_Player.direction );
-    buffer_write( Buffer, buffer_s8, obj_Player.speed );
-    network_send_packet( Socket, Buffer, buffer_tell( Buffer ) );
+    var _lMap = SocketList[| s ];
+    var _inst = _lMap[? "Instance" ];
+    if( instance_exists( _inst ) )
+    {
+        var _pMap = _lMap[? "PositionMap" ];
+        with( _inst )
+        {
+            var _x = _pMap[? "X" ];
+            var _y = _pMap[? "Y" ];
+            var _speed = point_distance( x, y, _x, _y ) / 3;
+            direction = point_direction( x, y, _x, _y );
+            if( distance_to_point( _x, _y ) &lt; 3 )
+                MaxSpeed = 0;
+            else
+                MaxSpeed = _speed;
+        }
+    }
 }
 </string>
           </argument>
