@@ -41,6 +41,64 @@ SocketList = ds_list_create();
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Socket Map
+/*
+This map has three keys:
+- Socket: an integer value of the socket we're concerned with.
+- PositionMap:  A map containing position data for a player
+    - X
+    - Y
+    - Direction
+    - Speed
+- AttackMap:    A map containing the data of a player's attack
+    - Object
+    - X
+    - Y
+    - Direction
+    - Speed
+*/
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Update Timer
+UpdateTimer = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="1" enumb="0">
       <action>
@@ -62,7 +120,83 @@ SocketList = ds_list_create();
             <string>/// Cleanup
 network_destroy( Server );
 buffer_delete( Buffer );
+for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
+{
+    var _lMap = SocketList[| s ];
+    ds_map_destroy( _lMap[? "PositionMap" ] );
+    ds_map_destroy( _lMap[? "AttackMap" ] );
+    ds_map_destroy( _lMap );
+}
 ds_list_destroy( SocketList );
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// UpdateTimer
+if( UpdateTimer &gt; 0 )
+    --UpdateTimer;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Update World
+if( UpdateTimer == 0 )
+{
+    UpdateTimer = 10;
+    // Create position snapshot packet
+    buffer_seek( Buffer, buffer_seek_start, 0 );
+    buffer_write( Buffer, buffer_u8, 2 );
+    buffer_write( Buffer, buffer_u8, ds_list_size( SocketList ) );
+    for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
+    {
+        var _lMap = SocketList[| s ];
+        var _pMap = _lMap[? "PositionMap" ];
+        buffer_write( Buffer, buffer_u8, _lMap[? "Socket" ] );
+        buffer_write( Buffer, buffer_s16, _pMap[? "X" ] );
+        buffer_write( Buffer, buffer_s16, _pMap[? "Y" ] );
+        buffer_write( Buffer, buffer_s16, _pMap[? "Direction" ] );
+        buffer_write( Buffer, buffer_s8, _pMap[? "Speed" ] );
+    }
+    for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
+    {
+        var _lMap = SocketList[| s ];
+        network_send_packet( _lMap[? "Socket" ] , Buffer, buffer_tell( Buffer ) );
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -91,7 +225,23 @@ switch( type_event )
 {
     case network_type_connect:
         var socket = ds_map_find_value( async_load , "socket" );
-        ds_list_add( SocketList , socket );
+        var _lMap = ds_map_create();
+        _lMap[? "Socket" ]  = socket;
+        var _pMap = ds_map_create();
+        _pMap[? "Name" ]    = "Unnamed";
+        _pMap[? "X" ]       = 100;
+        _pMap[? "Y" ]       = 100;
+        _pMap[? "Direction" ] = 0;
+        _pMap[? "Speed" ] = 0;
+        _lMap[? "PositionMap" ] = _pMap;
+        var _aMap = ds_map_create();
+        _aMap[? "Object" ] = "noone";
+        _aMap[? "X" ] = 0;
+        _aMap[? "Y" ] = 0;
+        _aMap[? "Direction" ] = 0;
+        _aMap[? "Speed" ] = 0;
+        _lMap[? "AttackMap" ] = _aMap;
+        ds_list_add( SocketList, _lMap );
         var buffer = buffer_create( buffer_sizeof( buffer_u8 ), buffer_fixed, 1 );
         buffer_write( buffer, buffer_u8, 3 );
         buffer_seek( buffer, buffer_seek_start, 0 );
@@ -100,10 +250,16 @@ switch( type_event )
         break;
     case network_type_disconnect:
         var socket = ds_map_find_value( async_load , "socket" );
-        var findsocket = ds_list_find_index( SocketList , socket );
-        if ( findsocket &gt;= 0 )
+        for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
         {
-            ds_list_delete( SocketList , findsocket );
+            var _lMap = SocketList[| s ];
+            if( _lMap[? "Socket" ] == socket )
+            {
+                ds_map_destroy( _lMap[? "PositionMap" ] );
+                ds_map_destroy( _lMap[? "AttackMap" ] );
+                ds_map_destroy( _lMap );
+                ds_list_delete( SocketList, s );
+            }
         }
         var buffer = buffer_create( buffer_sizeof( buffer_u8 ), buffer_fixed, 1 );
         buffer_write( buffer, buffer_u8, 4 );
