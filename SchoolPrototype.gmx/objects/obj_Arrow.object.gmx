@@ -123,7 +123,7 @@ instance_destroy();
           <argument>
             <kind>1</kind>
             <string>/// Damage Player
-if( other.id != Owner )
+if( other.id != Owner &amp;&amp; other.State != "Death" )
 {
     other.State = "Death_Start";
 }
