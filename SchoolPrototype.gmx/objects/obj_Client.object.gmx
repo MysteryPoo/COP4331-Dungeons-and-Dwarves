@@ -281,7 +281,11 @@ for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
             var _speed = point_distance( x, y, _x, _y ) / 3;
             direction = point_direction( x, y, _x, _y );
             if( distance_to_point( _x, _y ) &lt; 3 )
+            {
                 MaxSpeed = 0;
+                x = _x;
+                y = _y;
+            }
             else
                 MaxSpeed = _speed;
         }
@@ -295,6 +299,7 @@ for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
                 var _attack = instance_create( _aMap[? "X" ], _aMap[? "Y" ], _Object );
                 _attack.Owner = _inst;
                 _attack.direction = _aMap[? "Direction" ];
+                _attack.image_angle = _attack.direction;
                 _attack.speed = _aMap[? "Speed" ];
                 _aMap[? "Object" ] = "noone";
             }
