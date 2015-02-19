@@ -53,6 +53,7 @@ switch( msgid ) {
             _aMap[? "Speed " ] = 0;
             var _lMap = ds_map_create();
             _lMap[? "Socket" ] = _socket;
+            _lMap[? "Ready" ] = false;
             var inst = instance_create( 200, 200, obj_Dwarf );
             inst.netID = _socket;
             inst.direction = _pMap[? "Direction" ];
@@ -104,14 +105,20 @@ switch( msgid ) {
             }
         }
         break;
-    case 6:     // Shoot
-        //var _netID = buffer_read( buffer, buffer_u8 );
-        var _x = buffer_read( buffer, buffer_s16 );
-        var _y = buffer_read( buffer, buffer_s16 );
-        var _direction = buffer_read( buffer, buffer_s16 );
-        var _speed = buffer_read( buffer, buffer_u8 );
-        var inst = instance_create( _x, _y, obj_Ball );
-        inst.direction = _direction;
-        inst.speed = _speed;
+    case 6:     // Update Ready status
+        var _updates = buffer_read( buffer, buffer_u8 );
+        repeat( _updates )
+        {
+            var _socket = buffer_read( buffer, buffer_u8 );
+            var _ready = buffer_read( buffer, buffer_u8 );
+            for( var s = 0; s < ds_list_size( SocketList ); ++s )
+            {
+                var _lMap = SocketList[| s ];
+                if( _lMap[? "Socket" ] == _socket )
+                {
+                    _lMap[? "Ready" ] = _ready;
+                }
+            }
+        }
         break;
 }

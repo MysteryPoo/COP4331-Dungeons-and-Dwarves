@@ -89,6 +89,28 @@ SocketList = ds_list_create();
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Ready
+Ready = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="1" enumb="0">
       <action>
@@ -166,9 +188,9 @@ if( StateTimer &gt; 0 )
             <string>/// Connecting
 if( State == "Connecting" )
 {
-    if( StateTimer == 0 )
+    if( isConnected &lt; 0 )
     {
-        if( isConnected &lt; 0 )
+        if( StateTimer == 0 )
         {
             var Type, IPAddress, Port;
             Type = network_socket_tcp;
@@ -178,14 +200,14 @@ if( State == "Connecting" )
             isConnected = network_connect( Socket , IPAddress , Port );
             StateTimer = 30 * 4;
         }
-        else
-        {
-            State = "Connected";
-            StateTimer = 30;
-            buffer_seek( Buffer, buffer_seek_start, 0 );
-            buffer_write( Buffer, buffer_u8, 1 );
-            //network_send_packet( Socket, Buffer, buffer_tell( Buffer ) );
-        }
+    }
+    else
+    {
+        State = "Connected";
+        StateTimer = 30;
+        buffer_seek( Buffer, buffer_seek_start, 0 );
+        buffer_write( Buffer, buffer_u8, 1 );
+        //network_send_packet( Socket, Buffer, buffer_tell( Buffer ) );
     }
 }
 </string>
@@ -243,7 +265,7 @@ if( State == "Connected" )
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Update player positions
+            <string>/// Update World State
 for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
 {
     var _lMap = SocketList[| s ];
@@ -339,6 +361,46 @@ if( isConnected &gt; -1 )
 else
     draw_text( 5 , 5 , "Client Connected: NO" );
 draw_text( 5, 32, "My network ID: " + string( netID ) );
+
+for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
+{
+    var _lMap = SocketList[| s ];
+    var _inst = _lMap[? "Instance" ];
+    if( _lMap[? "Ready" ] == true )
+        draw_set_colour( c_green );
+    else
+        draw_set_colour( c_red );
+    draw_rectangle( _inst.x, _inst.y, _inst.x + 16, _inst.y + 16, false );
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="82">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Toggle Ready
+Ready = !Ready;
+
+buffer_seek( Buffer, buffer_seek_start, 0 );
+buffer_write( Buffer, buffer_u8, 6 );
+buffer_write( Buffer, buffer_u8, Ready );
+network_send_packet( Socket, Buffer, buffer_tell( Buffer ) );
 </string>
           </argument>
         </arguments>

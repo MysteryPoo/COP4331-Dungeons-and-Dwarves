@@ -109,4 +109,15 @@ switch( msgid ) {
             }
         }
         break;
+    case 6: // Client is "ready"
+        var _ready = buffer_read( buffer, buffer_u8 );
+        for( var s = 0; s < ds_list_size( SocketList ); ++s )
+        {
+            var _lMap = SocketList[| s ];
+            if( _lMap[? "Socket" ] == socket )
+            {
+                _lMap[? "Ready" ] = _ready;
+            }
+        }
+        break;
 }
