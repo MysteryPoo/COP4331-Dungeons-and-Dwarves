@@ -141,6 +141,28 @@ mySword = noone;
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// BloodSteps
+BloodSteps = 10 * 10;
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="3" enumb="2">
       <action>
@@ -264,9 +286,11 @@ if( State != "Death" )
             {
                 buffer_seek( obj_Client.Buffer, buffer_seek_start, 0 );
                 buffer_write( obj_Client.Buffer, buffer_u8, 5 );
+                buffer_write( obj_Client.Buffer, buffer_string, object_get_name( mySword.object_index ) );
                 buffer_write( obj_Client.Buffer, buffer_s16, mySword.x );
                 buffer_write( obj_Client.Buffer, buffer_s16, mySword.y );
                 buffer_write( obj_Client.Buffer, buffer_s16, obj_Gesture0.direction );
+                buffer_write( obj_Client.Buffer, buffer_u8, 0 );
                 network_send_packet( obj_Client.Socket, obj_Client.Buffer, buffer_tell( obj_Client.Buffer ) );
             }
         }
@@ -280,11 +304,12 @@ if( State != "Death" )
             if( instance_exists( obj_Client ) )
             {
                 buffer_seek( obj_Client.Buffer, buffer_seek_start, 0 );
-                buffer_write( obj_Client.Buffer, buffer_u8, 6 );
+                buffer_write( obj_Client.Buffer, buffer_u8, 5 );
+                buffer_write( obj_Client.Buffer, buffer_string, object_get_name( inst.object_index ) );
                 buffer_write( obj_Client.Buffer, buffer_s16, x );
                 buffer_write( obj_Client.Buffer, buffer_s16, y );
                 buffer_write( obj_Client.Buffer, buffer_s16, obj_Gesture1.direction );
-                buffer_write( obj_Client.Buffer, buffer_s8, 10 );
+                buffer_write( obj_Client.Buffer, buffer_s8, 0 );
                 network_send_packet( obj_Client.Socket, obj_Client.Buffer, buffer_tell( obj_Client.Buffer ) );
             }
         }
@@ -381,6 +406,18 @@ if( State == "Move" )
     if( speed == 0 )
         State = "Idle_Start";
     // End idle check
+    // Blood Steps
+    if( BloodSteps &gt; 0 )
+    {
+        --BloodSteps;
+        if( BloodSteps mod 10 == 0 )
+        {
+            var step = instance_create( x, y, obj_Effect );
+            step.sprite_index = spr_bloody_footprint;
+            step.image_angle = direction;
+        }
+    }
+    // End Blood Steps
 }
 </string>
           </argument>

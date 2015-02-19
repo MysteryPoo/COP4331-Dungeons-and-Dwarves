@@ -41,6 +41,9 @@
       </sprites>
     </sprites>
     <sprite>sprites\spr_invis_wall</sprite>
+    <sprites name="Misc">
+      <sprite>sprites\spr_bloody_footprint</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_floor</background>
@@ -91,6 +94,7 @@
       </objects>
       <object>objects\obj_Trigger</object>
       <object>objects\obj_Crumbled_Wall</object>
+      <object>objects\obj_Effect</object>
     </objects>
     <objects name="Bridge">
       <object>objects\obj_Bridge</object>
