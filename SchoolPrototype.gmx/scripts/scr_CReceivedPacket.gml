@@ -54,7 +54,7 @@ switch( msgid ) {
             var _lMap = ds_map_create();
             _lMap[? "Socket" ] = _socket;
             _lMap[? "Ready" ] = false;
-            var inst = instance_create( 200, 200, obj_Dwarf );
+            var inst = instance_create( _pMap[? "X" ], _pMap[? "Y" ], obj_Dwarf );
             inst.netID = _socket;
             inst.direction = _pMap[? "Direction" ];
             inst.speed = _pMap[? "Speed" ];
