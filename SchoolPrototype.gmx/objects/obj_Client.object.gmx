@@ -28,8 +28,8 @@
             <string>/// Connection
 var Type, IPAddress, Port;
 Type = network_socket_tcp;
-//IPAddress = "184.91.74.235";
-IPAddress = "127.0.0.1";
+IPAddress = "184.91.74.235";
+//IPAddress = "127.0.0.1";
 Port = 6969;
 Socket = network_create_socket( Type );
 isConnected = network_connect( Socket , IPAddress , Port );
@@ -276,11 +276,13 @@ for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
         var _pMap = _lMap[? "PositionMap" ];
         with( _inst )
         {
-            var _x = _pMap[? "X" ];
-            var _y = _pMap[? "Y" ];
+            var _dir = _pMap[? "Direction" ];
+            var _spd = _pMap[? "Speed" ];
+            var _x = _pMap[? "X" ] + _spd * dcos( _dir );
+            var _y = _pMap[? "Y" ] - _spd * dsin( _dir );
             var _speed = point_distance( x, y, _x, _y ) / 3;
             direction = point_direction( x, y, _x, _y );
-            if( distance_to_point( _x, _y ) &lt; 3 )
+            if( point_distance( x, y, _x, _y ) &lt; 3 )
             {
                 MaxSpeed = 0;
                 x = _x;
