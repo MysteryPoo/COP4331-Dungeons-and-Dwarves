@@ -95,6 +95,7 @@
       <object>objects\obj_Trigger</object>
       <object>objects\obj_Crumbled_Wall</object>
       <object>objects\obj_Effect</object>
+      <object>objects\obj_Blood</object>
     </objects>
     <objects name="Bridge">
       <object>objects\obj_Bridge</object>
