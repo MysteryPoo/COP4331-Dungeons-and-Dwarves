@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>/// Clean up Effects
-while( instance_number( obj_Effect ) &gt; 5 )
+while( instance_number( obj_Effect ) &gt; 50 )
 {
     var effect = obj_Effect.id;
     with( effect )
