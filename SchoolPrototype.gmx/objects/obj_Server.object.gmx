@@ -29,7 +29,7 @@
 var Type , Port , MaxClients;
 Type = network_socket_tcp;
 Port = 6969;
-MaxClients = 4;
+MaxClients = 24;
 Server = network_create_server( Type , Port , MaxClients );
 var Size , Type , Alignment;
 Size = 1024;
