@@ -26,7 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>/// Reset Player
-other.State = "Fall";
+if( other.State != "Fall" )
+    other.State = "Fall_Start";
 </string>
           </argument>
         </arguments>
