@@ -10,7 +10,9 @@
   <persistent>0</persistent>
   <colour>12632256</colour>
   <showcolour>-1</showcolour>
-  <code>global.MyInst = instance_create( 30, 30, obj_Dwarf );</code>
+  <code>global.StartX = irandom_range( 30, 1000 );
+global.StartY = irandom_range( 30, 700 );
+global.MyInst = instance_create( global.StartX, global.StartY, obj_Dwarf );</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
@@ -54,6 +56,8 @@
     <instance objName="obj_Client" x="0" y="32" name="inst_F30A28E8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Gesture0" x="0" y="0" name="inst_09B998B3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Gesture1" x="32" y="0" name="inst_0F2C4A1C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Blood" x="320" y="192" name="inst_16FBF351" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Blood" x="640" y="416" name="inst_48267510" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
