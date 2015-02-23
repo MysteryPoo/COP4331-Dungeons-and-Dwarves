@@ -80,7 +80,16 @@ if( Owner != noone )
             <string>/// Damage Player
 if( other.id != Owner &amp;&amp; other.State != "Death" )
 {
-    other.State = "Death_Start";
+    if( !instance_exists( obj_Client ) )
+        other.State = "Death_Start";
+    if( instance_exists( obj_Server ) )
+    {
+        // Add a status update to the queue
+        var _sMap = ds_map_create();
+        _sMap[? "Socket" ] = other.netID;
+        _sMap[? "Status" ] = "Death_Start";
+        ds_queue_enqueue( obj_Server.StatusQueue, _sMap );
+    }
 }
 </string>
           </argument>
