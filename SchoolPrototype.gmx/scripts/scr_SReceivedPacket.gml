@@ -3,16 +3,9 @@ var socket = argument[ 1 ];
 var msgid = buffer_read( buffer , buffer_u8 );
 
 switch( msgid ) {
-    case 1:     // Client wants to know their ID
-        /*
-        var time = buffer_read( buffer , buffer_u32 );
+    case 1:     // Ping
         buffer_seek( Buffer , buffer_seek_start , 0 );
         buffer_write( Buffer , buffer_u8 , 1 );
-        buffer_write( Buffer , buffer_u32 , time );
-        network_send_packet( socket , Buffer , buffer_tell( Buffer ) );
-        */
-        buffer_seek( Buffer, buffer_seek_start, 0 );
-        buffer_write( Buffer, buffer_u8, 1 );
         buffer_write( Buffer, buffer_u8, socket );
         network_send_packet( socket, Buffer, buffer_tell( Buffer ) );
         break;
@@ -35,6 +28,7 @@ switch( msgid ) {
         }
         break;
     case 3: // New client connected
+        break;
         // Send current list to new client
         buffer_seek( Buffer, buffer_seek_start, 0 );
         buffer_write( Buffer, buffer_u8, 3 );
