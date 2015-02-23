@@ -123,16 +123,11 @@ instance_destroy();
           <argument>
             <kind>1</kind>
             <string>/// Damage Player
-if( !instance_exists( obj_Client ) )
+if( other.id != Owner &amp;&amp; other.State != "Death" )
 {
-    if( other.id != Owner &amp;&amp; other.State != "Death" )
-    {
+    if( !instance_exists( obj_Client ) )
         other.State = "Death_Start";
-    }
-}
-if( instance_exists( obj_Server ) )
-{
-    if( other.id != Owner &amp;&amp; other.State != "Death" )
+    if( instance_exists( obj_Server ) )
     {
         // Add a status update to the queue
         var _sMap = ds_map_create();
