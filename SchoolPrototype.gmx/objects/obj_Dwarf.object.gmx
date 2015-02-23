@@ -186,7 +186,7 @@ BloodSteps = 10 * 10;
 var foundCollision;
 
 //find a collision through frame movement
-foundCollision = collision_rectangle(bbox_left + min(0, -hspeed), bbox_top + min(0, -vspeed), bbox_right + max(0, -hspeed), bbox_bottom + max(0, -vspeed), obj_Wall, false, true);
+foundCollision = collision_rectangle(bbox_left + min(0, hspeed), bbox_top + min(0, vspeed), bbox_right + max(0, hspeed), bbox_bottom + max(0, vspeed), obj_Wall, false, true);
 
 if( foundCollision ){//collision detected
 
@@ -265,7 +265,7 @@ if( StateTimer &gt; 0 )
           <argument>
             <kind>1</kind>
             <string>/// Process Movement
-if( State != "Ice" &amp;&amp; instance_exists( obj_Gesture0 ) &amp;&amp; global.MyInst = id )
+if( State != "Ice" &amp;&amp; instance_exists( obj_Gesture0 ) &amp;&amp; global.MyInst == id )
 {
     if( obj_Gesture0.Touched )
     {
@@ -298,7 +298,7 @@ if( State != "Ice" &amp;&amp; instance_exists( obj_Gesture0 ) &amp;&amp; global.
             <string>/// Process Attacks
 if( State != "Death" )
 {
-    if( instance_exists( obj_Gesture1 ) &amp;&amp; global.MyInst = id )
+    if( instance_exists( obj_Gesture1 ) &amp;&amp; global.MyInst == id )
     {
         if( !instance_exists( mySword ) &amp;&amp; obj_Gesture1.Released &amp;&amp; obj_Gesture1.max_dist &lt; 32 )
         {
@@ -320,10 +320,10 @@ if( State != "Death" )
         }
         else if( obj_Gesture1.Released &amp;&amp; obj_Gesture1.max_dist &gt; 32 )
         {
-            var inst = instance_create( x, y - 16, obj_Spike );
+            var inst = instance_create( x, y - 16, obj_Arrow );
             inst.direction = obj_Gesture1.direction;
             inst.image_angle = inst.direction;
-            inst.speed = 0;
+            inst.speed = 10;
             inst.Owner = id;
             if( instance_exists( obj_Client ) )
             {
@@ -333,8 +333,10 @@ if( State != "Death" )
                 buffer_write( obj_Client.Buffer, buffer_s16, x );
                 buffer_write( obj_Client.Buffer, buffer_s16, y - 16 );
                 buffer_write( obj_Client.Buffer, buffer_s16, obj_Gesture1.direction );
-                buffer_write( obj_Client.Buffer, buffer_s8, 0 );
+                buffer_write( obj_Client.Buffer, buffer_s8, 10 );
                 network_send_packet( obj_Client.Socket, obj_Client.Buffer, buffer_tell( obj_Client.Buffer ) );
+                with( inst )
+                    instance_destroy();
             }
         }
     }
@@ -516,9 +518,14 @@ if( State == "Death" )
         image_speed = 0;
     if( StateTimer == 0 )
     {
-        State = "Idle_Start";
-        x = global.StartX;
-        y = global.StartY;
+        if( instance_exists( obj_Client ) || instance_exists( obj_Server ) )
+            instance_destroy();
+        else
+        {
+            State = "Idle_Start";
+            x = global.StartX;
+            y = global.StartY;
+        }
     }
 }
 </string>
@@ -640,6 +647,7 @@ with( other )
             <kind>1</kind>
             <string>draw_self();
 draw_text( x, y + 8, "( " + string( x ) + ", " + string( y ) + " )" );
+draw_rectangle(bbox_left + min(0, hspeed), bbox_top + min(0, vspeed), bbox_right + max(0, hspeed), bbox_bottom + max(0, vspeed), false );
 </string>
           </argument>
         </arguments>
