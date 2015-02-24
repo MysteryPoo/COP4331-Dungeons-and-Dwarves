@@ -320,10 +320,9 @@ if( State != "Death" )
         }
         else if( obj_Gesture1.Released &amp;&amp; obj_Gesture1.max_dist &gt; 32 )
         {
-            var inst = instance_create( x, y - 16, obj_Arrow );
+            var inst = instance_create( x, y - 16, global.MyWeapon );
             inst.direction = obj_Gesture1.direction;
             inst.image_angle = inst.direction;
-            inst.speed = 10;
             inst.Owner = id;
             if( instance_exists( obj_Client ) )
             {
@@ -333,10 +332,10 @@ if( State != "Death" )
                 buffer_write( obj_Client.Buffer, buffer_s16, x );
                 buffer_write( obj_Client.Buffer, buffer_s16, y - 16 );
                 buffer_write( obj_Client.Buffer, buffer_s16, obj_Gesture1.direction );
-                buffer_write( obj_Client.Buffer, buffer_s8, 10 );
+                buffer_write( obj_Client.Buffer, buffer_s8, global.MyWeapon.speed );
                 network_send_packet( obj_Client.Socket, obj_Client.Buffer, buffer_tell( obj_Client.Buffer ) );
-                with( inst )
-                    instance_destroy();
+                //with( inst )
+                    //instance_destroy();
             }
         }
     }
@@ -647,7 +646,6 @@ with( other )
             <kind>1</kind>
             <string>draw_self();
 draw_text( x, y + 8, "( " + string( x ) + ", " + string( y ) + " )" );
-draw_rectangle(bbox_left + min(0, hspeed), bbox_top + min(0, vspeed), bbox_right + max(0, hspeed), bbox_bottom + max(0, vspeed), false );
 </string>
           </argument>
         </arguments>
