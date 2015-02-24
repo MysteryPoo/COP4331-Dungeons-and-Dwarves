@@ -125,6 +125,7 @@
     <room>rooms\rm_Server</room>
     <room>rooms\rm_Client</room>
     <room>rooms\rm_Victory</room>
+    <room>rooms\rm_Maze</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
