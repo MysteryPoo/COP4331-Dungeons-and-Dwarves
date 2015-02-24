@@ -376,10 +376,10 @@ switch( type_event )
         var _lMap = ds_map_create();
         _lMap[? "Socket" ]  = socket;
         _lMap[? "Instance" ] = noone;
+        _lMap[? "Name" ]    = "Unnamed";
         _lMap[? "Map" ] = 5;
         _lMap[? "Ready" ] = false;
         var _pMap = ds_map_create();
-        _pMap[? "Name" ]    = "Unnamed";
         _pMap[? "X" ]       = 100;
         _pMap[? "Y" ]       = 100;
         _pMap[? "Direction" ] = 0;
@@ -393,11 +393,6 @@ switch( type_event )
         _aMap[? "Speed" ] = 0;
         _lMap[? "AttackMap" ] = _aMap;
         ds_list_add( SocketList, _lMap );
-        var buffer = buffer_create( buffer_sizeof( buffer_u8 ), buffer_fixed, 1 );
-        buffer_write( buffer, buffer_u8, 3 );
-        buffer_seek( buffer, buffer_seek_start, 0 );
-        scr_SReceivedPacket( buffer, socket );
-        buffer_delete( buffer );
         break;
     case network_type_disconnect:
         var socket = ds_map_find_value( async_load , "socket" );
@@ -416,11 +411,16 @@ switch( type_event )
                 ds_list_delete( SocketList, s );
             }
         }
-        var buffer = buffer_create( buffer_sizeof( buffer_u8 ), buffer_fixed, 1 );
-        buffer_write( buffer, buffer_u8, 4 );
-        buffer_seek( buffer, buffer_seek_start, 0 );
-        scr_SReceivedPacket( buffer, socket );
-        buffer_delete( buffer );
+        //
+        buffer_seek( Buffer, buffer_seek_start, 0 );
+        buffer_write( Buffer, buffer_u8, socket );
+        for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
+        {
+            var _lMap = SocketList[| s ];
+            //if( _lMap[? "Socket" ] != socket )
+            network_send_packet( _lMap[? "Socket" ], Buffer, buffer_tell( Buffer ) );
+        }
+        //
         break;
     case network_type_data:
         var buffer = ds_map_find_value( async_load , "buffer" );
