@@ -46,11 +46,8 @@ switch( msgid ) {
                 var _lMap = ds_map_create();
                 _lMap[? "Socket" ] = _socket;
                 _lMap[? "Ready" ] = false;
-                //var _inst = instance_create( _x, _y, obj_Dwarf );
-                //_inst.netID = _socket;
-                //_inst.direction = _dir;
-                //_inst.speed = _speed;
                 _lMap[? "Instance" ] = noone;
+                _lMap[? "Name" ] = "Unnamed";
                 _lMap[? "PositionMap" ] = _pMap;
                 _lMap[? "AttackMap" ] = _aMap;
                 ds_list_add( SocketList, _lMap );
@@ -131,6 +128,20 @@ switch( msgid ) {
                 {
                     _lMap[? "Ready" ] = _ready;
                 }
+            }
+        }
+        break;
+    case 7:     // Retrieve Names
+        var _updates = buffer_read( buffer, buffer_u8 );
+        repeat( _updates )
+        {
+            var _socket = buffer_read( buffer, buffer_u8 );
+            var _name = buffer_read( buffer, buffer_string );
+            for( var s = 0; s < ds_list_size( SocketList ); ++s )
+            {
+                var _lMap = SocketList[| s ];
+                if( _lMap[? "Socket" ] == _socket )
+                    _lMap[? "Name" ] = _name;
             }
         }
         break;
