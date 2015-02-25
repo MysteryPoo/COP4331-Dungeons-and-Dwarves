@@ -521,9 +521,16 @@ if( State == "Death" )
             instance_destroy();
         else
         {
-            State = "Idle_Start";
-            x = global.StartX;
-            y = global.StartY;
+            if( global.RestartOnDeath )
+            {
+                room_goto( room );
+            }
+            else
+            {
+                State = "Idle_Start";
+                x = global.StartX;
+                y = global.StartY;
+            }
         }
     }
 }
