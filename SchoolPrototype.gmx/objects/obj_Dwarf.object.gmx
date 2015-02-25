@@ -27,6 +27,7 @@
             <kind>1</kind>
             <string>/// State
 State = "Idle_Start";
+StateTimer = 0;
 </string>
           </argument>
         </arguments>
@@ -159,6 +160,9 @@ mySword = noone;
             <kind>1</kind>
             <string>///GodMode
 God = false;
+		</string>
+            <string>/// BloodSteps
+BloodSteps = 10 * 10;
 </string>
           </argument>
         </arguments>
@@ -185,7 +189,7 @@ God = false;
 var foundCollision;
 
 //find a collision through frame movement
-foundCollision = collision_rectangle(bbox_left + min(0, -hspeed), bbox_top + min(0, -vspeed), bbox_right + max(0, -hspeed), bbox_bottom + max(0, -vspeed), obj_Wall, false, true);
+foundCollision = collision_rectangle(bbox_left + min(0, hspeed), bbox_top + min(0, vspeed), bbox_right + max(0, hspeed), bbox_bottom + max(0, vspeed), obj_Wall, false, true);
 
 if( foundCollision ){//collision detected
 
@@ -240,8 +244,31 @@ if( foundCollision ){//collision detected
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Process Input
-if( State != "Ice" &amp;&amp; instance_exists( obj_Gesture0 ) &amp;&amp; global.MyInst = id )
+            <string>/// State Timer
+if( StateTimer &gt; 0 )
+    --StateTimer;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Process Movement
+if( State != "Ice" &amp;&amp; instance_exists( obj_Gesture0 ) &amp;&amp; global.MyInst == id )
 {
     if( obj_Gesture0.Touched )
     {
@@ -271,10 +298,10 @@ if( State != "Ice" &amp;&amp; instance_exists( obj_Gesture0 ) &amp;&amp; global.
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Gesture 1
+            <string>/// Process Attacks
 if( State != "Death" )
 {
-    if( instance_exists( obj_Gesture1 ) &amp;&amp; global.MyInst = id )
+    if( instance_exists( obj_Gesture1 ) &amp;&amp; global.MyInst == id )
     {
         if( !instance_exists( mySword ) &amp;&amp; obj_Gesture1.Released &amp;&amp; obj_Gesture1.max_dist &lt; 32 )
         {
@@ -286,28 +313,32 @@ if( State != "Death" )
             {
                 buffer_seek( obj_Client.Buffer, buffer_seek_start, 0 );
                 buffer_write( obj_Client.Buffer, buffer_u8, 5 );
+                buffer_write( obj_Client.Buffer, buffer_string, object_get_name( mySword.object_index ) );
                 buffer_write( obj_Client.Buffer, buffer_s16, mySword.x );
                 buffer_write( obj_Client.Buffer, buffer_s16, mySword.y );
                 buffer_write( obj_Client.Buffer, buffer_s16, obj_Gesture0.direction );
+                buffer_write( obj_Client.Buffer, buffer_u8, 0 );
                 network_send_packet( obj_Client.Socket, obj_Client.Buffer, buffer_tell( obj_Client.Buffer ) );
             }
         }
         else if( obj_Gesture1.Released &amp;&amp; obj_Gesture1.max_dist &gt; 32 )
         {
-            var inst = instance_create( x, y - 16, obj_Spike );
+            var inst = instance_create( x, y - 16, global.MyWeapon );
             inst.direction = obj_Gesture1.direction;
-            //inst.image_angle = inst.direction;
-            //inst.speed = 10;
+            inst.image_angle = inst.direction;
             inst.Owner = id;
             if( instance_exists( obj_Client ) )
             {
                 buffer_seek( obj_Client.Buffer, buffer_seek_start, 0 );
-                buffer_write( obj_Client.Buffer, buffer_u8, 6 );
+                buffer_write( obj_Client.Buffer, buffer_u8, 5 );
+                buffer_write( obj_Client.Buffer, buffer_string, object_get_name( inst.object_index ) );
                 buffer_write( obj_Client.Buffer, buffer_s16, x );
-                buffer_write( obj_Client.Buffer, buffer_s16, y );
+                buffer_write( obj_Client.Buffer, buffer_s16, y - 16 );
                 buffer_write( obj_Client.Buffer, buffer_s16, obj_Gesture1.direction );
-                buffer_write( obj_Client.Buffer, buffer_s8, 10 );
+                buffer_write( obj_Client.Buffer, buffer_s8, global.MyWeapon.speed );
                 network_send_packet( obj_Client.Socket, obj_Client.Buffer, buffer_tell( obj_Client.Buffer ) );
+                //with( inst )
+                    //instance_destroy();
             }
         }
     }
@@ -336,6 +367,9 @@ if( State != "Death" )
 if( State == "Idle_Start" )
 {
     State = "Idle";
+    image_speed = 1;
+    x = floor( x );
+    y = floor( y );
     if( direction &lt; 180 )
         sprite_index = spr_dwarf_idle_n;
     else
@@ -370,6 +404,7 @@ if( State == "Idle" )
 if( State == "Move_Start" )
 {
     State = "Move";
+    image_speed = 1;
 }
 if( State == "Move" )
 {
@@ -403,6 +438,18 @@ if( State == "Move" )
     if( speed == 0 )
         State = "Idle_Start";
     // End idle check
+    // Blood Steps
+    if( BloodSteps &gt; 0 )
+    {
+        --BloodSteps;
+        if( BloodSteps mod 10 == 0 )
+        {
+            var step = instance_create( x, y, obj_Effect );
+            step.sprite_index = spr_bloody_footprint;
+            step.image_angle = direction;
+        }
+    }
+    // End Blood Steps
 }
 </string>
           </argument>
@@ -429,6 +476,7 @@ if( State == "Ice_Start" )
 {
     State = "Ice";
     MaxSpeed = 0;
+    image_speed = 0.5;
     // Maybe we'll add a sliding animation
     // The player could be like, "Whoa.... whoa! AAH!! Whoa!"
 }
@@ -464,6 +512,30 @@ if( State == "Death_Start" &amp;&amp; !God)
     image_index = 0;
     speed = 0;
     State = "Death";
+    StateTimer = 30 * 2;
+}
+if( State == "Death" )
+{
+    if( image_index &gt;= image_number - 1 )
+        image_speed = 0;
+    if( StateTimer == 0 )
+    {
+        if( instance_exists( obj_Client ) || instance_exists( obj_Server ) )
+            instance_destroy();
+        else
+        {
+            if( global.RestartOnDeath )
+            {
+                room_goto( room );
+            }
+            else
+            {
+                State = "Idle_Start";
+                x = global.StartX;
+                y = global.StartY;
+            }
+        }
+    }
 }
 </string>
           </argument>
@@ -486,12 +558,20 @@ if( State == "Death_Start" &amp;&amp; !God)
           <argument>
             <kind>1</kind>
             <string>/// Fall
+if( State == "Fall_Start" )
+{
+    speed = 0;
+    State = "Fall";
+    StateTimer = 30 * 2;
+}
 if( State == "Fall" )
 {
-    image_xscale -= 0.1;
-    image_yscale -= 0.1;
-    speed = 0;
-    if( image_xscale &lt; 0 )
+    if( image_xscale &gt; 0 )
+    {
+        image_xscale -= 0.1;
+        image_yscale -= 0.1;
+    }
+    else if( StateTimer == 0 )
     {
         State = "Idle_Start";
         x = global.StartX;
@@ -557,7 +637,7 @@ with( other )
         </arguments>
       </action>
     </event>
-    <event eventtype="7" enumb="7">
+    <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -574,11 +654,8 @@ with( other )
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Stop animation
-if( sprite_index == spr_player_death )
-{
-    room_goto( room );
-}
+            <string>draw_self();
+draw_text( x, y + 8, "( " + string( x ) + ", " + string( y ) + " )" );
 </string>
           </argument>
         </arguments>

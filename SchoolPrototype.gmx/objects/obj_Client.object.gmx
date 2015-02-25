@@ -38,8 +38,120 @@ Size = 1024;
 Type = buffer_fixed;
 Alignment = 1;
 Buffer = buffer_create( Size , Type , Alignment );
-netID = -1;
-PingTimer = 30 * 4;
+NetworkID = -1;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Connection State
+State = "Connecting";
+StateTimer = 30 * 4;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// SocketList
+SocketList = ds_list_create();
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Status Queue
+StatusQueue = ds_queue_create();
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Ready
+Ready = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Ping
+Ping = 999;
+PingTimer = 30;
+LastPing = current_time;
 </string>
           </argument>
         </arguments>
@@ -65,6 +177,15 @@ PingTimer = 30 * 4;
             <string>/// Cleanup
 network_destroy( Socket );
 buffer_delete( Buffer );
+for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
+{
+    var _lMap = SocketList[| s ];
+    ds_map_destroy( _lMap[? "PositionMap" ] );
+    ds_map_destroy( _lMap[? "AttackMap" ] );
+    ds_map_destroy( _lMap );
+}
+ds_list_destroy( SocketList );
+ds_queue_destroy( StatusQueue );
 </string>
           </argument>
         </arguments>
@@ -87,26 +208,117 @@ buffer_delete( Buffer );
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>/// State Timer
+if( StateTimer &gt; 0 )
+    --StateTimer;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>/// Ping Timer
 if( PingTimer &gt; 0 )
     --PingTimer;
-if( PingTimer == 0 )
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Connecting
+if( State == "Connecting" )
 {
     if( isConnected &lt; 0 )
     {
-        var Type, IPAddress, Port;
-        Type = network_socket_tcp;
-        IPAddress = "184.91.74.235";
-        //IPAddress = "127.0.0.1";
-        Port = 6969;
-        isConnected = network_connect( Socket , IPAddress , Port );
-        PingTimer = 30 * 10;
+        if( StateTimer == 0 )
+        {
+            var Type, IPAddress, Port;
+            Type = network_socket_tcp;
+            IPAddress = "184.91.74.235";
+            //IPAddress = "127.0.0.1";
+            Port = 6969;
+            isConnected = network_connect( Socket , IPAddress , Port );
+            StateTimer = 30 * 4;
+        }
     }
     else
     {
-        PingTimer = 30;
+        State = "Connected";
+        StateTimer = 30;
         buffer_seek( Buffer, buffer_seek_start, 0 );
         buffer_write( Buffer, buffer_u8, 1 );
+        //network_send_packet( Socket, Buffer, buffer_tell( Buffer ) );
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Connected
+if( State == "Connected" )
+{
+    if( PingTimer == 0 )
+    {
+        PingTimer = 30;
+        LastPing = current_time;
+        buffer_seek( Buffer, buffer_seek_start, 0 );
+        buffer_write( Buffer, buffer_u8, 1 );
+        network_send_packet( Socket, Buffer, buffer_tell( Buffer ) );
+    }
+    var _me = global.MyInst;
+    if( instance_exists( _me ) )
+    {
+        buffer_seek( Buffer, buffer_seek_start, 0 );
+        buffer_write( Buffer, buffer_u8, 2 );
+        buffer_write( Buffer, buffer_s16, _me.x );
+        buffer_write( Buffer, buffer_s16, _me.y );
+        buffer_write( Buffer, buffer_s16, _me.direction );
+        buffer_write( Buffer, buffer_s8, _me.speed );
         network_send_packet( Socket, Buffer, buffer_tell( Buffer ) );
     }
 }
@@ -130,16 +342,99 @@ if( PingTimer == 0 )
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Player Packet
-if( instance_exists( obj_Player ) )
+            <string>/// Update World State
+for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
 {
-    buffer_seek( Buffer, buffer_seek_start, 0 );
-    buffer_write( Buffer, buffer_u8, 2 );
-    buffer_write( Buffer, buffer_s16, obj_Player.x );
-    buffer_write( Buffer, buffer_s16, obj_Player.y );
-    buffer_write( Buffer, buffer_s16, obj_Player.direction );
-    buffer_write( Buffer, buffer_s8, obj_Player.speed );
-    network_send_packet( Socket, Buffer, buffer_tell( Buffer ) );
+    var _lMap = SocketList[| s ];
+    var _inst = _lMap[? "Instance" ];
+    var _pMap = _lMap[? "PositionMap" ];
+    if( !instance_exists( _inst ) )
+    {
+        var _inst = instance_create( _pMap[? "X" ], _pMap[? "Y" ], obj_Dwarf );
+        _inst.netID = _lMap[? "Socket" ];
+        _lMap[? "Instance" ] = _inst;
+        // Request the player's name
+        buffer_seek( Buffer, buffer_seek_start, 0 );
+        buffer_write( Buffer, buffer_u8, 3 );
+        //network_send_packet( Socket, Buffer, buffer_tell( Buffer ) );
+    }
+    // Update Position of instance
+    with( _inst )
+    {
+        if( State != "Death" )
+        {
+            if( id.netID == obj_Client.NetworkID )
+                global.MyInst = id;
+            var _dir = _pMap[? "Direction" ];
+            var _spd = _pMap[? "Speed" ];
+            var _x = _pMap[? "X" ] + _spd * other.Ping / 100 * dcos( _dir );
+            var _y = _pMap[? "Y" ] - _spd * other.Ping / 100 * dsin( _dir );
+            var _speed = point_distance( x, y, _x, _y ) / 3;
+            direction = point_direction( x, y, _x, _y );
+            if( point_distance( x, y, _x, _y ) &lt; 1 )
+            {
+                MaxSpeed = 0;
+                x = _x;
+                y = _y;
+            }
+            else
+                MaxSpeed = _speed;
+        }
+    }
+    // Create an attack if applicable
+    var _aMap = _lMap[? "AttackMap" ];
+    if( _aMap[? "Object" ] != "noone" )
+    {
+        var _Object = asset_get_index( _aMap[? "Object" ] );
+        if( _Object != -1 &amp;&amp; _lMap[? "Socket" ] != NetworkID )
+        {
+            var _attack = instance_create( _aMap[? "X" ], _aMap[? "Y" ], _Object );
+            _attack.Owner = _inst;
+            _attack.direction = _aMap[? "Direction" ];
+            _attack.image_angle = _attack.direction;
+            _aMap[? "Object" ] = "noone";
+        }
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Status Queue
+while( !ds_queue_empty( StatusQueue ) )
+{
+    var _sMap = ds_queue_dequeue( StatusQueue );
+    var _socket = _sMap[? "Socket" ];
+    var _status = _sMap[? "Status" ];
+    for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
+    {
+        var _lMap = SocketList[| s ];
+        if( _lMap[? "Socket" ] == _socket )
+        {
+            var _inst = _lMap[? "Instance" ];
+            if( instance_exists( _inst ) )
+            {
+                _inst.State = _status;
+            }
+        }
+    }
+    ds_map_destroy( _sMap );
 }
 </string>
           </argument>
@@ -200,7 +495,51 @@ if( isConnected &gt; -1 )
     draw_text( 5 , 5 , "Client Connected: YES" );
 else
     draw_text( 5 , 5 , "Client Connected: NO" );
-draw_text( 5, 32, "My network ID: " + string( netID ) );
+draw_text( 5, 32, "My network ID: " + string( NetworkID ) );
+draw_text( 5, 32 + 16, "Ping: " + string( Ping ) );
+
+for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
+{
+    var _lMap = SocketList[| s ];
+    var _inst = _lMap[? "Instance" ];
+    if( instance_exists( _inst ) )
+    {
+        if( _lMap[? "Ready" ] == true )
+            draw_set_colour( c_green );
+        else
+            draw_set_colour( c_red );
+        draw_rectangle( _inst.x, _inst.y, _inst.x + 16, _inst.y + 16, false );
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="82">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Toggle Ready
+Ready = !Ready;
+
+buffer_seek( Buffer, buffer_seek_start, 0 );
+buffer_write( Buffer, buffer_u8, 6 );
+buffer_write( Buffer, buffer_u8, Ready );
+network_send_packet( Socket, Buffer, buffer_tell( Buffer ) );
 </string>
           </argument>
         </arguments>
