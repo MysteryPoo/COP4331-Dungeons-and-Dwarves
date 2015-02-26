@@ -28,8 +28,8 @@
             <string>/// Connection
 var Type, IPAddress, Port;
 Type = network_socket_tcp;
-IPAddress = "184.91.74.235";
-//IPAddress = "127.0.0.1";
+//IPAddress = "184.91.74.235";
+IPAddress = "127.0.0.1";
 Port = 6969;
 Socket = network_create_socket( Type );
 isConnected = network_connect( Socket , IPAddress , Port );
@@ -126,6 +126,28 @@ StatusQueue = ds_queue_create();
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>/// Attack Queue
+AttackQueue = ds_queue_create();
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>/// Ready
 Ready = false;
 </string>
@@ -152,6 +174,28 @@ Ready = false;
 Ping = 999;
 PingTimer = 30;
 LastPing = current_time;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Get Player Name
+PlayerNameMsg = get_string_async( "Name", "Unnamed" );
 </string>
           </argument>
         </arguments>
@@ -185,7 +229,18 @@ for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
     ds_map_destroy( _lMap );
 }
 ds_list_destroy( SocketList );
+while( !ds_queue_empty( StatusQueue ) )
+{
+    var _sMap = ds_queue_dequeue( StatusQueue );
+    ds_map_destroy( _sMap );
+}
 ds_queue_destroy( StatusQueue );
+while( !ds_queue_empty( AttackQueue ) )
+{
+    var _aMap = ds_queue_dequeue( AttackQueue );
+    ds_map_destroy( _aMap );
+}
+ds_queue_destroy( AttackQueue );
 </string>
           </argument>
         </arguments>
@@ -356,7 +411,7 @@ for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
         // Request the player's name
         buffer_seek( Buffer, buffer_seek_start, 0 );
         buffer_write( Buffer, buffer_u8, 3 );
-        //network_send_packet( Socket, Buffer, buffer_tell( Buffer ) );
+        network_send_packet( Socket, Buffer, buffer_tell( Buffer ) );
     }
     // Update Position of instance
     with( _inst )
@@ -379,20 +434,6 @@ for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
             }
             else
                 MaxSpeed = _speed;
-        }
-    }
-    // Create an attack if applicable
-    var _aMap = _lMap[? "AttackMap" ];
-    if( _aMap[? "Object" ] != "noone" )
-    {
-        var _Object = asset_get_index( _aMap[? "Object" ] );
-        if( _Object != -1 &amp;&amp; _lMap[? "Socket" ] != NetworkID )
-        {
-            var _attack = instance_create( _aMap[? "X" ], _aMap[? "Y" ], _Object );
-            _attack.Owner = _inst;
-            _attack.direction = _aMap[? "Direction" ];
-            _attack.image_angle = _attack.direction;
-            _aMap[? "Object" ] = "noone";
         }
     }
 }
@@ -440,6 +481,53 @@ while( !ds_queue_empty( StatusQueue ) )
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Attack Queue
+while( !ds_queue_empty( AttackQueue ) )
+{
+    var _aMap = ds_queue_dequeue( AttackQueue );
+    if( _aMap[? "Socket" ] != NetworkID )
+    {
+        var _Object = asset_get_index( _aMap[? "Object" ] );
+        if( _Object != -1 )
+        {
+            var _inst = noone;
+            for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
+            {
+                var _lMap = SocketList[| s ];
+                if( _lMap[? "Socket" ] == _aMap[? "Socket" ] )
+                    _inst = _lMap[? "Instance" ];
+            }
+            if( _inst != noone )
+            {
+                var _attack = instance_create( _aMap[? "X" ], _aMap[? "Y" ], _Object );
+                _attack.Owner = _inst;
+                _attack.direction = _aMap[? "Direction" ];
+                _attack.image_angle = _attack.direction;
+            }
+        }
+    }
+    ds_map_destroy( _aMap );
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="7" enumb="68">
       <action>
@@ -467,6 +555,44 @@ switch( type_event )
         buffer_seek( buffer , buffer_seek_start , 0 );
         scr_CReceivedPacket( buffer );
         break;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="63">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Process name
+var _id = ds_map_find_value( async_load, "id" );
+if( _id == PlayerNameMsg )
+{
+    if( ds_map_find_value( async_load, "status" ) )
+    {
+        if( ds_map_find_value( async_load, "result" ) != "" )
+        {
+            var _name = ds_map_find_value( async_load, "result" );
+            buffer_seek( Buffer, buffer_seek_start, 0 );
+            buffer_write( Buffer, buffer_u8, 4 );
+            buffer_write( Buffer, buffer_string, _name );
+            network_send_packet( Socket, Buffer, buffer_tell( Buffer ) );
+        }
+    }
 }
 </string>
           </argument>
@@ -509,6 +635,7 @@ for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
         else
             draw_set_colour( c_red );
         draw_rectangle( _inst.x, _inst.y, _inst.x + 16, _inst.y + 16, false );
+        draw_text( _inst.x, _inst.y + 32, _lMap[? "Name" ] );
     }
 }
 </string>
@@ -540,6 +667,30 @@ buffer_seek( Buffer, buffer_seek_start, 0 );
 buffer_write( Buffer, buffer_u8, 6 );
 buffer_write( Buffer, buffer_u8, Ready );
 network_send_packet( Socket, Buffer, buffer_tell( Buffer ) );
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="27">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>network_destroy( Socket );
+instance_destroy();
 </string>
           </argument>
         </arguments>
