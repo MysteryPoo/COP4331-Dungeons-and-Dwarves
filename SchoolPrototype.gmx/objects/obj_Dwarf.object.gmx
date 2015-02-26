@@ -158,9 +158,6 @@ mySword = noone;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///GodMode
-God = false;
-		</string>
             <string>/// BloodSteps
 BloodSteps = 10 * 10;
 </string>
@@ -505,7 +502,7 @@ if( State == "Ice" )
           <argument>
             <kind>1</kind>
             <string>/// Death
-if( State == "Death_Start" &amp;&amp; !God)
+if( State == "Death_Start")
 {
     sprite_index = spr_player_death;
     image_index = 0;

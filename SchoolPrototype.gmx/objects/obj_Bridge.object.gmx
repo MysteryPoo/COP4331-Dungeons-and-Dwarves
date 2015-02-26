@@ -50,7 +50,7 @@ image_speed = 0;
           <argument>
             <kind>1</kind>
             <string>/// Reset Player
-if( image_index == 1 &amp;&amp; !other.God &amp;&amp; other.State != "Fall")
+if( image_index == 1 &amp;&amp; other.State != "Fall")
 {
     other.State = "Fall_Start";
 }
