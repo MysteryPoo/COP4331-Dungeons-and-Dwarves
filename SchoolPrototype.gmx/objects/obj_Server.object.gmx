@@ -100,6 +100,28 @@ StatusQueue = ds_queue_create();
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>/// Attack Queue
+AttackQueue = ds_queue_create();
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>/// Update Timer
 UpdateTimer = 0;
 </string>
@@ -164,7 +186,18 @@ for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
     ds_map_destroy( _lMap );
 }
 ds_list_destroy( SocketList );
+while( !ds_queue_empty( StatusQueue ) )
+{
+    var _sMap = ds_queue_dequeue( StatusQueue );
+    ds_map_destroy( _sMap );
+}
 ds_queue_destroy( StatusQueue );
+while( !ds_queue_empty( AttackQueue ) )
+{
+    var _aMap = ds_queue_dequeue( AttackQueue );
+    ds_map_destroy( _aMap );
+}
+ds_queue_destroy( AttackQueue );
 </string>
           </argument>
         </arguments>
@@ -254,20 +287,6 @@ if( UpdateTimer == 0 )
                     MaxSpeed = _speed;
             }
         }
-        // Create an attack if necessary
-        var _aMap = _lMap[? "AttackMap" ];
-        if( _aMap[? "Object" ] != "noone" )
-        {
-            var _Object = asset_get_index( _aMap[? "Object" ] );
-            if( _Object != -1 )
-            {
-                var _attack = instance_create( _aMap[? "X" ], _aMap[? "Y" ], _Object );
-                _attack.Owner = _dwarf;
-                _attack.direction = _aMap[? "Direction" ];
-                _attack.image_angle = _attack.direction;
-                _attack.speed = _aMap[? "Speed" ];
-            }
-        }
     }
     // Create ready state snapshot packet
     buffer_seek( Buffer, buffer_seek_start, 0 );
@@ -303,27 +322,6 @@ if( UpdateTimer == 0 )
         var _lMap = SocketList[| s ];
         network_send_packet( _lMap[? "Socket" ] , Buffer, buffer_tell( Buffer ) );
     }
-    // Create attack snapshot packet
-    buffer_seek( Buffer, buffer_seek_start, 0 );
-    buffer_write( Buffer, buffer_u8, 5 );
-    buffer_write( Buffer, buffer_u8, ListSize );
-    for( var s = 0; s &lt; ListSize; ++s )
-    {
-        var _lMap = SocketList[| s ];
-        var _aMap = _lMap[? "AttackMap" ];
-        buffer_write( Buffer, buffer_u8, _lMap[? "Socket" ] );
-        buffer_write( Buffer, buffer_string, _aMap[? "Object" ] );
-        buffer_write( Buffer, buffer_s16, _aMap[? "X" ] );
-        buffer_write( Buffer, buffer_s16, _aMap[? "Y" ] );
-        buffer_write( Buffer, buffer_s16, _aMap[? "Direction" ] );
-        buffer_write( Buffer, buffer_u8, _aMap[? "Speed" ] );
-        _aMap[? "Object" ] = "noone";
-    }
-    for( var s = 0; s &lt; ListSize; ++s )
-    {
-        var _lMap = SocketList[| s ];
-        network_send_packet( _lMap[? "Socket" ], Buffer, buffer_tell( Buffer ) );
-    }
     // Create Status snapshot
     if( !ds_queue_empty( StatusQueue ) )
     {
@@ -343,7 +341,46 @@ if( UpdateTimer == 0 )
             network_send_packet( _lMap[? "Socket" ], Buffer, buffer_tell( Buffer ) );
         }
     }
-    
+    // Create Attack snapshot
+    if( !ds_queue_empty( AttackQueue ) )
+    {
+        buffer_seek( Buffer, buffer_seek_start, 0 );
+        buffer_write( Buffer, buffer_u8, 5 );
+        buffer_write( Buffer, buffer_u8, ds_queue_size( AttackQueue ) );
+        while( !ds_queue_empty( AttackQueue ) )
+        {
+            var _aMap = ds_queue_dequeue( AttackQueue );
+            buffer_write( Buffer, buffer_u8, _aMap[? "Socket" ] );
+            buffer_write( Buffer, buffer_string, _aMap[? "Object" ] );
+            buffer_write( Buffer, buffer_u16, _aMap[? "X" ] );
+            buffer_write( Buffer, buffer_u16, _aMap[? "Y" ] );
+            buffer_write( Buffer, buffer_s16, _aMap[? "Direction" ] );
+            var _Object = asset_get_index( _aMap[? "Object" ] );
+            if( _Object != -1 )
+            {
+                var _inst = noone;
+                for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
+                {
+                    var _lMap = SocketList[| s ];
+                    if( _lMap[? "Socket" ] == _aMap[? "Socket" ] )
+                        _inst = _lMap[? "Instance" ];
+                }
+                if( _inst != noone )
+                {
+                    var _attack = instance_create( _aMap[? "X" ], _aMap[? "Y" ], _Object );
+                    _attack.Owner = _inst;
+                    _attack.direction = _aMap[? "Direction" ];
+                    _attack.image_angle = _attack.direction;
+                }
+            }
+            ds_map_destroy( _aMap );
+        }
+        for( var s = 0; s &lt; ListSize; ++s )
+        {
+            var _lMap = SocketList[| s ];
+            network_send_packet( _lMap[? "Socket" ], Buffer, buffer_tell( Buffer ) );
+        }
+    }
 }
 </string>
           </argument>

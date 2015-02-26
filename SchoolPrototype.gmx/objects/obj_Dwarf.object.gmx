@@ -332,10 +332,9 @@ if( State != "Death" )
                 buffer_seek( obj_Client.Buffer, buffer_seek_start, 0 );
                 buffer_write( obj_Client.Buffer, buffer_u8, 5 );
                 buffer_write( obj_Client.Buffer, buffer_string, object_get_name( inst.object_index ) );
-                buffer_write( obj_Client.Buffer, buffer_s16, x );
-                buffer_write( obj_Client.Buffer, buffer_s16, y - 16 );
+                buffer_write( obj_Client.Buffer, buffer_u16, x );
+                buffer_write( obj_Client.Buffer, buffer_u16, y - 16 );
                 buffer_write( obj_Client.Buffer, buffer_s16, obj_Gesture1.direction );
-                buffer_write( obj_Client.Buffer, buffer_s8, global.MyWeapon.speed );
                 network_send_packet( obj_Client.Socket, obj_Client.Buffer, buffer_tell( obj_Client.Buffer ) );
                 //with( inst )
                     //instance_destroy();

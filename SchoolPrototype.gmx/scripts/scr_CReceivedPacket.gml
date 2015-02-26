@@ -96,23 +96,16 @@ switch( msgid ) {
         {
             var _socket = buffer_read( buffer, buffer_u8 );
             var _Object = buffer_read( buffer, buffer_string );
-            var _x = buffer_read( buffer, buffer_s16 );
-            var _y = buffer_read( buffer, buffer_s16 );
+            var _x = buffer_read( buffer, buffer_u16 );
+            var _y = buffer_read( buffer, buffer_u16 );
             var _dir = buffer_read( buffer, buffer_s16 );
-            var _speed = buffer_read( buffer, buffer_s8 );
-            for( var s = 0; s < ds_list_size( SocketList ); ++s )
-            {
-                var _lMap = SocketList[| s ];
-                if( _lMap[? "Socket" ] == _socket )
-                {
-                    var _aMap = _lMap[? "AttackMap" ];
-                    _aMap[? "Object" ] = _Object;
-                    _aMap[? "X" ] = _x;
-                    _aMap[? "Y" ] = _y;
-                    _aMap[? "Direction" ] = _dir;
-                    _aMap[? "Speed" ] = _speed;
-                }
-            }
+            var _aMap = ds_map_create();
+            _aMap[? "Socket" ] = _socket;
+            _aMap[? "Object" ] = _Object;
+            _aMap[? "X" ] = _x;
+            _aMap[? "Y" ] = _y;
+            _aMap[? "Direction" ] = _dir;
+            ds_queue_enqueue( AttackQueue, _aMap );
         }
         break;
     case 6:     // Update Ready status
