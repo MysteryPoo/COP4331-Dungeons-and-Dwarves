@@ -28,6 +28,7 @@ switch( msgid ) {
                     _pMap[? "Y" ] = _y;
                     _pMap[? "Direction" ] = _dir;
                     _pMap[? "Speed" ] = _speed;
+                    break;
                 }
             }
             if( !_found)
@@ -37,19 +38,17 @@ switch( msgid ) {
                 _pMap[? "Y" ] = _y;
                 _pMap[? "Direction" ] = _dir;
                 _pMap[? "Speed" ] = _speed;
-                var _aMap = ds_map_create();
-                _aMap[? "Object" ] = "noone";
-                _aMap[? "X" ] = 0;
-                _aMap[? "Y" ] = 0;
-                _aMap[? "Direction" ] = 0;
-                _aMap[? "Speed" ] = 0;
+                var _gMap = ds_map_create();
+                _gMap[? "X" ] = 0;
+                _gMap[? "Y" ] = 0;
                 var _lMap = ds_map_create();
                 _lMap[? "Socket" ] = _socket;
                 _lMap[? "Ready" ] = false;
                 _lMap[? "Instance" ] = noone;
                 _lMap[? "Name" ] = "Unnamed";
+                _lMap[? "Map" ] = 0;
                 _lMap[? "PositionMap" ] = _pMap;
-                _lMap[? "AttackMap" ] = _aMap;
+                _lMap[? "GestureMap" ] = _gMap;
                 ds_list_add( SocketList, _lMap );
             }
         }
@@ -82,7 +81,7 @@ switch( msgid ) {
             if( _lMap[? "Socket" ] == _socket )
             {
                 ds_map_destroy( _lMap[? "PositionMap" ] );
-                ds_map_destroy( _lMap[? "AttackMap" ] );
+                ds_map_destroy( _lMap[? "GestureMap" ] );
                 with( _lMap[? "Instance" ] )
                     instance_destroy();
                 ds_map_destroy( _lMap );
@@ -120,6 +119,7 @@ switch( msgid ) {
                 if( _lMap[? "Socket" ] == _socket )
                 {
                     _lMap[? "Ready" ] = _ready;
+                    break;
                 }
             }
         }
@@ -134,7 +134,47 @@ switch( msgid ) {
             {
                 var _lMap = SocketList[| s ];
                 if( _lMap[? "Socket" ] == _socket )
+                {
                     _lMap[? "Name" ] = _name;
+                    break;
+                }
+            }
+        }
+        break;
+    case 8: // Map update
+        var _updates = buffer_read( buffer, buffer_u8 );
+        repeat( _updates )
+        {
+            _socket = buffer_read( buffer, buffer_u8 );
+            _map = buffer_read( buffer, buffer_u8 );
+            for( var s = 0; s < ds_list_size( SocketList ); ++s )
+            {
+                var _lMap = SocketList[| s ];
+                if( _lMap[? "Socket" ] == _socket )
+                {
+                    _lMap[? "Map" ] = _map;
+                }
+                break;
+            }
+        }
+        break;
+    case 9: // Gesture Update
+        var _updates = buffer_read( buffer, buffer_u8 );
+        repeat( _updates )
+        {
+            _socket = buffer_read( buffer, buffer_u8 );
+            _x = buffer_read( buffer, buffer_s8 ) / 100;
+            _y = buffer_read( buffer, buffer_s8 ) / 100;
+            for( var s = 0; s < ds_list_size( SocketList ); ++s )
+            {
+                var _lMap = SocketList[| s ];
+                if( _lMap[? "Socket" ] == _socket )
+                {
+                    var _gMap = _lMap[? "GestureMap" ];
+                    _gMap[? "X" ] = _x;
+                    _gMap[? "Y" ] = _y;
+                    break;
+                }
             }
         }
         break;
