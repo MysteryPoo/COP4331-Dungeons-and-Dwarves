@@ -44,6 +44,7 @@
     <sprites name="Menu">
       <sprite>sprites\spr_PlayGame</sprite>
       <sprite>sprites\spr_ExitGame</sprite>
+    </sprites>
     <sprites name="Misc">
       <sprite>sprites\spr_bloody_footprint</sprite>
     </sprites>
