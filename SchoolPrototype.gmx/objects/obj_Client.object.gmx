@@ -4,7 +4,7 @@
   <solid>0</solid>
   <visible>-1</visible>
   <depth>0</depth>
-  <persistent>0</persistent>
+  <persistent>-1</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
@@ -28,8 +28,8 @@
             <string>/// Connection
 var Type, IPAddress, Port;
 Type = network_socket_tcp;
-//IPAddress = "184.91.74.235";
-IPAddress = "127.0.0.1";
+IPAddress = "184.91.74.235";
+//IPAddress = "127.0.0.1";
 Port = 6969;
 Socket = network_create_socket( Type );
 isConnected = network_connect( Socket , IPAddress , Port );
@@ -194,8 +194,8 @@ LastPing = current_time;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Get Player Name
-PlayerNameMsg = get_string_async( "Name", "Unnamed" );
+            <string>/// PlayerNameMsg
+PlayerNameMsg = -1;
 </string>
           </argument>
         </arguments>
@@ -225,7 +225,7 @@ for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
 {
     var _lMap = SocketList[| s ];
     ds_map_destroy( _lMap[? "PositionMap" ] );
-    ds_map_destroy( _lMap[? "AttackMap" ] );
+    ds_map_destroy( _lMap[? "GestureMap" ] );
     ds_map_destroy( _lMap );
 }
 ds_list_destroy( SocketList );
@@ -329,9 +329,8 @@ if( State == "Connecting" )
     {
         State = "Connected";
         StateTimer = 30;
-        buffer_seek( Buffer, buffer_seek_start, 0 );
-        buffer_write( Buffer, buffer_u8, 1 );
-        //network_send_packet( Socket, Buffer, buffer_tell( Buffer ) );
+        /// Get Player Name
+        PlayerNameMsg = get_string_async( "Name", "" );
     }
 }
 </string>
@@ -376,6 +375,11 @@ if( State == "Connected" )
         buffer_write( Buffer, buffer_s8, _me.speed );
         network_send_packet( Socket, Buffer, buffer_tell( Buffer ) );
     }
+    buffer_seek( Buffer, buffer_seek_start, 0 );
+    buffer_write( Buffer, buffer_u8, 8 );
+    buffer_write( Buffer, buffer_s8, device_get_tilt_x() );
+    buffer_write( Buffer, buffer_s8, device_get_tilt_y() );
+    network_send_packet( Socket, Buffer, buffer_tell( Buffer ) );
 }
 </string>
           </argument>
@@ -401,39 +405,52 @@ if( State == "Connected" )
 for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
 {
     var _lMap = SocketList[| s ];
-    var _inst = _lMap[? "Instance" ];
-    var _pMap = _lMap[? "PositionMap" ];
-    if( !instance_exists( _inst ) )
+    if( _lMap[? "Map" ] == 5 )
     {
-        var _inst = instance_create( _pMap[? "X" ], _pMap[? "Y" ], obj_Dwarf );
-        _inst.netID = _lMap[? "Socket" ];
-        _lMap[? "Instance" ] = _inst;
-        // Request the player's name
-        buffer_seek( Buffer, buffer_seek_start, 0 );
-        buffer_write( Buffer, buffer_u8, 3 );
-        network_send_packet( Socket, Buffer, buffer_tell( Buffer ) );
-    }
-    // Update Position of instance
-    with( _inst )
-    {
-        if( State != "Death" )
+        var _inst = _lMap[? "Instance" ];
+        var _pMap = _lMap[? "PositionMap" ];
+        var _gMap = _lMap[? "GestureMap" ];
+        if( !instance_exists( _inst ) )
         {
-            if( id.netID == obj_Client.NetworkID )
-                global.MyInst = id;
-            var _dir = _pMap[? "Direction" ];
-            var _spd = _pMap[? "Speed" ];
-            var _x = _pMap[? "X" ] + _spd * other.Ping / 100 * dcos( _dir );
-            var _y = _pMap[? "Y" ] - _spd * other.Ping / 100 * dsin( _dir );
-            var _speed = point_distance( x, y, _x, _y ) / 3;
-            direction = point_direction( x, y, _x, _y );
-            if( point_distance( x, y, _x, _y ) &lt; 1 )
+            var _inst = instance_create( _pMap[? "X" ], _pMap[? "Y" ], obj_Dwarf );
+            _inst.netID = _lMap[? "Socket" ];
+            _lMap[? "Instance" ] = _inst;
+            // Request the player's name
+            //buffer_seek( Buffer, buffer_seek_start, 0 );
+            //buffer_write( Buffer, buffer_u8, 3 );
+            //network_send_packet( Socket, Buffer, buffer_tell( Buffer ) );
+        }
+        // Update Position of instance
+        with( _inst )
+        {
+            if( State != "Death" )
             {
-                MaxSpeed = 0;
-                x = _x;
-                y = _y;
+                if( id.netID == obj_Client.NetworkID )
+                    global.MyInst = id;
+                var _dir = _pMap[? "Direction" ];
+                var _spd = _pMap[? "Speed" ];
+                var _x = _pMap[? "X" ] + _spd * other.Ping / 100 * dcos( _dir );
+                var _y = _pMap[? "Y" ] - _spd * other.Ping / 100 * dsin( _dir );
+                var _speed = point_distance( x, y, _x, _y ) / 3;
+                direction = point_direction( x, y, _x, _y );
+                if( point_distance( x, y, _x, _y ) &lt; 1 )
+                {
+                    MaxSpeed = 0;
+                    x = _x;
+                    y = _y;
+                }
+                else
+                    MaxSpeed = _speed;
             }
-            else
-                MaxSpeed = _speed;
+        }
+        // Update Gesture Objects
+        with( obj_Bomb )
+        {
+            if( Owner == _inst )
+            {
+                hspeed = MaxSpeed * _gMap[? "X" ];
+                vspeed = MaxSpeed * _gMap[? "Y" ];
+            }
         }
     }
 }
@@ -665,7 +682,7 @@ Ready = !Ready;
 
 buffer_seek( Buffer, buffer_seek_start, 0 );
 buffer_write( Buffer, buffer_u8, 6 );
-buffer_write( Buffer, buffer_u8, Ready );
+buffer_write( Buffer, buffer_bool, Ready );
 network_send_packet( Socket, Buffer, buffer_tell( Buffer ) );
 </string>
           </argument>
