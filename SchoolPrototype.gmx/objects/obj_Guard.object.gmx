@@ -48,7 +48,7 @@ image_blend = c_blue;
           <argument>
             <kind>1</kind>
             <string>/// Path
-path_start( path_Avoidance_small, 3, 1, false );
+path_start( path_Avoidance_small, 2, 1, false );
 </string>
           </argument>
         </arguments>
@@ -119,15 +119,16 @@ SwingCooldown = 0;
             <string>/// Patrol
 if( State == "Patrol" )
 {
-    switch( direction )
+    var minAngle = direction - 45;
+    var maxAngle = direction + 45;
+    var dwarf = instance_nearest( x, y, obj_Dwarf );
+    if( distance_to_object( dwarf ) &lt; 32 * 2.5 )
     {
-        case 0:
-            var x1 = x + 32;
-            var x2 = x + 32 * 4;
-            var y1 = y - 32 * 2;
-            var y2 = y + 32 * 2;
-            var inst = collision_rectangle( x1, y1, x2, y2, obj_Dwarf, false, false );
-            if( inst != noone )
+        if( point_direction( x, y, dwarf.x, dwarf.y - 8 ) &gt; minAngle
+            &amp;&amp; point_direction( x, y, dwarf.x, dwarf.y - 8 ) &lt; maxAngle )
+        {
+            var wall = collision_line( x, y, dwarf.x, dwarf.y - 8, obj_Wall, false, false );
+            if( wall == noone )
             {
                 with( obj_Guard )
                 {
@@ -135,52 +136,7 @@ if( State == "Patrol" )
                     path_end();
                 }
             }
-            break;
-        case 90:
-            var x1 = x - 32 * 2;
-            var x2 = x + 32 * 2;
-            var y1 = y - 32;
-            var y2 = y - 32 * 4;
-            var inst = collision_rectangle( x1, y1, x2, y2, obj_Dwarf, false, false );
-            if( inst != noone )
-            {
-                with( obj_Guard )
-                {
-                    State = "Chase";
-                    path_end();
-                }
-            }
-            break;
-        case 180:
-            var x1 = x - 32;
-            var x2 = x - 32 * 4;
-            var y1 = y - 32 * 2;
-            var y2 = y + 32 * 2;
-            var inst = collision_rectangle( x1, y1, x2, y2, obj_Dwarf, false, false );
-            if( inst != noone )
-            {
-                with( obj_Guard )
-                {
-                    State = "Chase";
-                    path_end();
-                }
-            }
-            break;
-        case 270:
-            var x1 = x - 32 * 2;
-            var x2 = x + 32 * 2;
-            var y1 = y + 32;
-            var y2 = y + 32 * 4;
-            var inst = collision_rectangle( x1, y1, x2, y2, obj_Dwarf, false, false );
-            if( inst != noone )
-            {
-                with( obj_Guard )
-                {
-                    State = "Chase";
-                    path_end();
-                }
-            }
-            break;
+        }
     }
 }
 </string>
@@ -206,7 +162,7 @@ if( State == "Patrol" )
             <string>/// Chase
 if( State == "Chase" )
 {
-    mp_potential_step( obj_Dwarf.x, obj_Dwarf.y, 4, false );
+    mp_potential_step( obj_Dwarf.x, obj_Dwarf.y, 2, false );
 }
 </string>
           </argument>

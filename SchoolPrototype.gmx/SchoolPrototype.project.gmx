@@ -62,6 +62,7 @@
   </fonts>
   <objects name="objects">
     <objects name="Weapons">
+      <object>objects\obj_Weapon</object>
       <object>objects\obj_Sword</object>
       <object>objects\obj_Bomb</object>
       <object>objects\obj_Arrow</object>

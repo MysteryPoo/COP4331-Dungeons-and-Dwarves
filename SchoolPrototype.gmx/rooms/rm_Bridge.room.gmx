@@ -14,7 +14,8 @@
 global.StartX = 90;
 global.StartY = 160;
 var inst = instance_create( global.StartX, global.StartY, obj_Dwarf );
-global.MyInst = inst;</code>
+global.MyInst = inst;
+global.RestartOnDeath = false;</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
