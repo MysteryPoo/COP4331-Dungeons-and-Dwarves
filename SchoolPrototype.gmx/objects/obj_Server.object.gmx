@@ -157,6 +157,28 @@ SpawnY[ 0 ] = 448;
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Map Timer
+MapTimer = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="1" enumb="0">
       <action>
@@ -182,7 +204,7 @@ for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
 {
     var _lMap = SocketList[| s ];
     ds_map_destroy( _lMap[? "PositionMap" ] );
-    ds_map_destroy( _lMap[? "AttackMap" ] );
+    ds_map_destroy( _lMap[? "GestureMap" ] );
     ds_map_destroy( _lMap );
 }
 ds_list_destroy( SocketList );
@@ -253,40 +275,53 @@ if( UpdateTimer == 0 )
     {
         var _lMap = SocketList[| s ];
         var _dwarf = _lMap[? "Instance" ];
-        var _pMap = _lMap[? "PositionMap" ];
-        if( !instance_exists( _dwarf ) )
+        if( _lMap[? "Map" ] == 5 )
         {
-            var _random_spawn = irandom( 3 );
-            _pMap[? "X" ] = SpawnX[ _random_spawn ];
-            _pMap[? "Y" ] = SpawnY[ _random_spawn ];
-            _dwarf = instance_create( _pMap[? "X" ], _pMap[? "Y" ], obj_Dwarf );
-            _dwarf.netID = _lMap[? "Socket" ];
-            _lMap[? "Instance" ] = _dwarf;
-        }
-        // Update Position of instance
-        with( _dwarf )
-        {
-            //x = _pMap[? "X" ];
-            //y = _pMap[? "Y" ];
-            
-            if( State != "Death" )
+            var _pMap = _lMap[? "PositionMap" ];
+            var _gMap = _lMap[? "GestureMap" ];
+            if( !instance_exists( _dwarf ) )
             {
-                var _dir = _pMap[? "Direction" ];
-                var _spd = _pMap[? "Speed" ];
-                var _x = _pMap[? "X" ] + _spd * dcos( _dir );
-                var _y = _pMap[? "Y" ] - _spd * dsin( _dir );
-                var _speed = point_distance( x, y, _x, _y ) / 3;
-                direction = point_direction( x, y, _x, _y );
-                if( point_distance( x, y, _x, _y ) &lt; 1 )
+                var _random_spawn = irandom( 3 );
+                _pMap[? "X" ] = SpawnX[ _random_spawn ];
+                _pMap[? "Y" ] = SpawnY[ _random_spawn ];
+                _dwarf = instance_create( _pMap[? "X" ], _pMap[? "Y" ], obj_Dwarf );
+                _dwarf.netID = _lMap[? "Socket" ];
+                _lMap[? "Instance" ] = _dwarf;
+            }
+            // Update Position of instance
+            with( _dwarf )
+            {
+                if( State != "Death" )
                 {
-                    MaxSpeed = 0;
-                    x = _x;
-                    y = _y;
+                    var _dir = _pMap[? "Direction" ];
+                    var _spd = _pMap[? "Speed" ];
+                    var _x = _pMap[? "X" ] + _spd * dcos( _dir );
+                    var _y = _pMap[? "Y" ] - _spd * dsin( _dir );
+                    var _speed = point_distance( x, y, _x, _y ) / 3;
+                    direction = point_direction( x, y, _x, _y );
+                    if( point_distance( x, y, _x, _y ) &lt; 1 )
+                    {
+                        MaxSpeed = 0;
+                        x = _x;
+                        y = _y;
+                    }
+                    else
+                        MaxSpeed = _speed;
                 }
-                else
-                    MaxSpeed = _speed;
+            }
+            // Update Gesture Objects
+            with( obj_Bomb )
+            {
+                if( Owner == _dwarf )
+                {
+                    hspeed = MaxSpeed * _gMap[? "X" ];
+                    vspeed = MaxSpeed * _gMap[? "Y" ];
+                }
             }
         }
+        else if( instance_exists( _dwarf ) )
+            with( _dwarf )
+                instance_destroy();
     }
     // Create ready state snapshot packet
     buffer_seek( Buffer, buffer_seek_start, 0 );
@@ -321,6 +356,23 @@ if( UpdateTimer == 0 )
     {
         var _lMap = SocketList[| s ];
         network_send_packet( _lMap[? "Socket" ] , Buffer, buffer_tell( Buffer ) );
+    }
+    // Create gesture snapshot packet
+    buffer_seek( Buffer, buffer_seek_start, 0 );
+    buffer_write( Buffer, buffer_u8, 9 );
+    buffer_write( Buffer, buffer_u8, ListSize );
+    for( var s = 0; s &lt; ListSize; ++s )
+    {
+        var _lMap = SocketList[| s ];
+        var _gMap = _lMap[? "GestureMap" ];
+        buffer_write( Buffer, buffer_u8, _lMap[? "Socket" ] );
+        buffer_write( Buffer, buffer_s8, _gMap[? "X" ] * 100 );
+        buffer_write( Buffer, buffer_s8, _gMap[? "Y" ] * 100 );
+    }
+    for( var s = 0; s &lt; ListSize; ++s )
+    {
+        var _lMap = SocketList[| s ];
+        network_send_packet( _lMap[? "Socket" ], Buffer, buffer_tell( Buffer ) );
     }
     // Create Status snapshot
     if( !ds_queue_empty( StatusQueue ) )
@@ -358,19 +410,22 @@ if( UpdateTimer == 0 )
             var _Object = asset_get_index( _aMap[? "Object" ] );
             if( _Object != -1 )
             {
-                var _inst = noone;
                 for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
                 {
                     var _lMap = SocketList[| s ];
-                    if( _lMap[? "Socket" ] == _aMap[? "Socket" ] )
-                        _inst = _lMap[? "Instance" ];
-                }
-                if( _inst != noone )
-                {
-                    var _attack = instance_create( _aMap[? "X" ], _aMap[? "Y" ], _Object );
-                    _attack.Owner = _inst;
-                    _attack.direction = _aMap[? "Direction" ];
-                    _attack.image_angle = _attack.direction;
+                    if( _lMap[? "Map" ] == 5 )
+                    {
+                        var _inst = noone;
+                        if( _lMap[? "Socket" ] == _aMap[? "Socket" ] )
+                            _inst = _lMap[? "Instance" ];
+                        if( _inst != noone )
+                        {
+                            var _attack = instance_create( _aMap[? "X" ], _aMap[? "Y" ], _Object );
+                            _attack.Owner = _inst;
+                            _attack.direction = _aMap[? "Direction" ];
+                            _attack.image_angle = _attack.direction;
+                        }
+                    }
                 }
             }
             ds_map_destroy( _aMap );
@@ -380,6 +435,70 @@ if( UpdateTimer == 0 )
             var _lMap = SocketList[| s ];
             network_send_packet( _lMap[? "Socket" ], Buffer, buffer_tell( Buffer ) );
         }
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Map Timer
+if( MapTimer &gt; 0 )
+    --MapTimer;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Update Maps
+if( MapTimer == 0 )
+{
+    MapTimer = 30 * 3;
+    var ListSize = ds_list_size( SocketList );
+    // Snapshot of dungeon progress
+    buffer_seek( Buffer, buffer_seek_start, 0 );
+    buffer_write( Buffer, buffer_u8, 8 );
+    buffer_write( Buffer, buffer_u8, ListSize );
+    for( var s = 0; s &lt; ListSize; ++s )
+    {
+        var _lMap = SocketList[| s ];
+        buffer_write( Buffer, buffer_u8, _lMap[? "Socket" ] );
+        buffer_write( Buffer, buffer_u8, _lMap[? "Map" ] );
+    }
+    for( var s = 0; s &lt; ListSize; ++s )
+    {
+        var _lMap = SocketList[| s ];
+        network_send_packet( _lMap[? "Socket" ], Buffer, buffer_tell( Buffer ) );
     }
 }
 </string>
@@ -414,7 +533,7 @@ switch( type_event )
         _lMap[? "Socket" ]  = socket;
         _lMap[? "Instance" ] = noone;
         _lMap[? "Name" ]    = "Unnamed";
-        _lMap[? "Map" ] = 5;
+        _lMap[? "Map" ] = 0;
         _lMap[? "Ready" ] = false;
         var _pMap = ds_map_create();
         _pMap[? "X" ]       = 100;
@@ -422,13 +541,10 @@ switch( type_event )
         _pMap[? "Direction" ] = 0;
         _pMap[? "Speed" ] = 0;
         _lMap[? "PositionMap" ] = _pMap;
-        var _aMap = ds_map_create();
-        _aMap[? "Object" ] = "noone";
-        _aMap[? "X" ] = 0;
-        _aMap[? "Y" ] = 0;
-        _aMap[? "Direction" ] = 0;
-        _aMap[? "Speed" ] = 0;
-        _lMap[? "AttackMap" ] = _aMap;
+        var _gMap = ds_map_create();
+        _gMap[? "X" ] = 0;
+        _gMap[? "Y" ] = 0;
+        _lMap[? "GestureMap" ] = _gMap;
         ds_list_add( SocketList, _lMap );
         break;
     case network_type_disconnect:
@@ -443,21 +559,18 @@ switch( type_event )
                     with( _inst )
                         instance_destroy();
                 ds_map_destroy( _lMap[? "PositionMap" ] );
-                ds_map_destroy( _lMap[? "AttackMap" ] );
+                ds_map_destroy( _lMap[? "GestureMap" ] );
                 ds_map_destroy( _lMap );
                 ds_list_delete( SocketList, s );
             }
         }
-        //
         buffer_seek( Buffer, buffer_seek_start, 0 );
         buffer_write( Buffer, buffer_u8, socket );
         for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
         {
             var _lMap = SocketList[| s ];
-            //if( _lMap[? "Socket" ] != socket )
             network_send_packet( _lMap[? "Socket" ], Buffer, buffer_tell( Buffer ) );
         }
-        //
         break;
     case network_type_data:
         var buffer = ds_map_find_value( async_load , "buffer" );
