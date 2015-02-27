@@ -116,6 +116,7 @@
     </objects>
   </objects>
   <rooms name="rooms">
+    <room>rooms\rm_Maze</room>
     <room>rooms\rm_Avoidance</room>
     <room>rooms\rm_Select</room>
     <room>rooms\rm_Bomb</room>
