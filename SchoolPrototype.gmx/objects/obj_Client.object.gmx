@@ -322,7 +322,7 @@ if( State == "Connecting" )
             //IPAddress = "127.0.0.1";
             Port = 6969;
             isConnected = network_connect( Socket , IPAddress , Port );
-            StateTimer = 30 * 4;
+            StateTimer = 30 * 6;
         }
     }
     else
@@ -377,8 +377,8 @@ if( State == "Connected" )
     }
     buffer_seek( Buffer, buffer_seek_start, 0 );
     buffer_write( Buffer, buffer_u8, 8 );
-    buffer_write( Buffer, buffer_s8, device_get_tilt_x() );
-    buffer_write( Buffer, buffer_s8, device_get_tilt_y() );
+    buffer_write( Buffer, buffer_s8, device_get_tilt_y() * 100 );
+    buffer_write( Buffer, buffer_s8, device_get_tilt_x() * 100 );
     network_send_packet( Socket, Buffer, buffer_tell( Buffer ) );
 }
 </string>
@@ -451,6 +451,8 @@ for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
                 hspeed = MaxSpeed * _gMap[? "X" ];
                 vspeed = MaxSpeed * _gMap[? "Y" ];
             }
+            /// Move
+            move_bounce_solid( true );
         }
     }
 }
