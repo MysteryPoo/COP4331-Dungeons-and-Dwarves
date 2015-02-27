@@ -122,7 +122,7 @@ if( y &gt; max_y )
           <argument>
             <kind>1</kind>
             <string>/// Kill Player
-if( other.State != "Death" )
+if( other.State != "Death")
     other.State = "Death_Start";
 </string>
           </argument>

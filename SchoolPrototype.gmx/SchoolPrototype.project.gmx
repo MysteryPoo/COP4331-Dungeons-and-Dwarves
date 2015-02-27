@@ -41,6 +41,10 @@
       </sprites>
     </sprites>
     <sprite>sprites\spr_invis_wall</sprite>
+    <sprites name="Menu">
+      <sprite>sprites\spr_PlayGame</sprite>
+      <sprite>sprites\spr_ExitGame</sprite>
+    </sprites>
     <sprites name="Misc">
       <sprite>sprites\spr_bloody_footprint</sprite>
     </sprites>
@@ -56,6 +60,7 @@
   <scripts name="scripts">
     <script>scripts\scr_SReceivedPacket.gml</script>
     <script>scripts\scr_CReceivedPacket.gml</script>
+    <script>scripts\scr_MenuButtons.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_DEMO</font>
@@ -114,10 +119,15 @@
     <objects name="Avoidance">
       <object>objects\obj_Guard</object>
     </objects>
+    <objects name="Menu">
+      <object>objects\obj_PlayGame</object>
+      <object>objects\obj_ExitGame</object>
+    </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\rm_Select</room>
+    <room>rooms\rm_MainMenu</room>
     <room>rooms\rm_Avoidance</room>
+    <room>rooms\rm_Select</room>
     <room>rooms\rm_Bomb</room>
     <room>rooms\rm_Ice</room>
     <room>rooms\rm_Sneak</room>
@@ -126,7 +136,6 @@
     <room>rooms\rm_Server</room>
     <room>rooms\rm_Client</room>
     <room>rooms\rm_Victory</room>
-    <room>rooms\rm_Maze</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

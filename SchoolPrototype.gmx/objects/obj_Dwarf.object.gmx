@@ -502,7 +502,7 @@ if( State == "Ice" )
           <argument>
             <kind>1</kind>
             <string>/// Death
-if( State == "Death_Start" )
+if( State == "Death_Start")
 {
     sprite_index = spr_player_death;
     image_index = 0;
