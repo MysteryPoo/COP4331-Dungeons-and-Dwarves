@@ -97,6 +97,7 @@
       <object>objects\obj_Crumbled_Wall</object>
       <object>objects\obj_Effect</object>
       <object>objects\obj_Blood</object>
+      <object>objects\obj_fakeExit</object>
     </objects>
     <objects name="Bridge">
       <object>objects\obj_Bridge</object>
@@ -114,9 +115,13 @@
     <objects name="Avoidance">
       <object>objects\obj_Guard</object>
     </objects>
+    <objects name="Monty Hall">
+      <object>objects\obj_dropKey</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_Select</room>
+    <room>rooms\rm_MontyHall</room>
     <room>rooms\rm_Avoidance</room>
     <room>rooms\rm_Bomb</room>
     <room>rooms\rm_Ice</room>
