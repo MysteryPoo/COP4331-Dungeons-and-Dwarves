@@ -17,6 +17,16 @@ randomize();
 var inst = instance_create( global.StartX, global.StartY, obj_Dwarf );
 global.MyInst = inst;
 global.RestartOnDeath = true;
+if( instance_exists( obj_Client ) )
+{
+    with( obj_Client )
+    {
+        buffer_seek( Buffer, buffer_seek_start, 0 );
+        buffer_write( Buffer, buffer_u8, 7 );
+        buffer_write( Buffer, buffer_u8, global.Map );
+        network_send_packet( Socket, Buffer, buffer_tell( Buffer ) );
+    }
+}
 var doorx = 800, doorY_1 = 192, doorY_2 = 384, doorY_3 = 576;
 var exitY = choose(doorY_1, doorY_2, doorY_3);
 var door1 = instance_create(doorx, exitY, obj_Exit);
