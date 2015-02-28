@@ -16,7 +16,6 @@ global.StartY = 160;
 var inst = instance_create( global.StartX, global.StartY, obj_Dwarf );
 inst.hasKey = true;
 global.MyInst = inst;
-global.MyWeapon = obj_Arrow;
 global.RestartOnDeath = false;
 if( instance_exists( obj_Client ) )
 {
