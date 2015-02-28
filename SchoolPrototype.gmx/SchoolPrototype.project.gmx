@@ -44,6 +44,10 @@
     <sprites name="Misc">
       <sprite>sprites\spr_bloody_footprint</sprite>
     </sprites>
+    <sprites name="MainMenu">
+      <sprite>sprites\spr_PlayGame</sprite>
+      <sprite>sprites\spr_ExitGame</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_floor</background>
@@ -118,8 +122,13 @@
     <objects name="Monty Hall">
       <object>objects\obj_dropKey</object>
     </objects>
+    <objects name="MainMenu">
+      <object>objects\obj_PlayGame</object>
+      <object>objects\obj_ExitGame</object>
+    </objects>
   </objects>
   <rooms name="rooms">
+    <room>rooms\rm_MainMenu</room>
     <room>rooms\rm_MontyHall</room>
     <room>rooms\rm_Maze</room>
     <room>rooms\rm_Avoidance</room>
