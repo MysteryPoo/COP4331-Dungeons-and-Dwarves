@@ -11,7 +11,7 @@
   <colour>0</colour>
   <showcolour>-1</showcolour>
   <code>global.MyInst = noone;
-global.MyWeapon = obj_Arrow;
+global.Map = 5;
 global.RestartOnDeath = false;
 if( instance_exists( obj_Client ) )
 {
