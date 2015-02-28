@@ -7,7 +7,7 @@
   <hsnap>16</hsnap>
   <isometric>0</isometric>
   <speed>30</speed>
-  <persistent>-1</persistent>
+  <persistent>0</persistent>
   <colour>12632256</colour>
   <showcolour>-1</showcolour>
   <code>/// Place the player
@@ -15,7 +15,18 @@ global.StartX = 96;
 global.StartY = 112;
 var inst = instance_create( global.StartX, global.StartY, obj_Dwarf );
 global.MyInst = inst;
-inst.hasTorch = true;</code>
+inst.hasTorch = true;
+global.RestartOnDeath = true;
+if( instance_exists( obj_Client ) )
+{
+    with( obj_Client )
+    {
+        buffer_seek( Buffer, buffer_seek_start, 0 );
+        buffer_write( Buffer, buffer_u8, 7 );
+        buffer_write( Buffer, buffer_u8, global.Map );
+        network_send_packet( Socket, Buffer, buffer_tell( Buffer ) );
+    }
+}</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>

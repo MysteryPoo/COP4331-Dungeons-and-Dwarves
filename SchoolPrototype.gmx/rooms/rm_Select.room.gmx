@@ -10,7 +10,9 @@
   <persistent>0</persistent>
   <colour>12632256</colour>
   <showcolour>-1</showcolour>
-  <code></code>
+  <code>global.Map = 3;
+global.MyInst = noone;
+global.MyWeapon = obj_Arrow;</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
@@ -56,7 +58,7 @@
     <instance objName="obj_Button" x="512" y="384" name="inst_9C184A28" locked="0" code="Room = rm_Ice;&#xA;Label = &quot;Ice&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Button" x="192" y="384" name="inst_5D84BE7C" locked="0" code="Room = rm_Bomb;&#xA;Label = &quot;Bomb&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Button" x="320" y="288" name="inst_954CB468" locked="0" code="Room = rm_Client;&#xA;Label = &quot;Multiplayer&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Button" x="288" y="160" name="inst_81EFFBCA" locked="0" code="Room = rm_Maze;&#xA;Label = &quot;Maze&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Client" x="0" y="0" name="inst_0654E1C1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

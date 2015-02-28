@@ -26,7 +26,11 @@
           <argument>
             <kind>1</kind>
             <string>/// Next level
-room_goto( rm_Victory );
+++global.Map;
+if( global.Map &lt; 5 )
+    room_goto( choose( rm_Bridge, rm_Avoidance, rm_Maze, rm_Sneak ) );
+else
+    room_goto( rm_Client );
 </string>
           </argument>
         </arguments>

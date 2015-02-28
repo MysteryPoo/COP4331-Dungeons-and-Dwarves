@@ -14,8 +14,19 @@
 global.StartX = 90;
 global.StartY = 160;
 var inst = instance_create( global.StartX, global.StartY, obj_Dwarf );
+inst.hasKey = true;
 global.MyInst = inst;
-inst.hasKey = true;</code>
+global.RestartOnDeath = false;
+if( instance_exists( obj_Client ) )
+{
+    with( obj_Client )
+    {
+        buffer_seek( Buffer, buffer_seek_start, 0 );
+        buffer_write( Buffer, buffer_u8, 7 );
+        buffer_write( Buffer, buffer_u8, global.Map );
+        network_send_packet( Socket, Buffer, buffer_tell( Buffer ) );
+    }
+}</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>

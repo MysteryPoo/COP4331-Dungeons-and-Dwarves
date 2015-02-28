@@ -27,6 +27,7 @@ switch( msgid ) {
                     _pMap[? "Direction" ]   = _dir;
                     _pMap[? "Speed" ]       = _speed;
                 }
+                break;
             }
         }
         break;
@@ -50,13 +51,18 @@ switch( msgid ) {
             if( _lMap[? "Socket" ] == socket )
             {
                 _lMap[? "Name" ] = _name;
-                buffer_seek( Buffer, buffer_seek_start, 0 );
-                buffer_write( Buffer, buffer_u8, 7 );
-                buffer_write( Buffer, buffer_u8, 1 );
-                buffer_write( Buffer, buffer_u8, socket );
-                buffer_write( Buffer, buffer_string, _name );
-                network_send_packet( socket, Buffer, buffer_tell( Buffer ) );
+                break;
             }
+        }
+        buffer_seek( Buffer, buffer_seek_start, 0 );
+        buffer_write( Buffer, buffer_u8, 7 );
+        buffer_write( Buffer, buffer_u8, 1 );
+        buffer_write( Buffer, buffer_u8, socket );
+        buffer_write( Buffer, buffer_string, _name );
+        for( var s = 0; s < ds_list_size( SocketList ); ++s )
+        {
+            var _lMap = SocketList[| s ];
+            network_send_packet( _lMap[? "Socket" ], Buffer, buffer_tell( Buffer ) );
         }
         break;
     case 5: // Client made an attack
@@ -73,13 +79,41 @@ switch( msgid ) {
         ds_queue_enqueue( AttackQueue, _aMap );
         break;
     case 6: // Client is "ready"
-        var _ready = buffer_read( buffer, buffer_u8 );
+        var _ready = buffer_read( buffer, buffer_bool );
         for( var s = 0; s < ds_list_size( SocketList ); ++s )
         {
             var _lMap = SocketList[| s ];
             if( _lMap[? "Socket" ] == socket )
             {
                 _lMap[? "Ready" ] = _ready;
+                break;
+            }
+        }
+        break;
+    case 7: // Update map
+        var _map = buffer_read( buffer, buffer_u8 );
+        for( var s = 0; s < ds_list_size( SocketList ); ++s )
+        {
+            var _lMap = SocketList[| s ];
+            if( _lMap[? "Socket" ] == socket )
+            {
+                _lMap[? "Map" ] = _map;
+                break;
+            }
+        }
+        break;
+    case 8: // Gesture Update
+        var _x = buffer_read( buffer, buffer_s8 ) / 100;
+        var _y = buffer_read( buffer, buffer_s8 ) / 100;
+        for( var s = 0; s < ds_list_size( SocketList ); ++s )
+        {
+            var _lMap = SocketList[| s ];
+            if( _lMap[? "Socket" ] == socket )
+            {
+                var _gMap = _lMap[? "GestureMap" ];
+                _gMap[? "X" ] = _x;
+                _gMap[? "Y" ] = _y;
+                break;
             }
         }
         break;

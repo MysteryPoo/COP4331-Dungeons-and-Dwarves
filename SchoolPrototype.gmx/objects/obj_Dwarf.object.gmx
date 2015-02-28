@@ -320,21 +320,22 @@ if( State != "Death" )
         }
         else if( obj_Gesture1.Released &amp;&amp; obj_Gesture1.max_dist &gt; 32 )
         {
-            var inst = instance_create( x, y - 16, global.MyWeapon );
-            inst.direction = obj_Gesture1.direction;
-            inst.image_angle = inst.direction;
-            inst.Owner = id;
-            if( instance_exists( obj_Client ) )
+            if( object_exists( global.MyWeapon ) )
             {
-                buffer_seek( obj_Client.Buffer, buffer_seek_start, 0 );
-                buffer_write( obj_Client.Buffer, buffer_u8, 5 );
-                buffer_write( obj_Client.Buffer, buffer_string, object_get_name( inst.object_index ) );
-                buffer_write( obj_Client.Buffer, buffer_u16, x );
-                buffer_write( obj_Client.Buffer, buffer_u16, y - 16 );
-                buffer_write( obj_Client.Buffer, buffer_s16, obj_Gesture1.direction );
-                network_send_packet( obj_Client.Socket, obj_Client.Buffer, buffer_tell( obj_Client.Buffer ) );
-                //with( inst )
-                    //instance_destroy();
+                var inst = instance_create( x, y - 16, global.MyWeapon );
+                inst.direction = obj_Gesture1.direction;
+                inst.image_angle = inst.direction;
+                inst.Owner = id;
+                if( instance_exists( obj_Client ) )
+                {
+                    buffer_seek( obj_Client.Buffer, buffer_seek_start, 0 );
+                    buffer_write( obj_Client.Buffer, buffer_u8, 5 );
+                    buffer_write( obj_Client.Buffer, buffer_string, object_get_name( inst.object_index ) );
+                    buffer_write( obj_Client.Buffer, buffer_u16, x );
+                    buffer_write( obj_Client.Buffer, buffer_u16, y - 16 );
+                    buffer_write( obj_Client.Buffer, buffer_s16, obj_Gesture1.direction );
+                    network_send_packet( obj_Client.Socket, obj_Client.Buffer, buffer_tell( obj_Client.Buffer ) );
+                }
             }
         }
     }
