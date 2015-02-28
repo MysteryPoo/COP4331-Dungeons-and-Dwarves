@@ -517,7 +517,7 @@ if( State == "Death" )
         image_speed = 0;
     if( StateTimer == 0 )
     {
-        if( instance_exists( obj_Client ) || instance_exists( obj_Server ) )
+        if( global.Map == 5 )
             instance_destroy();
         else
         {
