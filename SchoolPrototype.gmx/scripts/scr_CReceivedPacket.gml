@@ -69,6 +69,7 @@ switch( msgid ) {
                     _sMap[? "Socket" ] = _socket;
                     _sMap[? "Status" ] = _state;
                     ds_queue_enqueue( StatusQueue, _sMap );
+                    break;
                 }
             }
         }
@@ -86,6 +87,7 @@ switch( msgid ) {
                     instance_destroy();
                 ds_map_destroy( _lMap );
                 ds_list_delete( SocketList, s );
+                break;
             }
         }
         break;
@@ -145,16 +147,16 @@ switch( msgid ) {
         var _updates = buffer_read( buffer, buffer_u8 );
         repeat( _updates )
         {
-            _socket = buffer_read( buffer, buffer_u8 );
-            _map = buffer_read( buffer, buffer_u8 );
+            var _socket = buffer_read( buffer, buffer_u8 );
+            var _map = buffer_read( buffer, buffer_u8 );
             for( var s = 0; s < ds_list_size( SocketList ); ++s )
             {
                 var _lMap = SocketList[| s ];
                 if( _lMap[? "Socket" ] == _socket )
                 {
                     _lMap[? "Map" ] = _map;
+                    break;
                 }
-                break;
             }
         }
         break;
@@ -162,9 +164,9 @@ switch( msgid ) {
         var _updates = buffer_read( buffer, buffer_u8 );
         repeat( _updates )
         {
-            _socket = buffer_read( buffer, buffer_u8 );
-            _x = buffer_read( buffer, buffer_s8 ) / 100;
-            _y = buffer_read( buffer, buffer_s8 ) / 100;
+            var _socket = buffer_read( buffer, buffer_u8 );
+            var _x = buffer_read( buffer, buffer_s8 ) / 100;
+            var _y = buffer_read( buffer, buffer_s8 ) / 100;
             for( var s = 0; s < ds_list_size( SocketList ); ++s )
             {
                 var _lMap = SocketList[| s ];
