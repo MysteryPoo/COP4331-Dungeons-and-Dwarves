@@ -91,7 +91,7 @@ switch( msgid ) {
         }
         break;
     case 7: // Update map
-        _map = buffer_read( buffer, buffer_u8 );
+        var _map = buffer_read( buffer, buffer_u8 );
         for( var s = 0; s < ds_list_size( SocketList ); ++s )
         {
             var _lMap = SocketList[| s ];
@@ -103,8 +103,8 @@ switch( msgid ) {
         }
         break;
     case 8: // Gesture Update
-        _x = buffer_read( buffer, buffer_s8 ) / 100;
-        _y = buffer_read( buffer, buffer_s8 ) / 100;
+        var _x = buffer_read( buffer, buffer_s8 ) / 100;
+        var _y = buffer_read( buffer, buffer_s8 ) / 100;
         for( var s = 0; s < ds_list_size( SocketList ); ++s )
         {
             var _lMap = SocketList[| s ];
