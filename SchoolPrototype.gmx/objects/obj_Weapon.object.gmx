@@ -96,7 +96,7 @@ Owner = noone;
             <string>/// Damage Player
 if( other.id != Owner &amp;&amp; other.State != "Death" )
 {
-    if( !instance_exists( obj_Client ) )
+    if( global.Map != 5 )
         other.State = "Death_Start";
     if( instance_exists( obj_Server ) )
     {
