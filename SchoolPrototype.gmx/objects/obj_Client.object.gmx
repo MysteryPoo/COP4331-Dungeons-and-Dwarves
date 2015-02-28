@@ -28,8 +28,8 @@
             <string>/// Connection
 var Type, IPAddress, Port;
 Type = network_socket_tcp;
-IPAddress = "184.91.74.235";
-//IPAddress = "127.0.0.1";
+//IPAddress = "184.91.74.235";
+IPAddress = "127.0.0.1";
 Port = 6969;
 Socket = network_create_socket( Type );
 isConnected = network_connect( Socket , IPAddress , Port );
@@ -405,7 +405,7 @@ if( State == "Connected" )
 for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
 {
     var _lMap = SocketList[| s ];
-    if( _lMap[? "Map" ] == 5 )
+    if( global.Map == 5 &amp;&amp; _lMap[? "Map" ] == 5 )
     {
         var _inst = _lMap[? "Instance" ];
         var _pMap = _lMap[? "PositionMap" ];
@@ -647,6 +647,7 @@ for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
 {
     var _lMap = SocketList[| s ];
     var _inst = _lMap[? "Instance" ];
+    var _pMap = _lMap[? "PositionMap" ];
     if( instance_exists( _inst ) )
     {
         if( _lMap[? "Ready" ] == true )
@@ -656,6 +657,9 @@ for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
         draw_rectangle( _inst.x, _inst.y, _inst.x + 16, _inst.y + 16, false );
         draw_text( _inst.x, _inst.y + 32, _lMap[? "Name" ] );
     }
+    draw_text( 32 + 100 * s, 128 + 128 * s, string( _pMap[? "X" ] ) + ", " + string(
+            _pMap[? "Y" ] ) );
+    draw_text( 32 + 100 * s, 128 + 32 + 128 * s, string( _lMap[? "Map" ] ) );
 }
 </string>
           </argument>
