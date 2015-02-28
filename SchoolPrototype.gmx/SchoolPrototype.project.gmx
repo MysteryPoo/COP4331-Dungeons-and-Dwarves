@@ -74,7 +74,6 @@
     </objects>
     <objects name="Engine">
       <object>objects\obj_Light</object>
-      <object>objects\obj_Light_Vec</object>
       <object>objects\obj_Server</object>
       <object>objects\obj_Client</object>
       <object>objects\obj_Gesture0</object>
@@ -140,7 +139,6 @@
     <room>rooms\rm_Main</room>
     <room>rooms\rm_Server</room>
     <room>rooms\rm_Client</room>
-    <room>rooms\rm_Victory</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
