@@ -101,6 +101,16 @@ switch( msgid ) {
                 break;
             }
         }
+        buffer_seek( Buffer, buffer_seek_start, 0 );
+        buffer_write( Buffer, buffer_u8, 8 );
+        buffer_write( Buffer, buffer_u8, 1 );
+        buffer_write( Buffer, buffer_u8, socket );
+        buffer_write( Buffer, buffer_u8, _map );
+        for( var s = 0; s < ds_list_size( SocketList ); ++s )
+        {
+            var _lMap = SocketList[| s ];
+            network_send_packet( _lMap[? "Socket" ], Buffer, buffer_tell( Buffer ) );
+        }
         break;
     case 8: // Gesture Update
         var _x = buffer_read( buffer, buffer_s8 ) / 100;
