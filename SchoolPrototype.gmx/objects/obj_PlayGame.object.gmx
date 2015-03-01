@@ -99,7 +99,7 @@ image_index = 1;
           <argument>
             <kind>1</kind>
             <string>/// Start Game
-room_goto( rm_Select );
+room_goto( rm_ServerList );
 </string>
           </argument>
         </arguments>
