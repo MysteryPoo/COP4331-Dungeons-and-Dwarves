@@ -180,4 +180,24 @@ switch( msgid ) {
             }
         }
         break;
+    case 10:    // Update Server List
+        var _updates = buffer_read( buffer, buffer_u8 );
+        for( var s = 0; s < _updates; ++s )
+        {
+            var _ip = buffer_read( buffer, buffer_string );
+            var _port = buffer_read( buffer, buffer_u16 );
+            var _name = buffer_read( buffer, buffer_string );
+            var _players = buffer_read( buffer, buffer_u8 );
+            var game = obj_ServerListManager.ServerList[@ s ];
+            game.IP = _ip;
+            game.Port = _port;
+            game.Name = _name;
+            game.Players = _players;
+        }
+        for( var s = _updates; s < obj_ServerListManager.MaxServers; ++s )
+        {
+            var game = obj_ServerListManager.ServerList[@ s ];
+            game.Port = 0;
+        }
+        break;
 }
