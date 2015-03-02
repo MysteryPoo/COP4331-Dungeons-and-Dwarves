@@ -200,4 +200,20 @@ switch( msgid ) {
             game.Port = 0;
         }
         break;
+    case 11:    // Game Start - Retrieve Map Order
+        repeat( 4 )
+        {
+            var _map = buffer_read( buffer, buffer_string );
+            _map = asset_get_index( _map );
+            if( _map == -1 )
+            {
+                show_message( "Your game is out of date." );
+                game_end();
+            }
+            else
+            ds_list_add( MapList, _map );
+        }
+        ds_list_add( MapList, rm_Client );
+        room_goto( MapList[| global.Map ] );
+        break;
 }
