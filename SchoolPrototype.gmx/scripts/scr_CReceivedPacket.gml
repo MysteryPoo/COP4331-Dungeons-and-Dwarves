@@ -114,7 +114,7 @@ switch( msgid ) {
         repeat( _updates )
         {
             var _socket = buffer_read( buffer, buffer_u8 );
-            var _ready = buffer_read( buffer, buffer_u8 );
+            var _ready = buffer_read( buffer, buffer_bool );
             for( var s = 0; s < ds_list_size( SocketList ); ++s )
             {
                 var _lMap = SocketList[| s ];
