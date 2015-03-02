@@ -25,20 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Connection
-var Type, IPAddress, Port;
-Type = network_socket_tcp;
-//IPAddress = "184.91.74.235";
-IPAddress = "127.0.0.1";
-Port = 6969;
-Socket = network_create_socket( Type );
-isConnected = network_connect( Socket , IPAddress , Port );
+            <string>/// Buffer
 var Size , Type , Alignment;
 Size = 1024;
 Type = buffer_fixed;
 Alignment = 1;
 Buffer = buffer_create( Size , Type , Alignment );
-NetworkID = -1;
 </string>
           </argument>
         </arguments>
@@ -60,8 +52,44 @@ NetworkID = -1;
           <argument>
             <kind>1</kind>
             <string>/// Connection State
-State = "Connecting";
-StateTimer = 30 * 4;
+State = "Lobby";
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Server Connection
+var Type = network_socket_tcp;
+Socket = network_create_socket( Type );
+isConnected = network_connect( Socket , global.ServerIP , global.ServerPort );
+if( isConnected &lt; 0 )
+{
+    show_message( "Please check your network connection." );
+    game_end();
+}
+NetworkID = -1;
+if( global.ServerType == "List" )
+{
+    // Register on Lobby Server
+    buffer_seek( Buffer, buffer_seek_start, 0 );
+    buffer_write( Buffer, buffer_u8, 3 );
+    network_send_packet( Socket, Buffer, buffer_tell( Buffer ) );
+}
 </string>
           </argument>
         </arguments>
@@ -200,6 +228,28 @@ PlayerNameMsg = -1;
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Map List
+MapList = ds_list_create();
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="1" enumb="0">
       <action>
@@ -241,35 +291,13 @@ while( !ds_queue_empty( AttackQueue ) )
     ds_map_destroy( _aMap );
 }
 ds_queue_destroy( AttackQueue );
+ds_list_destroy( MapList );
 </string>
           </argument>
         </arguments>
       </action>
     </event>
     <event eventtype="3" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// State Timer
-if( StateTimer &gt; 0 )
-    --StateTimer;
-</string>
-          </argument>
-        </arguments>
-      </action>
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -309,52 +337,8 @@ if( PingTimer &gt; 0 )
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Connecting
-if( State == "Connecting" )
-{
-    if( isConnected &lt; 0 )
-    {
-        if( StateTimer == 0 )
-        {
-            var Type, IPAddress, Port;
-            Type = network_socket_tcp;
-            IPAddress = "184.91.74.235";
-            //IPAddress = "127.0.0.1";
-            Port = 6969;
-            isConnected = network_connect( Socket , IPAddress , Port );
-            StateTimer = 30 * 6;
-        }
-    }
-    else
-    {
-        State = "Connected";
-        StateTimer = 30;
-        /// Get Player Name
-        PlayerNameMsg = get_string_async( "Name", "" );
-    }
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Connected
-if( State == "Connected" )
+            <string>/// Send Movement Information
+if( State == "Game" )
 {
     if( PingTimer == 0 )
     {
@@ -415,10 +399,6 @@ for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
             var _inst = instance_create( _pMap[? "X" ], _pMap[? "Y" ], obj_Dwarf );
             _inst.netID = _lMap[? "Socket" ];
             _lMap[? "Instance" ] = _inst;
-            // Request the player's name
-            //buffer_seek( Buffer, buffer_seek_start, 0 );
-            //buffer_write( Buffer, buffer_u8, 3 );
-            //network_send_packet( Socket, Buffer, buffer_tell( Buffer ) );
         }
         // Update Position of instance
         with( _inst )
@@ -436,6 +416,11 @@ for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
                 if( point_distance( x, y, _x, _y ) &lt; 1 )
                 {
                     MaxSpeed = 0;
+                    x = _x;
+                    y = _y;
+                }
+                else if( point_distance( x, y, _x, _y ) &gt; 64 )
+                {
                     x = _x;
                     y = _y;
                 }

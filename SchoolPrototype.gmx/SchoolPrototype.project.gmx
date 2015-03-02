@@ -48,6 +48,9 @@
       <sprite>sprites\spr_PlayGame</sprite>
       <sprite>sprites\spr_ExitGame</sprite>
     </sprites>
+    <sprites name="ServerList">
+      <sprite>sprites\spr_JoinServer</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_floor</background>
@@ -125,9 +128,15 @@
       <object>objects\obj_PlayGame</object>
       <object>objects\obj_ExitGame</object>
     </objects>
+    <objects name="ServerList">
+      <object>objects\obj_JoinServer</object>
+      <object>objects\obj_ServerListManager</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_MainMenu</room>
+    <room>rooms\rm_Server</room>
+    <room>rooms\rm_ServerList</room>
     <room>rooms\rm_MontyHall</room>
     <room>rooms\rm_Maze</room>
     <room>rooms\rm_Avoidance</room>
@@ -137,7 +146,6 @@
     <room>rooms\rm_Sneak</room>
     <room>rooms\rm_Bridge</room>
     <room>rooms\rm_Main</room>
-    <room>rooms\rm_Server</room>
     <room>rooms\rm_Client</room>
   </rooms>
   <help>

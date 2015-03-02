@@ -114,7 +114,7 @@ switch( msgid ) {
         repeat( _updates )
         {
             var _socket = buffer_read( buffer, buffer_u8 );
-            var _ready = buffer_read( buffer, buffer_u8 );
+            var _ready = buffer_read( buffer, buffer_bool );
             for( var s = 0; s < ds_list_size( SocketList ); ++s )
             {
                 var _lMap = SocketList[| s ];
@@ -179,5 +179,41 @@ switch( msgid ) {
                 }
             }
         }
+        break;
+    case 10:    // Update Server List
+        var _updates = buffer_read( buffer, buffer_u8 );
+        for( var s = 0; s < _updates; ++s )
+        {
+            var _ip = buffer_read( buffer, buffer_string );
+            var _port = buffer_read( buffer, buffer_u16 );
+            var _name = buffer_read( buffer, buffer_string );
+            var _players = buffer_read( buffer, buffer_u8 );
+            var game = obj_ServerListManager.ServerList[@ s ];
+            game.IP = _ip;
+            game.Port = _port;
+            game.Name = _name;
+            game.Players = _players;
+        }
+        for( var s = _updates; s < obj_ServerListManager.MaxServers; ++s )
+        {
+            var game = obj_ServerListManager.ServerList[@ s ];
+            game.Port = 0;
+        }
+        break;
+    case 11:    // Game Start - Retrieve Map Order
+        repeat( 4 )
+        {
+            var _map = buffer_read( buffer, buffer_string );
+            _map = asset_get_index( _map );
+            if( _map == -1 )
+            {
+                show_message( "Your game is out of date." );
+                game_end();
+            }
+            else
+            ds_list_add( MapList, _map );
+        }
+        ds_list_add( MapList, rm_Client );
+        room_goto( MapList[| global.Map ] );
         break;
 }
