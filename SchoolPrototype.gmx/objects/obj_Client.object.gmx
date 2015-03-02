@@ -77,8 +77,13 @@ State = "Lobby";
 var Type = network_socket_tcp;
 Socket = network_create_socket( Type );
 isConnected = network_connect( Socket , global.ServerIP , global.ServerPort );
+if( isConnected &lt; 0 )
+{
+    show_message( "Please check your network connection." );
+    game_end();
+}
 NetworkID = -1;
-if( global.ServerType == "List" &amp;&amp; isConnected &gt; -1 )
+if( global.ServerType == "List" )
 {
     // Register on Lobby Server
     buffer_seek( Buffer, buffer_seek_start, 0 );
