@@ -264,11 +264,11 @@ StartTimer = 30 * 10;
 State = "Waiting";
 // Map List
 MapList = ds_list_create();
-ds_list_add( MapList, object_get_name( rm_Bridge ) );
-ds_list_add( MapList, object_get_name( rm_Sneak ) );
-ds_list_add( MapList, object_get_name( rm_MontyHall ) );
-ds_list_add( MapList, object_get_name( rm_Maze ) );
-ds_list_add( MapList, object_get_name( rm_Avoidance ) );
+ds_list_add( MapList, room_get_name( rm_Bridge ) );
+ds_list_add( MapList, room_get_name( rm_Sneak ) );
+ds_list_add( MapList, room_get_name( rm_MontyHall ) );
+ds_list_add( MapList, room_get_name( rm_Maze ) );
+ds_list_add( MapList, room_get_name( rm_Avoidance ) );
 ds_list_shuffle( MapList );
 </string>
           </argument>
@@ -756,7 +756,7 @@ if( State == "Gathering" )
     else
     {
         State = "Running";
-        alarm[ 0 ] = 0;
+        alarm[ 0 ] = 3;
         buffer_seek( Buffer, buffer_seek_start, 0 );
         buffer_write( Buffer, buffer_u8, 11 );
         buffer_write( Buffer, buffer_string, MapList[| 0 ] );
@@ -895,6 +895,11 @@ switch( type_event )
 draw_text( 0 , 0 , "Server Status: " + string( Server &gt;= 0 ) );
 draw_text( 0, 32, "Port: " + string( Port ) );
 draw_text( 0 , 64 , "Total Clients: " + string( ds_list_size( SocketList ) ) );
+
+for( var m = 0; m &lt; 5; ++m )
+{
+    draw_text( 500, 50 + 32 * m, MapList[| m ] );
+}
 
 for( var s = 0; s &lt; ds_list_size( PlayerList ); ++s )
 {

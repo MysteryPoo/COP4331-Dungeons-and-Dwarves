@@ -189,10 +189,13 @@ switch( msgid ) {
             var _name = buffer_read( buffer, buffer_string );
             var _players = buffer_read( buffer, buffer_u8 );
             var game = obj_ServerListManager.ServerList[@ s ];
-            game.IP = _ip;
-            game.Port = _port;
-            game.Name = _name;
-            game.Players = _players;
+            if( instance_exists( game ) )
+            {
+                game.IP = _ip;
+                game.Port = _port;
+                game.Name = _name;
+                game.Players = _players;
+            }
         }
         for( var s = _updates; s < obj_ServerListManager.MaxServers; ++s )
         {
