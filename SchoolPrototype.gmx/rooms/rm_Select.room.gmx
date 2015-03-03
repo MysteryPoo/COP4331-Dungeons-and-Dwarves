@@ -10,7 +10,7 @@
   <persistent>0</persistent>
   <colour>12632256</colour>
   <showcolour>-1</showcolour>
-  <code>global.Map = 3;
+  <code>global.Map = 0;
 global.MyInst = noone;
 global.MyWeapon = obj_Arrow;
 obj_Client.PlayerNameMsg = get_string_async( "Name", "Unnamed" );
