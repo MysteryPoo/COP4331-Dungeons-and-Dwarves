@@ -635,15 +635,8 @@ for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
     var _pMap = _lMap[? "PositionMap" ];
     if( instance_exists( _inst ) )
     {
-        if( _lMap[? "Ready" ] == true )
-            draw_set_colour( c_green );
-        else
-            draw_set_colour( c_red );
-        draw_rectangle( _inst.x, _inst.y, _inst.x + 16, _inst.y + 16, false );
         draw_text( _inst.x, _inst.y + 32, _lMap[? "Name" ] );
     }
-    draw_text( 32 + 100 * s, 128 + 128 * s, string( _pMap[? "X" ] ) + ", " + string(
-            _pMap[? "Y" ] ) );
     draw_text( 32 + 100 * s, 128 + 32 + 128 * s, string( _lMap[? "Map" ] ) );
 }
 </string>
