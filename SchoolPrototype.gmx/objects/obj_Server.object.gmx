@@ -756,7 +756,7 @@ if( State == "Gathering" )
     else
     {
         State = "Running";
-        alarm[ 0 ] = 0;
+        alarm[ 0 ] = 3;
         buffer_seek( Buffer, buffer_seek_start, 0 );
         buffer_write( Buffer, buffer_u8, 11 );
         buffer_write( Buffer, buffer_string, MapList[| 0 ] );
