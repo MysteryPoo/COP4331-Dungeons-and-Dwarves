@@ -3,8 +3,8 @@
   <caption></caption>
   <width>1024</width>
   <height>768</height>
-  <vsnap>32</vsnap>
-  <hsnap>32</hsnap>
+  <vsnap>16</vsnap>
+  <hsnap>16</hsnap>
   <isometric>0</isometric>
   <speed>30</speed>
   <persistent>0</persistent>
@@ -13,10 +13,10 @@
   <code>/// Place the player
 global.StartX = 256;
 global.StartY = 256;
-var inst = instance_create( global.StartX, global.StartY, obj_Player );
+var inst = instance_create( global.StartX, global.StartY, obj_Dwarf );
 global.MyInst = inst;
 
-show_message_async( "Find a way through the crumbled wall." );</code>
+show_message_async( "Find a way through the crumbling wall." );</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
@@ -96,11 +96,11 @@ show_message_async( "Find a way through the crumbled wall." );</code>
     <instance objName="obj_Wall" x="512" y="384" name="inst_96AFDBBF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Wall" x="544" y="320" name="inst_4AA69397" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Wall" x="544" y="384" name="inst_36C975AC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Exit" x="512" y="352" name="inst_C1B24E55" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Door" x="480" y="352" name="inst_EB97F0DF" locked="0" code="Exit = true;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Crumbled_Wall" x="416" y="352" name="inst_50561FAC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Exit" x="528" y="368" name="inst_C1B24E55" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Door" x="496" y="368" name="inst_EB97F0DF" locked="0" code="Exit = true;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Crumbled_Wall" x="432" y="368" name="inst_50561FAC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Bomb" x="288" y="288" name="inst_B50FAF56" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Key" x="352" y="224" name="inst_5C683223" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Key" x="352" y="240" name="inst_5C683223" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
