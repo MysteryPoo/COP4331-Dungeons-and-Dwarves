@@ -467,6 +467,7 @@ while( !ds_queue_empty( StatusQueue ) )
     var _sMap = ds_queue_dequeue( StatusQueue );
     var _socket = _sMap[? "Socket" ];
     var _status = _sMap[? "Status" ];
+    var _mod = _sMap[? "Modifier" ];
     for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
     {
         var _lMap = SocketList[| s ];
@@ -476,6 +477,8 @@ while( !ds_queue_empty( StatusQueue ) )
             if( instance_exists( _inst ) )
             {
                 _inst.State = _status;
+                if( _status == "Hit_Start" )
+                    _inst.HitPoints -= _mod;
             }
         }
     }
