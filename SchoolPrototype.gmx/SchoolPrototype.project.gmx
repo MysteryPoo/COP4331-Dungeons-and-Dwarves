@@ -132,6 +132,10 @@
       <object>objects\obj_JoinServer</object>
       <object>objects\obj_ServerListManager</object>
     </objects>
+    <objects name="Menu">
+      <object>objects\obj_Bag</object>
+      <object>objects\obj_Inventory</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_MainMenu</room>

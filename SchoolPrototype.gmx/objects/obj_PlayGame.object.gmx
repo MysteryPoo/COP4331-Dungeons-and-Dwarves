@@ -99,6 +99,9 @@ image_index = 1;
           <argument>
             <kind>1</kind>
             <string>/// Start Game
+global.HasArrow = true;
+global.HasBomb = false;
+global.HasSpike = true;
 room_goto( rm_ServerList );
 </string>
           </argument>

@@ -255,6 +255,7 @@ if( instance_exists( obj_Client ) )
     <instance objName="obj_Wall" x="288" y="960" name="inst_C66AB048" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Torch" x="144" y="560" name="inst_53408828" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Torch" x="272" y="560" name="inst_586EC3F8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Bag" x="128" y="0" name="inst_D6CE1F5D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_floor" x="64" y="128" w="32" h="32" xo="0" yo="0" id="10003822" name="inst_8552086B" depth="1000001" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
