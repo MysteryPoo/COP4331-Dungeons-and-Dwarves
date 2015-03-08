@@ -152,11 +152,13 @@ if( instance_exists( obj_Dwarf ) )
             <string>/// Give weapon!
 if( alarm[ 0 ] == -1 )
 {
+    // Terrible way of getting the image of the object inside
     var _temp = instance_create( x, y, Item );
     Item_Sprite = _temp.sprite_index;
     with( _temp )
         instance_destroy();
-    global.MyWeapon = Item;
+    if( instance_exists( obj_Inventory ) )
+        ds_list_add( obj_Inventory.Inventory, Item );
     Opened = true;
     alarm[ 0 ] = 15;
 }
