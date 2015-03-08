@@ -344,19 +344,49 @@ if( State != "Death" )
         {
             if( object_exists( global.MyWeapon ) )
             {
-                var inst = instance_create( x, y - 16, global.MyWeapon );
-                inst.direction = obj_Gesture1.direction;
-                inst.image_angle = inst.direction;
-                inst.Owner = id;
-                if( instance_exists( obj_Client ) )
+                validShot = false;
+                if( instance_exists( obj_Inventory ) )
                 {
-                    buffer_seek( obj_Client.Buffer, buffer_seek_start, 0 );
-                    buffer_write( obj_Client.Buffer, buffer_u8, 5 );
-                    buffer_write( obj_Client.Buffer, buffer_string, object_get_name( inst.object_index ) );
-                    buffer_write( obj_Client.Buffer, buffer_u16, x );
-                    buffer_write( obj_Client.Buffer, buffer_u16, y - 16 );
-                    buffer_write( obj_Client.Buffer, buffer_s16, obj_Gesture1.direction );
-                    network_send_packet( obj_Client.Socket, obj_Client.Buffer, buffer_tell( obj_Client.Buffer ) );
+                    switch( global.MyWeapon )
+                    {
+                        case obj_Bow:
+                        case obj_Bow_2:
+                        case obj_Bow_3:
+                            if( obj_Inventory.Ammo[? "Arrows" ] &gt; 0 )
+                            {
+                                --obj_Inventory.Ammo[? "Arrows" ];
+                                validShot = true;
+                            }
+                            break;
+                        case obj_Spike:
+                        case obj_Spike_2:
+                        case obj_Spike_3:
+                            validShot = true;
+                            break;
+                        case obj_Bomb:
+                            if( obj_Inventory.Ammo[? "Bombs" ] &gt; 0 )
+                            {
+                                --obj_Inventory.Ammo[? "Bombs" ];
+                                validShot = true;
+                            }
+                    }
+                }
+                if( validShot )
+                {
+                    var inst = instance_create( x, y - 16, global.MyWeapon );
+                    inst.direction = obj_Gesture1.direction;
+                    inst.image_angle = inst.direction;
+                    inst.Owner = id;
+                    if( instance_exists( obj_Client ) )
+                    {
+                        buffer_seek( obj_Client.Buffer, buffer_seek_start, 0 );
+                        buffer_write( obj_Client.Buffer, buffer_u8, 5 );
+                        buffer_write( obj_Client.Buffer, buffer_string, object_get_name( inst.object_index ) );
+                        buffer_write( obj_Client.Buffer, buffer_u16, x );
+                        buffer_write( obj_Client.Buffer, buffer_u16, y - 16 );
+                        buffer_write( obj_Client.Buffer, buffer_s16, obj_Gesture1.direction );
+                        network_send_packet( obj_Client.Socket, obj_Client.Buffer, buffer_tell( obj_Client.Buffer ) );
+                    }
                 }
             }
         }
