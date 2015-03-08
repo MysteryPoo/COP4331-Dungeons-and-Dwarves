@@ -45,6 +45,7 @@
     <sprites name="Misc">
       <sprite>sprites\spr_bloody_footprint</sprite>
       <sprite>sprites\spr_drop</sprite>
+      <sprite>sprites\spr_Bag</sprite>
     </sprites>
     <sprites name="MainMenu">
       <sprite>sprites\spr_PlayGame</sprite>
@@ -76,6 +77,7 @@
     <objects name="Weapons">
       <object>objects\obj_Weapon</object>
       <object>objects\obj_Gas</object>
+      <object>objects\obj_Explosion</object>
       <object>objects\obj_Sword</object>
       <object>objects\obj_Bomb</object>
       <object>objects\obj_Arrow</object>
@@ -98,6 +100,7 @@
       <object>objects\obj_Gesture1</object>
       <object>objects\obj_Time</object>
       <object>objects\obj_Atmosphere</object>
+      <object>objects\obj_Inventory</object>
     </objects>
     <object>objects\obj_DEMO</object>
     <objects name="Generic">
