@@ -81,6 +81,7 @@
       <object>objects\obj_Sword</object>
       <object>objects\obj_Bomb</object>
       <object>objects\obj_Arrow</object>
+      <object>objects\obj_ExplosiveArrow</object>
       <objects name="Bow">
         <object>objects\obj_Bow</object>
         <object>objects\obj_Bow_2</object>
