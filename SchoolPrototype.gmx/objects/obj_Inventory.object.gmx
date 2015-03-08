@@ -52,9 +52,6 @@ SpriteMap[? "Bomb" ] = spr_bomb;
             <kind>1</kind>
             <string>/// Inventory list
 Inventory = ds_list_create();
-
-// Test Data
-ds_list_add( Inventory, obj_Bomb );
 </string>
           </argument>
         </arguments>
@@ -79,11 +76,7 @@ ds_list_add( Inventory, obj_Bomb );
 Ammo = ds_map_create();
 Ammo[? "Arrows" ] = 0;
 Ammo[? "Bombs" ] = 0;
-Ammo[? "Spikes" ] = 1; // Infinite
-
-// Test data
-Ammo[? "Arrows" ] = 10;
-Ammo[? "Bombs" ] =  10;
+Ammo[? "Spikes" ] = 1; // Arbitrary positive value. They never decrement.
 </string>
           </argument>
         </arguments>
