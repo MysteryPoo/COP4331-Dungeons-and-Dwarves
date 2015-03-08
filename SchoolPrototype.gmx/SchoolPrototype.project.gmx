@@ -132,8 +132,12 @@
       <object>objects\obj_JoinServer</object>
       <object>objects\obj_ServerListManager</object>
     </objects>
+    <objects name="Lobby">
+      <object>objects\obj_Countdown</object>
+    </objects>
   </objects>
   <rooms name="rooms">
+    <room>rooms\rm_Lobby</room>
     <room>rooms\rm_MainMenu</room>
     <room>rooms\rm_Server</room>
     <room>rooms\rm_ServerList</room>
