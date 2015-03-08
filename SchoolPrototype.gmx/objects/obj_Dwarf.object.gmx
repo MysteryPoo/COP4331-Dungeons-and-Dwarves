@@ -748,8 +748,30 @@ with( other )
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_self();
-draw_text( x, y + 8, "( " + string( x ) + ", " + string( y ) + " )" );
+            <string>/// Draw Self
+draw_self();
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Draw Hit Points
+draw_rectangle_colour( x - 16, y, x - 16 + 32 * HitPoints / 100, y + 8, c_maroon, c_red, c_black, c_red, false );
 </string>
           </argument>
         </arguments>
