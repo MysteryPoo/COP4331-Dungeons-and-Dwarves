@@ -25,10 +25,7 @@ if( instance_exists( obj_Client ) )
         buffer_write( Buffer, buffer_u8, global.Map );
         network_send_packet( Socket, Buffer, buffer_tell( Buffer ) );
     }
-}
-
-// Remove
-global.MyWeapon = obj_Bow_3;</code>
+}</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
