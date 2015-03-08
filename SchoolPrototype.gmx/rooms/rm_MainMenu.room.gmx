@@ -12,7 +12,8 @@
   <showcolour>-1</showcolour>
   <code>global.ServerIP = "184.91.74.235";
 global.ServerPort = 20000;
-global.ServerType = "List";</code>
+global.ServerType = "List";
+display_set_gui_size( 512, 384 );</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
