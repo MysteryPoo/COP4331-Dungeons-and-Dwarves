@@ -84,7 +84,7 @@ speed = 10;
           <argument>
             <kind>1</kind>
             <string>/// Damage
-Damage = 10;
+Damage = 15;
 </string>
           </argument>
         </arguments>
