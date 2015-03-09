@@ -44,6 +44,7 @@
 // New Instance Variables
 
 // Path index to use for this object.
+// NOTE: OVERRIDE WITH DESIRED PATH, Avoidance_small is a placeholder!
 Path = path_Avoidance_small;
 // Speed to travel along the path.
 PathSpeed = 1;

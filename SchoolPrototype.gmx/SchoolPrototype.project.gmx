@@ -110,6 +110,7 @@
         <object>objects\obj_Enemy_Chasing_Melee</object>
         <object>objects\obj_Enemy_Ranged</object>
         <object>objects\obj_Aggressive_Archer</object>
+        <object>objects\obj_Enemy_Patrolling</object>
       </objects>
       <object>objects\obj_Blood</object>
       <object>objects\obj_fakeExit</object>
@@ -143,7 +144,6 @@
     </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\rm_CombatTesting</room>
     <room>rooms\rm_Avoidance</room>
     <room>rooms\rm_Sneak</room>
     <room>rooms\rm_MainMenu</room>
@@ -157,6 +157,7 @@
     <room>rooms\rm_Bridge</room>
     <room>rooms\rm_Main</room>
     <room>rooms\rm_Client</room>
+    <room>rooms\rm_CombatTesting</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
