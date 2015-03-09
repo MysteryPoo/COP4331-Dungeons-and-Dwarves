@@ -41,11 +41,18 @@
             <kind>1</kind>
             <string>/// Initialize
 
+// New Instance Variables
+
+// Attack flag.
 CanAttack = false;
+// Cooldown between possible attacks.
 AttackCooldown = 60;
+// Weapon to create/use.
 MeleeWeapon = obj_Sword;
+// Range at which to create weapon.
 AttackRange = 30;
 
+// Start attack cooldown timer when created.
 alarm[5] = AttackCooldown;
 </string>
           </argument>
@@ -123,6 +130,7 @@ if (CanAttack)
         // Configure the weapon sprite angle.
         weapon.image_angle = direction;
         
+        // Reset attack flag and timer.
         CanAttack = false;
         alarm[5] = AttackCooldown;
     }

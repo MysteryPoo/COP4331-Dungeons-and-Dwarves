@@ -41,19 +41,25 @@
             <kind>1</kind>
             <string>/// Initialize
 
-// New Instance Variables
-State = "Default";
+// New instance variables
+
+// If we have LOS to player in the current step.
 PlayerLOS = false;
+// If we had LOS to player in the last step.
 PrevPlayerLOS = false;
+// Shoot flag.
 CanShoot = false;
+// Min time between shots.
 ShotCooldown = 60;
 // Number of frames to look ahead when firing 'reaction'
 //  shot when first detecting player.
 BlindFrameEstimate = 10;
+// Projectile to fire.
 Projectile = obj_Arrow;
 
 // Overrides
 DetectionRadius = 500;
+State = "Default";
 
 // Initial timers
 alarm[5] = ShotCooldown;
@@ -119,8 +125,10 @@ CanShoot = true;
             <kind>1</kind>
             <string>/// Check LOS to player
 
+// Push back LOS flag from last step.
 PrevPlayerLOS = PlayerLOS;
 
+// If we have line of sight
 if (collision_line(x, y, global.MyInst.x, global.MyInst.y, obj_Wall, true, false) == noone)
 {
     PlayerLOS = true;
@@ -190,6 +198,13 @@ if (CanShoot &amp;&amp; PlayerLOS &amp;&amp; PlayerDetected)
     // Otherwise use the predicted movement.
     else
     {
+        // If the shot is invalid, just shoot at where the player is.
+        if (collision_line(x, y, player_next_x, player_next_y, obj_Wall, false, false) != noone)
+        {
+            player_next_x = player_info.x;
+            player_next_y = player_info.y;
+        }
+        
         projectile.direction = point_direction(projectile.x, projectile.y, player_next_x, player_next_y);
     }
    

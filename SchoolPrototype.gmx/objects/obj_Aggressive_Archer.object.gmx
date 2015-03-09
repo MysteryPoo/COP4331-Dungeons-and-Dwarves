@@ -41,15 +41,21 @@
             <kind>1</kind>
             <string>/// Initialize
 
-// Overrides
-State = "Pursue";
-
-// New variables
-PursueDuration = 90;
+// New Instance variables
+// ----------------------------
+// Time to chase player.
+ChaseDuration = 90;
+// Speed to chase the player.
+ChaseSpeed = 1;
+// Time to wait before shooting.
 WaitToShootDuration = 30;
 
+// Overrides
+// ----------------------------
+State = "Chase";
+
 // Initial timers
-alarm[6] = PursueDuration;
+alarm[6] = ChaseDuration;
 </string>
           </argument>
         </arguments>
@@ -124,8 +130,8 @@ alarm[7] = WaitToShootDuration;
             <string>/// Pursue
 
 // If in pursuit, step towards the player.
-if (State == "Pursue" &amp;&amp; PlayerDetected)
-    mp_potential_step(global.MyInst.x, global.MyInst.y, 1, false);
+if (State == "Chase" &amp;&amp; PlayerDetected)
+    mp_potential_step(global.MyInst.x, global.MyInst.y, ChaseSpeed, false);
 </string>
           </argument>
         </arguments>
@@ -155,8 +161,8 @@ if (State == "ReadyToShoot")
     event_inherited();
     
     // Return to pursuit state.
-    State = "Pursue";
-    alarm[6] = PursueDuration;
+    State = "Chase";
+    alarm[6] = ChaseDuration;
 }
 else
 {

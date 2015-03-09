@@ -26,14 +26,22 @@
           <argument>
             <kind>1</kind>
             <string>/// Initialize
-PlayerDetected = false;
-DetectionRadius = 200;
-DetectionDuration = 60;
 
 // New instance variables.
+
+// Flag indicating player detection.
+PlayerDetected = false;
+// Max radius for detecting player.
+DetectionRadius = 200;
+// Length of time the enemy pursues the player for after losing detection.
+DetectionDuration = 60;
+// State used for behavior choices.
 State = "Wander";
+// Maximum speed for wander movements.
 MaxWanderSpeed = 1;
+// Maximum length of time between changing wander movement.
 MaxWanderDuration = 60;
+// Used as a timer, initialize to max.
 CurrentWanderDuration = MaxWanderDuration;
 </string>
           </argument>
@@ -139,15 +147,19 @@ if( foundCollision ){//collision detected
           <argument>
             <kind>1</kind>
             <string>/// Try Detection
+
+// Check that the player is close enough to detect.
 if (distance_to_object(obj_Dwarf) &lt; DetectionRadius * global.MyInst.image_alpha)
 {
+    // Check that the player is in line of sight.
     if (collision_line(x, y, global.MyInst.x, global.MyInst.y, obj_Wall, false, true) == noone)
     {
+        // Player Detected.  Set flag and start timer.
         PlayerDetected = true;
         alarm[0] = DetectionDuration;
     }
 }
-
+// If we don't detect the player, continue wandering.
 if (!PlayerDetected)
 {
     State = "Wander";
@@ -317,6 +329,20 @@ if (other.Owner == global.MyInst.id)
     <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
+        <id>500</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring>draw_self();</codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+      <action>
+        <libid>1</libid>
         <id>603</id>
         <kind>7</kind>
         <userelative>0</userelative>
@@ -332,8 +358,6 @@ if (other.Owner == global.MyInst.id)
           <argument>
             <kind>1</kind>
             <string>/// Draw Detection Indicator
-
-draw_self();
 
 if (PlayerDetected)
 {

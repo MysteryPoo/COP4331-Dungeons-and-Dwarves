@@ -42,8 +42,9 @@
             <string>/// Initialize
 
 // New Instance variables
-State = "Chase";
-ChasingSpeed = 2;
+
+// Speed to chase the player.
+ChaseSpeed = 2;
 </string>
           </argument>
         </arguments>
@@ -125,7 +126,7 @@ if (PlayerDetected)
 if (State == "Chase")
 {
     // Move towards the player
-    mp_potential_step(global.MyInst.x, global.MyInst.y, ChasingSpeed, false);
+    mp_potential_step(global.MyInst.x, global.MyInst.y, ChaseSpeed, false);
 }
 </string>
           </argument>
