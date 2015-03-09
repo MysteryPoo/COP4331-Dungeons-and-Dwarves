@@ -59,6 +59,7 @@ switch( msgid ) {
         {
             var _socket = buffer_read( buffer, buffer_u8 );
             var _state = buffer_read( buffer, buffer_string );
+            var _mod = buffer_read( buffer, buffer_u8 );
             for( var s = 0; s < ds_list_size( SocketList ); ++s )
             {
                 var _lMap = SocketList[| s ];
@@ -68,6 +69,7 @@ switch( msgid ) {
                     var _sMap = ds_map_create();
                     _sMap[? "Socket" ] = _socket;
                     _sMap[? "Status" ] = _state;
+                    _sMap[? "Modifier" ] = _mod;
                     ds_queue_enqueue( StatusQueue, _sMap );
                     break;
                 }
@@ -189,10 +191,13 @@ switch( msgid ) {
             var _name = buffer_read( buffer, buffer_string );
             var _players = buffer_read( buffer, buffer_u8 );
             var game = obj_ServerListManager.ServerList[@ s ];
-            game.IP = _ip;
-            game.Port = _port;
-            game.Name = _name;
-            game.Players = _players;
+            if( instance_exists( game ) )
+            {
+                game.IP = _ip;
+                game.Port = _port;
+                game.Name = _name;
+                game.Players = _players;
+            }
         }
         for( var s = _updates; s < obj_ServerListManager.MaxServers; ++s )
         {

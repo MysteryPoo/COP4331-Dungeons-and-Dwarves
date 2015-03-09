@@ -28,6 +28,7 @@
       <sprite>sprites\spr_Swing</sprite>
       <sprite>sprites\spr_arrow</sprite>
       <sprite>sprites\spr_spike</sprite>
+      <sprite>sprites\spr_Bow</sprite>
     </sprites>
     <sprites name="Dwarf">
       <sprites name="Idle">
@@ -44,6 +45,8 @@
     <sprites name="Misc">
       <sprite>sprites\spr_bloody_footprint</sprite>
       <sprite>sprites\spr_Exclamation</sprite>
+      <sprite>sprites\spr_drop</sprite>
+      <sprite>sprites\spr_Bag</sprite>
     </sprites>
     <sprites name="MainMenu">
       <sprite>sprites\spr_PlayGame</sprite>
@@ -51,6 +54,9 @@
     </sprites>
     <sprites name="ServerList">
       <sprite>sprites\spr_JoinServer</sprite>
+    </sprites>
+    <sprites name="Treasure">
+      <sprite>sprites\spr_Treasure1</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -71,10 +77,22 @@
   <objects name="objects">
     <objects name="Weapons">
       <object>objects\obj_Weapon</object>
+      <object>objects\obj_Gas</object>
+      <object>objects\obj_Explosion</object>
       <object>objects\obj_Sword</object>
       <object>objects\obj_Bomb</object>
       <object>objects\obj_Arrow</object>
-      <object>objects\obj_Spike</object>
+      <object>objects\obj_ExplosiveArrow</object>
+      <objects name="Bow">
+        <object>objects\obj_Bow</object>
+        <object>objects\obj_Bow_2</object>
+        <object>objects\obj_Bow_3</object>
+      </objects>
+      <objects name="Spike">
+        <object>objects\obj_Spike</object>
+        <object>objects\obj_Spike_2</object>
+        <object>objects\obj_Spike_3</object>
+      </objects>
     </objects>
     <objects name="Engine">
       <object>objects\obj_Light</object>
@@ -83,6 +101,8 @@
       <object>objects\obj_Gesture0</object>
       <object>objects\obj_Gesture1</object>
       <object>objects\obj_Time</object>
+      <object>objects\obj_Atmosphere</object>
+      <object>objects\obj_Inventory</object>
     </objects>
     <object>objects\obj_DEMO</object>
     <objects name="Generic">
@@ -114,6 +134,9 @@
       </objects>
       <object>objects\obj_Blood</object>
       <object>objects\obj_fakeExit</object>
+      <object>objects\obj_Treasure</object>
+      <object>objects\obj_Loot</object>
+      <object>objects\obj_Drop</object>
     </objects>
     <objects name="Bridge">
       <object>objects\obj_Bridge</object>

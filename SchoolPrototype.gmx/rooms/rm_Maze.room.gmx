@@ -3,8 +3,8 @@
   <caption></caption>
   <width>1024</width>
   <height>1000</height>
-  <vsnap>32</vsnap>
-  <hsnap>32</hsnap>
+  <vsnap>16</vsnap>
+  <hsnap>16</hsnap>
   <isometric>0</isometric>
   <speed>30</speed>
   <persistent>0</persistent>
@@ -275,6 +275,20 @@ if( instance_exists( obj_Client ) )
     <instance objName="obj_InvisibleWall" x="800" y="480" name="inst_F8717112" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_InvisibleWall" x="832" y="480" name="inst_10636277" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_InvisibleWall" x="864" y="480" name="inst_2D09BA8F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Treasure" x="96" y="96" name="inst_37A09596" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Treasure" x="192" y="224" name="inst_28799B06" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Treasure" x="896" y="640" name="inst_97EEC426" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Treasure" x="784" y="704" name="inst_0F9B0397" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Treasure" x="640" y="640" name="inst_30599DE9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Treasure" x="704" y="512" name="inst_B4237CB9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Treasure" x="576" y="464" name="inst_BC9AF010" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Treasure" x="192" y="560" name="inst_9C6EE807" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Treasure" x="336" y="512" name="inst_92D95451" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Treasure" x="464" y="256" name="inst_A3CC58FD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Treasure" x="768" y="32" name="inst_7B59AC3E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Treasure" x="880" y="64" name="inst_DB3A58AE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Treasure" x="912" y="64" name="inst_974EF53C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Treasure" x="944" y="64" name="inst_CEBF7DEC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_floor" x="96" y="64" w="32" h="32" xo="0" yo="0" id="10001559" name="inst_938B8B6E" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
