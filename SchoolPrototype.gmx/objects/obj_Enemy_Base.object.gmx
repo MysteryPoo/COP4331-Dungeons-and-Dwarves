@@ -43,6 +43,40 @@ MaxWanderSpeed = 1;
 MaxWanderDuration = 60;
 // Used as a timer, initialize to max.
 CurrentWanderDuration = MaxWanderDuration;
+// Flag for if we can contact damage the player.
+CanContactPlayer = false;
+// Timer to prevent sitting on top of player doing damage
+ContactDamageTimer = 90;
+// Contact damage.
+Damage = 10;
+// HitPoints
+HitPoints = 50;
+
+alarm[1] = ContactDamageTimer;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Can Contact Player
+CanContactPlayer = true;
 </string>
           </argument>
         </arguments>
@@ -288,9 +322,12 @@ if (State == "Wander")
 // Placeholder
 
 // Make sure the player isn't already dead.
-if (other.State != "Death")
+if (other.State != "Death" &amp;&amp; other.State != "Hit" &amp;&amp; CanContactPlayer)
 {
-    other.State = "Death_Start";
+    other.State = "Hit_Start";
+    other.HitPoints -= Damage;
+    CanContactPlayer = false;
+    alarm[1] = ContactDamageTimer;
 }
 </string>
           </argument>
@@ -319,7 +356,7 @@ if (other.State != "Death")
 // Placeholder
 if (other.Owner == global.MyInst.id)
 {
-    instance_destroy();
+    HitPoints -= other.Damage;
 }
 </string>
           </argument>
@@ -363,6 +400,28 @@ if (PlayerDetected)
 {
     draw_sprite(spr_Exclamation, 0, x, y - 48);
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Draw Hit Points
+draw_rectangle_colour( x - 16, y, x - 16 + 32 * HitPoints / 100, y + 8, c_maroon, c_red, c_black, c_red, false );
 </string>
           </argument>
         </arguments>
