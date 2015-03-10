@@ -51,6 +51,8 @@ ContactDamageTimer = 90;
 Damage = 10;
 // HitPoints
 HitPoints = 50;
+// To prevent being hit by a weapon multiple times.
+LastDamagingID = noone;
 
 alarm[1] = ContactDamageTimer;
 </string>
@@ -354,9 +356,16 @@ if (other.State != "Death" &amp;&amp; other.State != "Hit" &amp;&amp; CanContact
             <string>/// Take Damage
 
 // Placeholder
-if (other.Owner == global.MyInst.id)
+if (other.id != LastDamagingID &amp;&amp; other.Owner == global.MyInst.id)
 {
     HitPoints -= other.Damage;
+    LastDamagingID = other.id;
+    
+    // Death routine goes here.
+    if (HitPoints &lt;= 0)
+    {
+        instance_destroy();
+    }
 }
 </string>
           </argument>
