@@ -270,9 +270,39 @@ if (path_index == -1 &amp;&amp; State == "Patrol")
 
 if (State == "Chase")
 {
-    // Step towards the player.
-    mp_potential_step(global.MyInst.x, global.MyInst.y, ChaseSpeed, false);
+    if (distance_to_point(global.MyInst.x, global.MyInst.y) &gt; 30)
+    {
+        // Step towards the player.
+        mp_potential_step(global.MyInst.x, global.MyInst.y, ChaseSpeed, false);
+    }
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Fix stupid Gamemaker bug
+// Turns out there is a pathing bug in Gamemaker that
+//  doesn't appear to be actively investigated.  On some paths at
+//  the end of the path before executing the end action, the path_position
+//  gets set to 2.  This value should ALWAYS be between 0 and 1.
+if (path_position == 2)
+    path_position = 0;
 </string>
           </argument>
         </arguments>

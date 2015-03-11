@@ -126,7 +126,6 @@
       <objects name="Enemies">
         <object>objects\obj_Enemy_Base</object>
         <object>objects\obj_Enemy_Fleeing</object>
-        <object>objects\obj_Enemy_Chasing</object>
         <object>objects\obj_Enemy_Chasing_Melee</object>
         <object>objects\obj_Enemy_Ranged</object>
         <object>objects\obj_Aggressive_Archer</object>

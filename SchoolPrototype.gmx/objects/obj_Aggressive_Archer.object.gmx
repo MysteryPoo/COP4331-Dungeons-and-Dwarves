@@ -131,7 +131,10 @@ alarm[7] = WaitToShootDuration;
 
 // If in pursuit, step towards the player.
 if (State == "Chase" &amp;&amp; PlayerDetected)
-    mp_potential_step(global.MyInst.x, global.MyInst.y, ChaseSpeed, false);
+{
+    if (distance_to_point(global.MyInst.x, global.MyInst.y) &gt; 30)
+        mp_potential_step(global.MyInst.x, global.MyInst.y, ChaseSpeed, false);
+}
 </string>
           </argument>
         </arguments>
