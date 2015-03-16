@@ -12,9 +12,8 @@
   <showcolour>-1</showcolour>
   <code>global.Map = 0;
 global.MyInst = noone;
-global.MyWeapon = obj_Arrow;
-obj_Client.PlayerNameMsg = get_string_async( "Name", "Unnamed" );
-obj_Client.State = "Game";</code>
+global.MyWeapon = noone;
+obj_Client.State = "Spectator";</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
@@ -56,8 +55,11 @@ obj_Client.State = "Game";</code>
   </views>
   <instances>
     <instance objName="obj_Client" x="0" y="0" name="inst_0654E1C1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Button" x="704" y="544" name="inst_954CB468" locked="0" code="Room = rm_Client;&#xA;Label = &quot;Skip -- TESTING MODE&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Inventory" x="0" y="0" name="inst_C34A5256" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_PlayerSlot" x="256" y="160" name="inst_8A286245" locked="0" code="Slot = 0;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_PlayerSlot" x="672" y="160" name="inst_42F11A2B" locked="0" code="Slot = 1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_PlayerSlot" x="224" y="448" name="inst_0F084118" locked="0" code="Slot = 2;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_PlayerSlot" x="608" y="448" name="inst_C4C7E36D" locked="0" code="Slot = 3;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

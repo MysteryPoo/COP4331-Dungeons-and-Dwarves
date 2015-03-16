@@ -43,9 +43,37 @@ switch( msgid ) {
         }
         network_send_packet( socket, Buffer, buffer_tell( Buffer ) );
         break;
-    case 4: // Set Name
+    case 4: // Set Name -> Client requesting a player slot
         var _name = buffer_read( buffer, buffer_string );
-        for( var s = 0; s < ds_list_size( PlayerList ); ++s )
+        if( ds_list_size( PlayerList ) < 4 )
+        {
+            var _lMap = ds_map_create();
+            _lMap[? "Socket" ]  = socket;
+            _lMap[? "Instance" ] = noone;
+            _lMap[? "Name" ]    = _name;
+            _lMap[? "Map" ] = 0;
+            _lMap[? "Ready" ] = false;
+            var _pMap = ds_map_create();
+            _pMap[? "X" ]       = 100;
+            _pMap[? "Y" ]       = 100;
+            _pMap[? "Direction" ] = 0;
+            _pMap[? "Speed" ] = 0;
+            _lMap[? "PositionMap" ] = _pMap;
+            var _gMap = ds_map_create();
+            _gMap[? "X" ] = 0;
+            _gMap[? "Y" ] = 0;
+            _lMap[? "GestureMap" ] = _gMap;
+            ds_list_add( PlayerList, _lMap );
+            StartTimer = 30 * 10;   // Reset countdown until game start
+            // Update player count on Lobby Server
+            buffer_seek( Buffer, buffer_seek_start, 0 );
+            buffer_write( Buffer, buffer_u8, 2 );
+            buffer_write( Buffer, buffer_u8, ds_list_size( PlayerList ) );
+            network_send_packet( LobbyServer, Buffer, buffer_tell( Buffer ) );
+        }
+        if( ds_list_size( PlayerList ) > 1 && State != "Running" )
+            State = "Gathering";
+        /*for( var s = 0; s < ds_list_size( PlayerList ); ++s )
         {
             var _lMap = PlayerList[| s ];
             if( _lMap[? "Socket" ] == socket )
@@ -53,7 +81,7 @@ switch( msgid ) {
                 _lMap[? "Name" ] = _name;
                 break;
             }
-        }
+        }*/
         buffer_seek( Buffer, buffer_seek_start, 0 );
         buffer_write( Buffer, buffer_u8, 7 );
         buffer_write( Buffer, buffer_u8, 1 );

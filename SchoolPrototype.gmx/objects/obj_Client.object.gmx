@@ -250,6 +250,28 @@ MapList = ds_list_create();
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Player Name
+Name = "";
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="1" enumb="0">
       <action>
@@ -337,8 +359,8 @@ if( PingTimer &gt; 0 )
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Send Movement Information
-if( State == "Game" )
+            <string>/// Ping
+if( State != "Lobby" )
 {
     if( PingTimer == 0 )
     {
@@ -348,6 +370,30 @@ if( State == "Game" )
         buffer_write( Buffer, buffer_u8, 1 );
         network_send_packet( Socket, Buffer, buffer_tell( Buffer ) );
     }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Send Movement Information
+if( State == "Game" )
+{
     var _me = global.MyInst;
     if( instance_exists( _me ) )
     {
@@ -593,10 +639,10 @@ if( _id == PlayerNameMsg )
     {
         if( ds_map_find_value( async_load, "result" ) != "" )
         {
-            var _name = ds_map_find_value( async_load, "result" );
+            Name = ds_map_find_value( async_load, "result" );
             buffer_seek( Buffer, buffer_seek_start, 0 );
             buffer_write( Buffer, buffer_u8, 4 );
-            buffer_write( Buffer, buffer_string, _name );
+            buffer_write( Buffer, buffer_string, Name );
             network_send_packet( Socket, Buffer, buffer_tell( Buffer ) );
         }
     }
@@ -630,6 +676,7 @@ else
     draw_text( 5 , 5 , "Client Connected: NO" );
 draw_text( 5, 32, "My network ID: " + string( NetworkID ) );
 draw_text( 5, 32 + 16, "Ping: " + string( Ping ) );
+draw_text( 5, 32 + 32, "State: " + State );
 
 for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
 {
