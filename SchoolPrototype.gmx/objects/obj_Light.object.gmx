@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-1</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -259,6 +259,32 @@ with( obj_Dwarf )
 with( obj_Torch )
 {
     if( On )
+    {
+        for( var c = 1; c &lt; 15; ++c )
+        {
+            draw_set_alpha( 1 / c );
+            draw_circle( x - view_xview[ 0 ], y - view_yview[ 0 ], 8 * c + power( -1, c ) * 2 * dsin( 5 * c / 3 * other.Flicker ), false );
+        }
+        draw_set_alpha( 0.05 );
+        draw_circle( x - view_xview[ 0 ], y - view_yview[ 0 ] - 8, 128 + 8 * dsin( 10 * other.Flicker ), false );
+    }
+}
+with( obj_FlameMinion )
+{
+    /*if( On )*/
+    {
+        for( var c = 1; c &lt; 15; ++c )
+        {
+            draw_set_alpha( 1 / c );
+            draw_circle( x - view_xview[ 0 ], y - view_yview[ 0 ], 8 * c + power( -1, c ) * 2 * dsin( 5 * c / 3 * other.Flicker ), false );
+        }
+        draw_set_alpha( 0.05 );
+        draw_circle( x - view_xview[ 0 ], y - view_yview[ 0 ] - 8, 128 + 8 * dsin( 10 * other.Flicker ), false );
+    }
+}
+with( obj_FlameElemental )
+{
+    /*if( On )*/
     {
         for( var c = 1; c &lt; 15; ++c )
         {

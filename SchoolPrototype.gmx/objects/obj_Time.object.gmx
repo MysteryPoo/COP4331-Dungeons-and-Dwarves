@@ -54,36 +54,8 @@ var minutes = floor( date_minute_span( StartTime, date_current_datetime() ) );
 var seconds = date_second_span( StartTime, date_current_datetime() ) mod 60;
 var TimeString = string( minutes ) + ":";
 TimeString += string_replace( string_format( seconds mod 60, 2, 0 ), " ", "0" );
-draw_text( obj_Dwarf.x, obj_Dwarf.y, TimeString );
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/*
-// Time
-var Seconds = CurrentTime / room_speed;
-var Minutes = floor( Seconds / 60 );
-var TimeString = string( Minutes ) + ":";
-TimeString += string_replace( string_format( Seconds mod 60, 3, 2 ), " ", "0" );
-draw_text( 875, 20, "Time" );
-draw_text( 875, 56, TimeString );
-*/
+if( instance_exists( global.MyInst ) )
+    draw_text( global.MyInst.x, global.MyInst.y, TimeString );
 </string>
           </argument>
         </arguments>

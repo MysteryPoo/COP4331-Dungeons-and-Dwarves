@@ -10,7 +10,11 @@
   <persistent>0</persistent>
   <colour>12632256</colour>
   <showcolour>-1</showcolour>
-  <code></code>
+  <code>global.Map = 0;
+global.MyInst = noone;
+global.MyWeapon = noone;
+global.Waiting = false;
+obj_Client.State = "Spectator";</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
@@ -51,11 +55,16 @@
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
   </views>
   <instances>
-    <instance objName="obj_Button" x="192" y="192" name="inst_C4C8A577" locked="0" code="Room = rm_Bridge;&#xA;Label = &quot;Bridge&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Button" x="512" y="192" name="inst_B04128E0" locked="0" code="Room = rm_Sneak;&#xA;Label = &quot;Sneak&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Button" x="512" y="384" name="inst_9C184A28" locked="0" code="Room = rm_Ice;&#xA;Label = &quot;Ice&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Button" x="192" y="384" name="inst_5D84BE7C" locked="0" code="Room = rm_Bomb;&#xA;Label = &quot;Bomb&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Button" x="320" y="288" name="inst_954CB468" locked="0" code="Room = rm_Client;&#xA;Label = &quot;Multiplayer&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Client" x="0" y="0" name="inst_0654E1C1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Inventory" x="0" y="0" name="inst_C34A5256" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_PlayerSlot" x="256" y="160" name="inst_8A286245" locked="0" code="Slot = 0;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_PlayerSlot" x="672" y="160" name="inst_42F11A2B" locked="0" code="Slot = 1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_PlayerSlot" x="224" y="448" name="inst_0F084118" locked="0" code="Slot = 2;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_PlayerSlot" x="608" y="448" name="inst_C4C7E36D" locked="0" code="Slot = 3;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Spectate" x="352" y="160" name="inst_C6E33253" locked="0" code="Slot = 0;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Spectate" x="352" y="192" name="inst_D9E48297" locked="0" code="Slot = 1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Spectate" x="352" y="224" name="inst_002E9D2B" locked="0" code="Slot = 2;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Spectate" x="352" y="256" name="inst_F741E380" locked="0" code="Slot = 3;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
