@@ -776,9 +776,8 @@ for( var p = 0; p &lt; ds_list_size( PlayerList ); ++p )
     if( !_lMap[? "Ready" ] )
         _allReady = false;
 }
-if( _allReady )
+if( _allReady &amp;&amp; Map &lt; 2 )
 {
-    ++Map;
     for( var p = 0; p &lt; ds_list_size( PlayerList ); ++p )
     {
         var _lMap = PlayerList[| p ];
@@ -787,6 +786,23 @@ if( _allReady )
     buffer_seek( Buffer, buffer_seek_start, 0 );
     buffer_write( Buffer, buffer_u8, 11 );
     buffer_write( Buffer, buffer_string, MapList[| Map ] );
+    for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
+    {
+        network_send_packet( SocketList[| s ], Buffer, buffer_tell( Buffer ) );
+    }
+    ++Map;
+}
+else if( _allReady )
+{
+    Map = 5;
+    for( var p = 0; p &lt; ds_list_size( PlayerList ); ++p )
+    {
+        var _lMap = PlayerList[| p ];
+        _lMap[? "Ready" ] = false;
+    }
+    buffer_seek( Buffer, buffer_seek_start, 0 );
+    buffer_write( Buffer, buffer_u8, 11 );
+    buffer_write( Buffer, buffer_string, "rm_Client" );
     for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
     {
         network_send_packet( SocketList[| s ], Buffer, buffer_tell( Buffer ) );
@@ -851,6 +867,16 @@ if( State != "Waiting" )
             <string>/// Gathering
 if( State == "Gathering" )
 {
+    // Check for ready status
+    var _allReady = true;
+    for( var p = 0; p &lt; ds_list_size( PlayerList ); ++p )
+    {
+        var _lMap = PlayerList[| p ];
+        if( !_lMap[? "Ready" ] )
+            _allReady = false;
+    }
+    if( StartTimer &gt; 10 &amp;&amp; _allReady )
+        StartTimer = 11;
     if( StartTimer &gt; 0 )
         --StartTimer;
     else
@@ -895,6 +921,7 @@ switch( type_event )
     case network_type_connect:
         var socket = ds_map_find_value( async_load , "socket" );
         ds_list_add( SocketList, socket );
+        // Send the names of the currently connected players to the new client
         buffer_seek( Buffer, buffer_seek_start, 0 );
         buffer_write( Buffer, buffer_u8, 7 );
         buffer_write( Buffer, buffer_u8, ds_list_size( PlayerList ) );
@@ -905,6 +932,14 @@ switch( type_event )
             buffer_write( Buffer, buffer_string, _lMap[? "Name" ] );
         }
         network_send_packet( socket, Buffer, buffer_tell( Buffer ) );
+        if( State == "Running" )
+        {
+            // Send the current map to the new client
+            buffer_seek( Buffer, buffer_seek_start, 0 );
+            buffer_write( Buffer, buffer_u8, 11 );
+            buffer_write( Buffer, buffer_string, MapList[| Map ] );
+            network_send_packet( socket, Buffer, buffer_tell( Buffer ) );
+        }
         break;
     case network_type_disconnect:
         var socket = ds_map_find_value( async_load , "socket" );
@@ -979,7 +1014,10 @@ for( var m = 0; m &lt; 5; ++m )
 {
     draw_text( 500, 50 + 32 * m, MapList[| m ] );
 }
-draw_text( 700, 50, "Current Map: " + MapList[| Map ] );
+if( Map != 5 )
+    draw_text( 700, 50, "Current Map: " + MapList[| Map ] );
+else
+    draw_text( 700, 50, "Current Map: Final" );
 
 for( var s = 0; s &lt; ds_list_size( PlayerList ); ++s )
 {

@@ -111,6 +111,7 @@
       <object>objects\obj_Time</object>
       <object>objects\obj_Atmosphere</object>
       <object>objects\obj_Inventory</object>
+      <object>objects\obj_Spectate</object>
     </objects>
     <object>objects\obj_DEMO</object>
     <objects name="Generic">

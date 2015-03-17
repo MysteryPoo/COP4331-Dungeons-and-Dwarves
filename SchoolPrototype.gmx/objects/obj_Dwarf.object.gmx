@@ -639,11 +639,11 @@ if( State == "Death" )
         image_speed = 0;
     if( StateTimer == 0 )
     {
-        if( global.Map == 5 )
+        if( room = rm_Client || room == rm_Server )
             instance_destroy();
         else
         {
-            if( global.RestartOnDeath )
+            if( global.RestartOnDeath &amp;&amp; !global.Waiting )
             {
                 room_goto( room );
             }

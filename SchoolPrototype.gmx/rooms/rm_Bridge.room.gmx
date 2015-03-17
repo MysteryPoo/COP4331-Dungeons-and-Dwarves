@@ -3,8 +3,8 @@
   <caption></caption>
   <width>2000</width>
   <height>2000</height>
-  <vsnap>32</vsnap>
-  <hsnap>32</hsnap>
+  <vsnap>16</vsnap>
+  <hsnap>16</hsnap>
   <isometric>0</isometric>
   <speed>30</speed>
   <persistent>0</persistent>
@@ -15,20 +15,7 @@ global.StartX = 90;
 global.StartY = 160;
 var inst = instance_create( global.StartX, global.StartY, obj_Dwarf );
 global.MyInst = inst;
-global.RestartOnDeath = false;
-if( instance_exists( obj_Client ) )
-{
-    with( obj_Client )
-    {
-        buffer_seek( Buffer, buffer_seek_start, 0 );
-        buffer_write( Buffer, buffer_u8, 7 );
-        buffer_write( Buffer, buffer_u8, global.Map );
-        network_send_packet( Socket, Buffer, buffer_tell( Buffer ) );
-    }
-}
-
-// Remove
-global.Map = 1;</code>
+global.RestartOnDeath = false;</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
@@ -59,7 +46,7 @@ global.Map = 1;</code>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
   </backgrounds>
   <views>
-    <view visible="-1" objName="obj_Dwarf" xview="0" yview="0" wview="480" hview="270" xport="0" yport="0" wport="1920" hport="1080" hborder="256" vborder="192" hspeed="-1" vspeed="-1"/>
+    <view visible="-1" objName="obj_Dwarf" xview="0" yview="0" wview="480" hview="270" xport="0" yport="0" wport="1920" hport="1080" hborder="256" vborder="192" hspeed="10" vspeed="10"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
@@ -227,12 +214,12 @@ global.Map = 1;</code>
     <instance objName="obj_Pit" x="368" y="208" name="inst_BB2B778A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Pit" x="368" y="176" name="inst_65AC1BAD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Pit" x="368" y="144" name="inst_6EC21CF1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_TripWire" x="736" y="1760" name="inst_BA19236B" locked="0" code="Launcher = TripWire_Bridge_1;&#xA;" scaleX="1" scaleY="7" colour="4294967295" rotation="0"/>
+    <instance objName="obj_TripWire" x="624" y="976" name="inst_BA19236B" locked="0" code="Launcher = TripWire_Bridge_1;&#xA;" scaleX="1" scaleY="7" colour="4294967295" rotation="0"/>
     <instance objName="obj_Pit" x="368" y="464" name="inst_C60FA79D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Pit" x="368" y="496" name="inst_CC9C9ACA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Pit" x="368" y="528" name="inst_7E392989" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Pit" x="416" y="336" name="inst_7773A337" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_TripWire" x="672" y="1760" name="inst_A0A4FA28" locked="0" code="Launcher = TripWire_Bridge_1;&#xA;" scaleX="1" scaleY="7" colour="4294967295" rotation="0"/>
+    <instance objName="obj_TripWire" x="560" y="976" name="inst_A0A4FA28" locked="0" code="Launcher = TripWire_Bridge_1;&#xA;" scaleX="1" scaleY="7" colour="4294967295" rotation="0"/>
     <instance objName="obj_Launcher" x="592" y="1104" name="TripWire_Bridge_1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
     <instance objName="obj_Saw" x="1008" y="944" name="inst_9506F891" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Saw" x="880" y="880" name="inst_B8D68C91" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -267,6 +254,7 @@ global.Map = 1;</code>
     <instance objName="obj_Treasure" x="1344" y="960" name="inst_D3EF071C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="1344" y="992" name="inst_6C297DBC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="1344" y="1024" name="inst_A519D379" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Atmosphere" x="128" y="0" name="inst_737759FD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_floor" x="64" y="576" w="32" h="32" xo="0" yo="0" id="10003950" name="inst_CEE9FF96" depth="1000001" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

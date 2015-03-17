@@ -20,7 +20,7 @@ switch( msgid ) {
             if( _lMap[? "Socket" ] == socket )
             {
                 var _pMap = _lMap[? "PositionMap" ];
-                if( point_distance( _pMap[? "X" ], _pMap[? "Y" ], _x, _y ) < 32 )
+                //if( point_distance( _pMap[? "X" ], _pMap[? "Y" ], _x, _y ) < 32 )
                 {
                     _pMap[? "X" ]           = _x;
                     _pMap[? "Y" ]           = _y;

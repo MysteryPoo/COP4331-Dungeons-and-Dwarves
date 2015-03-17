@@ -221,6 +221,10 @@ switch( msgid ) {
             //ds_list_add( MapList, _map );
         }
         //ds_list_add( MapList, rm_Client );
+        if( State != "Spectator" )
+            global.Waiting = false;
+        else
+            global.Waiting = true;
         room_goto( _map );
         break;
 }

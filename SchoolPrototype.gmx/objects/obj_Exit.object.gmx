@@ -40,6 +40,9 @@ if( instance_exists( obj_Gesture0 ) )
 if( instance_exists( obj_Gesture1 ) )
     with( obj_Gesture1 )
         instance_destroy();
+with( other )
+    instance_destroy();
+global.Waiting = true;
 /*
 ++global.Map;
 if( global.Map &lt; 5 )
