@@ -61,6 +61,9 @@
       <sprite>sprites\spr_FireMinion</sprite>
       <sprite>sprites\spr_FireElemental_Idle</sprite>
       <sprite>sprites\spr_FireElemental_Walk</sprite>
+      <sprite>sprites\spr_Skelly_Idle</sprite>
+      <sprite>sprites\spr_Skelly_Attack</sprite>
+      <sprite>sprites\spr_Skelly_Walk</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
