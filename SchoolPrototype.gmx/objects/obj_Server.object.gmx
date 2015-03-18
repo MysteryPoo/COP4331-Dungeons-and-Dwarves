@@ -52,7 +52,7 @@ Buffer = buffer_create( Size , Type , Alignment );
           <argument>
             <kind>1</kind>
             <string>/// Create Server
-var Type, IP, MaxClients;
+var Type, MaxClients;
 Type = network_socket_tcp;
 IP = "127.0.0.1";
 Port = 6969;
@@ -98,6 +98,7 @@ if( isConnected &gt; -1 )
     buffer_write( Buffer, buffer_u16, Port );
     buffer_write( Buffer, buffer_string, Name );
     network_send_packet( LobbyServer, Buffer, buffer_tell( Buffer ) );
+    alarm[ 2 ] = 30 * 60;
 }
 //else
     //game_end();
@@ -270,6 +271,7 @@ ds_list_add( MapList, room_get_name( rm_MontyHall ) );
 ds_list_add( MapList, room_get_name( rm_Maze ) );
 ds_list_add( MapList, room_get_name( rm_Avoidance ) );
 ds_list_shuffle( MapList );
+Map = 0;
 </string>
           </argument>
         </arguments>
@@ -338,6 +340,57 @@ ds_queue_destroy( AttackQueue );
             <kind>1</kind>
             <string>/// Delete MapList
 ds_list_destroy( MapList );
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Reset Alarm
+alarm[ 2 ] = 30 * 60;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Register on Lobby Server
+buffer_seek( Buffer, buffer_seek_start, 0 );
+buffer_write( Buffer, buffer_u8, 1 );
+buffer_write( Buffer, buffer_string, IP );
+buffer_write( Buffer, buffer_u16, Port );
+buffer_write( Buffer, buffer_string, Name );
+network_send_packet( LobbyServer, Buffer, buffer_tell( Buffer ) );
 </string>
           </argument>
         </arguments>
@@ -624,6 +677,7 @@ if( !ds_queue_empty( StatusQueue ) )
         var _sMap = ds_queue_dequeue( StatusQueue );
         buffer_write( Buffer, buffer_u8, _sMap[? "Socket" ] );
         buffer_write( Buffer, buffer_string, _sMap[? "Status" ] );
+        buffer_write( Buffer, buffer_u8, _sMap[? "Modifier" ] );
         ds_map_destroy( _sMap );
     }
     for( var s = 0; s &lt; Sockets; ++s )
@@ -697,6 +751,67 @@ if( !ds_queue_empty( AttackQueue ) )
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Next Map
+// Check if everyone is ready/done with the map
+_allReady = true;
+for( var p = 0; p &lt; ds_list_size( PlayerList ); ++p )
+{
+    var _lMap = PlayerList[| p ];
+    if( !_lMap[? "Ready" ] )
+        _allReady = false;
+}
+if( _allReady &amp;&amp; Map &lt; 2 )
+{
+    for( var p = 0; p &lt; ds_list_size( PlayerList ); ++p )
+    {
+        var _lMap = PlayerList[| p ];
+        _lMap[? "Ready" ] = false;
+    }
+    buffer_seek( Buffer, buffer_seek_start, 0 );
+    buffer_write( Buffer, buffer_u8, 11 );
+    buffer_write( Buffer, buffer_string, MapList[| Map ] );
+    for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
+    {
+        network_send_packet( SocketList[| s ], Buffer, buffer_tell( Buffer ) );
+    }
+    ++Map;
+}
+else if( _allReady )
+{
+    Map = 5;
+    for( var p = 0; p &lt; ds_list_size( PlayerList ); ++p )
+    {
+        var _lMap = PlayerList[| p ];
+        _lMap[? "Ready" ] = false;
+    }
+    buffer_seek( Buffer, buffer_seek_start, 0 );
+    buffer_write( Buffer, buffer_u8, 11 );
+    buffer_write( Buffer, buffer_string, "rm_Client" );
+    for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
+    {
+        network_send_packet( SocketList[| s ], Buffer, buffer_tell( Buffer ) );
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="3" enumb="0">
       <action>
@@ -726,6 +841,7 @@ if( State != "Waiting" )
         StartTimer = 30 * 10;
         // Reshuffle map order
         ds_list_shuffle( MapList );
+        Map = 0;
     }
 }
 </string>
@@ -751,6 +867,16 @@ if( State != "Waiting" )
             <string>/// Gathering
 if( State == "Gathering" )
 {
+    // Check for ready status
+    var _allReady = true;
+    for( var p = 0; p &lt; ds_list_size( PlayerList ); ++p )
+    {
+        var _lMap = PlayerList[| p ];
+        if( !_lMap[? "Ready" ] )
+            _allReady = false;
+    }
+    if( StartTimer &gt; 10 &amp;&amp; _allReady )
+        StartTimer = 11;
     if( StartTimer &gt; 0 )
         --StartTimer;
     else
@@ -759,10 +885,7 @@ if( State == "Gathering" )
         alarm[ 0 ] = 3;
         buffer_seek( Buffer, buffer_seek_start, 0 );
         buffer_write( Buffer, buffer_u8, 11 );
-        buffer_write( Buffer, buffer_string, MapList[| 0 ] );
-        buffer_write( Buffer, buffer_string, MapList[| 1 ] );
-        buffer_write( Buffer, buffer_string, MapList[| 2 ] );
-        buffer_write( Buffer, buffer_string, MapList[| 3 ] );
+        buffer_write( Buffer, buffer_string, MapList[| Map ] );
         for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
         {
             network_send_packet( SocketList[| s ], Buffer, buffer_tell( Buffer ) );
@@ -797,35 +920,26 @@ switch( type_event )
 {
     case network_type_connect:
         var socket = ds_map_find_value( async_load , "socket" );
-        if( ds_list_size( PlayerList ) &lt; 4 )
-        {
-            var _lMap = ds_map_create();
-            _lMap[? "Socket" ]  = socket;
-            _lMap[? "Instance" ] = noone;
-            _lMap[? "Name" ]    = "Unnamed";
-            _lMap[? "Map" ] = 0;
-            _lMap[? "Ready" ] = false;
-            var _pMap = ds_map_create();
-            _pMap[? "X" ]       = 100;
-            _pMap[? "Y" ]       = 100;
-            _pMap[? "Direction" ] = 0;
-            _pMap[? "Speed" ] = 0;
-            _lMap[? "PositionMap" ] = _pMap;
-            var _gMap = ds_map_create();
-            _gMap[? "X" ] = 0;
-            _gMap[? "Y" ] = 0;
-            _lMap[? "GestureMap" ] = _gMap;
-            ds_list_add( PlayerList, _lMap );
-            StartTimer = 30 * 10;
-        }
-        if( ds_list_size( PlayerList ) &gt; 1 )
-            State = "Gathering";
         ds_list_add( SocketList, socket );
-        // Update player count on Lobby Server
+        // Send the names of the currently connected players to the new client
         buffer_seek( Buffer, buffer_seek_start, 0 );
-        buffer_write( Buffer, buffer_u8, 2 );
+        buffer_write( Buffer, buffer_u8, 7 );
         buffer_write( Buffer, buffer_u8, ds_list_size( PlayerList ) );
-        network_send_packet( LobbyServer, Buffer, buffer_tell( Buffer ) );
+        for( var p = 0; p &lt; ds_list_size( PlayerList ); ++p )
+        {
+            var _lMap = PlayerList[| p ];
+            buffer_write( Buffer, buffer_u8, _lMap[? "Socket" ] );
+            buffer_write( Buffer, buffer_string, _lMap[? "Name" ] );
+        }
+        network_send_packet( socket, Buffer, buffer_tell( Buffer ) );
+        if( State == "Running" )
+        {
+            // Send the current map to the new client
+            buffer_seek( Buffer, buffer_seek_start, 0 );
+            buffer_write( Buffer, buffer_u8, 11 );
+            buffer_write( Buffer, buffer_string, MapList[| Map ] );
+            network_send_packet( socket, Buffer, buffer_tell( Buffer ) );
+        }
         break;
     case network_type_disconnect:
         var socket = ds_map_find_value( async_load , "socket" );
@@ -900,6 +1014,10 @@ for( var m = 0; m &lt; 5; ++m )
 {
     draw_text( 500, 50 + 32 * m, MapList[| m ] );
 }
+if( Map != 5 )
+    draw_text( 700, 50, "Current Map: " + MapList[| Map ] );
+else
+    draw_text( 700, 50, "Current Map: Final" );
 
 for( var s = 0; s &lt; ds_list_size( PlayerList ); ++s )
 {

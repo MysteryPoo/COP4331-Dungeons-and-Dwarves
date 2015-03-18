@@ -26,11 +26,29 @@
           <argument>
             <kind>1</kind>
             <string>/// Next level
+/// Toggle Ready
+if( instance_exists( obj_Client ) )
+{
+    buffer_seek( obj_Client.Buffer, buffer_seek_start, 0 );
+    buffer_write( obj_Client.Buffer, buffer_u8, 6 );
+    buffer_write( obj_Client.Buffer, buffer_bool, true );
+    network_send_packet( obj_Client.Socket, obj_Client.Buffer, buffer_tell( obj_Client.Buffer ) );
+}
+if( instance_exists( obj_Gesture0 ) )
+    with( obj_Gesture0 )
+        instance_destroy();
+if( instance_exists( obj_Gesture1 ) )
+    with( obj_Gesture1 )
+        instance_destroy();
+with( other )
+    instance_destroy();
+global.Waiting = true;
+/*
 ++global.Map;
 if( global.Map &lt; 5 )
     room_goto( obj_Client.MapList[| global.Map ] );
 else
-    room_goto( rm_Client );
+    room_goto( rm_Client );*/
 </string>
           </argument>
         </arguments>

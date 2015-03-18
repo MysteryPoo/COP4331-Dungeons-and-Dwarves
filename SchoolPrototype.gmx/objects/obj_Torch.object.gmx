@@ -31,6 +31,8 @@ On = true;
           </argument>
         </arguments>
       </action>
+    </event>
+    <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -47,8 +49,17 @@ On = true;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Don't animate
-image_speed = 0;
+            <string>/// Spawn Flame Minion
+if( On )
+{
+    var _dwarf = instance_nearest( x, y, obj_Dwarf );
+    if( _dwarf != noone &amp;&amp; distance_to_object( _dwarf ) &lt; 64 )
+    {
+        var _flame = instance_create( x, y, obj_FlameMinion );
+        _flame.ParentTorch = id;
+        On = false;
+    }
+}
 </string>
           </argument>
         </arguments>

@@ -16,17 +16,7 @@ global.StartY = 112;
 var inst = instance_create( global.StartX, global.StartY, obj_Dwarf );
 global.MyInst = inst;
 inst.hasTorch = true;
-global.RestartOnDeath = true;
-if( instance_exists( obj_Client ) )
-{
-    with( obj_Client )
-    {
-        buffer_seek( Buffer, buffer_seek_start, 0 );
-        buffer_write( Buffer, buffer_u8, 7 );
-        buffer_write( Buffer, buffer_u8, global.Map );
-        network_send_packet( Socket, Buffer, buffer_tell( Buffer ) );
-    }
-}</code>
+global.RestartOnDeath = true;</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
@@ -57,7 +47,7 @@ if( instance_exists( obj_Client ) )
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
   </backgrounds>
   <views>
-    <view visible="-1" objName="obj_Dwarf" xview="0" yview="0" wview="512" hview="384" xport="0" yport="0" wport="1024" hport="768" hborder="512" vborder="384" hspeed="-1" vspeed="-1"/>
+    <view visible="-1" objName="obj_Dwarf" xview="0" yview="0" wview="512" hview="384" xport="0" yport="0" wport="1024" hport="768" hborder="512" vborder="384" hspeed="5" vspeed="5"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
