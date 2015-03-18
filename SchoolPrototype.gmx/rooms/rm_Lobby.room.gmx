@@ -10,7 +10,20 @@
   <persistent>0</persistent>
   <colour>12632256</colour>
   <showcolour>-1</showcolour>
+<<<<<<< Updated upstream
   <code></code>
+=======
+  <code>clientCount = 0;
+MaxPlayers = 4;
+
+SlotList[MaxPlayers] = 0;
+//Draw Player slots to screen
+for( var i = 0; i &lt; MaxPlayers/2; i++)
+{
+    SlotList[i] = instance_create(128, 32 + (64 + 32)*i, obj_PlayerSlot);   
+    SlotList[i+1] = instance_create(256, 32 + (64 + 32)*i, obj_PlayerSlot);
+}</code>
+>>>>>>> Stashed changes
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
