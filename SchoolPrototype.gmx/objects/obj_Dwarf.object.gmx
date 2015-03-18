@@ -186,6 +186,29 @@ HitPoints = 100;
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Scale
+image_xscale = 0.25;
+image_yscale = 0.25;
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="3" enumb="2">
       <action>
@@ -292,7 +315,7 @@ if( State != "Ice" &amp;&amp; instance_exists( obj_Gesture0 ) &amp;&amp; global.
     if( obj_Gesture0.Touched )
     {
         direction = obj_Gesture0.direction;
-        MaxSpeed = 5 * obj_Gesture0.scale;
+        MaxSpeed = 2 * obj_Gesture0.scale;
     }
     else
         MaxSpeed = 0;
@@ -416,13 +439,16 @@ if( State != "Death" )
 if( State == "Idle_Start" )
 {
     State = "Idle";
-    image_speed = 1;
+    image_speed = 0.01;
     x = floor( x );
     y = floor( y );
+    sprite_index = spr_dwarf_idle_s;
     if( direction &lt; 180 )
-        sprite_index = spr_dwarf_idle_n;
+        image_angle = 180;
+        //sprite_index = spr_dwarf_idle_n;
     else
-        sprite_index = spr_dwarf_idle_s;
+        image_angle = 0;
+        //sprite_index = spr_dwarf_idle_s;*/
 }
 if( State == "Idle" )
 {
@@ -453,25 +479,24 @@ if( State == "Idle" )
 if( State == "Move_Start" )
 {
     State = "Move";
-    image_speed = 1;
+    sprite_index = spr_dwarf_walk_s;
+    image_speed = 0.25;
 }
 if( State == "Move" )
 {
     // Direction animation
     if( direction &lt; 45 || direction &gt; 315 )
     {
-        sprite_index = spr_dwarf_walk_e;
-        image_xscale = 1;
+        image_angle = 90;
     }
     else if( direction &lt; 135 )
-        sprite_index = spr_dwarf_walk_n;
+        image_angle = 180;
     else if( direction &lt; 225 )
     {
-        sprite_index = spr_dwarf_walk_e;
-        image_xscale = -1;
+        image_angle = -90;
     }
     else
-        sprite_index = spr_dwarf_walk_s;
+        image_angle = 0;
     // End of animation direction
     // Are we on ice?
     if( place_meeting( x, y, obj_Ice ) )
@@ -614,11 +639,11 @@ if( State == "Death" )
         image_speed = 0;
     if( StateTimer == 0 )
     {
-        if( global.Map == 5 )
+        if( room = rm_Client || room == rm_Server )
             instance_destroy();
         else
         {
-            if( global.RestartOnDeath )
+            if( global.RestartOnDeath &amp;&amp; !global.Waiting )
             {
                 room_goto( room );
             }
@@ -771,7 +796,7 @@ draw_self();
           <argument>
             <kind>1</kind>
             <string>/// Draw Hit Points
-draw_rectangle_colour( x - 16, y, x - 16 + 32 * HitPoints / 100, y + 8, c_maroon, c_red, c_black, c_red, false );
+//draw_rectangle_colour( x - 16, y, x - 16 + 32 * HitPoints / 100, y + 8, c_maroon, c_red, c_black, c_red, false );
 </string>
           </argument>
         </arguments>

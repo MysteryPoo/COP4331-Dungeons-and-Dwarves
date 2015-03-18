@@ -160,7 +160,7 @@ instance_destroy();
 var _x = irandom_range( -5, 5 );
 var _y = irandom_range( -5, 5 );
 if( DrawTimer mod Delay == 0 )
-    effect_create_above( ef_explosion, x + _x, y + _y, 0.1, choose( c_red, c_yellow, c_orange ) );
+    effect_create_above( ef_explosion, x + _x, y + _y, 0.1, choose( c_maroon, c_red, c_yellow ) );
 </string>
           </argument>
         </arguments>
