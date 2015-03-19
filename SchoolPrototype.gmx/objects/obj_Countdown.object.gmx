@@ -27,6 +27,7 @@
             <kind>1</kind>
             <string>///Initialize countdown and alarm
 countdownTime = 25;
+clientCount = 0;
 countdownText = "Game Beginning in : ";
 </string>
           </argument>
@@ -52,10 +53,6 @@ countdownText = "Game Beginning in : ";
             <kind>1</kind>
             <string>///Decrement countdown
 countdownTime--;
-
-<<<<<<< Updated upstream
-alarm[0] = room_speed;
-=======
 /*
 if(countdownTime == 0)
     room_goto(rm_MontyHall);//Actually goto random room
@@ -85,11 +82,7 @@ else
           <argument>
             <kind>1</kind>
             <string>//Check for client connections
-var currentCount = 0;
-with( obj_Client )
-{
-    currentCount++;
-}
+var currentCount = ds_list_size( obj_Client.SocketList );
 
 if(currentCount &gt; clientCount)
 {
@@ -101,7 +94,6 @@ if(currentCount &gt; clientCount)
     else if(currentCount &lt; 2)
         alarm[0] = 0; //Stop countdown?
 }
->>>>>>> Stashed changes
 </string>
           </argument>
         </arguments>
@@ -125,7 +117,7 @@ if(currentCount &gt; clientCount)
           <argument>
             <kind>1</kind>
             <string>///Draw countdown 
-draw_text(0, 0, countdownText + string(countdownTime));
+draw_text(room_width/2, 0, countdownText + string(countdownTime) + " " + string(clientCount));
 </string>
           </argument>
         </arguments>
