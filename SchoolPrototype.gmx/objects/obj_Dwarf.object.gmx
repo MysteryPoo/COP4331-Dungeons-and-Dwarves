@@ -164,6 +164,51 @@ BloodSteps = 10 * 10;
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Hit Points
+HitPoints = 100;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Scale
+image_xscale = 0.25;
+image_yscale = 0.25;
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="3" enumb="2">
       <action>
@@ -270,7 +315,7 @@ if( State != "Ice" &amp;&amp; instance_exists( obj_Gesture0 ) &amp;&amp; global.
     if( obj_Gesture0.Touched )
     {
         direction = obj_Gesture0.direction;
-        MaxSpeed = 5 * obj_Gesture0.scale;
+        MaxSpeed = 2 * obj_Gesture0.scale;
     }
     else
         MaxSpeed = 0;
@@ -322,19 +367,49 @@ if( State != "Death" )
         {
             if( object_exists( global.MyWeapon ) )
             {
-                var inst = instance_create( x, y - 16, global.MyWeapon );
-                inst.direction = obj_Gesture1.direction;
-                inst.image_angle = inst.direction;
-                inst.Owner = id;
-                if( instance_exists( obj_Client ) )
+                validShot = false;
+                if( instance_exists( obj_Inventory ) )
                 {
-                    buffer_seek( obj_Client.Buffer, buffer_seek_start, 0 );
-                    buffer_write( obj_Client.Buffer, buffer_u8, 5 );
-                    buffer_write( obj_Client.Buffer, buffer_string, object_get_name( inst.object_index ) );
-                    buffer_write( obj_Client.Buffer, buffer_u16, x );
-                    buffer_write( obj_Client.Buffer, buffer_u16, y - 16 );
-                    buffer_write( obj_Client.Buffer, buffer_s16, obj_Gesture1.direction );
-                    network_send_packet( obj_Client.Socket, obj_Client.Buffer, buffer_tell( obj_Client.Buffer ) );
+                    switch( global.MyWeapon )
+                    {
+                        case obj_Bow:
+                        case obj_Bow_2:
+                        case obj_Bow_3:
+                            if( obj_Inventory.Ammo[? "Arrows" ] &gt; 0 )
+                            {
+                                --obj_Inventory.Ammo[? "Arrows" ];
+                                validShot = true;
+                            }
+                            break;
+                        case obj_Spike:
+                        case obj_Spike_2:
+                        case obj_Spike_3:
+                            validShot = true;
+                            break;
+                        case obj_Bomb:
+                            if( obj_Inventory.Ammo[? "Bombs" ] &gt; 0 )
+                            {
+                                --obj_Inventory.Ammo[? "Bombs" ];
+                                validShot = true;
+                            }
+                    }
+                }
+                if( validShot )
+                {
+                    var inst = instance_create( x, y - 16, global.MyWeapon );
+                    inst.direction = obj_Gesture1.direction;
+                    inst.image_angle = inst.direction;
+                    inst.Owner = id;
+                    if( instance_exists( obj_Client ) )
+                    {
+                        buffer_seek( obj_Client.Buffer, buffer_seek_start, 0 );
+                        buffer_write( obj_Client.Buffer, buffer_u8, 5 );
+                        buffer_write( obj_Client.Buffer, buffer_string, object_get_name( inst.object_index ) );
+                        buffer_write( obj_Client.Buffer, buffer_u16, x );
+                        buffer_write( obj_Client.Buffer, buffer_u16, y - 16 );
+                        buffer_write( obj_Client.Buffer, buffer_s16, obj_Gesture1.direction );
+                        network_send_packet( obj_Client.Socket, obj_Client.Buffer, buffer_tell( obj_Client.Buffer ) );
+                    }
                 }
             }
         }
@@ -364,13 +439,16 @@ if( State != "Death" )
 if( State == "Idle_Start" )
 {
     State = "Idle";
-    image_speed = 1;
+    image_speed = 0.01;
     x = floor( x );
     y = floor( y );
+    sprite_index = spr_dwarf_idle_s;
     if( direction &lt; 180 )
-        sprite_index = spr_dwarf_idle_n;
+        image_angle = 180;
+        //sprite_index = spr_dwarf_idle_n;
     else
-        sprite_index = spr_dwarf_idle_s;
+        image_angle = 0;
+        //sprite_index = spr_dwarf_idle_s;*/
 }
 if( State == "Idle" )
 {
@@ -401,25 +479,24 @@ if( State == "Idle" )
 if( State == "Move_Start" )
 {
     State = "Move";
-    image_speed = 1;
+    sprite_index = spr_dwarf_walk_s;
+    image_speed = 0.25;
 }
 if( State == "Move" )
 {
     // Direction animation
     if( direction &lt; 45 || direction &gt; 315 )
     {
-        sprite_index = spr_dwarf_walk_e;
-        image_xscale = 1;
+        image_angle = 90;
     }
     else if( direction &lt; 135 )
-        sprite_index = spr_dwarf_walk_n;
+        image_angle = 180;
     else if( direction &lt; 225 )
     {
-        sprite_index = spr_dwarf_walk_e;
-        image_xscale = -1;
+        image_angle = -90;
     }
     else
-        sprite_index = spr_dwarf_walk_s;
+        image_angle = 0;
     // End of animation direction
     // Are we on ice?
     if( place_meeting( x, y, obj_Ice ) )
@@ -502,6 +579,51 @@ if( State == "Ice" )
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>/// Hit
+if( State == "Hit_Start" )
+{
+    State = "Hit";
+    StateTimer = 30;
+    speed = -speed;
+    // Change animation
+}
+if( State == "Hit" )
+{
+    if( StateTimer mod 5 == 0 )
+        visible = !visible;
+    if( StateTimer mod 15 == 0 &amp;&amp; StateTimer != 30 )
+        speed = 0;
+    if( StateTimer == 0 )
+    {
+        State = "Idle_Start";
+        visible = true;
+    }
+    if( HitPoints &lt;= 0 )
+    {
+        State = "Death_Start";
+        visible = true;
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>/// Death
 if( State == "Death_Start" )
 {
@@ -517,11 +639,11 @@ if( State == "Death" )
         image_speed = 0;
     if( StateTimer == 0 )
     {
-        if( global.Map == 5 )
+        if( room = rm_Client || room == rm_Server )
             instance_destroy();
         else
         {
-            if( global.RestartOnDeath )
+            if( global.RestartOnDeath &amp;&amp; !global.Waiting )
             {
                 room_goto( room );
             }
@@ -651,8 +773,30 @@ with( other )
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_self();
-draw_text( x, y + 8, "( " + string( x ) + ", " + string( y ) + " )" );
+            <string>/// Draw Self
+draw_self();
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Draw Hit Points
+//draw_rectangle_colour( x - 16, y, x - 16 + 32 * HitPoints / 100, y + 8, c_maroon, c_red, c_black, c_red, false );
 </string>
           </argument>
         </arguments>

@@ -28,6 +28,7 @@
       <sprite>sprites\spr_Swing</sprite>
       <sprite>sprites\spr_arrow</sprite>
       <sprite>sprites\spr_spike</sprite>
+      <sprite>sprites\spr_Bow</sprite>
     </sprites>
     <sprites name="Dwarf">
       <sprites name="Idle">
@@ -43,6 +44,9 @@
     <sprite>sprites\spr_invis_wall</sprite>
     <sprites name="Misc">
       <sprite>sprites\spr_bloody_footprint</sprite>
+      <sprite>sprites\spr_Exclamation</sprite>
+      <sprite>sprites\spr_drop</sprite>
+      <sprite>sprites\spr_Bag</sprite>
     </sprites>
     <sprites name="MainMenu">
       <sprite>sprites\spr_PlayGame</sprite>
@@ -50,6 +54,17 @@
     </sprites>
     <sprites name="ServerList">
       <sprite>sprites\spr_JoinServer</sprite>
+    </sprites>
+    <sprites name="Treasure">
+      <sprite>sprites\spr_Treasure1</sprite>
+    </sprites>
+    <sprites name="Enemies">
+      <sprite>sprites\spr_FireMinion</sprite>
+      <sprite>sprites\spr_FireElemental_Idle</sprite>
+      <sprite>sprites\spr_FireElemental_Walk</sprite>
+      <sprite>sprites\spr_Skelly_Idle</sprite>
+      <sprite>sprites\spr_Skelly_Attack</sprite>
+      <sprite>sprites\spr_Skelly_Walk</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -70,10 +85,27 @@
   <objects name="objects">
     <objects name="Weapons">
       <object>objects\obj_Weapon</object>
+      <object>objects\obj_Gas</object>
+      <object>objects\obj_Explosion</object>
       <object>objects\obj_Sword</object>
       <object>objects\obj_Bomb</object>
       <object>objects\obj_Arrow</object>
-      <object>objects\obj_Spike</object>
+      <object>objects\obj_ExplosiveArrow</object>
+      <objects name="Bow">
+        <object>objects\obj_Bow</object>
+        <object>objects\obj_Bow_2</object>
+        <object>objects\obj_Bow_3</object>
+      </objects>
+      <objects name="Spike">
+        <object>objects\obj_Spike</object>
+        <object>objects\obj_Spike_2</object>
+        <object>objects\obj_Spike_3</object>
+      </objects>
+    </objects>
+    <objects name="Enemies">
+      <object>objects\obj_FlameMinion</object>
+      <object>objects\obj_FlameElemental</object>
+      <object>objects\obj_Skelly</object>
     </objects>
     <objects name="Engine">
       <object>objects\obj_Light</object>
@@ -82,6 +114,9 @@
       <object>objects\obj_Gesture0</object>
       <object>objects\obj_Gesture1</object>
       <object>objects\obj_Time</object>
+      <object>objects\obj_Atmosphere</object>
+      <object>objects\obj_Inventory</object>
+      <object>objects\obj_Spectate</object>
     </objects>
     <object>objects\obj_DEMO</object>
     <objects name="Generic">
@@ -102,8 +137,19 @@
       <object>objects\obj_Trigger</object>
       <object>objects\obj_Crumbled_Wall</object>
       <object>objects\obj_Effect</object>
+      <objects name="Enemies">
+        <object>objects\obj_Enemy_Base</object>
+        <object>objects\obj_Enemy_Fleeing</object>
+        <object>objects\obj_Enemy_Chasing_Melee</object>
+        <object>objects\obj_Enemy_Ranged</object>
+        <object>objects\obj_Aggressive_Archer</object>
+        <object>objects\obj_Enemy_Patrolling</object>
+      </objects>
       <object>objects\obj_Blood</object>
       <object>objects\obj_fakeExit</object>
+      <object>objects\obj_Treasure</object>
+      <object>objects\obj_Loot</object>
+      <object>objects\obj_Drop</object>
     </objects>
     <objects name="Bridge">
       <object>objects\obj_Bridge</object>
@@ -132,19 +178,22 @@
       <object>objects\obj_JoinServer</object>
       <object>objects\obj_ServerListManager</object>
     </objects>
+    <objects name="Lobby">
+      <object>objects\obj_PlayerSlot</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_MainMenu</room>
     <room>rooms\rm_Server</room>
+    <room>rooms\rm_Test</room>
+    <room>rooms\rm_Bridge</room>    
+    <room>rooms\rm_Sneak</room>
     <room>rooms\rm_ServerList</room>
     <room>rooms\rm_MontyHall</room>
     <room>rooms\rm_Maze</room>
     <room>rooms\rm_Avoidance</room>
     <room>rooms\rm_Select</room>
-    <room>rooms\rm_Bomb</room>
     <room>rooms\rm_Ice</room>
-    <room>rooms\rm_Sneak</room>
-    <room>rooms\rm_Bridge</room>
     <room>rooms\rm_Main</room>
     <room>rooms\rm_Client</room>
   </rooms>

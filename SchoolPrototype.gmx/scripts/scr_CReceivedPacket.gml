@@ -16,13 +16,11 @@ switch( msgid ) {
             var _y = buffer_read( buffer, buffer_s16 );
             var _dir = buffer_read( buffer, buffer_s16 );
             var _speed = buffer_read( buffer, buffer_s8 );
-            var _found = false;
             for( var s = 0; s < ds_list_size( SocketList ); ++s )
             {
                 var _lMap = SocketList[| s ];
                 if( _lMap[? "Socket" ] == _socket )
                 {
-                    _found = true;
                     var _pMap = _lMap[? "PositionMap" ];
                     _pMap[? "X" ] = _x;
                     _pMap[? "Y" ] = _y;
@@ -30,26 +28,6 @@ switch( msgid ) {
                     _pMap[? "Speed" ] = _speed;
                     break;
                 }
-            }
-            if( !_found)
-            {
-                var _pMap = ds_map_create();
-                _pMap[? "X" ] = _x;
-                _pMap[? "Y" ] = _y;
-                _pMap[? "Direction" ] = _dir;
-                _pMap[? "Speed" ] = _speed;
-                var _gMap = ds_map_create();
-                _gMap[? "X" ] = 0;
-                _gMap[? "Y" ] = 0;
-                var _lMap = ds_map_create();
-                _lMap[? "Socket" ] = _socket;
-                _lMap[? "Ready" ] = false;
-                _lMap[? "Instance" ] = noone;
-                _lMap[? "Name" ] = "Unnamed";
-                _lMap[? "Map" ] = 0;
-                _lMap[? "PositionMap" ] = _pMap;
-                _lMap[? "GestureMap" ] = _gMap;
-                ds_list_add( SocketList, _lMap );
             }
         }
         break;
@@ -59,6 +37,7 @@ switch( msgid ) {
         {
             var _socket = buffer_read( buffer, buffer_u8 );
             var _state = buffer_read( buffer, buffer_string );
+            var _mod = buffer_read( buffer, buffer_u8 );
             for( var s = 0; s < ds_list_size( SocketList ); ++s )
             {
                 var _lMap = SocketList[| s ];
@@ -68,6 +47,7 @@ switch( msgid ) {
                     var _sMap = ds_map_create();
                     _sMap[? "Socket" ] = _socket;
                     _sMap[? "Status" ] = _state;
+                    _sMap[? "Modifier" ] = _mod;
                     ds_queue_enqueue( StatusQueue, _sMap );
                     break;
                 }
@@ -132,14 +112,38 @@ switch( msgid ) {
         {
             var _socket = buffer_read( buffer, buffer_u8 );
             var _name = buffer_read( buffer, buffer_string );
+            var _found = false;
+            if( _name == Name )
+                State = "Game";
             for( var s = 0; s < ds_list_size( SocketList ); ++s )
             {
                 var _lMap = SocketList[| s ];
                 if( _lMap[? "Socket" ] == _socket )
                 {
+                    _found = true;
                     _lMap[? "Name" ] = _name;
                     break;
                 }
+            }
+            if( !_found)
+            {
+                var _pMap = ds_map_create();
+                _pMap[? "X" ] = -100;
+                _pMap[? "Y" ] = -100;
+                _pMap[? "Direction" ] = 0;
+                _pMap[? "Speed" ] = 0;
+                var _gMap = ds_map_create();
+                _gMap[? "X" ] = 0;
+                _gMap[? "Y" ] = 0;
+                var _lMap = ds_map_create();
+                _lMap[? "Socket" ] = _socket;
+                _lMap[? "Ready" ] = false;
+                _lMap[? "Instance" ] = noone;
+                _lMap[? "Name" ] = _name;
+                _lMap[? "Map" ] = 0;
+                _lMap[? "PositionMap" ] = _pMap;
+                _lMap[? "GestureMap" ] = _gMap;
+                ds_list_add( SocketList, _lMap );
             }
         }
         break;
@@ -204,7 +208,7 @@ switch( msgid ) {
         }
         break;
     case 11:    // Game Start - Retrieve Map Order
-        repeat( 4 )
+        //repeat( 4 )
         {
             var _map = buffer_read( buffer, buffer_string );
             _map = asset_get_index( _map );
@@ -213,10 +217,14 @@ switch( msgid ) {
                 show_message( "Your game is out of date." );
                 game_end();
             }
-            else
-            ds_list_add( MapList, _map );
+            //else
+            //ds_list_add( MapList, _map );
         }
-        ds_list_add( MapList, rm_Client );
-        room_goto( MapList[| global.Map ] );
+        //ds_list_add( MapList, rm_Client );
+        if( State != "Spectator" )
+            global.Waiting = false;
+        else
+            global.Waiting = true;
+        room_goto( _map );
         break;
 }

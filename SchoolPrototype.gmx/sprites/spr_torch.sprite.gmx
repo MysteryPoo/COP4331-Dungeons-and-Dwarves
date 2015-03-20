@@ -7,8 +7,8 @@
   <coltolerance>0</coltolerance>
   <sepmasks>0</sepmasks>
   <bboxmode>0</bboxmode>
-  <bbox_left>0</bbox_left>
-  <bbox_right>31</bbox_right>
+  <bbox_left>10</bbox_left>
+  <bbox_right>20</bbox_right>
   <bbox_top>8</bbox_top>
   <bbox_bottom>23</bbox_bottom>
   <HTile>0</HTile>
@@ -22,6 +22,5 @@
   <frames>
     <frame index="0">images\spr_torch_0.png</frame>
     <frame index="1">images\spr_torch_1.png</frame>
-    <frame index="2">images\spr_torch_2.png</frame>
   </frames>
 </sprite>
