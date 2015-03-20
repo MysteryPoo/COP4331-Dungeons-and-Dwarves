@@ -26,9 +26,12 @@
           <argument>
             <kind>1</kind>
             <string>///Initialize countdown and alarm
-countdownTime = 25;
+countdownTime = 20;
 clientCount = 0;
 countdownText = "Game Beginning in : ";
+
+
+alarm[0] = room_speed;
 </string>
           </argument>
         </arguments>
@@ -53,12 +56,8 @@ countdownText = "Game Beginning in : ";
             <kind>1</kind>
             <string>///Decrement countdown
 countdownTime--;
-/*
-if(countdownTime == 0)
-    room_goto(rm_MontyHall);//Actually goto random room
-else
-*/
-    alarm[0] = room_speed;
+
+alarm[0] = room_speed;
 </string>
           </argument>
         </arguments>
@@ -84,6 +83,7 @@ else
             <string>//Check for client connections
 var currentCount = ds_list_size( obj_Client.SocketList );
 
+/*
 if(currentCount &gt; clientCount)
 {
     clientCount = currentCount;
@@ -93,7 +93,7 @@ if(currentCount &gt; clientCount)
         
     else if(currentCount &lt; 2)
         alarm[0] = 0; //Stop countdown?
-}
+}*/
 </string>
           </argument>
         </arguments>
@@ -117,7 +117,18 @@ if(currentCount &gt; clientCount)
           <argument>
             <kind>1</kind>
             <string>///Draw countdown 
-draw_text(room_width/2, 0, countdownText + string(countdownTime) + " " + string(clientCount));
+draw_set_halign(fa_center);
+draw_text(room_width/2, 0, countdownText);
+
+//draw_set_font(fnt_DEMO);
+//draw_text(room_width/2, 10, string(countdownTime));
+if(countdownTime &lt;= 15)
+    draw_text_transformed_color(room_width/2, 15, string(countdownTime), 1.5, 1.5, 0, c_red, c_red, c_red, c_red, 1);
+else 
+    draw_text_transformed_color(room_width/2, 15, string(countdownTime), 1.5, 1.5, 0, c_green, c_green, c_green, c_green, 1);
+
+
+draw_set_halign(fa_left);
 </string>
           </argument>
         </arguments>
