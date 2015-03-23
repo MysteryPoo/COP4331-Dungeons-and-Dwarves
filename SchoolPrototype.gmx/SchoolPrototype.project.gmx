@@ -77,7 +77,13 @@
   </paths>
   <scripts name="scripts">
     <script>scripts\scr_SReceivedPacket.gml</script>
+    <script>scripts\scr_CanDetectPlayer.gml</script>
     <script>scripts\scr_CReceivedPacket.gml</script>
+    <script>scripts\scr_Flee.gml</script>
+    <script>scripts\scr_FireAt.gml</script>
+    <script>scripts\scr_Chase.gml</script>
+    <script>scripts\scr_MeleeAttack.gml</script>
+    <script>scripts\scr_Wander.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_DEMO</font>
@@ -186,7 +192,7 @@
     <room>rooms\rm_MainMenu</room>
     <room>rooms\rm_Server</room>
     <room>rooms\rm_Test</room>
-    <room>rooms\rm_Bridge</room>    
+    <room>rooms\rm_Bridge</room>
     <room>rooms\rm_Sneak</room>
     <room>rooms\rm_ServerList</room>
     <room>rooms\rm_MontyHall</room>
