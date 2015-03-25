@@ -185,117 +185,15 @@ if( foundCollision ){//collision detected
             <string>/// Try Detection
 
 // Check that the player is close enough to detect.
-if (distance_to_object(obj_Dwarf) &lt; DetectionRadius * global.MyInst.image_alpha)
+if (scr_CanDetectPlayer(DetectionRadius))
 {
-    // Check that the player is in line of sight.
-    if (collision_line(x, y, global.MyInst.x, global.MyInst.y, obj_Wall, false, true) == noone)
-    {
-        // Player Detected.  Set flag and start timer.
-        PlayerDetected = true;
-        alarm[0] = DetectionDuration;
-    }
+    PlayerDetected = true;
+    alarm[0] = DetectionDuration;
 }
 // If we don't detect the player, continue wandering.
 if (!PlayerDetected)
 {
     State = "Wander";
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="3" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Wander
-if (State == "Wander")
-{
-    if (CurrentWanderDuration == MaxWanderDuration)
-    {
-        var vertical_weight = 0;
-        var horizontal_weight = 0;
-        
-        // Determine if we should move up (negative weight) or down (positive weight)
-        if (!place_free(x, y - 30))
-            vertical_weight = 2;
-        else if (!place_free(x, y + 30))
-            vertical_weight = -2;
-            
-        // Determine if we should move left (negative weight) or right (positive weight)
-        if (!place_free(x - 20, y))
-            horizontal_weight = 2;
-        else if (!place_free(bbox_right + 20, y))
-            horizontal_weight = -2;
-
-        // If we need to move right
-        if (horizontal_weight &gt; 0)
-            direction = 0;
-        // If we need to move left
-        else if (horizontal_weight &lt; 0)
-            direction = 180;
-        // No preference, decide randomly
-        else
-        {
-            if (irandom(1))
-                direction = 0;
-            else
-                direction = 180;
-        }
-        
-        // Pick a random offset to our current direction between 0 and 90 degrees
-        var offset = irandom(90);
-        
-        // If we need to move down
-        if (vertical_weight &gt; 0)
-        {
-            // Move down and to the right (range 270-360)
-            if (direction == 0)
-                direction = 360 - offset;
-            // Move down and to the left (range 180-270)
-            else
-                direction += offset;
-        }
-        // If we need to move up
-        else if (vertical_weight &lt; 0)
-        {
-            // Move up and to the right (range 0-90)
-            if (direction == 0)
-                direction += offset;
-            // Move up and to the left (range 90-180)
-            else
-                direction -= offset;
-        }
-        // No preference for up or down, decide randomly
-        else
-        {
-            if (irandom(1))
-                direction += offset;
-            else
-                direction -= offset;
-        }       
-        
-        speed = irandom(MaxWanderSpeed);
-    }
-    
-    // Update State timer and reset if needed.
-    CurrentWanderDuration -= 1;
-    if (CurrentWanderDuration == 0)
-        CurrentWanderDuration = MaxWanderDuration;
 }
 </string>
           </argument>
