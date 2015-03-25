@@ -5,10 +5,24 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_Enemy_Base</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>604</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_inherited</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -71,15 +85,28 @@ StateTimer = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Movement Information
-GoalX = x;
-GoalY = y;
+            <string>/// Override DetectionRadius
+DetectionRadius = 64;
 </string>
           </argument>
         </arguments>
       </action>
     </event>
     <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>604</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_inherited</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -126,11 +153,14 @@ if( State == "Idle_Start" )
     StateTimer = 30;
     sprite_index = spr_Skelly_Idle;
     speed = 0;
+    image_speed = 1;
 }
 if( State == "Idle" )
 {
     if( StateTimer == 0 )
-        State = choose( "Idle_Start", "Walk_Start", "Attack_Start" );
+        State = choose( "Idle_Start", "Wander_Start" );
+    if( scr_CanDetectPlayer( DetectionRadius ) )
+        State = "Chase_Start";
 }
 </string>
           </argument>
@@ -152,21 +182,65 @@ if( State == "Idle" )
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Walk
-if( State == "Walk_Start" )
+            <string>/// Wander
+if( State == "Wander_Start" )
 {
-    State = "Walk";
+    State = "Wander";
     StateTimer = 30;
     sprite_index = spr_Skelly_Walk;
     image_speed = 0.25;
-    GoalX = choose( x - 32, x, x + 32 );
-    GoalY = choose( y - 32, y, y + 32 );
-    direction = point_direction( x, y, GoalX, GoalY );
-    speed = 1;
+    scr_Wander( 1 );
 }
-if( State == "Walk" )
+if( State == "Wander" )
 {
-    if( point_distance( x, y, GoalX, GoalY ) &lt; 1 )
+    // Direction animation
+    image_angle = scr_Angle24Dir( direction );
+    if( StateTimer == 0 )
+        State = "Idle_Start";
+    if( scr_CanDetectPlayer( DetectionRadius ) )
+        State = "Chase_Start";
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Chase
+if( State == "Chase_Start" )
+{
+    State = "Chase";
+    StateTimer = 0;
+    sprite_index = spr_Skelly_Walk;
+    image_speed = 0.5;
+}
+if( State == "Chase" )
+{
+    // Direction animation
+    image_angle = scr_Angle24Dir( direction );
+    var _Near = instance_nearest( x, y, obj_Dwarf );
+    if( _Near != noone )
+        if( point_distance( x, y, _Near.x, _Near.y ) &lt; 32 )
+            State = "Attack_Start";
+        else if( scr_CanDetectPlayer( DetectionRadius * 1.5 ) )
+            scr_Chase( 2.5, _Near );
+        else
+            State = "Idle_Start";
+    else
         State = "Idle_Start";
 }
 </string>
@@ -194,9 +268,11 @@ if( State == "Attack_Start" )
 {
     State = "Attack";
     sprite_index = spr_Skelly_Attack;
-    StateTimer = floor( 30 / image_number );
-    image_index = 0;
-    image_speed = 0.25;
+    speed = 0;
+    StateTimer = 60;
+    image_index = 1;
+    image_speed = 0;
+    DetectionRadius = 64;
     // Attack
     var _sword = instance_create( x, y, obj_Sword );
     _sword.Owner = id;
@@ -207,6 +283,35 @@ if( State == "Attack" )
 {
     if( StateTimer == 0 )
         State = "Idle_Start";
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Death
+if( State == "Death_Start" )
+{
+    State = "Death";
+}
+if( State == "Death" )
+{
+    instance_destroy();
 }
 </string>
           </argument>

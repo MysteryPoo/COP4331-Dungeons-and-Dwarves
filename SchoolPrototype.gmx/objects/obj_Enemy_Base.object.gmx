@@ -29,8 +29,6 @@
 
 // New instance variables.
 
-// Flag indicating player detection.
-PlayerDetected = false;
 // Max radius for detecting player.
 DetectionRadius = 200;
 // Length of time the enemy pursues the player for after losing detection.
@@ -43,66 +41,10 @@ MaxWanderSpeed = 1;
 MaxWanderDuration = 60;
 // Used as a timer, initialize to max.
 CurrentWanderDuration = MaxWanderDuration;
-// Flag for if we can contact damage the player.
-CanContactPlayer = false;
-// Timer to prevent sitting on top of player doing damage
-ContactDamageTimer = 90;
 // Contact damage.
 Damage = 10;
 // HitPoints
 HitPoints = 50;
-// To prevent being hit by a weapon multiple times.
-LastDamagingID = noone;
-
-alarm[1] = ContactDamageTimer;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="1">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Can Contact Player
-CanContactPlayer = true;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Lost Player
-PlayerDetected = false;
 </string>
           </argument>
         </arguments>
@@ -129,7 +71,7 @@ PlayerDetected = false;
 var foundCollision;
 
 //find a collision through frame movement
-foundCollision = collision_rectangle(bbox_left + min(0, -hspeed), bbox_top + min(0, -vspeed), bbox_right + max(0, -hspeed), bbox_bottom + max(0, -vspeed), obj_Wall, false, true);
+foundCollision = collision_rectangle(bbox_left + min(0, hspeed), bbox_top + min(0, vspeed), bbox_right + max(0, hspeed), bbox_bottom + max(0, vspeed), obj_Wall, false, true);
 
 if( foundCollision ){//collision detected
 
@@ -166,6 +108,8 @@ if( foundCollision ){//collision detected
           </argument>
         </arguments>
       </action>
+    </event>
+    <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -182,18 +126,32 @@ if( foundCollision ){//collision detected
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Try Detection
-
-// Check that the player is close enough to detect.
-if (scr_CanDetectPlayer(DetectionRadius))
+            <string>/// Hit
+if( State == "Hit_Start" )
 {
-    PlayerDetected = true;
-    alarm[0] = DetectionDuration;
+    State = "Hit";
+    StateTimer = 30;
+    DetectionRadius = 256;
+    // Change animation
 }
-// If we don't detect the player, continue wandering.
-if (!PlayerDetected)
+if( State == "Hit" )
 {
-    State = "Wander";
+    if( StateTimer mod 2 == 0 )
+        visible = !visible;
+    if( StateTimer mod 5 == 0 &amp;&amp; StateTimer != 30 )
+        speed *= 0.1;
+    if( speed &lt; 1 )
+        speed = 0;
+    if( StateTimer == 0 )
+    {
+        State = "Idle_Start";
+        visible = true;
+    }
+    if( HitPoints &lt;= 0 )
+    {
+        State = "Death_Start";
+        visible = true;
+    }
 }
 </string>
           </argument>
@@ -222,12 +180,12 @@ if (!PlayerDetected)
 // Placeholder
 
 // Make sure the player isn't already dead.
-if (other.State != "Death" &amp;&amp; other.State != "Hit" &amp;&amp; CanContactPlayer)
+if (other.State != "Death" &amp;&amp; other.State != "Hit" )
 {
     other.State = "Hit_Start";
     other.HitPoints -= Damage;
-    CanContactPlayer = false;
-    alarm[1] = ContactDamageTimer;
+    other.direction = -other.direction;
+    other.speed = 10;
 }
 </string>
           </argument>
@@ -252,7 +210,14 @@ if (other.State != "Death" &amp;&amp; other.State != "Hit" &amp;&amp; CanContact
           <argument>
             <kind>1</kind>
             <string>/// Take Damage
-
+if( State != "Hit" &amp;&amp; State != "Death" &amp;&amp; other.Owner != id )
+{
+    State = "Hit_Start";
+    HitPoints -= other.Damage;
+    direction = other.direction;
+    speed = 10;
+}
+/*
 // Placeholder
 if (other.id != LastDamagingID &amp;&amp; other.Owner == global.MyInst.id)
 {
@@ -264,7 +229,7 @@ if (other.id != LastDamagingID &amp;&amp; other.Owner == global.MyInst.id)
     {
         instance_destroy();
     }
-}
+}*/
 </string>
           </argument>
         </arguments>
@@ -302,7 +267,7 @@ if (other.id != LastDamagingID &amp;&amp; other.Owner == global.MyInst.id)
           <argument>
             <kind>1</kind>
             <string>/// Draw Detection Indicator
-
+var PlayerDetected = scr_CanDetectPlayer( DetectionRadius );
 if (PlayerDetected)
 {
     draw_sprite(spr_Exclamation, 0, x, y - 48);

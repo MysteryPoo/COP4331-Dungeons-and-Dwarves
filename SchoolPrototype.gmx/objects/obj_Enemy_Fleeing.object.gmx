@@ -140,7 +140,8 @@ if (State == "Wander")
 //  in x and y direction.
 if (State == "Flee")
 {
-    scr_Flee(FleeSpeed);
+    var _Near = instance_nearest( x, y, obj_Dwarf );
+    scr_Flee(FleeSpeed, _Near);
 }
 </string>
           </argument>

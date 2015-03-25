@@ -64,5 +64,4 @@ else
         direction -= offset;
 }       
 
-speed = irandom(wander_speed);
-
+speed = wander_speed;//irandom(wander_speed);

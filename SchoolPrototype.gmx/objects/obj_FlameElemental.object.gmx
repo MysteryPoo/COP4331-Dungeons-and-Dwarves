@@ -5,10 +5,24 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_Enemy_Base</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>604</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_inherited</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -55,8 +69,67 @@ StateTimer = 0;
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Projectile
+Projectile = obj_Fireball;
+ProjectileSpeed = 5;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Override DetectionRadius
+DetectionRadius = 128;
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>604</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_inherited</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -108,7 +181,9 @@ if( State == "Idle_Start" )
 if( State == "Idle" )
 {
     if( StateTimer == 0 )
-        State = "Walk_Start";
+        State = choose( "Idle_Start", "Wander_Start" );
+    if( scr_CanDetectPlayer( DetectionRadius ) )
+        State = "Attack_Start";
 }
 </string>
           </argument>
@@ -130,20 +205,96 @@ if( State == "Idle" )
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Walk
-if( State == "Walk_Start" )
+            <string>/// Wander
+if( State == "Wander_Start" )
 {
-    State = "Walk";
+    State = "Wander";
     StateTimer = 30;
     image_speed = 0.3;
     sprite_index = spr_FireElemental_Walk;
+    scr_Wander( 1 );
 }
-if( State == "Walk" )
+if( State == "Wander" )
 {
-    direction = 270;
-    speed = 1;
+    // Direction animation
+    image_angle = scr_Angle24Dir( direction );
     if( StateTimer == 0 )
         State = "Idle_Start";
+    if( scr_CanDetectPlayer( DetectionRadius ) )
+        State = "Attack_Start";
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Attack
+if( State == "Attack_Start" )
+{
+    State = "Attack";
+    StateTimer = 90;
+    // Once we have an animation, we'll change it here
+    
+}
+if( State == "Attack" )
+{
+    if ( StateTimer == 0 )
+    {
+        // Get the player instance for reference.
+        var player_info = instance_nearest(x, y, obj_Dwarf);
+        if( player_info != noone )
+            scr_Fire( player_info );
+        
+        // Reset Detection Radius
+        DetectionRadius = 128;
+        
+        // Reset State
+        State = "Idle_Start";
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Death
+if( State == "Death_Start" )
+{
+    State = "Death";
+}
+if( State == "Death" )
+{
+    instance_destroy();
 }
 </string>
           </argument>
@@ -153,25 +304,17 @@ if( State == "Walk" )
     <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
+        <id>604</id>
+        <kind>0</kind>
         <userelative>0</userelative>
         <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_inherited</functionname>
         <codestring></codestring>
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Draw Self
-draw_self();
-</string>
-          </argument>
-        </arguments>
       </action>
       <action>
         <libid>1</libid>
@@ -191,7 +334,11 @@ draw_self();
             <kind>1</kind>
             <string>/// Smoke
 var _rand = 245 * dsin( StateTimer );
-var _smoke = make_colour_rgb( _rand, _rand, _rand );
+var _smoke;
+if( State == "Attack" )
+    _smoke = make_colour_rgb( 255, _rand, _rand );
+else
+    _smoke = make_colour_rgb( _rand, _rand, _rand );
 if( StateTimer mod 2 == 0 )
 {
     effect_create_below( ef_smokeup, x - 20, y, 0.05, _smoke );

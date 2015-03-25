@@ -245,7 +245,7 @@ draw_set_blend_mode( bm_subtract );
 draw_set_color( c_white );
 with( obj_Dwarf )
 {
-    if( hasTorch )
+    //if( hasTorch )
     {
         for( var c = 1; c &lt; 15; ++c )
         {
