@@ -75,8 +75,11 @@ Flipped = false;
 if( !Flipped )
 {
     Flipped = true;
-    instance_create(192, 432, obj_Key);
-    instance_create(192, 300, obj_Guard);
+    instance_create( 192, 432, obj_Key );
+    instance_create( 192, 432, obj_Skelly );
+    instance_create( 384, 368, obj_Skelly );
+    instance_create( 448, 432, obj_Skelly );
+    instance_create( 384, 496, obj_Skelly );
 }
 </string>
           </argument>
