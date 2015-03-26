@@ -130,7 +130,7 @@ if( foundCollision ){//collision detected
 if( State == "Hit_Start" )
 {
     State = "Hit";
-    StateTimer = 30;
+    StateTimer = 10;
     DetectionRadius = 256;
     // Change animation
 }
