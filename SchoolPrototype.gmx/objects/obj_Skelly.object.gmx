@@ -311,6 +311,7 @@ if( State == "Death_Start" )
 }
 if( State == "Death" )
 {
+    instance_create( x, y, obj_Treasure );
     instance_destroy();
 }
 </string>
