@@ -13,7 +13,7 @@
   <code>global.ServerIP = "184.91.74.235";
 global.ServerPort = 20000;
 global.ServerType = "List";
-display_set_gui_size( 512, 384 );
+display_set_gui_size( 480, 270 );
 
 global.Waiting = false;</code>
   <enableViews>-1</enableViews>
