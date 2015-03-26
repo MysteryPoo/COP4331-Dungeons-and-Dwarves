@@ -264,8 +264,47 @@ if( State == "Attack" )
         DetectionRadius = 128;
         
         // Reset State
-        State = "Idle_Start";
+        State = "Charge_Start";
     }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Charge
+if( State == "Charge_Start" )
+{
+    State = "Charge";
+    StateTimer = 30;
+    sprite_index = spr_FireElemental_Walk;
+    image_speed = 0.7;
+    var _Near = instance_nearest( x, y, obj_Dwarf );
+    if( _Near != noone )
+    {
+        direction = point_direction( x, y, _Near.x, _Near.y );
+        speed = 5;
+    }
+}
+if( State == "Charge" )
+{
+    if( StateTimer == 0 )
+        State = "Idle_Start";
 }
 </string>
           </argument>
@@ -294,6 +333,7 @@ if( State == "Death_Start" )
 }
 if( State == "Death" )
 {
+    instance_create( x, y, obj_Treasure );
     instance_destroy();
 }
 </string>
