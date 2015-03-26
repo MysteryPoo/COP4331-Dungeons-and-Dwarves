@@ -237,7 +237,7 @@ if( State == "Chase" )
         if( point_distance( x, y, _Near.x, _Near.y ) &lt; 32 )
             State = "Attack_Start";
         else if( scr_CanDetectPlayer( DetectionRadius * 1.5 ) )
-            scr_Chase( 2.5, _Near );
+            scr_Chase( 3, _Near );
         else
             State = "Idle_Start";
     else
