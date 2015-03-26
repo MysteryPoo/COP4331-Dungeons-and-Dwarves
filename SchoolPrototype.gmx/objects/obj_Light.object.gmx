@@ -51,7 +51,7 @@ surface_reset_target();
           <argument>
             <kind>1</kind>
             <string>/// Alpha
-Alpha = 0.85;
+Alpha = 0.6;
 </string>
           </argument>
         </arguments>
@@ -218,7 +218,7 @@ surface_set_target( Surface );
             <string>/// Draw Darkness
 draw_set_alpha( Alpha );
 draw_set_color( c_black );
-draw_rectangle( 0, 0, view_wview[ 0 ], view_hview[ 0 ], false );
+draw_rectangle( -32, -32, view_wview[ 0 ] + 32, view_hview[ 0 ] + 32, false );
 draw_set_alpha( 1 );
 </string>
           </argument>
