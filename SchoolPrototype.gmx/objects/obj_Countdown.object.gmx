@@ -120,14 +120,14 @@ if(currentCount &gt; clientCount)
 draw_set_halign(fa_center);
 
 draw_set_font(fnt_Default);
-draw_text(room_width/2, 0, countdownText);
+draw_text(room_width/2, 32, countdownText);
 
 draw_set_font(fnt_LargeTimer);
 
 if(countdownTime &lt;= 15)
-    draw_text_color(room_width/2, 15, string(countdownTime),  c_red, c_red, c_black, c_black, 1);
+    draw_text_color(room_width/2, 60, string(countdownTime),  c_red, c_red, c_black, c_black, 1);
 else 
-    draw_text_color(room_width/2, 15, string(countdownTime), c_green, c_green, c_black, c_black, 1);
+    draw_text_color(room_width/2, 60, string(countdownTime), c_green, c_green, c_black, c_black, 1);
 
 draw_set_font(-1);
 draw_set_halign(fa_left);
