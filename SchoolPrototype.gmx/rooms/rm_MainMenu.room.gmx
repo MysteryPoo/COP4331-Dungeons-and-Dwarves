@@ -13,7 +13,7 @@
   <code>global.ServerIP = "184.91.74.235";
 global.ServerPort = 20000;
 global.ServerType = "List";
-display_set_gui_size( 512, 384 );
+display_set_gui_size( 480, 270 );
 
 global.Waiting = false;</code>
   <enableViews>-1</enableViews>
@@ -58,6 +58,7 @@ global.Waiting = false;</code>
   <instances>
     <instance objName="obj_PlayGame" x="512" y="320" name="inst_105C97D8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ExitGame" x="512" y="512" name="inst_6756B1A9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Button" x="96" y="64" name="inst_382FDC5D" locked="0" code="image_blend = c_green;&#xA;Room = rm_Test;&#xA;Label = &quot;Show off room&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_Wall_Tile" x="32" y="0" w="32" h="32" xo="0" yo="0" id="10001973" name="inst_FB9A511B" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

@@ -52,7 +52,7 @@ MeleeWeapon = obj_Sword;
 // Range at which to create weapon.
 AttackRange = 30;
 // Speed to chase the player.
-ChaseSpeed = 2;
+ChaseSpeed = 0.5;
 
 // Start attack cooldown timer when created.
 alarm[5] = AttackCooldown;
@@ -85,21 +85,7 @@ CanAttack = true;
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="2">
-      <action>
-        <libid>1</libid>
-        <id>604</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_inherited</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-      </action>
+    <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -116,28 +102,24 @@ CanAttack = true;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// State Update
-if (PlayerDetected)
-    State = "Chase";
+            <string>/// Wander
+if (State == "Wander")
+{
+    // If it's time to reset wander movement, call the script to do so.
+    if (CurrentWanderDuration == MaxWanderDuration)
+        scr_Wander(MaxWanderSpeed);
+        
+    // Update State timer and reset if needed.
+    CurrentWanderDuration -= 1;
+    if (CurrentWanderDuration == 0)
+        CurrentWanderDuration = MaxWanderDuration;
+        
+    if (PlayerDetected)
+        State = "Chase";
+}
 </string>
           </argument>
         </arguments>
-      </action>
-    </event>
-    <event eventtype="3" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>604</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_inherited</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
       </action>
       <action>
         <libid>1</libid>
@@ -163,7 +145,8 @@ if (State == "Chase")
     if (distance_to_point(global.MyInst.x, global.MyInst.y) &gt; 30)
     {
         // Move towards the player
-        mp_potential_step(global.MyInst.x, global.MyInst.y, ChaseSpeed, false);
+        var _Near = instance_nearest( x, y, obj_Dwarf );
+        scr_Chase(ChaseSpeed, _Near);
     }
     else
     {
@@ -197,15 +180,7 @@ if (CanAttack)
     // If we're within melee range, attack.
     if (distance_to_point(global.MyInst.x, global.MyInst.y) &lt; AttackRange)
     {
-        // Create the Sword to attack.
-        // y offset of instance creation is subtracted since
-        //  positive y direction is downwards
-        var weapon = instance_create(x + AttackRange * dcos(direction) / 3, 
-                                    y - AttackRange * dsin(direction) / 3, 
-                                    MeleeWeapon);
-        // Configure the weapon sprite angle.
-        weapon.image_angle = direction;
-        
+        scr_MeleeAttack(AttackRange, MeleeWeapon);
         // Reset attack flag and timer.
         CanAttack = false;
         alarm[5] = AttackCooldown;

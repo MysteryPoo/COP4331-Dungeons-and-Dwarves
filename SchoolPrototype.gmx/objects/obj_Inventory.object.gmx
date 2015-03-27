@@ -2,7 +2,7 @@
 <object>
   <spriteName>spr_Bag</spriteName>
   <solid>0</solid>
-  <visible>-1</visible>
+  <visible>0</visible>
   <depth>-10</depth>
   <persistent>-1</persistent>
   <parentName>&lt;undefined&gt;</parentName>
@@ -52,9 +52,7 @@ SpriteMap[? "Bomb" ] = spr_bomb;
             <kind>1</kind>
             <string>/// Inventory list
 Inventory = ds_list_create();
-
-// Test Data
-ds_list_add( Inventory, obj_Bow_3 );
+global.MyWeapon = noone;
 </string>
           </argument>
         </arguments>
@@ -80,9 +78,6 @@ Ammo = ds_map_create();
 Ammo[? "Arrows" ] = 0;
 Ammo[? "Bombs" ] = 0;
 Ammo[? "Spikes" ] = 1; // Arbitrary positive value. They never decrement.
-
-// Test Data
-Ammo[? "Arrows" ] = 100;
 </string>
           </argument>
         </arguments>
@@ -494,6 +489,30 @@ if( State == "Closed" )
         </arguments>
       </action>
     </event>
+    <event eventtype="7" enumb="5">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Make visible again
+visible = true;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="7" enumb="3">
       <action>
         <libid>1</libid>
@@ -596,6 +615,7 @@ if( State == "Open" || State == "Opened" || State == "Close" )
                     draw_sprite_ext( SpriteMap[? "Bow" ], 0, _x, _y, 1, 1, 0, c_white, 1 );
                 else
                     draw_sprite_ext( SpriteMap[? "Bow" ], 0, _x, _y, 1, 1, 0, c_red, 1 );
+                draw_text( _x, _y, string( Ammo[? "Arrows" ] ) );
                 break;
             case obj_Spike:
             case obj_Spike_2:

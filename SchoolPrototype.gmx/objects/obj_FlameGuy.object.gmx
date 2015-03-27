@@ -136,94 +136,8 @@ DetectionRadius = 32;
           </argument>
         </arguments>
       </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Override Hit Points
-HitPoints = 10;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Morph
-instance_destroy();
-instance_create( x, y, obj_FlameElemental );
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="3" enumb="2">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Override End Step
-if( State != "Death" &amp;&amp; State != "Spawn" )
-    action_inherited();
-</string>
-          </argument>
-        </arguments>
-      </action>
     </event>
     <event eventtype="3" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>604</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_inherited</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-      </action>
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -276,16 +190,7 @@ if( State == "Spawn_Start" )
 if( State == "Spawn" )
 {
     if( StateTimer == 0 )
-    {
         State = "Idle_Start";
-        if( ParentTorch == noone )
-            with( obj_Torch )
-                if( !On )
-                {
-                    other.ParentTorch = id;
-                    break;
-                }
-    }
 }
 </string>
           </argument>
@@ -330,7 +235,7 @@ if( State == "Idle" )
         State = "Flee_Start";
     // Check if another flame is nearby and merge
     x -= 10000;
-    var _other = instance_nearest( x + 10000, y, object_index );
+    var _other = instance_nearest( x + 10000, y, obj_FlameGuy );
     x += 10000;
     if( _other != id &amp;&amp; distance_to_object( _other ) &lt; 128 )
     {
@@ -419,11 +324,7 @@ if( State == "Flee_Start" )
 if( State == "Flee" )
 {
     if( StateTimer == 0 )
-    {
         State = "Idle_Start";
-        // Reset DetectionRadius
-        DetectionRadius = 32;
-    }
 }
 </string>
           </argument>
@@ -453,7 +354,7 @@ if( State == "Merge_Start" )
 if( State == "Merge" )
 {
     x -= 10000;
-    var _other = instance_nearest( x + 10000, y, object_index );
+    var _other = instance_nearest( x + 10000, y, obj_FlameGuy );
     x += 10000;
     if( _other != id )
     {
@@ -520,48 +421,8 @@ if( State == "Morph" )
           </argument>
         </arguments>
       </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Death
-if( State == "Death_Start" )
-{
-    State = "Death";
-    StateTimer = 5;
-    if( instance_exists( ParentTorch ) )
-    {
-        direction = point_direction( x, y, ParentTorch.x, ParentTorch.y );
-        speed = point_distance( x, y, ParentTorch.x, ParentTorch.y ) / StateTimer;
-    }
-}
-if( State == "Death" )
-{
-    if( StateTimer == 0 )
-    {
-        if( instance_exists( ParentTorch ) )
-            ParentTorch.On = true;
-        instance_destroy();
-    }
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
     </event>
-    <event eventtype="4" ename="obj_FlameMinion">
+    <event eventtype="4" ename="obj_FlameGuy">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -581,7 +442,6 @@ if( State == "Death" )
             <string>/// Merge
 State = "Idle_Start";
 ++FlameCount;
-HitPoints += 10;
 if( other.State == "Idle_Start" )
     instance_destroy();
 </string>
@@ -621,6 +481,7 @@ if( other.State == "Idle_Start" )
           <argument>
             <kind>1</kind>
             <string>/// Smoke
+draw_self();
 var _rand = 245 * dsin( StateTimer );
 var _smoke = make_colour_rgb( _rand, _rand, _rand );
 if( StateTimer mod 2 == 0 )

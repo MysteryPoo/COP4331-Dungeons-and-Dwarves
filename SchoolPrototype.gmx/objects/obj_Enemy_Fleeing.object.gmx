@@ -46,7 +46,7 @@
 // Max Duration to flee from player after losing detection.
 MaxFleeDuration = 60;
 // Horizontal/Vertical speed to flee from player.
-FleeSpeed = 2;
+FleeSpeed = 0.5;
 
 // Overrides
 DetectionRadius = 50;
@@ -79,21 +79,7 @@ State = "Wander";
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="2">
-      <action>
-        <libid>1</libid>
-        <id>604</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_inherited</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-      </action>
+    <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -110,32 +96,27 @@ State = "Wander";
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// State Update
-if (PlayerDetected)
+            <string>/// Wander
+if (State == "Wander")
 {
-    // Enter flee state and set/reset timer.
-    State = "Flee";
-    alarm[5] = MaxFleeDuration;
+    // If it's time to reset wander movement, call the script to do so.
+    if (CurrentWanderDuration == MaxWanderDuration)
+        scr_Wander(MaxWanderSpeed);
+        
+    // Update State timer and reset if needed.
+    CurrentWanderDuration -= 1;
+    if (CurrentWanderDuration == 0)
+        CurrentWanderDuration = MaxWanderDuration;
+        
+    if (PlayerDetected)
+    {
+        State = "Flee";
+        alarm[5] = MaxFleeDuration;
+    }
 }
 </string>
           </argument>
         </arguments>
-      </action>
-    </event>
-    <event eventtype="3" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>604</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_inherited</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
       </action>
       <action>
         <libid>1</libid>
@@ -159,15 +140,8 @@ if (PlayerDetected)
 //  in x and y direction.
 if (State == "Flee")
 {
-    if (global.MyInst.x &lt; x)
-        hspeed = FleeSpeed;
-    else if (global.MyInst.x &gt; x)
-        hspeed = -FleeSpeed;
-    
-    if (global.MyInst.y &lt; y)
-        vspeed = FleeSpeed;
-    else if (global.MyInst.y &gt; y)
-        vspeed = -FleeSpeed;
+    var _Near = instance_nearest( x, y, obj_Dwarf );
+    scr_Flee(FleeSpeed, _Near);
 }
 </string>
           </argument>
