@@ -3,8 +3,8 @@
   <caption></caption>
   <width>1024</width>
   <height>768</height>
-  <vsnap>32</vsnap>
-  <hsnap>32</hsnap>
+  <vsnap>16</vsnap>
+  <hsnap>16</hsnap>
   <isometric>0</isometric>
   <speed>30</speed>
   <persistent>0</persistent>
@@ -106,9 +106,10 @@ global.RestartOnDeath = true;</code>
     <instance objName="obj_Wall" x="480" y="384" name="inst_50ABE31A" locked="0" code="" scaleX="3" scaleY="3" colour="4294967295" rotation="0"/>
     <instance objName="obj_Wall" x="608" y="384" name="inst_D8128DF5" locked="0" code="" scaleX="3" scaleY="3" colour="4294967295" rotation="0"/>
     <instance objName="obj_Exit" x="32" y="304" name="inst_9057CCC5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="48" y="272" name="inst_7CFF3A52" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="48" y="336" name="inst_1B4DB26F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="48" y="256" name="inst_6F9E1DE0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
+    <instance objName="obj_Torch" x="48" y="352" name="inst_1B4DB26F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
     <instance objName="obj_Guard" x="688" y="240" name="inst_B64EB52B" locked="0" code="var node = 0;&#xA;x = path_get_point_x( path_Avoidance_small, node );&#xA;y = path_get_point_y( path_Avoidance_small, node );&#xA;path_position = ( 1 / path_get_number( path_Avoidance_small ) ) * node;&#xA;path_speed = -path_speed;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="48" y="256" name="inst_22A573DE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
   </instances>
   <tiles>
     <tile bgName="bg_floor" x="64" y="96" w="32" h="32" xo="0" yo="0" id="10001730" name="inst_6B5BB23E" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
