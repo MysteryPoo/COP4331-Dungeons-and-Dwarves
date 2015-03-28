@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>/// Start Time
 // Real value
-StartTime = date_inc_minute( date_current_datetime(), 2 );
+StartTime = date_inc_minute( date_current_datetime(), 3 );
 
 // Test Value
 //StartTime = date_inc_second( date_current_datetime(), 15 );
