@@ -103,7 +103,10 @@ if( Exit )
     if( player != noone )
     {
         if( player.hasKey &amp;&amp; distance_to_object( player ) &lt; 32 )
+        {
+            player.hasKey = false;
             instance_destroy();
+        }
     }
 }
 </string>

@@ -11,36 +11,17 @@
   <colour>0</colour>
   <showcolour>0</showcolour>
   <code>/// Place the player
-global.StartX = 300;
-global.StartY = 300;
 randomize();
-var inst = instance_create( global.StartX, global.StartY, obj_Dwarf );
-global.MyInst = inst;
+global.MyInst = Dwarf_MontyHall;
 global.RestartOnDeath = true;
-var doorx = 800, doorY_1 = 192, doorY_2 = 384, doorY_3 = 576;
-var exitY = choose(doorY_1, doorY_2, doorY_3);
-var door1 = instance_create(doorx, exitY, obj_Exit);
-door1.image_xscale = 2;
-door1.image_yscale = 2;
-switch(exitY){
-case doorY_1:
-    var door2 = instance_create(doorx, doorY_2, obj_fakeExit);
-    var door3 = instance_create(doorx, doorY_3, obj_fakeExit);
-    
-    break;
-case doorY_2:
-    var door2 = instance_create(doorx, doorY_1, obj_fakeExit);
-    var door3 = instance_create(doorx, doorY_3, obj_fakeExit);
-    break;
-default:
-    var door2 = instance_create(doorx, doorY_1, obj_fakeExit);
-    var door3 = instance_create(doorx, doorY_2, obj_fakeExit);
-    break;
-}
-door2.image_xscale = 2;
-door2.image_yscale = 2;
-door3.image_xscale = 2;
-door3.image_yscale = 2;</code>
+var Exits = ds_list_create();
+with( obj_fakeExit )
+    ds_list_add( Exits, id );
+ds_list_shuffle( Exits );
+var Real = Exits[| 0 ];
+with( Real )
+    instance_change( obj_Exit, true );
+ds_list_destroy( Exits );</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
@@ -88,7 +69,7 @@ door3.image_yscale = 2;</code>
     <instance objName="obj_Gesture1" x="96" y="32" name="inst_8ADD32F0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_dropKey" x="400" y="432" name="inst_7D937B0F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Wall" x="96" y="704" name="inst_EF22E8A9" locked="0" code="" scaleX="19" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Wall" x="928" y="608" name="inst_81813976" locked="0" code="" scaleX="0.100000001490116" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Wall" x="416" y="512" name="inst_9F58D1C5" locked="0" code="" scaleX="2" scaleY="3" colour="4294967295" rotation="0"/>
     <instance objName="obj_Wall" x="96" y="128" name="inst_EBC1C448" locked="0" code="" scaleX="19" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Wall" x="96" y="160" name="inst_5C12EFFB" locked="0" code="" scaleX="1" scaleY="17" colour="4294967295" rotation="0"/>
     <instance objName="obj_Wall" x="672" y="160" name="inst_154EB50A" locked="0" code="" scaleX="1" scaleY="17" colour="4294967295" rotation="0"/>
@@ -100,7 +81,13 @@ door3.image_yscale = 2;</code>
     <instance objName="obj_Wall" x="480" y="448" name="inst_D9AA5E2F" locked="0" code="" scaleX="3" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="obj_Wall" x="320" y="608" name="inst_FCB6811B" locked="0" code="" scaleX="5" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="obj_Wall" x="320" y="512" name="inst_2A8D3594" locked="0" code="" scaleX="2" scaleY="3" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Wall" x="416" y="512" name="inst_9F58D1C5" locked="0" code="" scaleX="2" scaleY="3" colour="4294967295" rotation="0"/>
+    <instance objName="obj_fakeExit" x="400" y="272" name="inst_3D73F70F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
+    <instance objName="obj_fakeExit" x="560" y="432" name="inst_8689585D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
+    <instance objName="obj_fakeExit" x="400" y="592" name="inst_344ED439" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
+    <instance objName="obj_Light" x="128" y="32" name="inst_DC43D487" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Time" x="160" y="32" name="inst_5D42AEEF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Atmosphere" x="192" y="32" name="inst_B2BF43BB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Dwarf" x="160" y="432" name="Dwarf_MontyHall" locked="0" code="" scaleX="0.25" scaleY="0.25" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_floor" x="128" y="160" w="32" h="32" xo="0" yo="0" id="10017547" name="inst_F13F59E9" depth="1000001" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

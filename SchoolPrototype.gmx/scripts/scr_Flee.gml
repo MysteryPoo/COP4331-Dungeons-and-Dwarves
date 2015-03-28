@@ -1,13 +1,16 @@
-/// scr_Flee(flee_speed)
+/// scr_Flee( flee_speed, flee_from)
 
-var flee_speed = argument0;
+var _FleeSpeed = argument0;
+var _FleeFrom = argument1;
+if( _FleeFrom == noone )
+    exit;
 
-if (global.MyInst.x < x)
-    hspeed = FleeSpeed;
-else if (global.MyInst.x > x)
-    hspeed = -FleeSpeed;
+if (_FleeFrom.x < x)
+    hspeed = _FleeSpeed;
+else if (_FleeFrom.x > x)
+    hspeed = -_FleeSpeed;
 
-if (global.MyInst.y < y)
-    vspeed = FleeSpeed;
-else if (global.MyInst.y > y)
-    vspeed = -FleeSpeed;
+if (_FleeFrom.y < y)
+    vspeed = _FleeSpeed;
+else if (_FleeFrom.y > y)
+    vspeed = -_FleeSpeed;

@@ -1,12 +1,13 @@
 /// scr_CanDetectPlayer(detection_radius)
 
-var detection_radius = argument0;
+var _DetectionRadius = argument0;
+var _Nearest = instance_nearest( x, y, obj_Dwarf );
 
 // Check that the player is close enough to detect.
-if (distance_to_object(obj_Dwarf) < detection_radius * global.MyInst.image_alpha)
+if (distance_to_object(_Nearest) < _DetectionRadius * _Nearest.image_alpha)
 {
     // Check that the player is in line of sight.
-    if (collision_line(x, y, global.MyInst.x, global.MyInst.y, obj_Wall, false, true) == noone)
+    if (collision_line(x, y, _Nearest.x, _Nearest.y, obj_Wall, false, true) == noone)
     {
         return true;
     }

@@ -168,10 +168,13 @@ if (State == "Wander")
             <string>/// Pursue
 
 // If in pursuit, step towards the player.
-if (State == "Chase" &amp;&amp; PlayerDetected)
+if (State == "Chase" )
 {
     if (distance_to_point(global.MyInst.x, global.MyInst.y) &gt; 30)
-        scr_Chase(ChaseSpeed);
+    {
+        var _Near = instance_nearest( x, y, obj_Dwarf );
+        scr_Chase(ChaseSpeed, _Near);
+    }
     else
         speed = 0;
 }
@@ -199,6 +202,7 @@ if (State == "Chase" &amp;&amp; PlayerDetected)
 
 // If we're ready to shoot, fire the parent step event that
 //  consists only of shooting a projectile.
+var PlayerDetected = scr_CanDetectPlayer( DetectionRadius );
 if (State == "ReadyToShoot" &amp;&amp; PlayerDetected)
 {
     scr_FireAt(Projectile, global.MyInst.x, global.MyInst.y);
