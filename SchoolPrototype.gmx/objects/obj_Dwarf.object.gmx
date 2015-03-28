@@ -158,8 +158,8 @@ mySword = noone;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// BloodSteps
-BloodSteps = 10 * 10;
+            <string>/// Steps
+Steps = 1000 * 10;
 </string>
           </argument>
         </arguments>
@@ -549,18 +549,17 @@ if( State == "Move" )
     if( speed == 0 )
         State = "Idle_Start";
     // End idle check
-    // Blood Steps
-    if( BloodSteps &gt; 0 )
+    // Foot Steps
+    if( Steps &gt; 0 )
     {
-        --BloodSteps;
-        if( BloodSteps mod 10 == 0 )
+        --Steps;
+        if( Steps mod 10 == 0 )
         {
-            var step = instance_create( x, y, obj_Effect );
-            step.sprite_index = spr_bloody_footprint;
+            var step = instance_create( x, y, obj_FootPrint );
             step.image_angle = direction;
         }
     }
-    // End Blood Steps
+    // End Foot Steps
 }
 </string>
           </argument>
@@ -620,14 +619,14 @@ if( State == "Ice" )
 if( State == "Hit_Start" )
 {
     State = "Hit";
-    StateTimer = 30;
+    StateTimer = 15;
     // Change animation
 }
 if( State == "Hit" )
 {
     if( StateTimer mod 5 == 0 )
         visible = !visible;
-    if( StateTimer mod 5 == 0 &amp;&amp; StateTimer != 30 )
+    if( StateTimer mod 2.5 == 0 &amp;&amp; StateTimer != 15 )
         speed *= 0.1;
     if( speed &lt; 1 )
         speed = 0;
