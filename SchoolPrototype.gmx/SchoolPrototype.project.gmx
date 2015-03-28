@@ -69,6 +69,9 @@
     <sprites name="Powerups">
       <sprite>sprites\spr_SpeedBoost</sprite>
     </sprites>
+    <sprites name="Lobby">
+      <sprite>sprites\spr_PlayerSlot</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_floor</background>
@@ -91,6 +94,8 @@
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_DEMO</font>
+    <font>fonts\fnt_Default</font>
+    <font>fonts\fnt_LargeTimer</font>
   </fonts>
   <objects name="objects">
     <objects name="Weapons">
@@ -195,6 +200,7 @@
     </objects>
     <objects name="Lobby">
       <object>objects\obj_PlayerSlot</object>
+      <object>objects\obj_Countdown</object>
     </objects>
     <objects name="Big">
       <object>objects\obj_DoorShut</object>
@@ -215,6 +221,7 @@
     <room>rooms\rm_Main</room>
     <room>rooms\rm_Client</room>
     <room>rooms\rm_Big</room>
+    <room>rooms\rm_Lobby</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
