@@ -26,12 +26,9 @@
           <argument>
             <kind>1</kind>
             <string>///Initialize countdown and alarm
-countdownTime = 20;
+countdownTime = 60;
 clientCount = 0;
 countdownText = "Game Beginning in";
-
-
-alarm[0] = room_speed;
 </string>
           </argument>
         </arguments>
@@ -83,17 +80,17 @@ alarm[0] = room_speed;
             <string>//Check for client connections
 var currentCount = ds_list_size( obj_Client.SocketList );
 
-/*
-if(currentCount &gt; clientCount)
+
+if(currentCount != clientCount)
 {
     clientCount = currentCount;
-    countdownTime = 25;
+    countdownTime = 60;
     if(currentCount &gt;= 2) //Begin the countdown
         alarm[0] = room_speed;
         
     else if(currentCount &lt; 2)
-        alarm[0] = 0; //Stop countdown?
-}*/
+        alarm[0] = -1; //Stop countdown?
+}
 </string>
           </argument>
         </arguments>
@@ -118,16 +115,23 @@ if(currentCount &gt; clientCount)
             <kind>1</kind>
             <string>///Draw countdown 
 draw_set_halign(fa_center);
-
-draw_set_font(fnt_Default);
-draw_text(room_width/2, 32, countdownText);
-
-draw_set_font(fnt_LargeTimer);
-
-if(countdownTime &lt;= 15)
-    draw_text_color(room_width/2, 60, string(countdownTime),  c_red, c_red, c_black, c_black, 1);
-else 
-    draw_text_color(room_width/2, 60, string(countdownTime), c_green, c_green, c_black, c_black, 1);
+if( clientCount &gt; 1 )
+{
+    draw_set_font(fnt_Default);
+    draw_text(room_width/2, 32, countdownText);
+    
+    draw_set_font(fnt_LargeTimer);
+    
+    if(countdownTime &lt;= 15)
+        draw_text_color(room_width/2, 60, string(countdownTime),  c_red, c_red, c_black, c_black, 1);
+    else 
+        draw_text_color(room_width/2, 60, string(countdownTime), c_green, c_green, c_black, c_black, 1);
+}
+else
+{
+    draw_set_font( fnt_Default );
+    draw_text( room_width/2, 32, "Awaiting more players..." );
+}
 
 draw_set_font(-1);
 draw_set_halign(fa_left);
