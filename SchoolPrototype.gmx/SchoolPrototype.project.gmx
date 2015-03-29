@@ -126,6 +126,8 @@
       <object>objects\obj_FlameMinion</object>
       <object>objects\obj_FlameElemental</object>
       <object>objects\obj_Skelly</object>
+      <object>objects\obj_Obelisk</object>
+      <object>objects\obj_ObeliskTarget</object>
     </objects>
     <objects name="Engine">
       <object>objects\obj_Light</object>
