@@ -153,7 +153,7 @@ DetectionRadius = 32;
           <argument>
             <kind>1</kind>
             <string>/// Override Hit Points
-HitPoints = 10;
+HitPoints = 5;
 </string>
           </argument>
         </arguments>
