@@ -30,6 +30,8 @@ SpriteMap = ds_map_create();
 SpriteMap[? "Bow" ] = spr_Bow;
 SpriteMap[? "Spike" ] = spr_spike;
 SpriteMap[? "Bomb" ] = spr_bomb;
+SpriteMap[? "Ninja"] = spr_Ninja;
+SpriteMap[? "Platemail"] = spr_Platemail;
 </string>
           </argument>
         </arguments>
@@ -349,6 +351,92 @@ for( var w = 0; w &lt; ds_list_size( Inventory ); ++w )
         {
             ds_list_delete( Inventory, i );
             i = ds_list_find_index( Inventory, obj_Spike_3 );
+            --w;
+        }
+    }
+    // If you have a Tier 2 Ninja Armor, remove any Tier 1 Ninja Armors
+    if( ds_list_find_value( Inventory, w ) == obj_Ninja_2 )
+    {
+        var i = ds_list_find_index( Inventory, obj_Ninja );
+        while( i != -1 )
+        {
+            ds_list_delete( Inventory, i );
+            i = ds_list_find_index( Inventory, obj_Ninja );
+            --w;
+        }
+        var i = ds_list_find_index( Inventory, obj_Ninja_2 );
+        while( i != w &amp;&amp; i != -1 )
+        {
+            ds_list_delete( Inventory, i );
+            i = ds_list_find_index( Inventory, obj_Ninja_2 );
+            --w;
+        }
+    }
+    // If you have a Tier 3 Ninja Armor, remove any Tier 1 or 2 Ninja Armors
+    if( ds_list_find_value( Inventory, w ) == obj_Ninja_3 )
+    {
+        var i = ds_list_find_index( Inventory, obj_Ninja_2 );
+        while( i != -1 )
+        {
+            ds_list_delete( Inventory, i );
+            i = ds_list_find_index( Inventory, obj_Ninja_2 );
+            --w;
+        }
+        var i = ds_list_find_index( Inventory, obj_Ninja );
+        while( i != -1 )
+        {
+            ds_list_delete( Inventory, i );
+            i = ds_list_find_index( Inventory, obj_Ninja );
+            --w;
+        }
+        var i = ds_list_find_index( Inventory, obj_Ninja_3 );
+        while( i != w &amp;&amp; i != -1 )
+        {
+            ds_list_delete( Inventory, i );
+            i = ds_list_find_index( Inventory, obj_Ninja_3 );
+            --w;
+        }
+    }
+    // If you have a Tier 2 Platemail, remove any Tier 1 Platemail
+    if( ds_list_find_value( Inventory, w ) == obj_Platemail_2 )
+    {
+        var i = ds_list_find_index( Inventory, obj_Platemail );
+        while( i != -1 )
+        {
+            ds_list_delete( Inventory, i );
+            i = ds_list_find_index( Inventory, obj_Platemail );
+            --w;
+        }
+        var i = ds_list_find_index( Inventory, obj_Platemail_2 );
+        while( i != w &amp;&amp; i != -1 )
+        {
+            ds_list_delete( Inventory, i );
+            i = ds_list_find_index( Inventory, obj_Platemail_2 );
+            --w;
+        }
+    }
+    // If you have a Tier 3 Platemail, remove any Tier 1 or 2 Platemail
+    if( ds_list_find_value( Inventory, w ) == obj_Platemail_3 )
+    {
+        var i = ds_list_find_index( Inventory, obj_Platemail_2 );
+        while( i != -1 )
+        {
+            ds_list_delete( Inventory, i );
+            i = ds_list_find_index( Inventory, obj_Platemail_2 );
+            --w;
+        }
+        var i = ds_list_find_index( Inventory, obj_Platemail );
+        while( i != -1 )
+        {
+            ds_list_delete( Inventory, i );
+            i = ds_list_find_index( Inventory, obj_Platemail );
+            --w;
+        }
+        var i = ds_list_find_index( Inventory, obj_Platemail_3 );
+        while( i != w &amp;&amp; i != -1 )
+        {
+            ds_list_delete( Inventory, i );
+            i = ds_list_find_index( Inventory, obj_Platemail_3 );
             --w;
         }
     }
@@ -679,6 +767,16 @@ if( State == "Open" || State == "Opened" || State == "Close" )
                 else
                     draw_sprite_ext( SpriteMap[? "Bomb" ], 0, _x, _y, 1, 1, 0, c_red, 1 );
                 draw_text( _x, _y, string( Ammo[? "Bombs" ] ) );
+                break;
+            case obj_Ninja:
+            case obj_Ninja_2:
+            case obj_Ninja_3:
+                draw_sprite_ext( SpriteMap[? "Ninja" ], 0, _x, _y, 1, 1, 0, c_white, 1 );
+                break;
+            case obj_Platemail:
+            case obj_Platemail_2:
+            case obj_Platemail_3:
+                draw_sprite_ext( SpriteMap[? "Platemail" ], 0, _x, _y, 1, 1, 0, c_white, 1 );
                 break;
         }
     }
