@@ -53,10 +53,10 @@ Hazard4 = instance_create(x, y + HazardRange, HazardObject);
 // Set each Hazard's lifetime to the same as the obelisk.
 // NOTE: This depends on the Hazard object using alarm[0] as a life alarm
 //  and should possibly be changed to avoid that assumption.
-with (Hazard1) alarm[0] = Lifetime;
-with (Hazard2) alarm[0] = Lifetime;
-with (Hazard3) alarm[0] = Lifetime;
-with (Hazard4) alarm[0] = Lifetime;
+with (Hazard1) { alarm[0] = other.Lifetime; Delay = 3; }
+with (Hazard2) { alarm[0] = other.Lifetime; Delay = 3; }
+with (Hazard3) { alarm[0] = other.Lifetime; Delay = 3; }
+with (Hazard4) { alarm[0] = other.Lifetime; Delay = 3; }
 
 </string>
           </argument>
