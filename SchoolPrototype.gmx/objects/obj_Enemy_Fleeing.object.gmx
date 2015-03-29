@@ -108,7 +108,8 @@ if (State == "Wander")
     if (CurrentWanderDuration == 0)
         CurrentWanderDuration = MaxWanderDuration;
         
-    if (PlayerDetected)
+    //if (PlayerDetected)
+    if(scr_CanDetectPlayer)
     {
         State = "Flee";
         alarm[5] = MaxFleeDuration;
