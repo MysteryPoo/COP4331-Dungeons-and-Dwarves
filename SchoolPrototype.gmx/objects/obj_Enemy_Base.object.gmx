@@ -130,7 +130,7 @@ if( foundCollision ){//collision detected
 if( State == "Hit_Start" )
 {
     State = "Hit";
-    StateTimer = 15;
+    StateTimer = 10;
     DetectionRadius = 256;
     // Change animation
 }
@@ -138,7 +138,7 @@ if( State == "Hit" )
 {
     if( StateTimer mod 2 == 0 )
         visible = !visible;
-    if( StateTimer mod 2.5 == 0 &amp;&amp; StateTimer != 15 )
+    if( StateTimer mod 5 == 0 &amp;&amp; StateTimer != 30 )
         speed *= 0.1;
     if( speed &lt; 1 )
         speed = 0;

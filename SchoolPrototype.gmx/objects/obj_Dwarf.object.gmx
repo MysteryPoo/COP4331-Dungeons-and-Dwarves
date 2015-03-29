@@ -158,8 +158,8 @@ mySword = noone;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Steps
-Steps = 1000 * 10;
+            <string>/// BloodSteps
+BloodSteps = 10 * 10;
 </string>
           </argument>
         </arguments>
@@ -549,17 +549,18 @@ if( State == "Move" )
     if( speed == 0 )
         State = "Idle_Start";
     // End idle check
-    // Foot Steps
-    if( Steps &gt; 0 )
+    // Blood Steps
+    if( BloodSteps &gt; 0 )
     {
-        --Steps;
-        if( Steps mod 10 == 0 )
+        --BloodSteps;
+        if( BloodSteps mod 10 == 0 )
         {
-            var step = instance_create( x, y, obj_FootPrint );
+            var step = instance_create( x, y, obj_Effect );
+            step.sprite_index = spr_bloody_footprint;
             step.image_angle = direction;
         }
     }
-    // End Foot Steps
+    // End Blood Steps
 }
 </string>
           </argument>
@@ -619,14 +620,14 @@ if( State == "Ice" )
 if( State == "Hit_Start" )
 {
     State = "Hit";
-    StateTimer = 15;
+    StateTimer = 30;
     // Change animation
 }
 if( State == "Hit" )
 {
     if( StateTimer mod 5 == 0 )
         visible = !visible;
-    if( StateTimer mod 2.5 == 0 &amp;&amp; StateTimer != 15 )
+    if( StateTimer mod 5 == 0 &amp;&amp; StateTimer != 30 )
         speed *= 0.1;
     if( speed &lt; 1 )
         speed = 0;
@@ -807,7 +808,7 @@ draw_self();
           <argument>
             <kind>1</kind>
             <string>/// Draw Hit Points
-draw_rectangle_colour( x - 16, y, x - 16 + 32 * HitPoints / 100, y + 8, c_maroon, c_red, c_black, c_red, false );
+//draw_rectangle_colour( x - 16, y, x - 16 + 32 * HitPoints / 100, y + 8, c_maroon, c_red, c_black, c_red, false );
 </string>
           </argument>
         </arguments>

@@ -192,7 +192,7 @@ if (State == "Wander")
           <argument>
             <kind>1</kind>
             <string>/// Shoot
-if (CanShoot &amp;&amp; PlayerLOS &amp;&amp; scr_CanDetectPlayer)
+if (CanShoot &amp;&amp; PlayerLOS &amp;&amp; PlayerDetected)
 {
     // Get the player instance for reference and create an arrow.
     var player_info = instance_nearest(x, y, obj_Dwarf);
