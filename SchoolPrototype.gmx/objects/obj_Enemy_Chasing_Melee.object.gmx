@@ -114,7 +114,7 @@ if (State == "Wander")
     if (CurrentWanderDuration == 0)
         CurrentWanderDuration = MaxWanderDuration;
         
-    if (PlayerDetected)
+    if (scr_CanDetectPlayer)
         State = "Chase";
 }
 </string>
