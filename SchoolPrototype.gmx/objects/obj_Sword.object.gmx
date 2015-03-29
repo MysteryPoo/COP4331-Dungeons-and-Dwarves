@@ -62,7 +62,7 @@ Owner = noone;
           <argument>
             <kind>1</kind>
             <string>/// Damage
-Damage = 5;
+Damage = 20;
 </string>
           </argument>
         </arguments>

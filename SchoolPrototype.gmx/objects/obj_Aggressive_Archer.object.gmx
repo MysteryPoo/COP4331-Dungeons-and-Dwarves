@@ -139,7 +139,7 @@ if (State == "Wander")
     if (CurrentWanderDuration == 0)
         CurrentWanderDuration = MaxWanderDuration;
         
-    if (scr_CanDetectPlayer)
+    if (PlayerDetected)
     {
         State = "Chase";
         alarm[6] = ChaseDuration;
@@ -203,7 +203,7 @@ if (State == "Chase" )
 // If we're ready to shoot, fire the parent step event that
 //  consists only of shooting a projectile.
 var PlayerDetected = scr_CanDetectPlayer( DetectionRadius );
-if (State == "ReadyToShoot" &amp;&amp; scr_CanDetectPlayer)
+if (State == "ReadyToShoot" &amp;&amp; PlayerDetected)
 {
     scr_FireAt(Projectile, global.MyInst.x, global.MyInst.y);
     

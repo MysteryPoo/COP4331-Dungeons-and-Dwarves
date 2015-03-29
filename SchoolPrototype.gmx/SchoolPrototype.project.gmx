@@ -43,7 +43,7 @@
     </sprites>
     <sprite>sprites\spr_invis_wall</sprite>
     <sprites name="Misc">
-      <sprite>sprites\spr_footprint</sprite>
+      <sprite>sprites\spr_bloody_footprint</sprite>
       <sprite>sprites\spr_Exclamation</sprite>
       <sprite>sprites\spr_drop</sprite>
       <sprite>sprites\spr_Bag</sprite>
@@ -69,8 +69,10 @@
     <sprites name="Powerups">
       <sprite>sprites\spr_SpeedBoost</sprite>
     </sprites>
-    <sprites name="Lobby">
-      <sprite>sprites\spr_PlayerSlot</sprite>
+    <sprites name="Shop">
+      <sprite>sprites\spr_Shop_Arrow</sprite>
+      <sprite>sprites\spr_Shop_Buy</sprite>
+      <sprite>sprites\spr_Shop_Exit</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -94,8 +96,9 @@
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_DEMO</font>
+    <font>fonts\fnt_Shop</font>
     <font>fonts\fnt_Default</font>
-    <font>fonts\fnt_LargeTimer</font>
+    <font>fonts\fnt_Default_Small</font>
   </fonts>
   <objects name="objects">
     <objects name="Weapons">
@@ -126,8 +129,6 @@
       <object>objects\obj_FlameMinion</object>
       <object>objects\obj_FlameElemental</object>
       <object>objects\obj_Skelly</object>
-      <object>objects\obj_Obelisk</object>
-      <object>objects\obj_ObeliskTarget</object>
     </objects>
     <objects name="Engine">
       <object>objects\obj_Light</object>
@@ -158,7 +159,7 @@
       </objects>
       <object>objects\obj_Trigger</object>
       <object>objects\obj_Crumbled_Wall</object>
-      <object>objects\obj_FootPrint</object>
+      <object>objects\obj_Effect</object>
       <objects name="Enemies">
         <object>objects\obj_Enemy_Base</object>
         <object>objects\obj_Enemy_Fleeing</object>
@@ -172,6 +173,7 @@
       <object>objects\obj_Treasure</object>
       <object>objects\obj_Loot</object>
       <object>objects\obj_Drop</object>
+      <object>objects\obj_Shop</object>
     </objects>
     <objects name="Bridge">
       <object>objects\obj_Bridge</object>
@@ -202,7 +204,6 @@
     </objects>
     <objects name="Lobby">
       <object>objects\obj_PlayerSlot</object>
-      <object>objects\obj_Countdown</object>
     </objects>
     <objects name="Big">
       <object>objects\obj_DoorShut</object>
@@ -223,7 +224,6 @@
     <room>rooms\rm_Main</room>
     <room>rooms\rm_Client</room>
     <room>rooms\rm_Big</room>
-    <room>rooms\rm_Lobby</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

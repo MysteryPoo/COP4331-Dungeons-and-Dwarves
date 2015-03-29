@@ -132,50 +132,6 @@ State = "Closed_Start";
           </argument>
         </arguments>
       </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Treasure
-Treasure = 0;
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Selected Weapon
-SelectedWeapon = -1;
-</string>
-          </argument>
-        </arguments>
-      </action>
     </event>
     <event eventtype="1" enumb="0">
       <action>
@@ -453,7 +409,6 @@ if( State == "Opened" )
             if( _index &lt; ds_list_size( Inventory ) )
             {
                 global.MyWeapon = Inventory[| _index ];
-                SelectedWeapon = _index;
                 State = "Close_Start";
             }
         }
@@ -637,7 +592,7 @@ draw_sprite( sprite_index, image_index, 0, 0 );
         <exetype>2</exetype>
         <functionname></functionname>
         <codestring></codestring>
-        <whoName>self</whoName>
+        <whoName>obj_Inventory</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
         <arguments>
@@ -651,12 +606,6 @@ if( State == "Open" || State == "Opened" || State == "Close" )
     {
         var _x = x + 32 * w + 16;
         var _y = y + 32 + 16;
-        if( w == SelectedWeapon )
-        {
-            draw_set_alpha( 0.5 );
-            draw_rectangle_colour( _x - 16, _y - 16, _x + 16, _y + 16, c_green, c_lime, c_gray, c_green, false );
-            draw_set_alpha( 1 );
-        }
         switch( Inventory[| w ] )
         {
             case obj_Bow:
@@ -678,34 +627,10 @@ if( State == "Open" || State == "Opened" || State == "Close" )
                     draw_sprite_ext( SpriteMap[? "Bomb" ], 0, _x, _y, 1, 1, 0, c_white, 1 );
                 else
                     draw_sprite_ext( SpriteMap[? "Bomb" ], 0, _x, _y, 1, 1, 0, c_red, 1 );
-                draw_text( _x, _y, string( Ammo[? "Bombs" ] ) );
                 break;
         }
     }
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Draw Treasure
-draw_sprite( spr_Treasure1, 0, display_get_gui_width() - 32, 16 );
-draw_text( display_get_gui_width() - 64, 16, string( Treasure ) );
 </string>
           </argument>
         </arguments>

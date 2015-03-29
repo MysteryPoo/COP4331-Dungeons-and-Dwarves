@@ -291,14 +291,14 @@ if( State == "Attack" )
 if( State == "Charge_Start" )
 {
     State = "Charge";
-    StateTimer = 40;
+    StateTimer = 30;
     sprite_index = spr_FireElemental_Walk;
     image_speed = 0.7;
     var _Near = instance_nearest( x, y, obj_Dwarf );
     if( _Near != noone )
     {
         direction = point_direction( x, y, _Near.x, _Near.y );
-        speed = 7;
+        speed = 5;
     }
 }
 if( State == "Charge" )
