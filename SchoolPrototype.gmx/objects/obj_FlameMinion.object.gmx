@@ -459,6 +459,8 @@ if( State == "Merge" )
     {
         scr_Chase( 2, _other );
     }
+    if( scr_CanDetectPlayer( DetectionRadius ) )
+        State = "Flee_Start";
 }
 </string>
           </argument>
