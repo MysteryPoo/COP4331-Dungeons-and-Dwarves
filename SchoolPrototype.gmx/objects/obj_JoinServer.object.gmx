@@ -123,7 +123,7 @@ if( Port &gt; 0 )
     global.ServerType = "Game";
     with( obj_Client )
         instance_destroy();
-    room_goto( rm_Select );
+    room_goto( rm_Lobby );
 }
 </string>
           </argument>

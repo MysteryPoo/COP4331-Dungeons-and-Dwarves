@@ -145,17 +145,35 @@ else
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
-        <id>604</id>
-        <kind>0</kind>
+        <id>603</id>
+        <kind>7</kind>
         <userelative>0</userelative>
         <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_inherited</functionname>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
         <codestring></codestring>
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Wander
+if (State == "Wander")
+{
+    // If it's time to reset wander movement, call the script to do so.
+    if (CurrentWanderDuration == MaxWanderDuration)
+        scr_Wander(MaxWanderSpeed);
+        
+    // Update State timer and reset if needed.
+    CurrentWanderDuration -= 1;
+    if (CurrentWanderDuration == 0)
+        CurrentWanderDuration = MaxWanderDuration;
+}
+</string>
+          </argument>
+        </arguments>
       </action>
       <action>
         <libid>1</libid>
@@ -174,14 +192,18 @@ else
           <argument>
             <kind>1</kind>
             <string>/// Shoot
-if (CanShoot &amp;&amp; PlayerLOS &amp;&amp; PlayerDetected)
+if (CanShoot &amp;&amp; PlayerLOS &amp;&amp; scr_CanDetectPlayer)
 {
     // Get the player instance for reference and create an arrow.
     var player_info = instance_nearest(x, y, obj_Dwarf);
+    
     var projectile = instance_create(x, y, Projectile);
     
     // Estimate the number of game updates (steps) it will take for the arrow to get to the player.
     var num_frames_til_impact = distance_to_point(player_info.x, player_info.y) / projectile.speed;
+    
+    with(projectile)
+        instance_destroy();
     
     // Find position the player will be at at the estimated point the arrow will contact them.
     var player_next_x = player_info.x + num_frames_til_impact * player_info.hspeed;
@@ -192,8 +214,8 @@ if (CanShoot &amp;&amp; PlayerLOS &amp;&amp; PlayerDetected)
     // If player is just detected, we fire blindly by making a 'guess' at the number of frames til impact.
     if (PrevPlayerLOS != PlayerLOS)
     {
-         projectile.direction = point_direction(projectile.x, projectile.y, player_info.x + player_info.hspeed * BlindFrameEstimate, 
-                                                player_info.y + player_info.vspeed * BlindFrameEstimate);
+        player_next_x = player_info.x + player_info.hspeed * BlindFrameEstimate;
+        player_next_y = player_info.y + player_info.vspeed * BlindFrameEstimate;
     }
     // Otherwise use the predicted movement.
     else
@@ -204,13 +226,10 @@ if (CanShoot &amp;&amp; PlayerLOS &amp;&amp; PlayerDetected)
             player_next_x = player_info.x;
             player_next_y = player_info.y;
         }
-        
-        projectile.direction = point_direction(projectile.x, projectile.y, player_next_x, player_next_y);
     }
    
-    // Orient the sprite properly and assign ownership of the projectile to this enemy.
-    projectile.image_angle = projectile.direction;
-    projectile.Owner = id;
+    // Fire the projectile.
+    scr_FireAt(Projectile, player_next_x, player_next_y);
     
     // Reset shot throttling variables.
     CanShoot = false;
@@ -221,6 +240,7 @@ if (CanShoot &amp;&amp; PlayerLOS &amp;&amp; PlayerDetected)
     State = "Shooting";
     speed = 0;
 }
+
 </string>
           </argument>
         </arguments>

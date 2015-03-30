@@ -93,8 +93,11 @@ image_speed = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if( ds_exists( TorchID, ds_type_list ) )
+            <string>/// Cleanup
+if( ds_exists( TorchID, ds_type_list ) )
     ds_list_destroy( TorchID );
+if( ds_exists( DoorID, ds_type_list ) )
+    ds_list_destroy( DoorID );
 </string>
           </argument>
         </arguments>
@@ -131,8 +134,15 @@ if( TorchID != noone )
 image_blend = c_lime;
 image_index = 1;
 if( DoorID != noone )
-    with( DoorID )
-        instance_destroy();
+    if( ds_exists( DoorID, ds_type_list ) )
+    {
+        for( var d = 0; d &lt; ds_list_size( DoorID ); ++d )
+            with( DoorID[| d ] )
+                instance_destroy();
+    }
+    else
+        with( DoorID )
+            instance_destroy();
 </string>
           </argument>
         </arguments>

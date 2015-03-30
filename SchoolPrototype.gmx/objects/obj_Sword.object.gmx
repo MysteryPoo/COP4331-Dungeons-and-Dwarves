@@ -62,7 +62,7 @@ Owner = noone;
           <argument>
             <kind>1</kind>
             <string>/// Damage
-Damage = 20;
+Damage = 5;
 </string>
           </argument>
         </arguments>
@@ -86,10 +86,10 @@ Damage = 20;
           <argument>
             <kind>1</kind>
             <string>/// Align Position
-if( Owner != noone )
+if( Owner != noone &amp;&amp; instance_exists( Owner ) )
 {
-    x = Owner.x;
-    y = Owner.y - 8;
+    x = Owner.x + 16 * dcos( Owner.direction );
+    y = Owner.y - 16 * dsin( Owner.direction );
 }
 </string>
           </argument>

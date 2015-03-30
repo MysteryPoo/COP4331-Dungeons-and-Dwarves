@@ -43,12 +43,6 @@ if( instance_exists( obj_Gesture1 ) )
 with( other )
     instance_destroy();
 global.Waiting = true;
-/*
-++global.Map;
-if( global.Map &lt; 5 )
-    room_goto( obj_Client.MapList[| global.Map ] );
-else
-    room_goto( rm_Client );*/
 </string>
           </argument>
         </arguments>

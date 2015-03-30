@@ -158,8 +158,8 @@ mySword = noone;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// BloodSteps
-BloodSteps = 10 * 10;
+            <string>/// Steps
+Steps = 1000 * 10;
 </string>
           </argument>
         </arguments>
@@ -205,6 +205,52 @@ HitPoints = 100;
             <string>/// Scale
 image_xscale = 0.25;
 image_yscale = 0.25;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Speed Scalar
+SpeedScale = 1;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Speed Reset
+SpeedScale = 1;
 </string>
           </argument>
         </arguments>
@@ -315,7 +361,7 @@ if( State != "Ice" &amp;&amp; instance_exists( obj_Gesture0 ) &amp;&amp; global.
     if( obj_Gesture0.Touched )
     {
         direction = obj_Gesture0.direction;
-        MaxSpeed = 2 * obj_Gesture0.scale;
+        MaxSpeed = 2.5 * SpeedScale * obj_Gesture0.scale;
     }
     else
         MaxSpeed = 0;
@@ -345,9 +391,9 @@ if( State != "Death" )
 {
     if( instance_exists( obj_Gesture1 ) &amp;&amp; global.MyInst == id )
     {
-        if( !instance_exists( mySword ) &amp;&amp; obj_Gesture1.Released &amp;&amp; obj_Gesture1.max_dist &lt; 32 )
+        if( !instance_exists( mySword ) &amp;&amp; obj_Gesture1.Released &amp;&amp; obj_Gesture1.max_dist &lt; 16 )
         {
-            mySword = instance_create( x, y - 16, obj_Sword );
+            mySword = instance_create( x + 16 * dcos( direction ), y - 16 * dsin( direction ), obj_Sword );
             mySword.direction = obj_Gesture0.direction;
             mySword.image_angle = obj_Gesture0.direction;
             mySword.Owner = id;
@@ -363,7 +409,7 @@ if( State != "Death" )
                 network_send_packet( obj_Client.Socket, obj_Client.Buffer, buffer_tell( obj_Client.Buffer ) );
             }
         }
-        else if( obj_Gesture1.Released &amp;&amp; obj_Gesture1.max_dist &gt; 32 )
+        else if( obj_Gesture1.Released &amp;&amp; obj_Gesture1.max_dist &gt; 16 )
         {
             if( object_exists( global.MyWeapon ) )
             {
@@ -396,7 +442,9 @@ if( State != "Death" )
                 }
                 if( validShot )
                 {
-                    var inst = instance_create( x, y - 16, global.MyWeapon );
+                    var _xx = x + 32 * dcos( obj_Gesture1.direction );
+                    var _yy = y - 32 * dsin( obj_Gesture1.direction );
+                    var inst = instance_create( _xx, _yy, global.MyWeapon );
                     inst.direction = obj_Gesture1.direction;
                     inst.image_angle = inst.direction;
                     inst.Owner = id;
@@ -405,8 +453,8 @@ if( State != "Death" )
                         buffer_seek( obj_Client.Buffer, buffer_seek_start, 0 );
                         buffer_write( obj_Client.Buffer, buffer_u8, 5 );
                         buffer_write( obj_Client.Buffer, buffer_string, object_get_name( inst.object_index ) );
-                        buffer_write( obj_Client.Buffer, buffer_u16, x );
-                        buffer_write( obj_Client.Buffer, buffer_u16, y - 16 );
+                        buffer_write( obj_Client.Buffer, buffer_u16, _xx );
+                        buffer_write( obj_Client.Buffer, buffer_u16, _yy );
                         buffer_write( obj_Client.Buffer, buffer_s16, obj_Gesture1.direction );
                         network_send_packet( obj_Client.Socket, obj_Client.Buffer, buffer_tell( obj_Client.Buffer ) );
                     }
@@ -485,18 +533,7 @@ if( State == "Move_Start" )
 if( State == "Move" )
 {
     // Direction animation
-    if( direction &lt; 45 || direction &gt; 315 )
-    {
-        image_angle = 90;
-    }
-    else if( direction &lt; 135 )
-        image_angle = 180;
-    else if( direction &lt; 225 )
-    {
-        image_angle = -90;
-    }
-    else
-        image_angle = 0;
+    image_angle = scr_Angle24Dir( direction );
     // End of animation direction
     // Are we on ice?
     if( place_meeting( x, y, obj_Ice ) )
@@ -512,18 +549,17 @@ if( State == "Move" )
     if( speed == 0 )
         State = "Idle_Start";
     // End idle check
-    // Blood Steps
-    if( BloodSteps &gt; 0 )
+    // Foot Steps
+    if( Steps &gt; 0 )
     {
-        --BloodSteps;
-        if( BloodSteps mod 10 == 0 )
+        --Steps;
+        if( Steps mod 10 == 0 )
         {
-            var step = instance_create( x, y, obj_Effect );
-            step.sprite_index = spr_bloody_footprint;
+            var step = instance_create( x, y, obj_FootPrint );
             step.image_angle = direction;
         }
     }
-    // End Blood Steps
+    // End Foot Steps
 }
 </string>
           </argument>
@@ -583,15 +619,16 @@ if( State == "Ice" )
 if( State == "Hit_Start" )
 {
     State = "Hit";
-    StateTimer = 30;
-    speed = -speed;
+    StateTimer = 15;
     // Change animation
 }
 if( State == "Hit" )
 {
     if( StateTimer mod 5 == 0 )
         visible = !visible;
-    if( StateTimer mod 15 == 0 &amp;&amp; StateTimer != 30 )
+    if( StateTimer mod 2.5 == 0 &amp;&amp; StateTimer != 15 )
+        speed *= 0.1;
+    if( speed &lt; 1 )
         speed = 0;
     if( StateTimer == 0 )
     {
@@ -695,8 +732,8 @@ if( State == "Fall" )
         State = "Idle_Start";
         x = global.StartX;
         y = global.StartY;
-        image_xscale = 1;
-        image_yscale = 1;
+        image_xscale = 0.25;
+        image_yscale = 0.25;
     }
 }
 </string>
@@ -723,32 +760,6 @@ if( State == "Fall" )
             <kind>1</kind>
             <string>/// Pick up key
 hasKey = true;
-with( other )
-    instance_destroy();
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_Torch">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Pick up torch
-hasTorch = true;
 with( other )
     instance_destroy();
 </string>
@@ -796,7 +807,7 @@ draw_self();
           <argument>
             <kind>1</kind>
             <string>/// Draw Hit Points
-//draw_rectangle_colour( x - 16, y, x - 16 + 32 * HitPoints / 100, y + 8, c_maroon, c_red, c_black, c_red, false );
+draw_rectangle_colour( x - 16, y, x - 16 + 32 * HitPoints / 100, y + 8, c_maroon, c_red, c_black, c_red, false );
 </string>
           </argument>
         </arguments>

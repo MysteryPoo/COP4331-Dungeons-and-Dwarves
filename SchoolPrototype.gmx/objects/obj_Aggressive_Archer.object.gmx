@@ -46,7 +46,7 @@
 // Time to chase player.
 ChaseDuration = 90;
 // Speed to chase the player.
-ChaseSpeed = 1;
+ChaseSpeed = 0.5;
 // Time to wait before shooting.
 WaitToShootDuration = 30;
 
@@ -127,13 +127,56 @@ alarm[7] = WaitToShootDuration;
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>/// Wander
+if (State == "Wander")
+{
+    // If it's time to reset wander movement, call the script to do so.
+    if (CurrentWanderDuration == MaxWanderDuration)
+        scr_Wander(MaxWanderSpeed);
+        
+    // Update State timer and reset if needed.
+    CurrentWanderDuration -= 1;
+    if (CurrentWanderDuration == 0)
+        CurrentWanderDuration = MaxWanderDuration;
+        
+    if (scr_CanDetectPlayer)
+    {
+        State = "Chase";
+        alarm[6] = ChaseDuration;
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>/// Pursue
 
 // If in pursuit, step towards the player.
-if (State == "Chase" &amp;&amp; PlayerDetected)
+if (State == "Chase" )
 {
     if (distance_to_point(global.MyInst.x, global.MyInst.y) &gt; 30)
-        mp_potential_step(global.MyInst.x, global.MyInst.y, ChaseSpeed, false);
+    {
+        var _Near = instance_nearest( x, y, obj_Dwarf );
+        scr_Chase(ChaseSpeed, _Near);
+    }
+    else
+        speed = 0;
 }
 </string>
           </argument>
@@ -159,26 +202,16 @@ if (State == "Chase" &amp;&amp; PlayerDetected)
 
 // If we're ready to shoot, fire the parent step event that
 //  consists only of shooting a projectile.
-if (State == "ReadyToShoot")
+var PlayerDetected = scr_CanDetectPlayer( DetectionRadius );
+if (State == "ReadyToShoot" &amp;&amp; scr_CanDetectPlayer)
 {
-    event_inherited();
+    scr_FireAt(Projectile, global.MyInst.x, global.MyInst.y);
     
     // Return to pursuit state.
     State = "Chase";
     alarm[6] = ChaseDuration;
 }
-else
-{
-    // Sort of gross workaround for processing inherited event.
-    //  If we don't set CanShoot to false, we'll shoot even if we're
-    //  not stopped.  So we just save the value, set CanShoot to false,
-    //  process the parent event, and then restore the value.
-    //  It's dumb and ugly but it works.
-    var ActualCanShoot = CanShoot;
-    CanShoot = false;
-    event_inherited();
-    CanShoot = ActualCanShoot;
-}
+
 </string>
           </argument>
         </arguments>

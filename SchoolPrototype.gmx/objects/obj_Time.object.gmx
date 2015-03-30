@@ -26,7 +26,57 @@
           <argument>
             <kind>1</kind>
             <string>/// Start Time
-StartTime = date_current_datetime();
+// Real value
+StartTime = date_inc_minute( date_current_datetime(), 3 );
+
+// Test Value
+//StartTime = date_inc_second( date_current_datetime(), 15 );
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Check time left
+var minutes = floor( date_minute_span( StartTime, date_current_datetime() ) );
+var seconds = date_second_span( StartTime, date_current_datetime() ) mod 60;
+if( minutes == 0 &amp;&amp; seconds == 0 )
+{
+    // Out of time
+    // Toggle Ready
+    if( instance_exists( obj_Client ) )
+    {
+        buffer_seek( obj_Client.Buffer, buffer_seek_start, 0 );
+        buffer_write( obj_Client.Buffer, buffer_u8, 6 );
+        buffer_write( obj_Client.Buffer, buffer_bool, true );
+        network_send_packet( obj_Client.Socket, obj_Client.Buffer, buffer_tell( obj_Client.Buffer ) );
+    }
+    if( instance_exists( obj_Gesture0 ) )
+        with( obj_Gesture0 )
+            instance_destroy();
+    if( instance_exists( obj_Gesture1 ) )
+        with( obj_Gesture1 )
+            instance_destroy();
+    with( global.MyInst )
+        instance_destroy();
+    global.Waiting = true;
+}
 </string>
           </argument>
         </arguments>
@@ -54,8 +104,8 @@ var minutes = floor( date_minute_span( StartTime, date_current_datetime() ) );
 var seconds = date_second_span( StartTime, date_current_datetime() ) mod 60;
 var TimeString = string( minutes ) + ":";
 TimeString += string_replace( string_format( seconds mod 60, 2, 0 ), " ", "0" );
-if( instance_exists( global.MyInst ) )
-    draw_text( global.MyInst.x, global.MyInst.y, TimeString );
+//if( instance_exists( global.MyInst ) )
+draw_text( 0,0, TimeString );
 </string>
           </argument>
         </arguments>
