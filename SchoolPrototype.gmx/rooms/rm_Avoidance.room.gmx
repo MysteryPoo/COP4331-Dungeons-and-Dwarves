@@ -9,7 +9,7 @@
   <speed>30</speed>
   <persistent>0</persistent>
   <colour>12632256</colour>
-  <showcolour>-1</showcolour>
+  <showcolour>0</showcolour>
   <code>/// Place the player
 global.MyInst = Dwarf_Avoidance;
 global.RestartOnDeath = true;</code>

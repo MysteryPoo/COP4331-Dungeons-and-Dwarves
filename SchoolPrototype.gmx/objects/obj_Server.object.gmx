@@ -88,7 +88,7 @@ LobbyType = network_socket_tcp;
 LobbyIPAddress = "184.91.74.235";
 LobbyPort = 20000;
 LobbyServer = network_create_socket( Type );
-/*isConnected = network_connect( LobbyServer , LobbyIPAddress , LobbyPort );
+isConnected = network_connect( LobbyServer , LobbyIPAddress , LobbyPort );
 if( isConnected &gt; -1 )
 {
     // Register on Lobby Server
@@ -99,7 +99,7 @@ if( isConnected &gt; -1 )
     buffer_write( Buffer, buffer_string, Name );
     network_send_packet( LobbyServer, Buffer, buffer_tell( Buffer ) );
     alarm[ 2 ] = 30 * 60;
-}*/
+}
 //else
     //game_end();
 </string>
@@ -211,14 +211,14 @@ AttackQueue = ds_queue_create();
           <argument>
             <kind>1</kind>
             <string>/// Spawn Points
-SpawnX[ 3 ] = 864;
-SpawnY[ 3 ] = 96;
-SpawnX[ 2 ] = 768;
-SpawnY[ 2 ] = 448;
-SpawnX[ 1 ] = 448;
-SpawnY[ 1 ] = 96;
-SpawnX[ 0 ] = 256;
-SpawnY[ 0 ] = 448;
+SpawnX[ 3 ] = 352;
+SpawnY[ 3 ] = 480;
+SpawnX[ 2 ] = 1600;
+SpawnY[ 2 ] = 288;
+SpawnX[ 1 ] = 1632;
+SpawnY[ 1 ] = 1728;
+SpawnX[ 0 ] = 544;
+SpawnY[ 0 ] = 1696;
 </string>
           </argument>
         </arguments>
@@ -525,7 +525,7 @@ for( var s = 0; s &lt; Players; ++s )
 {
     var _lMap = PlayerList[| s ];
     var _dwarf = _lMap[? "Instance" ];
-    if( _lMap[? "Map" ] == 5 )
+    if( Map == 5 )
     {
         var _pMap = _lMap[? "PositionMap" ];
         var _gMap = _lMap[? "GestureMap" ];

@@ -71,6 +71,7 @@
     </sprites>
     <sprites name="Powerups">
       <sprite>sprites\spr_SpeedBoost</sprite>
+      <sprite>sprites\spr_Heatlh</sprite>
     </sprites>
     <sprites name="Lobby">
       <sprite>sprites\spr_PlayerSlot</sprite>
@@ -140,7 +141,10 @@
     </objects>
     <objects name="Powerups">
       <object>objects\obj_Quiver</object>
+      <object>objects\obj_Bombs</object>
       <object>objects\obj_SpeedBoost</object>
+      <object>objects\obj_Health</object>
+      <object>objects\obj_PowerupSpawn</object>
     </objects>
     <objects name="Enemies">
       <object>objects\obj_FlameMinion</object>

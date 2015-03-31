@@ -435,7 +435,7 @@ if( State == "Game" )
 for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
 {
     var _lMap = SocketList[| s ];
-    if( room == rm_Client || global.Waiting || State == "Spectator" &amp;&amp; room != rm_Select )
+    if( room == rm_Client || global.Waiting || State == "Spectator" &amp;&amp; room != rm_Lobby )
     {
         var _inst = _lMap[? "Instance" ];
         var _pMap = _lMap[? "PositionMap" ];
@@ -454,7 +454,11 @@ for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
             if( State != "Death" )
             {
                 if( id.netID == obj_Client.NetworkID )
+                {
                     global.MyInst = id;
+                    if( !global.Waiting )
+                        view_object[ 0 ] = id;
+                }
                 var _dir = _pMap[? "Direction" ];
                 var _spd = _pMap[? "Speed" ];
                 var _x = _pMap[? "X" ] + _spd * other.Ping / 100 * dcos( _dir );
@@ -553,31 +557,40 @@ while( !ds_queue_empty( StatusQueue ) )
           <argument>
             <kind>1</kind>
             <string>/// Attack Queue
-while( !ds_queue_empty( AttackQueue ) )
-{
-    var _aMap = ds_queue_dequeue( AttackQueue );
-    if( _aMap[? "Socket" ] != NetworkID )
+if( room == rm_Client || global.Waiting || State == "Spectator" &amp;&amp; room != rm_Lobby )
+    while( !ds_queue_empty( AttackQueue ) )
     {
-        var _Object = asset_get_index( _aMap[? "Object" ] );
-        if( _Object != -1 )
+        var _aMap = ds_queue_dequeue( AttackQueue );
+        if( _aMap[? "Socket" ] != NetworkID )
         {
-            var _inst = noone;
-            for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
+            var _Object = asset_get_index( _aMap[? "Object" ] );
+            if( _Object != -1 )
             {
-                var _lMap = SocketList[| s ];
-                if( _lMap[? "Socket" ] == _aMap[? "Socket" ] )
-                    _inst = _lMap[? "Instance" ];
-            }
-            if( _inst != noone )
-            {
-                var _attack = instance_create( _aMap[? "X" ], _aMap[? "Y" ], _Object );
-                _attack.Owner = _inst;
-                _attack.direction = _aMap[? "Direction" ];
-                _attack.image_angle = _attack.direction;
+                var _inst = noone;
+                for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
+                {
+                    var _lMap = SocketList[| s ];
+                    if( _lMap[? "Socket" ] == _aMap[? "Socket" ] )
+                        _inst = _lMap[? "Instance" ];
+                }
+                if( _inst != noone )
+                {
+                    var _attack = instance_create( _aMap[? "X" ], _aMap[? "Y" ], _Object );
+                    _attack.Owner = _inst;
+                    _attack.direction = _aMap[? "Direction" ];
+                    _attack.image_angle = _attack.direction;
+                }
             }
         }
+        ds_map_destroy( _aMap );
     }
-    ds_map_destroy( _aMap );
+else
+{
+    while( !ds_queue_empty( AttackQueue ) )
+    {
+        var _aMap = ds_queue_dequeue( AttackQueue );
+        ds_map_destroy( _aMap );
+    }
 }
 </string>
           </argument>
