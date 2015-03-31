@@ -180,7 +180,7 @@ if( State == "Hit" )
 // Placeholder
 
 // Make sure the player isn't already dead.
-if (other.State != "Death" &amp;&amp; other.State != "Hit" )
+if (other.State != "Death" &amp;&amp; other.State != "Hit" &amp;&amp; other.IsInvincible == false)
 {
     other.State = "Hit_Start";
     other.HitPoints -= Damage;

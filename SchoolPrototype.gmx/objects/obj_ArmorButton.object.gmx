@@ -281,6 +281,10 @@ if (Ready)
 // Debug, verify health change.
 // REMOVE LATER
 //draw_text(150, 150, string(global.MyInst.HitPoints));
+// Debug, verify invincibility.
+// REMOVE LATER
+//if (global.MyInst.IsInvincible == true)
+//    draw_text(150, 150, "INVINCIBLE");
 
 if (Ready)
 {
@@ -302,6 +306,10 @@ if (Ready)
             case obj_Platemail_3:
                 temp_sprite = spr_Platemail;
                 break;
+            case obj_Shield:
+            case obj_Shield_2:
+            case obj_Shield_3:
+                temp_sprite = spr_Shield;
         }
         
         // Draw the weapon sprite.

@@ -116,7 +116,7 @@ Damage = 0;
           <argument>
             <kind>1</kind>
             <string>/// Damage Player
-if( other.id != Owner &amp;&amp; other.State != "Death" &amp;&amp; other.State != "Hit" )
+if( other.id != Owner &amp;&amp; other.State != "Death" &amp;&amp; other.State != "Hit" &amp;&amp; other.IsInvincible == false)
 {
     if( Damage &gt; 0 )
     {

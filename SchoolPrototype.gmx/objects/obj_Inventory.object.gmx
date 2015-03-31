@@ -33,6 +33,7 @@ SpriteMap[? "Bomb" ] = spr_bomb;
 SpriteMap[? "Ninja"] = spr_Ninja;
 SpriteMap[? "Platemail"] = spr_Platemail;
 SpriteMap[? "Wand" ] = spr_Wand;
+SpriteMap[? "Shield" ] = spr_Shield;
 </string>
           </argument>
         </arguments>
@@ -512,6 +513,49 @@ for( var w = 0; w &lt; ds_list_size( Inventory ); ++w )
             --w;
         }
     }
+    // If you have a Tier 2 Shield, remove any Tier 1 Shield
+    if( ds_list_find_value( Inventory, w ) == obj_Shield_2 )
+    {
+        var i = ds_list_find_index( Inventory, obj_Shield );
+        while( i != -1 )
+        {
+            ds_list_delete( Inventory, i );
+            i = ds_list_find_index( Inventory, obj_Shield );
+            --w;
+        }
+        var i = ds_list_find_index( Inventory, obj_Shield_2 );
+        while( i != w &amp;&amp; i != -1 )
+        {
+            ds_list_delete( Inventory, i );
+            i = ds_list_find_index( Inventory, obj_Shield_2 );
+            --w;
+        }
+    }
+    // If you have a Tier 3 Shield, remove any Tier 1 or 2 Shield
+    if( ds_list_find_value( Inventory, w ) == obj_Shield_3 )
+    {
+        var i = ds_list_find_index( Inventory, obj_Shield_2 );
+        while( i != -1 )
+        {
+            ds_list_delete( Inventory, i );
+            i = ds_list_find_index( Inventory, obj_Shield_2 );
+            --w;
+        }
+        var i = ds_list_find_index( Inventory, obj_Shield );
+        while( i != -1 )
+        {
+            ds_list_delete( Inventory, i );
+            i = ds_list_find_index( Inventory, obj_Shield );
+            --w;
+        }
+        var i = ds_list_find_index( Inventory, obj_Shield_3 );
+        while( i != w &amp;&amp; i != -1 )
+        {
+            ds_list_delete( Inventory, i );
+            i = ds_list_find_index( Inventory, obj_Shield_3 );
+            --w;
+        }
+    }
 }
 </string>
           </argument>
@@ -897,6 +941,11 @@ if( State == "Open" || State == "Opened" || State == "Close" )
                 draw_set_halign( fa_center );
                 draw_text( _x, _y, string( floor( Ammo[? "Mana" ] / 10 ) ) );
                 draw_set_halign( fa_left );
+                break;
+            case obj_Shield:
+            case obj_Shield_2:
+            case obj_Shield_3:
+                draw_sprite_ext( SpriteMap[? "Shield" ], 0, _x, _y, 1, 1, 0, c_white, 1 );
                 break;
         }
     }
