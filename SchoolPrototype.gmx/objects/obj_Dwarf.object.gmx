@@ -438,6 +438,23 @@ if( State != "Death" )
                                 --obj_Inventory.Ammo[? "Bombs" ];
                                 validShot = true;
                             }
+                            break;
+                        case obj_PoisonWand:
+                        case obj_PoisonWand_3:
+                            if( obj_Inventory.Ammo[? "Mana" ] &gt;= 20 )
+                            {
+                                obj_Inventory.Ammo[? "Mana" ] -= 20;
+                                validShot = true;
+                            }
+                            break;
+                        case obj_FireWand:
+                        case obj_FireWand_3:
+                            if( obj_Inventory.Ammo[? "Mana" ] &gt;= 10 )
+                            {
+                                obj_Inventory.Ammo[? "Mana" ] -= 10;
+                                validShot = true;
+                            }
+                            break;
                     }
                 }
                 if( validShot )
@@ -687,8 +704,8 @@ if( State == "Death" )
             else
             {
                 State = "Idle_Start";
-                x = global.StartX;
-                y = global.StartY;
+                //x = global.StartX;
+                //y = global.StartY;
             }
         }
     }
@@ -807,7 +824,8 @@ draw_self();
           <argument>
             <kind>1</kind>
             <string>/// Draw Hit Points
-draw_rectangle_colour( x - 16, y, x - 16 + 32 * HitPoints / 100, y + 8, c_maroon, c_red, c_black, c_red, false );
+if( image_alpha == 1 )
+    draw_rectangle_colour( x - 16, y + 16, x - 16 + 32 * HitPoints / 100, y + 20, c_maroon, c_red, c_black, c_red, false );
 </string>
           </argument>
         </arguments>

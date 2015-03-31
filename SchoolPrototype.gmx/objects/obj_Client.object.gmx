@@ -687,7 +687,8 @@ for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
     var _pMap = _lMap[? "PositionMap" ];
     if( instance_exists( _inst ) )
     {
-        draw_text( _inst.x, _inst.y + 32, _lMap[? "Name" ] );
+        if( _inst.image_alpha == 1 )
+            draw_text( _inst.x, _inst.y + 32, _lMap[? "Name" ] );
     }
     draw_text( 5, 128 + 16 * s, "( " + string( _pMap[? "X" ] ) + ", " + string( _pMap[? "Y" ] ) + " )" );
 }

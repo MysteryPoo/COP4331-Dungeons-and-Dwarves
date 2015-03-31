@@ -4,7 +4,7 @@
   <solid>0</solid>
   <visible>-1</visible>
   <depth>-10</depth>
-  <persistent>-1</persistent>
+  <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
@@ -35,6 +35,32 @@ CurrentWeapon = noone;
 LastWeapon = noone;
 // Whether the selected weapon is 'usable'
 UsableWeaponSelected = false;
+
+// Ready
+Ready = true;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Position
+x = display_get_gui_width() - 48;
+y = 64;
 </string>
           </argument>
         </arguments>
@@ -59,6 +85,7 @@ UsableWeaponSelected = false;
             <kind>1</kind>
             <string>/// Reset Press
 State = "NotPressed";
+Ready = true;
 </string>
           </argument>
         </arguments>
@@ -85,8 +112,9 @@ State = "NotPressed";
 
 // Goofy, make sure to figure out if we even need to do this?
 //  Constant GUI size or no?
+/*
 x = display_get_gui_width() - 48;
-y = 64;
+y = 64;*/
 </string>
           </argument>
         </arguments>
@@ -140,6 +168,7 @@ if (CurrentWeapon != LastWeapon)
           <argument>
             <kind>1</kind>
             <string>/// Check for Touch
+/*
 if (State == "NotPressed")
 {
     // Get mouse click in GUI reference frame.
@@ -155,9 +184,73 @@ if (State == "NotPressed")
                 {
                     // Create the armor to start the effect.
                     var inst = instance_create(-150, -150, CurrentWeapon);
+                    inst.Owner = global.MyInst;
                     // Button remains pressed for the time specified by the armor.
                     State = "Pressed";
-                    alarm[0] = inst.Lifetime;
+                    alarm[0] = 300;//inst.Lifetime;
+                    if( instance_exists( obj_Client ) )
+                    {
+                        buffer_seek( obj_Client.Buffer, buffer_seek_start, 0 );
+                        buffer_write( obj_Client.Buffer, buffer_u8, 5 );
+                        buffer_write( obj_Client.Buffer, buffer_string, object_get_name( inst.object_index ) );
+                        buffer_write( obj_Client.Buffer, buffer_u16, -1 );
+                        buffer_write( obj_Client.Buffer, buffer_u16, -1 );
+                        buffer_write( obj_Client.Buffer, buffer_s16, 0 );
+                        network_send_packet( obj_Client.Socket, obj_Client.Buffer, buffer_tell( obj_Client.Buffer ) );
+                    }
+                }
+    }
+}*/
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Check for Touch -- NEW
+if (Ready)
+{
+    // Get mouse click in GUI reference frame.
+    var _mouse_x = device_mouse_x_to_gui( 0 );
+    var _mouse_y = device_mouse_y_to_gui( 0 );
+    
+    // If user clicked the button.
+    if( mouse_check_button_pressed( mb_left ) )
+    {
+        if( _mouse_x &gt; x-16 &amp;&amp; _mouse_x &lt; x+16 )
+            if( _mouse_y &gt; y-16 &amp;&amp; _mouse_y &lt; y+16 )
+                if (UsableWeaponSelected)
+                {
+                    // Create the armor to start the effect.
+                    var inst = instance_create(-150, -150, CurrentWeapon);
+                    inst.Owner = global.MyInst;
+                    // Button remains pressed for the time specified by the armor.
+                    Ready = false;
+                    alarm[0] = 300;//inst.Lifetime;
+                    if( instance_exists( obj_Client ) )
+                    {
+                        buffer_seek( obj_Client.Buffer, buffer_seek_start, 0 );
+                        buffer_write( obj_Client.Buffer, buffer_u8, 5 );
+                        buffer_write( obj_Client.Buffer, buffer_string, object_get_name( inst.object_index ) );
+                        buffer_write( obj_Client.Buffer, buffer_u16, -1 );
+                        buffer_write( obj_Client.Buffer, buffer_u16, -1 );
+                        buffer_write( obj_Client.Buffer, buffer_s16, 0 );
+                        network_send_packet( obj_Client.Socket, obj_Client.Buffer, buffer_tell( obj_Client.Buffer ) );
+                    }
                 }
     }
 }
@@ -189,7 +282,7 @@ if (State == "NotPressed")
 // REMOVE LATER
 //draw_text(150, 150, string(global.MyInst.HitPoints));
 
-if (State == "NotPressed")
+if (Ready)
 {
     if (UsableWeaponSelected)
     {

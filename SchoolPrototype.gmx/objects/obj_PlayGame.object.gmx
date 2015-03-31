@@ -99,7 +99,14 @@ image_index = 1;
           <argument>
             <kind>1</kind>
             <string>/// Start Game
-room_goto( rm_ServerList );
+//room_goto( rm_ServerList );
+
+global.ServerIP = "127.0.0.1";
+    global.ServerPort = 6969;
+    global.ServerType = "Game";
+    with( obj_Client )
+        instance_destroy();
+    room_goto( rm_Lobby );
 </string>
           </argument>
         </arguments>

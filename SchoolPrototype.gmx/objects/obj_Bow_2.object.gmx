@@ -125,7 +125,7 @@ if( Arrows &lt; 1 )
             <kind>1</kind>
             <string>/// Stay with Owner
 x = Owner.x;
-y = Owner.y - 16;
+y = Owner.y;
 </string>
           </argument>
         </arguments>

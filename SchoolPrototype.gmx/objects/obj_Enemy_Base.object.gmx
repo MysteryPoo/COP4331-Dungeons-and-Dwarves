@@ -293,7 +293,7 @@ if (PlayerDetected)
           <argument>
             <kind>1</kind>
             <string>/// Draw Hit Points
-draw_rectangle_colour( x - 16, y, x - 16 + 32 * HitPoints / 100, y + 8, c_maroon, c_red, c_black, c_red, false );
+draw_rectangle_colour( x - 16, y + 16, x - 16 + 32 * HitPoints / 100, y + 20, c_maroon, c_red, c_black, c_red, false );
 </string>
           </argument>
         </arguments>
