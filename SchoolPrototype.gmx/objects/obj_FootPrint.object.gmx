@@ -27,6 +27,7 @@
             <kind>1</kind>
             <string>/// Random alpha
 image_alpha = random(1);
+audio_play_sound(sound_footstep, 1, false);
 </string>
           </argument>
         </arguments>

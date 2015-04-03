@@ -31,6 +31,9 @@ if( other.id == global.MyInst )
     if( instance_exists( obj_Inventory ) )
         obj_Inventory.Ammo[? "Arrows" ] += 10;
 }
+// play the item sound once
+if (!audio_is_playing(sound_item))
+    audio_play_sound(sound_item, 2, false);
 instance_destroy();
 </string>
           </argument>

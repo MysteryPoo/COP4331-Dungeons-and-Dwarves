@@ -101,6 +101,30 @@ instance_destroy();
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>211</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_sound</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>6</kind>
+            <sound>sound_item</sound>
+          </argument>
+          <argument>
+            <kind>3</kind>
+            <string>0</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="3" enumb="0">
       <action>
@@ -153,6 +177,8 @@ if( instance_exists( obj_Dwarf ) )
             <string>/// Give weapon!
 if( alarm[ 0 ] == -1 )
 {
+    // play audio
+    audio_play_sound(sound_chest, 2, false); 
     // Terrible way of getting the image of the object inside
     var _temp = instance_create( x, y, Item );
     Item_Sprite = _temp.sprite_index;
@@ -161,7 +187,7 @@ if( alarm[ 0 ] == -1 )
     if( instance_exists( obj_Inventory ) )
         ds_list_add( obj_Inventory.Inventory, Item );
     Opened = true;
-    alarm[ 0 ] = 15;
+    alarm[ 0 ] = 30;
 }
 </string>
           </argument>

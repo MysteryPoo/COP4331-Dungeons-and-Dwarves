@@ -486,6 +486,10 @@ var WeaponCount = ds_list_size( Inventory );
             <string>/// Open
 if( State == "Open_Start" )
 {
+    // stop if playing already and play the sound 
+    audio_stop_sound(sound_inventory);
+    audio_play_sound(sound_inventory, 2, false);
+    
     State = "Open";
     SlideTimer = 0;
 }
@@ -570,6 +574,10 @@ if( State == "Opened" )
             <string>/// Close
 if( State == "Close_Start" )
 {
+    // stop if playing already and play the sound 
+    audio_stop_sound(sound_inventory);
+    audio_play_sound(sound_inventory, 2, false);
+    
     State = "Close";
     SlideTimer = 0;
 }

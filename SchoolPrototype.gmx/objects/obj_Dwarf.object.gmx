@@ -716,6 +716,8 @@ if( State == "Death" )
             <string>/// Fall
 if( State == "Fall_Start" )
 {
+    // play falling sound
+    audio_play_sound(sound_falling, 3, false);
     speed = 0;
     State = "Fall";
     StateTimer = 30 * 2;
@@ -761,7 +763,12 @@ if( State == "Fall" )
             <string>/// Pick up key
 hasKey = true;
 with( other )
+{
+    // play sound and destroy
+    audio_play_sound(sound_key, 2, false);
     instance_destroy();
+}
+    
 </string>
           </argument>
         </arguments>
