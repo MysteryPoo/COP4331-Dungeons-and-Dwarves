@@ -34,6 +34,7 @@ SpriteMap[? "Ninja"] = spr_Ninja;
 SpriteMap[? "Platemail"] = spr_Platemail;
 SpriteMap[? "Wand" ] = spr_Wand;
 SpriteMap[? "Shield" ] = spr_Shield;
+SpriteMap[? "Agile" ] = spr_SpeedBoost;
 </string>
           </argument>
         </arguments>
@@ -556,6 +557,49 @@ for( var w = 0; w &lt; ds_list_size( Inventory ); ++w )
             --w;
         }
     }
+    // If you have a Tier 2 Agile Armor, remove any Tier 1 Agile Armor
+    if( ds_list_find_value( Inventory, w ) == obj_Agile_2 )
+    {
+        var i = ds_list_find_index( Inventory, obj_Agile );
+        while( i != -1 )
+        {
+            ds_list_delete( Inventory, i );
+            i = ds_list_find_index( Inventory, obj_Agile );
+            --w;
+        }
+        var i = ds_list_find_index( Inventory, obj_Agile_2 );
+        while( i != w &amp;&amp; i != -1 )
+        {
+            ds_list_delete( Inventory, i );
+            i = ds_list_find_index( Inventory, obj_Agile_2 );
+            --w;
+        }
+    }
+    // If you have a Tier 3 Agile Armor, remove any Tier 1 or 2 Agile Armor
+    if( ds_list_find_value( Inventory, w ) == obj_Agile_3 )
+    {
+        var i = ds_list_find_index( Inventory, obj_Agile_2 );
+        while( i != -1 )
+        {
+            ds_list_delete( Inventory, i );
+            i = ds_list_find_index( Inventory, obj_Agile_2 );
+            --w;
+        }
+        var i = ds_list_find_index( Inventory, obj_Agile );
+        while( i != -1 )
+        {
+            ds_list_delete( Inventory, i );
+            i = ds_list_find_index( Inventory, obj_Agile );
+            --w;
+        }
+        var i = ds_list_find_index( Inventory, obj_Agile_3 );
+        while( i != w &amp;&amp; i != -1 )
+        {
+            ds_list_delete( Inventory, i );
+            i = ds_list_find_index( Inventory, obj_Agile_3 );
+            --w;
+        }
+    }
 }
 </string>
           </argument>
@@ -946,6 +990,11 @@ if( State == "Open" || State == "Opened" || State == "Close" )
             case obj_Shield_2:
             case obj_Shield_3:
                 draw_sprite_ext( SpriteMap[? "Shield" ], 0, _x, _y, 1, 1, 0, c_white, 1 );
+                break;
+            case obj_Agile:
+            case obj_Agile_2:
+            case obj_Agile_3:
+                draw_sprite_ext( SpriteMap[? "Agile" ], 0, _x, _y, 1, 1, 0, c_white, 1);
                 break;
         }
     }
