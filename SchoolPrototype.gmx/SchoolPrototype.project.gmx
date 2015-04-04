@@ -77,6 +77,11 @@
     <sprites name="Lobby">
       <sprite>sprites\spr_PlayerSlot</sprite>
     </sprites>
+    <sprites name="Shop">
+      <sprite>sprites\spr_Shop_Arrow</sprite>
+      <sprite>sprites\spr_Shop_Buy</sprite>
+      <sprite>sprites\spr_Shop_Exit</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_floor</background>
@@ -102,6 +107,8 @@
     <font>fonts\fnt_DEMO</font>
     <font>fonts\fnt_Default</font>
     <font>fonts\fnt_LargeTimer</font>
+    <font>fonts\fnt_Default_Small</font>
+    <font>fonts\fnt_Shop</font>
   </fonts>
   <objects name="objects">
     <objects name="Weapons">
@@ -208,6 +215,7 @@
       <object>objects\obj_Treasure</object>
       <object>objects\obj_Loot</object>
       <object>objects\obj_Drop</object>
+      <object>objects\obj_Shop</object>
     </objects>
     <objects name="Bridge">
       <object>objects\obj_Bridge</object>
