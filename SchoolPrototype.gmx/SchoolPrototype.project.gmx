@@ -266,8 +266,14 @@
     <room>rooms\rm_Ice</room>
     <room>rooms\rm_Main</room>
     <room>rooms\rm_Client</room>
-    <room>rooms\rm_Big</room>
     <room>rooms\rm_Lobby</room>
+    <rooms name="Big">
+      <room>rooms\rm_Big1</room>
+      <room>rooms\rm_Big2</room>
+      <room>rooms\rm_Big3</room>
+      <room>rooms\rm_Big4</room>
+      <room>rooms\rm_Big5</room>
+    </rooms>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
