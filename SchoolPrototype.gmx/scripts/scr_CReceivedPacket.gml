@@ -144,6 +144,12 @@ switch( msgid ) {
                 _lMap[? "PositionMap" ] = _pMap;
                 _lMap[? "GestureMap" ] = _gMap;
                 ds_list_add( SocketList, _lMap );
+                // Reset Ready Status
+                for( var s = 0; s < ds_list_size( SocketList ); ++s )
+                {
+                    var _lMap = SocketList[| s ];
+                    _lMap[? "Ready" ] = false;
+                }
             }
         }
         break;
