@@ -32,6 +32,7 @@
       <sprite>sprites\spr_Ninja</sprite>
       <sprite>sprites\spr_Platemail</sprite>
       <sprite>sprites\spr_Wand</sprite>
+      <sprite>sprites\spr_Shield</sprite>
     </sprites>
     <sprites name="Dwarf">
       <sprites name="Idle">
@@ -137,6 +138,16 @@
         <object>objects\obj_PoisonWand_3</object>
         <object>objects\obj_FireWand</object>
         <object>objects\obj_FireWand_3</object>
+      </objects>
+      <objects name="Shield">
+        <object>objects\obj_Shield</object>
+        <object>objects\obj_Shield_2</object>
+        <object>objects\obj_Shield_3</object>
+      </objects>
+      <objects name="Agile Armor">
+        <object>objects\obj_Agile</object>
+        <object>objects\obj_Agile_2</object>
+        <object>objects\obj_Agile_3</object>
       </objects>
     </objects>
     <objects name="Powerups">
