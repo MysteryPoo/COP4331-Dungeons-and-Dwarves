@@ -11,14 +11,6 @@
   <colour>0</colour>
   <showcolour>-1</showcolour>
   <code>/// Place the player
-if( obj_Client.State == "Spectator" )
-{
-    with( Dwarf_Bridge )
-        instance_destroy();
-    global.MyInst = noone;
-}
-else
-    global.MyInst = Dwarf_Bridge;
 global.RestartOnDeath = true;</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
