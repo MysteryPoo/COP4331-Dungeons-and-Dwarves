@@ -266,11 +266,13 @@ State = "Waiting";
 // Map List
 MapList = ds_list_create();
 ds_list_add( MapList, room_get_name( rm_Bridge ) );
-//ds_list_add( MapList, room_get_name( rm_Sneak ) );
 ds_list_add( MapList, room_get_name( rm_MontyHall ) );
 ds_list_add( MapList, room_get_name( rm_Maze ) );
 ds_list_add( MapList, room_get_name( rm_Avoidance ) );
-ds_list_add( MapList, room_get_name( rm_Big ) );
+ds_list_add( MapList, room_get_name( rm_Big1 ) );
+ds_list_add( MapList, room_get_name( rm_Big4 ) );
+ds_list_add( MapList, room_get_name( rm_Big5 ) );
+randomize();
 ds_list_shuffle( MapList );
 Map = 0;
 </string>
