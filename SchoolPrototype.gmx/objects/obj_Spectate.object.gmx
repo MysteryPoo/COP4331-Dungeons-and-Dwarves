@@ -129,7 +129,7 @@ if( instance_exists( obj_Client ) )
           <argument>
             <kind>1</kind>
             <string>/// Visibility
-if( global.Waiting )
+if( global.Waiting &amp;&amp; room != rm_Lobby )
 {
     if( instance_exists( obj_Client ) )
     {
