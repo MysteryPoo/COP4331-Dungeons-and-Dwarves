@@ -9,7 +9,7 @@
   <speed>30</speed>
   <persistent>0</persistent>
   <colour>0</colour>
-  <showcolour>-1</showcolour>
+  <showcolour>0</showcolour>
   <code>/// Place the player
 global.MyInst = Dwarf_Maze;
 global.RestartOnDeath = false;</code>
@@ -275,7 +275,7 @@ global.RestartOnDeath = false;</code>
     <instance objName="obj_Treasure" x="880" y="64" name="inst_DB3A58AE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="912" y="64" name="inst_974EF53C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="944" y="64" name="inst_CEBF7DEC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Dwarf" x="80" y="128" name="inst_BCD150EF" locked="0" code="hasKey = true;&#xA;" scaleX="0.25" scaleY="0.25" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Dwarf" x="80" y="128" name="Dwarf_Maze" locked="0" code="hasKey = true;&#xA;" scaleX="0.25" scaleY="0.25" colour="4294967295" rotation="0"/>
     <instance objName="obj_Skelly" x="320" y="176" name="inst_14B6E15C" locked="0" code="" scaleX="0.25" scaleY="0.25" colour="4294967295" rotation="0"/>
     <instance objName="obj_Light" x="96" y="768" name="inst_5DD01352" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="192" y="288" name="inst_2DD4884D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -304,8 +304,7 @@ global.RestartOnDeath = false;</code>
     <instance objName="obj_Skelly" x="624" y="80" name="inst_29287DF1" locked="0" code="" scaleX="0.25" scaleY="0.25" colour="4294967295" rotation="0"/>
     <instance objName="obj_Skelly" x="448" y="544" name="inst_CE2845EE" locked="0" code="" scaleX="0.25" scaleY="0.25" colour="4294967295" rotation="0"/>
     <instance objName="obj_Skelly" x="720" y="336" name="inst_3EE87DE0" locked="0" code="" scaleX="0.25" scaleY="0.25" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Time" x="128" y="768" name="inst_3D1AF3CC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Atmosphere" x="160" y="768" name="inst_D477570E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Atmosphere" x="128" y="768" name="inst_D477570E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_floor" x="96" y="64" w="32" h="32" xo="0" yo="0" id="10001559" name="inst_938B8B6E" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

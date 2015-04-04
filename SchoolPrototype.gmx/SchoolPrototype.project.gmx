@@ -29,6 +29,9 @@
       <sprite>sprites\spr_arrow</sprite>
       <sprite>sprites\spr_spike</sprite>
       <sprite>sprites\spr_Bow</sprite>
+      <sprite>sprites\spr_Ninja</sprite>
+      <sprite>sprites\spr_Platemail</sprite>
+      <sprite>sprites\spr_Wand</sprite>
     </sprites>
     <sprites name="Dwarf">
       <sprites name="Idle">
@@ -68,6 +71,7 @@
     </sprites>
     <sprites name="Powerups">
       <sprite>sprites\spr_SpeedBoost</sprite>
+      <sprite>sprites\spr_Heatlh</sprite>
     </sprites>
     <sprites name="Lobby">
       <sprite>sprites\spr_PlayerSlot</sprite>
@@ -91,6 +95,7 @@
     <script>scripts\scr_MeleeAttack.gml</script>
     <script>scripts\scr_Wander.gml</script>
     <script>scripts\scr_Angle24Dir.gml</script>
+    <script>scripts\scr_isUsable.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_DEMO</font>
@@ -117,10 +122,29 @@
         <object>objects\obj_Spike_3</object>
       </objects>
       <object>objects\obj_Fireball</object>
+      <objects name="Ninja Armor">
+        <object>objects\obj_Ninja</object>
+        <object>objects\obj_Ninja_2</object>
+        <object>objects\obj_Ninja_3</object>
+      </objects>
+      <objects name="Platemail">
+        <object>objects\obj_Platemail</object>
+        <object>objects\obj_Platemail_2</object>
+        <object>objects\obj_Platemail_3</object>
+      </objects>
+      <objects name="Wand">
+        <object>objects\obj_PoisonWand</object>
+        <object>objects\obj_PoisonWand_3</object>
+        <object>objects\obj_FireWand</object>
+        <object>objects\obj_FireWand_3</object>
+      </objects>
     </objects>
     <objects name="Powerups">
       <object>objects\obj_Quiver</object>
+      <object>objects\obj_Bombs</object>
       <object>objects\obj_SpeedBoost</object>
+      <object>objects\obj_Health</object>
+      <object>objects\obj_PowerupSpawn</object>
     </objects>
     <objects name="Enemies">
       <object>objects\obj_FlameMinion</object>
@@ -139,6 +163,7 @@
       <object>objects\obj_Atmosphere</object>
       <object>objects\obj_Inventory</object>
       <object>objects\obj_Spectate</object>
+      <object>objects\obj_ArmorButton</object>
     </objects>
     <object>objects\obj_DEMO</object>
     <objects name="Generic">
@@ -210,8 +235,8 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_MainMenu</room>
-    <room>rooms\rm_Test</room>
     <room>rooms\rm_Server</room>
+    <room>rooms\rm_Test</room>
     <room>rooms\rm_Bridge</room>
     <room>rooms\rm_Sneak</room>
     <room>rooms\rm_ServerList</room>

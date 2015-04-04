@@ -5,31 +5,23 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_Bow</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
       <action>
         <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
+        <id>604</id>
+        <kind>0</kind>
         <userelative>0</userelative>
         <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_inherited</functionname>
         <codestring></codestring>
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Fire Timer
-alarm[ 0 ] = 1;
-</string>
-          </argument>
-        </arguments>
       </action>
       <action>
         <libid>1</libid>
@@ -94,38 +86,16 @@ alarm[ 0 ] = 7;
           <argument>
             <kind>1</kind>
             <string>/// Fire Arrow
-var arrow = instance_create( x, y, obj_Arrow );
-arrow.direction = direction;
-arrow.image_angle = direction;
-arrow.Owner = Owner;
+if( instance_exists( Owner ) )
+{
+    var arrow = instance_create( x, y, obj_Arrow );
+    arrow.direction = direction;
+    arrow.image_angle = direction;
+    arrow.Owner = Owner;
+}
 --Arrows;
 if( Arrows &lt; 1 )
     instance_destroy();
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="3" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Stay with Owner
-x = Owner.x;
-y = Owner.y - 16;
 </string>
           </argument>
         </arguments>

@@ -26,9 +26,9 @@
           <argument>
             <kind>1</kind>
             <string>/// Surface
-Surface = surface_create( view_wview[ 0 ], view_hview[ 0 ] );
+Surface = surface_create( view_wview[ 0 ] + 64, view_hview[ 0 ] + 64 );
 surface_set_target( Surface );
-draw_rectangle( 0, 0, view_wview[ 0 ], view_hview[ 0 ], false );
+draw_rectangle( 0, 0, view_wview[ 0 ] + 32, view_hview[ 0 ] + 32, false );
 surface_reset_target();
 </string>
           </argument>
@@ -176,7 +176,7 @@ if( ++Flicker &gt; 360 )
         </arguments>
       </action>
     </event>
-    <event eventtype="8" enumb="0">
+    <event eventtype="8" enumb="73">
       <action>
         <libid>1</libid>
         <id>603</id>

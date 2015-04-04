@@ -220,7 +220,7 @@ if( instance_exists( global.MyInst ) )
     var _sy = global.MyInst.y
     var _xx = _sx + ( mx - mxs );
     var _yy = _sy + ( my - mys );
-    draw_circle( _sx, _sy, 8, false );
+    //draw_circle( _sx, _sy, 8, false );
     draw_circle( _sx, _sy, max_dist, true );
     draw_arrow( _sx, _sy, _xx, _yy, 10 );
 }

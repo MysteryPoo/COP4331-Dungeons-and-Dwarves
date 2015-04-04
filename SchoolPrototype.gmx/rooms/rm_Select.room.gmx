@@ -56,12 +56,12 @@ obj_Client.State = "Spectator";</code>
   </views>
   <instances>
     <instance objName="obj_Client" x="0" y="0" name="inst_0654E1C1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Inventory" x="0" y="0" name="inst_C34A5256" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Inventory" x="0" y="32" name="inst_C34A5256" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_PlayerSlot" x="256" y="160" name="inst_8A286245" locked="0" code="Slot = 0;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_PlayerSlot" x="672" y="160" name="inst_42F11A2B" locked="0" code="Slot = 1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_PlayerSlot" x="224" y="448" name="inst_0F084118" locked="0" code="Slot = 2;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_PlayerSlot" x="608" y="448" name="inst_C4C7E36D" locked="0" code="Slot = 3;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Spectate" x="352" y="160" name="inst_C6E33253" locked="0" code="Slot = 0;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Spectate" x="352" y="160" name="inst_C6E33253" locked="0" code="Slot = 0;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Spectate" x="352" y="192" name="inst_D9E48297" locked="0" code="Slot = 1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Spectate" x="352" y="224" name="inst_002E9D2B" locked="0" code="Slot = 2;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Spectate" x="352" y="256" name="inst_F741E380" locked="0" code="Slot = 3;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

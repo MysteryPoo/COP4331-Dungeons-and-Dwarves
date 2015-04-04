@@ -221,6 +221,8 @@ switch( msgid ) {
             //ds_list_add( MapList, _map );
         }
         //ds_list_add( MapList, rm_Client );
+        if( instance_exists( obj_Time ) )
+            obj_Time.StartTime = date_inc_minute( date_current_datetime(), 3 );
         if( State != "Spectator" )
             global.Waiting = false;
         else

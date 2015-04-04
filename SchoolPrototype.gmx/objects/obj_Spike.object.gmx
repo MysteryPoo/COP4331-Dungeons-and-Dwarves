@@ -133,11 +133,13 @@ else
           <argument>
             <kind>1</kind>
             <string>/// Position
-if( Owner != noone )
+if( Owner != noone &amp;&amp; instance_exists( Owner ) )
 {
     x = Owner.x + Range * dcos( direction ) * dsin( Life );
-    y = Owner.y - 16 - Range * dsin( direction ) * dsin( Life );
+    y = Owner.y - Range * dsin( direction ) * dsin( Life );
 }
+else
+    instance_destroy();
 </string>
           </argument>
         </arguments>
@@ -208,14 +210,17 @@ draw_self();
           <argument>
             <kind>1</kind>
             <string>/// Draw chain
-var Chains = floor( Range / 16 );
-var curRange = Range * dsin( Life );
-for( var c = 0; c &lt; Chains; ++c )
+if( instance_exists( Owner ) )
 {
-    var r = curRange / Chains * c;
-    var xx = Owner.x + r * dcos( direction );
-    var yy = Owner.y - 16 - r * dsin( direction );
-    draw_circle_colour( xx, yy, 8, c_blue, c_blue, true );
+    var Chains = floor( Range / 16 );
+    var curRange = Range * dsin( Life );
+    for( var c = 0; c &lt; Chains; ++c )
+    {
+        var r = curRange / Chains * c;
+        var xx = Owner.x + r * dcos( direction );
+        var yy = Owner.y - r * dsin( direction );
+        draw_circle_colour( xx, yy, 8, c_blue, c_blue, true );
+    }
 }
 </string>
           </argument>
