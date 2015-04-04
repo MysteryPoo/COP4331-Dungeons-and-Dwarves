@@ -70,6 +70,12 @@ switch( msgid ) {
             buffer_write( Buffer, buffer_u8, 2 );
             buffer_write( Buffer, buffer_u8, ds_list_size( PlayerList ) );
             network_send_packet( LobbyServer, Buffer, buffer_tell( Buffer ) );
+            // Reset Ready status
+            for( var s = 0; s < ds_list_size( PlayerList ); ++s )
+            {
+                var _lMap = PlayerList[| s ];
+                _lMap[? "Ready" ] = false;
+            }
         }
         if( ds_list_size( PlayerList ) > 1 && State != "Running" )
             State = "Gathering";
