@@ -9,7 +9,7 @@
   <speed>30</speed>
   <persistent>0</persistent>
   <colour>12632256</colour>
-  <showcolour>-1</showcolour>
+  <showcolour>0</showcolour>
   <code>/// Place the player
 global.MyInst = Dwarf_Big;
 global.RestartOnDeath = true;</code>
@@ -43,7 +43,7 @@ global.RestartOnDeath = true;</code>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
   </backgrounds>
   <views>
-    <view visible="-1" objName="obj_Dwarf" xview="0" yview="0" wview="512" hview="384" xport="0" yport="0" wport="1024" hport="768" hborder="256" vborder="192" hspeed="-1" vspeed="-1"/>
+    <view visible="-1" objName="obj_Dwarf" xview="0" yview="0" wview="480" hview="270" xport="0" yport="0" wport="1024" hport="768" hborder="256" vborder="192" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="512" hview="384" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
@@ -994,9 +994,8 @@ global.RestartOnDeath = true;</code>
     <instance objName="obj_Treasure" x="2752" y="2080" name="inst_4489F62A" locked="0" code="" scaleX="0.0500000007450581" scaleY="0.0500000007450581" colour="33554431" rotation="0"/>
     <instance objName="obj_Light" x="96" y="16" name="inst_2349D9CA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Gesture1" x="64" y="16" name="inst_F83E14B1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Time" x="128" y="16" name="inst_A287A50C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Atmosphere" x="160" y="16" name="inst_53F24CCF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Dwarf" x="80" y="112" name="Dwarf_Big" locked="0" code="" scaleX="0.25" scaleY="0.25" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Atmosphere" x="128" y="16" name="inst_53F24CCF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_Wall_Tile" x="1248" y="320" w="32" h="32" xo="0" yo="0" id="10003675" name="inst_5E09A662" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

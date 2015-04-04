@@ -50,10 +50,13 @@ alarm[ 0 ] = 1;
           <argument>
             <kind>1</kind>
             <string>/// Fire Arrow
-var arrow = instance_create( x, y, obj_Arrow );
-arrow.direction = direction;
-arrow.image_angle = direction;
-arrow.Owner = Owner;
+if( instance_exists( Owner ) )
+{
+    var arrow = instance_create( x, y, obj_Arrow );
+    arrow.direction = direction;
+    arrow.image_angle = direction;
+    arrow.Owner = Owner;
+}
 instance_destroy();
 </string>
           </argument>
@@ -78,8 +81,13 @@ instance_destroy();
           <argument>
             <kind>1</kind>
             <string>/// Stay with Owner
-x = Owner.x;
-y = Owner.y - 16;
+if( instance_exists( Owner ) )
+{
+    x = Owner.x;
+    y = Owner.y;
+}
+else
+    instance_destroy();
 </string>
           </argument>
         </arguments>

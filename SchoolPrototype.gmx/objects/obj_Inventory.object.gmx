@@ -30,6 +30,9 @@ SpriteMap = ds_map_create();
 SpriteMap[? "Bow" ] = spr_Bow;
 SpriteMap[? "Spike" ] = spr_spike;
 SpriteMap[? "Bomb" ] = spr_bomb;
+SpriteMap[? "Ninja"] = spr_Ninja;
+SpriteMap[? "Platemail"] = spr_Platemail;
+SpriteMap[? "Wand" ] = spr_Wand;
 </string>
           </argument>
         </arguments>
@@ -75,9 +78,10 @@ global.MyWeapon = noone;
             <kind>1</kind>
             <string>/// Ammo Map
 Ammo = ds_map_create();
-Ammo[? "Arrows" ] = 0;
-Ammo[? "Bombs" ] = 0;
+Ammo[? "Arrows" ] = 5;
+Ammo[? "Bombs" ] = 5;
 Ammo[? "Spikes" ] = 1; // Arbitrary positive value. They never decrement.
+Ammo[? "Mana" ] = 100;
 </string>
           </argument>
         </arguments>
@@ -176,6 +180,28 @@ SelectedWeapon = -1;
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Mana Tick
+alarm[ 0 ] = 30;
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="1" enumb="0">
       <action>
@@ -240,6 +266,54 @@ ds_list_destroy( Inventory );
             <kind>1</kind>
             <string>/// Cleanup Ammo Map
 ds_map_destroy( Ammo );
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Reset Alarm
+alarm[ 0 ] = 30;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Mana Increase
+Ammo[? "Mana" ] += 1;
+if( Ammo[? "Mana" ] &gt; 100 )
+    Ammo[? "Mana" ] = 100;
 </string>
           </argument>
         </arguments>
@@ -352,6 +426,92 @@ for( var w = 0; w &lt; ds_list_size( Inventory ); ++w )
             --w;
         }
     }
+    // If you have a Tier 2 Ninja Armor, remove any Tier 1 Ninja Armors
+    if( ds_list_find_value( Inventory, w ) == obj_Ninja_2 )
+    {
+        var i = ds_list_find_index( Inventory, obj_Ninja );
+        while( i != -1 )
+        {
+            ds_list_delete( Inventory, i );
+            i = ds_list_find_index( Inventory, obj_Ninja );
+            --w;
+        }
+        var i = ds_list_find_index( Inventory, obj_Ninja_2 );
+        while( i != w &amp;&amp; i != -1 )
+        {
+            ds_list_delete( Inventory, i );
+            i = ds_list_find_index( Inventory, obj_Ninja_2 );
+            --w;
+        }
+    }
+    // If you have a Tier 3 Ninja Armor, remove any Tier 1 or 2 Ninja Armors
+    if( ds_list_find_value( Inventory, w ) == obj_Ninja_3 )
+    {
+        var i = ds_list_find_index( Inventory, obj_Ninja_2 );
+        while( i != -1 )
+        {
+            ds_list_delete( Inventory, i );
+            i = ds_list_find_index( Inventory, obj_Ninja_2 );
+            --w;
+        }
+        var i = ds_list_find_index( Inventory, obj_Ninja );
+        while( i != -1 )
+        {
+            ds_list_delete( Inventory, i );
+            i = ds_list_find_index( Inventory, obj_Ninja );
+            --w;
+        }
+        var i = ds_list_find_index( Inventory, obj_Ninja_3 );
+        while( i != w &amp;&amp; i != -1 )
+        {
+            ds_list_delete( Inventory, i );
+            i = ds_list_find_index( Inventory, obj_Ninja_3 );
+            --w;
+        }
+    }
+    // If you have a Tier 2 Platemail, remove any Tier 1 Platemail
+    if( ds_list_find_value( Inventory, w ) == obj_Platemail_2 )
+    {
+        var i = ds_list_find_index( Inventory, obj_Platemail );
+        while( i != -1 )
+        {
+            ds_list_delete( Inventory, i );
+            i = ds_list_find_index( Inventory, obj_Platemail );
+            --w;
+        }
+        var i = ds_list_find_index( Inventory, obj_Platemail_2 );
+        while( i != w &amp;&amp; i != -1 )
+        {
+            ds_list_delete( Inventory, i );
+            i = ds_list_find_index( Inventory, obj_Platemail_2 );
+            --w;
+        }
+    }
+    // If you have a Tier 3 Platemail, remove any Tier 1 or 2 Platemail
+    if( ds_list_find_value( Inventory, w ) == obj_Platemail_3 )
+    {
+        var i = ds_list_find_index( Inventory, obj_Platemail_2 );
+        while( i != -1 )
+        {
+            ds_list_delete( Inventory, i );
+            i = ds_list_find_index( Inventory, obj_Platemail_2 );
+            --w;
+        }
+        var i = ds_list_find_index( Inventory, obj_Platemail );
+        while( i != -1 )
+        {
+            ds_list_delete( Inventory, i );
+            i = ds_list_find_index( Inventory, obj_Platemail );
+            --w;
+        }
+        var i = ds_list_find_index( Inventory, obj_Platemail_3 );
+        while( i != w &amp;&amp; i != -1 )
+        {
+            ds_list_delete( Inventory, i );
+            i = ds_list_find_index( Inventory, obj_Platemail_3 );
+            --w;
+        }
+    }
 }
 </string>
           </argument>
@@ -454,7 +614,7 @@ if( State == "Opened" )
             {
                 global.MyWeapon = Inventory[| _index ];
                 SelectedWeapon = _index;
-                State = "Close_Start";
+                //State = "Close_Start";
             }
         }
     }
@@ -553,6 +713,30 @@ if( State == "Closed" )
             <kind>1</kind>
             <string>/// Make visible again
 visible = true;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Armor Button
+instance_create( 0, 0, obj_ArmorButton );
 </string>
           </argument>
         </arguments>
@@ -666,7 +850,9 @@ if( State == "Open" || State == "Opened" || State == "Close" )
                     draw_sprite_ext( SpriteMap[? "Bow" ], 0, _x, _y, 1, 1, 0, c_white, 1 );
                 else
                     draw_sprite_ext( SpriteMap[? "Bow" ], 0, _x, _y, 1, 1, 0, c_red, 1 );
+                draw_set_halign( fa_center );
                 draw_text( _x, _y, string( Ammo[? "Arrows" ] ) );
+                draw_set_halign( fa_left );
                 break;
             case obj_Spike:
             case obj_Spike_2:
@@ -678,7 +864,39 @@ if( State == "Open" || State == "Opened" || State == "Close" )
                     draw_sprite_ext( SpriteMap[? "Bomb" ], 0, _x, _y, 1, 1, 0, c_white, 1 );
                 else
                     draw_sprite_ext( SpriteMap[? "Bomb" ], 0, _x, _y, 1, 1, 0, c_red, 1 );
+                draw_set_halign( fa_center );
                 draw_text( _x, _y, string( Ammo[? "Bombs" ] ) );
+                draw_set_halign( fa_left );
+                break;
+            case obj_Ninja:
+            case obj_Ninja_2:
+            case obj_Ninja_3:
+                draw_sprite_ext( SpriteMap[? "Ninja" ], 0, _x, _y, 1, 1, 0, c_white, 1 );
+                break;
+            case obj_Platemail:
+            case obj_Platemail_2:
+            case obj_Platemail_3:
+                draw_sprite_ext( SpriteMap[? "Platemail" ], 0, _x, _y, 1, 1, 0, c_white, 1 );
+                break;
+            case obj_PoisonWand:
+            case obj_PoisonWand_3:
+                if( Ammo[? "Mana" ] &gt;= 20 )
+                    draw_sprite_ext( SpriteMap[? "Wand" ], 0, _x, _y, 1, 1, 0, c_white, 1 );
+                else
+                    draw_sprite_ext( SpriteMap[? "Wand" ], 0, _x, _y, 1, 1, 0, c_red, 1 );
+                draw_set_halign( fa_center );
+                draw_text( _x, _y, string( floor( Ammo[? "Mana" ] / 20 ) ) );
+                draw_set_halign( fa_left );
+                break;
+            case obj_FireWand:
+            case obj_FireWand_3:
+                if( Ammo[? "Mana" ] &gt;= 10 )
+                    draw_sprite_ext( SpriteMap[? "Wand" ], 0, _x, _y, 1, 1, 0, c_white, 1 );
+                else
+                    draw_sprite_ext( SpriteMap[? "Wand" ], 0, _x, _y, 1, 1, 0, c_red, 1 );
+                draw_set_halign( fa_center );
+                draw_text( _x, _y, string( floor( Ammo[? "Mana" ] / 10 ) ) );
+                draw_set_halign( fa_left );
                 break;
         }
     }
@@ -705,7 +923,9 @@ if( State == "Open" || State == "Opened" || State == "Close" )
             <kind>1</kind>
             <string>/// Draw Treasure
 draw_sprite( spr_Treasure1, 0, display_get_gui_width() - 32, 16 );
+draw_set_halign( fa_right );
 draw_text( display_get_gui_width() - 64, 16, string( Treasure ) );
+draw_set_halign( fa_left );
 </string>
           </argument>
         </arguments>

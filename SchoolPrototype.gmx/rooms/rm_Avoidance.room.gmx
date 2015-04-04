@@ -9,7 +9,7 @@
   <speed>30</speed>
   <persistent>0</persistent>
   <colour>12632256</colour>
-  <showcolour>-1</showcolour>
+  <showcolour>0</showcolour>
   <code>/// Place the player
 global.MyInst = Dwarf_Avoidance;
 global.RestartOnDeath = true;</code>
@@ -63,7 +63,7 @@ global.RestartOnDeath = true;</code>
     <instance objName="obj_Key" x="496" y="304" name="inst_C2ABD459" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Gesture0" x="0" y="0" name="inst_30A6FAEF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Gesture1" x="32" y="0" name="inst_E6500C28" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Time" x="64" y="0" name="inst_CC1B8246" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Dwarf" x="96" y="288" name="Dwarf_Avoidance" locked="0" code="" scaleX="0.25" scaleY="0.25" colour="4294967295" rotation="0"/>
     <instance objName="obj_Wall" x="704" y="320" name="inst_58A3AA60" locked="0" code="" scaleX="3" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Door" x="48" y="304" name="inst_5EACBC2E" locked="0" code="Exit = true;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Wall" x="704" y="288" name="inst_4D9C391F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -105,7 +105,7 @@ global.RestartOnDeath = true;</code>
     <instance objName="obj_Torch" x="48" y="272" name="inst_7CFF3A52" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Torch" x="48" y="336" name="inst_1B4DB26F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Guard" x="688" y="240" name="inst_B64EB52B" locked="0" code="var node = 0;&#xA;x = path_get_point_x( path_Avoidance_small, node );&#xA;y = path_get_point_y( path_Avoidance_small, node );&#xA;path_position = ( 1 / path_get_number( path_Avoidance_small ) ) * node;&#xA;path_speed = -path_speed;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Dwarf" x="96" y="288" name="Dwarf_Avoidance" locked="0" code="" scaleX="0.25" scaleY="0.25" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Atmosphere" x="64" y="0" name="inst_053E7542" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_floor" x="64" y="96" w="32" h="32" xo="0" yo="0" id="10001730" name="inst_6B5BB23E" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

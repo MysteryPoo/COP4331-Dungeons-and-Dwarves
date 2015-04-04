@@ -211,14 +211,14 @@ AttackQueue = ds_queue_create();
           <argument>
             <kind>1</kind>
             <string>/// Spawn Points
-SpawnX[ 3 ] = 864;
-SpawnY[ 3 ] = 96;
-SpawnX[ 2 ] = 768;
-SpawnY[ 2 ] = 448;
-SpawnX[ 1 ] = 448;
-SpawnY[ 1 ] = 96;
-SpawnX[ 0 ] = 256;
-SpawnY[ 0 ] = 448;
+SpawnX[ 3 ] = 352;
+SpawnY[ 3 ] = 480;
+SpawnX[ 2 ] = 1600;
+SpawnY[ 2 ] = 288;
+SpawnX[ 1 ] = 1632;
+SpawnY[ 1 ] = 1728;
+SpawnX[ 0 ] = 544;
+SpawnY[ 0 ] = 1696;
 </string>
           </argument>
         </arguments>
@@ -240,7 +240,7 @@ SpawnY[ 0 ] = 448;
           <argument>
             <kind>1</kind>
             <string>/// Start Timer
-StartTimer = 30 * 10;
+StartTimer = 30 * 60;
 </string>
           </argument>
         </arguments>
@@ -266,10 +266,11 @@ State = "Waiting";
 // Map List
 MapList = ds_list_create();
 ds_list_add( MapList, room_get_name( rm_Bridge ) );
-ds_list_add( MapList, room_get_name( rm_Sneak ) );
+//ds_list_add( MapList, room_get_name( rm_Sneak ) );
 ds_list_add( MapList, room_get_name( rm_MontyHall ) );
 ds_list_add( MapList, room_get_name( rm_Maze ) );
 ds_list_add( MapList, room_get_name( rm_Avoidance ) );
+ds_list_add( MapList, room_get_name( rm_Big ) );
 ds_list_shuffle( MapList );
 Map = 0;
 </string>
@@ -524,7 +525,7 @@ for( var s = 0; s &lt; Players; ++s )
 {
     var _lMap = PlayerList[| s ];
     var _dwarf = _lMap[? "Instance" ];
-    if( _lMap[? "Map" ] == 5 )
+    if( Map == 5 )
     {
         var _pMap = _lMap[? "PositionMap" ];
         var _gMap = _lMap[? "GestureMap" ];
@@ -792,7 +793,7 @@ if( _allReady &amp;&amp; Map &lt; 2 )
     }
     ++Map;
 }
-else if( _allReady )
+else if( _allReady &amp;&amp; Map != 5)
 {
     Map = 5;
     for( var p = 0; p &lt; ds_list_size( PlayerList ); ++p )
@@ -838,7 +839,7 @@ if( State != "Waiting" )
         State = "Waiting";
         alarm[ 0 ] = -1;
         // Start Timer
-        StartTimer = 30 * 10;
+        StartTimer = 30 * 60;
         // Reshuffle map order
         ds_list_shuffle( MapList );
         Map = 0;
@@ -875,6 +876,8 @@ if( State == "Gathering" )
         if( !_lMap[? "Ready" ] )
             _allReady = false;
     }
+    if( ds_list_size( PlayerList ) &lt; 2 )
+        _allReady = false;
     if( StartTimer &gt; 10 &amp;&amp; _allReady )
         StartTimer = 11;
     if( StartTimer &gt; 0 )

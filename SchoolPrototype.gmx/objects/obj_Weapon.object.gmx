@@ -118,10 +118,13 @@ Damage = 0;
             <string>/// Damage Player
 if( other.id != Owner &amp;&amp; other.State != "Death" &amp;&amp; other.State != "Hit" )
 {
-    other.State = "Hit_Start";
+    if( Damage &gt; 0 )
+    {
+        other.State = "Hit_Start";
+        other.direction = direction;
+        other.speed = 10;
+    }
     other.HitPoints -= Damage;
-    other.direction = direction;
-    other.speed = 10;
     if( instance_exists( obj_Server ) )
     {
         // Add a status update to the queue
