@@ -6,7 +6,7 @@
   <depth>0</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
-  <maskName>&lt;undefined&gt;</maskName>
+  <maskName>spr_ball</maskName>
   <events>
     <event eventtype="0" enumb="0">
       <action>
@@ -572,7 +572,7 @@ if( State == "Move_Start" )
 if( State == "Move" )
 {
     // Direction animation
-    image_angle = scr_Angle24Dir( direction );
+    image_angle = direction + 90;//scr_Angle24Dir( direction );
     // End of animation direction
     // Are we on ice?
     if( place_meeting( x, y, obj_Ice ) )
