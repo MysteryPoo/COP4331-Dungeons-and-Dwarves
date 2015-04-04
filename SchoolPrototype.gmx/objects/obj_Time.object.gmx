@@ -56,7 +56,7 @@ StartTime = date_current_datetime();//date_inc_minute( date_current_datetime(), 
             <string>/// Check time left
 var minutes = floor( date_minute_span( StartTime, date_current_datetime() ) );
 var seconds = date_second_span( StartTime, date_current_datetime() ) mod 60;
-if( minutes == 0 &amp;&amp; seconds == 0 )
+if( minutes &lt;= 0 &amp;&amp; seconds &lt;= 0 )
 {
     // Out of time
     // Toggle Ready
