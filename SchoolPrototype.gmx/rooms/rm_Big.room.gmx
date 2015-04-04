@@ -202,37 +202,37 @@ global.RestartOnDeath = true;</code>
     <instance objName="obj_Wall" x="384" y="1952" name="inst_51777142" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="obj_Wall" x="256" y="1952" name="inst_281FA285" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="obj_Wall" x="256" y="2080" name="inst_F3D5D021" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Enemy_Fleeing" x="576" y="1440" name="inst_A91EC229" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Enemy_Chasing_Melee" x="256" y="928" name="inst_9494A4C1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Enemy_Ranged" x="480" y="992" name="inst_5E1F9080" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Aggressive_Archer" x="960" y="560" name="inst_0DE47AC6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Aggressive_Archer" x="1536" y="704" name="inst_0990EA02" locked="0" code="MaxWanderSpeed = 0.5;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Enemy_Fleeing" x="256" y="160" name="inst_BC1010D5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="2320" y="1520" name="inst_C4A2BC1D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
+    <instance objName="obj_Torch" x="48" y="128" name="inst_612DCF42" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
+    <instance objName="obj_Torch" x="160" y="80" name="inst_9CF19E02" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="2464" y="144" name="inst_B3210CCF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="1808" y="176" name="inst_7CF49492" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Skelly" x="960" y="480" name="inst_86AC3953" locked="0" code="" scaleX="0.150000005960464" scaleY="0.150000005960464" colour="4294967295" rotation="0"/>
     <instance objName="obj_Wall" x="480" y="2368" name="inst_C27CE7D6" locked="0" code="" scaleX="3" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Aggressive_Archer" x="224" y="2304" name="inst_9B91ABE7" locked="0" code="MaxWanderSpeed = 0;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Enemy_Chasing_Melee" x="2528" y="576" name="inst_CE115591" locked="0" code="MaxWanderSpeed = 0;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="2464" y="2480" name="inst_258F4F5D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
     <instance objName="obj_Aggressive_Archer" x="352" y="2304" name="inst_D9B6A9E6" locked="0" code="MaxWanderSpeed = 0;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Enemy_Chasing_Melee" x="2912" y="192" name="inst_AB110749" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="2464" y="2480" name="inst_159DF6F3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
     <instance objName="obj_Aggressive_Archer" x="96" y="2304" name="inst_5B2B7B0F" locked="0" code="MaxWanderSpeed = 0;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Enemy_Chasing_Melee" x="2912" y="832" name="inst_191C5143" locked="0" code="MaxWanderSpeed = 0;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Enemy_Chasing_Melee" x="736" y="272" name="inst_DF890A9B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="2768" y="2480" name="inst_35103EE9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
+    <instance objName="obj_Torch" x="2320" y="1520" name="inst_F85771B7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
     <instance objName="obj_Aggressive_Archer" x="480" y="1920" name="inst_0AB18C8D" locked="0" code="MaxWanderSpeed = 0;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Aggressive_Archer" x="480" y="1792" name="inst_206A16EA" locked="0" code="MaxWanderSpeed = 0;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Aggressive_Archer" x="480" y="2048" name="inst_D89ADB68" locked="0" code="MaxWanderSpeed = 0;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Aggressive_Archer" x="1312" y="1024" name="inst_B720FC3E" locked="0" code="MaxWanderSpeed = 0.5;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Aggressive_Archer" x="1312" y="384" name="inst_491B31AD" locked="0" code="MaxWanderSpeed = 0.5;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Aggressive_Archer" x="1760" y="704" name="inst_0D6FF762" locked="0" code="MaxWanderSpeed = 0.5;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Enemy_Chasing_Melee" x="2944" y="2464" name="inst_B3A9B556" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Enemy_Chasing_Melee" x="2080" y="1088" name="inst_07C57CDE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Enemy_Chasing_Melee" x="2144" y="2336" name="inst_0FBA320B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Enemy_Chasing_Melee" x="1440" y="2432" name="inst_D5EFA84E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Enemy_Chasing_Melee" x="928" y="2432" name="inst_B52F7532" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Enemy_Chasing_Melee" x="1024" y="1920" name="inst_05FBFE96" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Enemy_Chasing_Melee" x="2912" y="1728" name="inst_C2822DA8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Enemy_Fleeing" x="672" y="480" name="inst_69A41D60" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Enemy_Fleeing" x="544" y="672" name="inst_2EF0FE96" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Enemy_Fleeing" x="1920" y="256" name="inst_45305957" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Enemy_Fleeing" x="2208" y="1184" name="inst_745442E6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="2704" y="1712" name="inst_E112B683" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
+    <instance objName="obj_Treasure" x="1184" y="256" name="inst_6C1A2537" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Treasure" x="1536" y="672" name="inst_DDEC1E17" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="2160" y="1520" name="inst_B1DC7F48" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
+    <instance objName="obj_Torch" x="2064" y="2288" name="inst_6503EE79" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="2496" y="1264" name="inst_19C4FCD4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="2480" y="1360" name="inst_0FD0B660" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
+    <instance objName="obj_Treasure" x="1344" y="1696" name="inst_0738A869" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="1984" y="2096" name="inst_1D4CEAD5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
+    <instance objName="obj_Torch" x="2672" y="2384" name="inst_0FD91182" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="2464" y="144" name="inst_B7749633" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="48" y="192" name="inst_895EF4A1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
+    <instance objName="obj_Torch" x="2496" y="1744" name="inst_727CB05D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="1952" y="2384" name="inst_81F97C76" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
     <instance objName="obj_Treasure" x="544" y="1664" name="inst_B8D9193D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="672" y="1664" name="inst_FC608E18" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="544" y="1344" name="inst_C6966EBA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -253,8 +253,6 @@ global.RestartOnDeath = true;</code>
     <instance objName="obj_Treasure" x="2208" y="256" name="inst_2E9D13E6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="2048" y="2048" name="inst_B60A0685" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="512" y="2336" name="inst_33044677" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="1888" y="304" name="inst_7506C98A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="2064" y="304" name="inst_BB63F901" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
     <instance objName="obj_Treasure" x="544" y="1024" name="inst_891A566F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="96" y="704" name="inst_2DD155C2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="736" y="832" name="inst_D9D6349F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -292,16 +290,16 @@ global.RestartOnDeath = true;</code>
     <instance objName="obj_Treasure" x="1152" y="1648" name="inst_2BBC2F28" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="1568" y="1984" name="inst_07C55DD7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="1216" y="2144" name="inst_1DF0B432" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Treasure" x="736" y="832" name="inst_E72CCC2E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Enemy_Chasing_Melee" x="1840" y="1776" name="inst_2CF2F9C6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Enemy_Chasing_Melee" x="1344" y="1728" name="inst_0D943D57" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Enemy_Chasing_Melee" x="1120" y="1456" name="inst_AE301C18" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Enemy_Chasing_Melee" x="256" y="1504" name="inst_03E2A6BA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Aggressive_Archer" x="2272" y="1824" name="inst_145E886E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Aggressive_Archer" x="1312" y="1360" name="inst_8617C758" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Aggressive_Archer" x="848" y="1760" name="inst_D8F06CB6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Enemy_Fleeing" x="1824" y="1520" name="inst_26882052" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Enemy_Chasing_Melee" x="2624" y="1648" name="inst_B57B80B2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="1648" y="304" name="inst_E6809427" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
+    <instance objName="obj_Torch" x="2496" y="1264" name="inst_4F7D8FC5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="2032" y="2000" name="inst_713E6142" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="2160" y="1520" name="inst_FAF82348" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
+    <instance objName="obj_Torch" x="2240" y="1424" name="inst_9B9E5FEE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="2240" y="1424" name="inst_04B34EE1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="2160" y="1520" name="inst_4329F2A1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
+    <instance objName="obj_Torch" x="2160" y="1424" name="inst_96D1FFDB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="2240" y="1520" name="inst_57C3AA4F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
+    <instance objName="obj_Torch" x="1968" y="2288" name="inst_F5489DCC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_SpeedBoost" x="480" y="128" name="inst_C5DE8882" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_SpeedBoost" x="416" y="304" name="inst_209048E0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_SpeedBoost" x="160" y="512" name="inst_493DE61B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -369,20 +367,6 @@ global.RestartOnDeath = true;</code>
     <instance objName="obj_SpeedBoost" x="2624" y="1792" name="inst_2BDFA284" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_SpeedBoost" x="2608" y="2144" name="inst_524F890E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_SpeedBoost" x="2400" y="2240" name="inst_88DB5C7E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="496" y="1680" name="inst_EFC8F62A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="496" y="1632" name="inst_DC72C162" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="496" y="1584" name="inst_0945E929" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="496" y="1536" name="inst_6DAC86D7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="496" y="1488" name="inst_7762D30D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="496" y="1440" name="inst_4C65D699" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="496" y="1392" name="inst_467BD02F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="496" y="1344" name="inst_E5BABE4D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="544" y="1296" name="inst_F6047402" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="608" y="1296" name="inst_AA9C64F4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="672" y="1296" name="inst_D3FCF2D5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="544" y="1712" name="inst_6DC918C2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="672" y="1712" name="inst_3314CC4F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="608" y="1712" name="inst_2B25F691" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
     <instance objName="obj_Treasure" x="608" y="1664" name="inst_1244897D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="640" y="1664" name="inst_79635DE2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="576" y="1616" name="inst_FF413FA7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -392,28 +376,10 @@ global.RestartOnDeath = true;</code>
     <instance objName="obj_Treasure" x="1440" y="1696" name="inst_779F9E17" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="1408" y="1696" name="inst_D6F648B4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="1376" y="1696" name="inst_BA930B43" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Treasure" x="1344" y="1696" name="inst_BF9165D9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="2160" y="1424" name="inst_9913CFA2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="1344" y="1728" name="inst_24781E37" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="1344" y="1760" name="inst_2F6648C9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="1344" y="1792" name="inst_4F7750DF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="992" y="1840" name="inst_677B51DD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="1184" y="1840" name="inst_DFD61A61" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="1296" y="1840" name="inst_223AAC1D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="1328" y="1840" name="inst_0A306595" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="1360" y="1840" name="inst_A2EF18E9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="1392" y="1840" name="inst_DB826474" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="1424" y="1840" name="inst_33FF5AB4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="1456" y="1840" name="inst_698B9D42" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="1488" y="1408" name="inst_A4E4C305" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="1232" y="864" name="inst_CA300C25" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="1488" y="1520" name="inst_B817A5A7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="1488" y="1648" name="inst_DD7EF44F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="1488" y="1680" name="inst_79A50F61" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="1488" y="1712" name="inst_B18AD564" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="1488" y="1744" name="inst_5F8ED054" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="1488" y="1776" name="inst_A658BB83" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="1488" y="1808" name="inst_50326DAA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="48" y="480" name="inst_0867235B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
     <instance objName="obj_Treasure" x="1312" y="704" name="inst_A80D380F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="1568" y="736" name="inst_9BA2819B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="1536" y="736" name="inst_4546F126" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -421,380 +387,12 @@ global.RestartOnDeath = true;</code>
     <instance objName="obj_Treasure" x="1568" y="704" name="inst_CE34343E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="1504" y="704" name="inst_87017A69" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="1568" y="672" name="inst_2839EA97" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Treasure" x="1536" y="672" name="inst_348DDE22" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="2208" y="176" name="inst_330549F7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="1504" y="672" name="inst_62473714" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="1888" y="208" name="inst_2AF51A95" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="2464" y="144" name="inst_ACB93F6A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="2624" y="144" name="inst_DE0738B0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="48" y="192" name="inst_41888368" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="48" y="320" name="inst_BD2D9B87" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="208" y="432" name="inst_FF88769E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="48" y="1440" name="inst_B4E3D7EA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="48" y="1984" name="inst_D82909EA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="48" y="2112" name="inst_9C3CAB5C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="48" y="2272" name="inst_B02A531A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="336" y="256" name="inst_DD95A34C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="464" y="352" name="inst_E9BE22B4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="480" y="208" name="inst_26A44ECE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="144" y="80" name="inst_C5378319" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="1552" y="80" name="inst_BD4AAC9B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="1728" y="80" name="inst_C480F4BD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="2224" y="80" name="inst_B992F435" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="2064" y="208" name="inst_6A37F674" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="1328" y="80" name="inst_9EC5B557" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="1152" y="80" name="inst_E1100D56" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="976" y="80" name="inst_C94C3DDE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="800" y="80" name="inst_2315F089" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="640" y="80" name="inst_0D165D4F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="480" y="80" name="inst_73130A60" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="304" y="80" name="inst_F4F95D23" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="1888" y="80" name="inst_FA0EC9D2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="2048" y="80" name="inst_4E3F6D4F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="1424" y="464" name="inst_C74EA1F0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="1648" y="464" name="inst_FD036DD0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="1424" y="976" name="inst_3BEBAAC6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="1648" y="976" name="inst_1339C7BC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="1360" y="800" name="inst_26800812" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="1360" y="608" name="inst_146B3D78" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="1680" y="608" name="inst_34789146" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="1680" y="800" name="inst_92ADE148" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="1712" y="800" name="inst_CAC09407" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="1712" y="608" name="inst_F7E71AB7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="1392" y="608" name="inst_1260FFC0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="1392" y="800" name="inst_6408ED07" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="1648" y="944" name="inst_41E9BB5D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="1648" y="432" name="inst_827DB3FE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="1424" y="432" name="inst_94967CAE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="1424" y="944" name="inst_5F7831F5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="2000" y="752" name="inst_8EF27E23" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="2224" y="752" name="inst_6599E26A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="1456" y="160" name="inst_13F839F4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="1424" y="160" name="inst_796E8CE8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="1440" y="304" name="inst_E08E86BC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="1552" y="224" name="inst_E07AD08D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="1328" y="224" name="inst_0F8CD57D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="1600" y="176" name="inst_A20C4DD4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="1808" y="176" name="inst_A08419F3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="1984" y="176" name="inst_690EB9EE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="2144" y="176" name="inst_98F24D96" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="368" y="256" name="inst_85D88C2B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="496" y="384" name="inst_CCDA46C8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="688" y="304" name="inst_44F7323E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="592" y="304" name="inst_BAE129B6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="640" y="400" name="inst_AD246C61" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="592" y="496" name="inst_D6E6FACA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="208" y="464" name="inst_9AE8EEC8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="304" y="560" name="inst_E9BDC3DF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="448" y="624" name="inst_87D125C8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="512" y="528" name="inst_1174801E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="144" y="656" name="inst_9B969BDB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="304" y="656" name="inst_59C7C4A0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="1232" y="272" name="inst_9222F863" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="464" y="1312" name="inst_D191CB5A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="464" y="1440" name="inst_98FE5A14" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="1872" y="1232" name="inst_12AF0925" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="160" y="560" name="inst_8447EAA6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="448" y="656" name="inst_4CFBA8C9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="224" y="1744" name="inst_8A4092F3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="144" y="1120" name="inst_5AE31E39" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="368" y="1744" name="inst_A999AF0C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="512" y="1168" name="inst_F9A9B457" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="624" y="1168" name="inst_AD708730" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="240" y="1072" name="inst_0E5667B6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="384" y="1072" name="inst_606FB47E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="512" y="1072" name="inst_DA4C93EC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="752" y="1104" name="inst_91844466" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="1136" y="928" name="inst_21F9DB17" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="848" y="976" name="inst_371B23D2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="1008" y="976" name="inst_943B3BA3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="848" y="880" name="inst_E1D0D1A1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="1008" y="880" name="inst_EE1F61A4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="224" y="1648" name="inst_70D7B36E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="368" y="1648" name="inst_32D3A61B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="528" y="1264" name="inst_D745CB32" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="656" y="1264" name="inst_DE50DCE6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="752" y="1328" name="inst_60314A07" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="752" y="1552" name="inst_1C6971DF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="752" y="1680" name="inst_8ACE113B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="752" y="1824" name="inst_4AF4EE62" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="720" y="1376" name="inst_0189967C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="720" y="1504" name="inst_15DD97DD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="720" y="1376" name="inst_DA884D20" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="720" y="1504" name="inst_46D77F80" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="720" y="1584" name="inst_9A1AD64F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="720" y="1664" name="inst_6E00ACDB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="720" y="1376" name="inst_78431452" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="240" y="1168" name="inst_4F5D5509" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="384" y="1168" name="inst_9839ABD6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="144" y="1264" name="inst_869B893E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="288" y="1264" name="inst_10F1C40E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="144" y="1360" name="inst_53D8460C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="288" y="1360" name="inst_D6972928" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="1232" y="416" name="inst_2C64908D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="1232" y="560" name="inst_02E680D5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="464" y="1568" name="inst_72BCCC9E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="480" y="176" name="inst_F1A5AF82" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="640" y="176" name="inst_9E526C07" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="800" y="176" name="inst_E21B0B13" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="976" y="176" name="inst_0052C3B4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="1152" y="176" name="inst_DD6A0DAE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="800" y="208" name="inst_09F3507C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="976" y="208" name="inst_457EA358" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="1152" y="208" name="inst_E2537D24" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="368" y="432" name="inst_D1F2A84E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="368" y="464" name="inst_3EBCE874" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="1904" y="1232" name="inst_B0AD4351" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="1904" y="1376" name="inst_FA09EC7E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="1264" y="1008" name="inst_EBF02295" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="688" y="784" name="inst_3A4F0E8D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="688" y="672" name="inst_A4265307" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="688" y="560" name="inst_03E3BCEB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="1904" y="448" name="inst_7F77342C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="1264" y="416" name="inst_E4A86630" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="592" y="624" name="inst_DC8922F3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="592" y="752" name="inst_9E461B83" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="592" y="864" name="inst_67742876" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="592" y="1008" name="inst_429E3026" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="1872" y="1376" name="inst_884D3B31" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="1808" y="400" name="inst_92595625" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="1232" y="992" name="inst_98B2567D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="1584" y="1120" name="inst_86A387ED" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="1680" y="1120" name="inst_CABC7952" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="1776" y="1376" name="inst_605EF513" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="1232" y="720" name="inst_B0A4FCFC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="2704" y="1792" name="inst_FCBDD4A3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="2704" y="1936" name="inst_A2C52C6E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="1904" y="576" name="inst_55B7C0F8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="1904" y="704" name="inst_9641EAE2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="1904" y="1088" name="inst_51B105B6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="2016" y="1040" name="inst_4153B59D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="640" y="2416" name="inst_C8636221" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="800" y="2416" name="inst_E9F1A67B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="1728" y="2480" name="inst_E8955537" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="1856" y="912" name="inst_3B86F12A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="2000" y="848" name="inst_76625924" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="2064" y="800" name="inst_D349F9D9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="2160" y="800" name="inst_AE17D66E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="2256" y="896" name="inst_369AAE73" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="2320" y="688" name="inst_CD28039D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="2320" y="464" name="inst_1793D04B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="1392" y="336" name="inst_6C76B5F6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="1552" y="336" name="inst_A5B2B2B4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="2032" y="400" name="inst_63499151" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="1648" y="256" name="inst_D2112B63" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="2384" y="240" name="inst_7457DDD0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="2256" y="256" name="inst_2D83FA21" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="2256" y="352" name="inst_33CEAC06" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="2160" y="352" name="inst_9004A5EB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="2480" y="304" name="inst_104B7549" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="2480" y="432" name="inst_5CC10135" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="2400" y="528" name="inst_CF82BF80" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="2400" y="624" name="inst_3F4D4937" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="1264" y="560" name="inst_35A9579F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="1264" y="720" name="inst_1B1C7CC3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="1264" y="864" name="inst_7BD8587F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="1808" y="800" name="inst_890C9A95" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="1808" y="656" name="inst_2BC1767B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="1808" y="512" name="inst_9CFA38B7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="1232" y="1120" name="inst_ECDB0A78" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="1504" y="1168" name="inst_26ADA078" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="1360" y="1168" name="inst_0626E03E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="1776" y="1168" name="inst_19F59772" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="1504" y="1072" name="inst_387372A7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="1360" y="1072" name="inst_42F4DCFD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="1744" y="1072" name="inst_CFA41C20" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="2096" y="1616" name="inst_1D50E333" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="2864" y="1376" name="inst_3641C2AB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="2864" y="1504" name="inst_57F6FC44" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="2000" y="1904" name="inst_FCAD62CB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="2160" y="1152" name="inst_47C26791" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="2128" y="1152" name="inst_E7AC3D96" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="2128" y="1312" name="inst_CCFB767E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="2256" y="1120" name="inst_892A1DE4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="2288" y="1104" name="inst_9C587308" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="2480" y="688" name="inst_92B07F7F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="2480" y="800" name="inst_868F1512" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="2272" y="1520" name="inst_369C5E41" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="144" y="2352" name="inst_DAAF721E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="2144" y="1520" name="inst_24BEA9BE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="1856" y="1008" name="inst_CF8A0CF3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="2544" y="880" name="inst_B5B9E636" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="2672" y="880" name="inst_905E7BF1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="2800" y="880" name="inst_B5B382C6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="1856" y="2480" name="inst_C59792BF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="2544" y="944" name="inst_11267559" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="2672" y="944" name="inst_0A642EC8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="2384" y="944" name="inst_4B2D98DB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="2864" y="928" name="inst_396F111F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="2864" y="1040" name="inst_35F26CAC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="2832" y="1008" name="inst_BDFD682C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="2784" y="144" name="inst_8ADD88DD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="2960" y="1504" name="inst_958216A0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="2960" y="1376" name="inst_1BCF1201" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="2960" y="1120" name="inst_7988DD10" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="2960" y="992" name="inst_3568B4A9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="2768" y="2144" name="inst_E03544FF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="2768" y="2272" name="inst_C03E0E50" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="2960" y="224" name="inst_197C97A2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="2960" y="352" name="inst_9D02D21B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="2960" y="480" name="inst_887FBA01" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="2960" y="608" name="inst_74F510E1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="2960" y="736" name="inst_296EDD3A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="2960" y="864" name="inst_6C47BB2B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="2960" y="992" name="inst_52FA0091" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="2896" y="1792" name="inst_66872C41" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="2896" y="2144" name="inst_C26A43FB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="2960" y="1248" name="inst_A845DB8F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="2960" y="1648" name="inst_BBF750D0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="2960" y="2304" name="inst_D018A6AE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="2800" y="1792" name="inst_0BDF7AC3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="2864" y="1952" name="inst_DF54E411" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="2800" y="2080" name="inst_EDF3F06F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="2800" y="2224" name="inst_F260D17B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="2864" y="2336" name="inst_5BAC18B8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="1648" y="2080" name="inst_DA1F9C45" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="1648" y="2208" name="inst_14E58C8D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="2960" y="2016" name="inst_4BC3FEAF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="2960" y="1888" name="inst_BB342CDD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="2704" y="1360" name="inst_6900E3D7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="2704" y="1504" name="inst_71753924" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="2704" y="1648" name="inst_C3B333FB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="2032" y="1184" name="inst_3ECC9F92" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="2032" y="1328" name="inst_F3E71D78" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="2032" y="1472" name="inst_9827C12F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="1552" y="1328" name="inst_D3A80A3F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="1696" y="1328" name="inst_1F87D70A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="1712" y="1424" name="inst_EBEA0B97" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="1648" y="1520" name="inst_F42FC223" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="1648" y="1648" name="inst_ABF75519" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="1648" y="1776" name="inst_65758D8E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="1648" y="1904" name="inst_82958BCC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="1984" y="1008" name="inst_82C6921C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="2112" y="1008" name="inst_321977DF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="2256" y="1296" name="inst_01508580" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="2448" y="1360" name="inst_DAD36DF9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="2368" y="1200" name="inst_3BECCEA0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="2496" y="1264" name="inst_F5E56CB3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="2208" y="1424" name="inst_6C7174DA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="2336" y="1424" name="inst_286E87DA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="2480" y="1424" name="inst_9E49D84F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="2784" y="1296" name="inst_2C27C6C1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="2544" y="1392" name="inst_B4483C8C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="2624" y="1200" name="inst_52A3FB4C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="2752" y="1200" name="inst_655DCFF6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="2880" y="1200" name="inst_59B05280" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="2000" y="1184" name="inst_B24248C7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="2000" y="1328" name="inst_F173A40E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="2000" y="1472" name="inst_73F8D242" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="2000" y="1616" name="inst_D749F23A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="2000" y="1760" name="inst_8CA307D4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="2368" y="1168" name="inst_6DF65BB4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="2496" y="1168" name="inst_9CF267DD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="2624" y="1168" name="inst_F263126F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="2752" y="1168" name="inst_EB938C21" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="2880" y="1168" name="inst_517DCF98" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="2496" y="1520" name="inst_86BF7892" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="2496" y="1840" name="inst_939836A5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="2544" y="1632" name="inst_5121ADEC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="2544" y="1952" name="inst_067BFDB2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="2448" y="1632" name="inst_D6778EB1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="2448" y="1952" name="inst_5D517C86" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="2496" y="1744" name="inst_7211DFCA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="2272" y="1552" name="inst_7BE42603" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="2144" y="1552" name="inst_985FF982" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="2192" y="2416" name="inst_B1A54532" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="2288" y="2192" name="inst_E5E7BFE2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="2160" y="2192" name="inst_79D833B3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="2688" y="2064" name="inst_543319CF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="2576" y="2352" name="inst_D445A00E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="2688" y="2352" name="inst_3E66C768" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="2800" y="2384" name="inst_FA1B4356" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="1792" y="2096" name="inst_5285D26C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="1920" y="2096" name="inst_E76A0F78" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="2048" y="2096" name="inst_2EEAF038" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="2176" y="2096" name="inst_3DE67AD5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="2304" y="2096" name="inst_D0846C83" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="2944" y="2480" name="inst_FEE7E468" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="2816" y="2480" name="inst_D6DBD714" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="2688" y="2480" name="inst_1FBBFBF1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="2560" y="2480" name="inst_66DA4B58" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="2432" y="2480" name="inst_A6DEBE39" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="1344" y="2480" name="inst_481DE20F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="1472" y="2480" name="inst_DF59C805" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="1600" y="2480" name="inst_E3A65F18" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="1184" y="2480" name="inst_A1F2A69C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="1056" y="2480" name="inst_62D76B1D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="928" y="2480" name="inst_2649C469" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="272" y="2352" name="inst_CE31ED1A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="400" y="2352" name="inst_B4158EF9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="1376" y="2288" name="inst_EDB603A2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="1504" y="2288" name="inst_2E27C710" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="2096" y="1760" name="inst_37D6F4AD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="2096" y="1904" name="inst_C550E2F2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="2864" y="1648" name="inst_90801595" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="2544" y="2384" name="inst_E5E72AEA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="2672" y="2384" name="inst_B890967E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="2320" y="2416" name="inst_C9099A14" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="2256" y="2320" name="inst_8E1C7D67" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="2384" y="2320" name="inst_9403EC2A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="944" y="1872" name="inst_5B0A751C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="1088" y="1872" name="inst_5A7CD043" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="1616" y="2080" name="inst_B4709CF5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="1616" y="2224" name="inst_96CC5E9D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="1744" y="2144" name="inst_3342A7BC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="2352" y="2144" name="inst_BE98F8DF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="2016" y="2288" name="inst_73751735" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="2016" y="2384" name="inst_AD3AAD1F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="2256" y="2288" name="inst_831D9B32" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="2384" y="2288" name="inst_90B214A9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="1936" y="2416" name="inst_EFA6E83E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="2448" y="2080" name="inst_2451F54D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="2448" y="2224" name="inst_9063863F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="2512" y="2144" name="inst_FB633AB4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="2512" y="2272" name="inst_F3D4C145" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="1648" y="2336" name="inst_C15DBA3D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="1888" y="2192" name="inst_0E362FAA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="1792" y="2192" name="inst_D78E60F9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="1568" y="2384" name="inst_61CDFD95" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="1424" y="2384" name="inst_57527BD6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="1584" y="1936" name="inst_4717C729" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="1280" y="2000" name="inst_90B9915D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="1424" y="2000" name="inst_2E344F8D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="688" y="1872" name="inst_9839D1C0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="816" y="2320" name="inst_23CA7FA1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="928" y="2320" name="inst_B63C514E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="912" y="1968" name="inst_4821AE48" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="1040" y="1968" name="inst_AE8BEBC3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="624" y="1952" name="inst_87D92CF4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="624" y="2080" name="inst_7C8DCCDE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="1200" y="1936" name="inst_1FB85259" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="528" y="2064" name="inst_6E5F76CB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="528" y="2192" name="inst_4FD2520E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="720" y="2160" name="inst_FED2D5AA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="720" y="2032" name="inst_26BE8C7F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="528" y="1824" name="inst_62310B30" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="528" y="1952" name="inst_10C741B6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="752" y="2032" name="inst_609F613C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="752" y="2160" name="inst_2135881E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="560" y="2240" name="inst_8FD0B681" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="912" y="2000" name="inst_DD2371A2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="1040" y="2000" name="inst_4CC7E390" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="704" y="2320" name="inst_42DBE799" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="848" y="2288" name="inst_7F8009B9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="976" y="2288" name="inst_747D2FAF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="1104" y="2288" name="inst_D92AB16B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="528" y="2384" name="inst_D4C2EF1C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="48" y="720" name="inst_9D403DA3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="48" y="848" name="inst_02658A8E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="48" y="976" name="inst_EC42DA96" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="48" y="1136" name="inst_8C3E5523" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="48" y="1856" name="inst_DE6A7A9E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="48" y="1696" name="inst_39C57361" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="48" y="1568" name="inst_FD060686" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
     <instance objName="obj_SpeedBoost" x="1312" y="1248" name="inst_E08F33C1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Enemy_Chasing_Melee" x="1776" y="2336" name="inst_4F5F199C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Enemy_Chasing_Melee" x="1392" y="2160" name="inst_AE50B572" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Enemy_Chasing_Melee" x="1024" y="2160" name="inst_0AE11D95" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="2480" y="1360" name="inst_D9C647B9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
+    <instance objName="obj_Torch" x="2032" y="2000" name="inst_12860518" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="2064" y="2096" name="inst_A468DAC8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
     <instance objName="obj_Treasure" x="1792" y="2400" name="inst_EF71CC6E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="1792" y="2256" name="inst_B6379DE5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="1008" y="2064" name="inst_CBCF7D78" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -835,18 +433,18 @@ global.RestartOnDeath = true;</code>
     <instance objName="obj_Treasure" x="176" y="800" name="inst_6BF15C8B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="480" y="928" name="inst_E7E072EF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="2336" y="1120" name="inst_79590F23" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Enemy_Chasing_Melee" x="1968" y="480" name="inst_1A0DA2C0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="2496" y="1840" name="inst_75A0EADB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
     <instance objName="obj_Treasure" x="2256" y="720" name="inst_DF5F0702" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="2752" y="992" name="inst_0C82672E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Enemy_Chasing_Melee" x="736" y="624" name="inst_1D579988" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="96" y="80" name="inst_F6C38A8D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="768" y="832" name="inst_2560201C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Aggressive_Archer" x="736" y="848" name="inst_411AB05E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="2464" y="240" name="inst_76F327DB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
     <instance objName="obj_Treasure" x="1120" y="288" name="inst_2D51AD03" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="1152" y="288" name="inst_B4DDE09D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="1152" y="320" name="inst_F3A835AB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="1184" y="320" name="inst_7E12621A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="1184" y="288" name="inst_EDCF8B52" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Treasure" x="1184" y="256" name="inst_A4EFBA1D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="1696" y="432" name="inst_22E30DB6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
     <instance objName="obj_Treasure" x="1152" y="256" name="inst_38279185" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="1120" y="256" name="inst_14B37084" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="736" y="768" name="inst_FAD779E3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -856,7 +454,7 @@ global.RestartOnDeath = true;</code>
     <instance objName="obj_Treasure" x="768" y="800" name="inst_90664316" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="800" y="800" name="inst_66DE4539" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="800" y="832" name="inst_FBB2920A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Aggressive_Archer" x="1184" y="272" name="inst_2F58DD5E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="1808" y="368" name="inst_EB656B7A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
     <instance objName="obj_Treasure" x="96" y="1424" name="inst_0E0549A2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="128" y="1392" name="inst_C68C5BE3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="384" y="1600" name="inst_589E041F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -879,12 +477,12 @@ global.RestartOnDeath = true;</code>
     <instance objName="obj_Treasure" x="1936" y="432" name="inst_4E39009A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="1936" y="464" name="inst_7C51D5B6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="1968" y="432" name="inst_DA3567A7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Enemy_Chasing_Melee" x="2256" y="704" name="inst_400DBC27" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="2496" y="1744" name="inst_7EC78767" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="2336" y="1088" name="inst_B214724C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="2368" y="1120" name="inst_D98B60CE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="2784" y="1024" name="inst_B97E3C16" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Enemy_Chasing_Melee" x="2368" y="1104" name="inst_9F0ABF82" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Enemy_Chasing_Melee" x="2752" y="1040" name="inst_8EAF4BC6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="2064" y="2384" name="inst_83A2D5E4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
+    <instance objName="obj_Torch" x="2608" y="2480" name="inst_4840EC08" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
     <instance objName="obj_Treasure" x="2592" y="832" name="inst_4CDA3E35" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="2528" y="768" name="inst_F472A4A5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="2912" y="256" name="inst_341FDC81" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -997,6 +595,55 @@ global.RestartOnDeath = true;</code>
     <instance objName="obj_Time" x="128" y="16" name="inst_A287A50C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Atmosphere" x="160" y="16" name="inst_53F24CCF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Dwarf" x="80" y="112" name="Dwarf_Big" locked="0" code="" scaleX="0.25" scaleY="0.25" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="176" y="464" name="inst_6A341216" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="464" y="336" name="inst_E4038B70" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
+    <instance objName="obj_Torch" x="368" y="80" name="inst_6A986B8F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="496" y="1632" name="inst_CDC1A79A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
+    <instance objName="obj_Torch" x="496" y="1664" name="inst_9DEDA60E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
+    <instance objName="obj_Torch" x="496" y="1376" name="inst_27EECEF6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
+    <instance objName="obj_Torch" x="496" y="1344" name="inst_709C8715" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
+    <instance objName="obj_Torch" x="528" y="1712" name="inst_FDD6BA82" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
+    <instance objName="obj_Torch" x="528" y="1296" name="inst_05154886" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="720" y="1376" name="inst_0443B3A8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
+    <instance objName="obj_Torch" x="720" y="1504" name="inst_5663316D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
+    <instance objName="obj_Torch" x="720" y="1504" name="inst_C6488E0E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
+    <instance objName="obj_Torch" x="1424" y="1840" name="inst_10553CE9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
+    <instance objName="obj_Torch" x="1392" y="1840" name="inst_47CD4CED" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
+    <instance objName="obj_Torch" x="1360" y="1840" name="inst_D5CAC78D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
+    <instance objName="obj_Torch" x="1328" y="1840" name="inst_89588353" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
+    <instance objName="obj_Torch" x="1328" y="1840" name="inst_F92F3509" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
+    <instance objName="obj_Torch" x="1488" y="1808" name="inst_B85BE3F9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
+    <instance objName="obj_Torch" x="1488" y="1776" name="inst_AC7392B3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
+    <instance objName="obj_Torch" x="1488" y="1744" name="inst_E99300EB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
+    <instance objName="obj_Torch" x="1488" y="1712" name="inst_FD8BDC87" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
+    <instance objName="obj_Torch" x="1488" y="1680" name="inst_529FFE97" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
+    <instance objName="obj_Torch" x="1456" y="1840" name="inst_6CE3CCB7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
+    <instance objName="obj_Torch" x="1488" y="1680" name="inst_EB9F6751" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
+    <instance objName="obj_Torch" x="208" y="1168" name="inst_A38F3E8F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="1744" y="1424" name="inst_38BF2D98" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="2304" y="1200" name="inst_C27DEFD0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="2320" y="1424" name="inst_E1DF09CB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="2176" y="1552" name="inst_D1979690" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="2832" y="2384" name="inst_283E7361" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="2544" y="2384" name="inst_C5C94A17" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="2800" y="2224" name="inst_A485B59B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
+    <instance objName="obj_Torch" x="2800" y="1840" name="inst_0283A7B1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
+    <instance objName="obj_Torch" x="2544" y="1392" name="inst_683AC035" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
+    <instance objName="obj_Torch" x="2544" y="1232" name="inst_CD0A8792" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
+    <instance objName="obj_Torch" x="2544" y="1552" name="inst_09806E56" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
+    <instance objName="obj_Torch" x="2544" y="1712" name="inst_CE0B8901" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
+    <instance objName="obj_Torch" x="2704" y="1632" name="inst_7A8171C1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
+    <instance objName="obj_Torch" x="2704" y="1472" name="inst_441AB689" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
+    <instance objName="obj_Torch" x="2960" y="1360" name="inst_5E11AFA9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
+    <instance objName="obj_Torch" x="2448" y="1552" name="inst_0145F624" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
+    <instance objName="obj_Torch" x="2304" y="1552" name="inst_80940AF2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="2448" y="1632" name="inst_154D26EE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
+    <instance objName="obj_Torch" x="2448" y="1712" name="inst_DE9FA251" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
+    <instance objName="obj_Torch" x="2448" y="1984" name="inst_62F2B695" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
+    <instance objName="obj_Torch" x="2096" y="1888" name="inst_02B617E6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
+    <instance objName="obj_Torch" x="2544" y="1632" name="inst_D419DE58" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
+    <instance objName="obj_Torch" x="2704" y="1552" name="inst_8FA5F724" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
+    <instance objName="obj_Torch" x="2160" y="1424" name="inst_0E83721A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_Wall_Tile" x="1248" y="320" w="32" h="32" xo="0" yo="0" id="10003675" name="inst_5E09A662" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
