@@ -12,7 +12,14 @@
   <showcolour>0</showcolour>
   <code>/// Place the player
 randomize();
-global.MyInst = Dwarf_MontyHall;
+if( obj_Client.State == "Spectator" )
+{
+    with( Dwarf_MontyHall )
+        instance_destroy();
+    global.MyInst = noone;
+}
+else
+    global.MyInst = Dwarf_MontyHall;
 global.RestartOnDeath = true;
 var Exits = ds_list_create();
 with( obj_fakeExit )
