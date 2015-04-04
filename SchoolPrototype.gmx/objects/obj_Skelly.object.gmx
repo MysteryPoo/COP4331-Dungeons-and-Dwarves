@@ -194,7 +194,7 @@ if( State == "Wander_Start" )
 if( State == "Wander" )
 {
     // Direction animation
-    image_angle = scr_Angle24Dir( direction );
+    image_angle = direction + 90;//scr_Angle24Dir( direction );
     if( StateTimer == 0 )
         State = "Idle_Start";
     if( scr_CanDetectPlayer( DetectionRadius ) )
