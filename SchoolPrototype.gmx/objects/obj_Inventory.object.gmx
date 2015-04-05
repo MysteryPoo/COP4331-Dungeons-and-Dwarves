@@ -648,6 +648,7 @@ if( State == "Open_Start" )
 {
     State = "Open";
     SlideTimer = 0;
+    audio_play_sound( sound_inventory, 2, false );
 }
 if( State == "Open" )
 {
@@ -732,6 +733,7 @@ if( State == "Close_Start" )
 {
     State = "Close";
     SlideTimer = 0;
+    audio_play_sound( sound_inventory, 2, false );
 }
 if( State == "Close" )
 {

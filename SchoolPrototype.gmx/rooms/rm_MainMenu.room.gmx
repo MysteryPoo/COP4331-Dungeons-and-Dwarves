@@ -15,7 +15,9 @@ global.ServerPort = 20000;
 global.ServerType = "List";
 display_set_gui_size( 480, 270 );
 
-global.Waiting = false;</code>
+global.Waiting = false;
+
+audio_play_sound( music_background1, 2, true );</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>

@@ -758,6 +758,7 @@ if( State == "Fall_Start" )
     speed = 0;
     State = "Fall";
     StateTimer = 30 * 2;
+    audio_play_sound( sound_falling, 2, false );
 }
 if( State == "Fall" )
 {
@@ -801,6 +802,7 @@ if( State == "Fall" )
 hasKey = true;
 with( other )
     instance_destroy();
+audio_play_sound( sound_key, 2, false );
 </string>
           </argument>
         </arguments>
@@ -824,7 +826,7 @@ with( other )
           <argument>
             <kind>1</kind>
             <string>/// Remove if Spectating
-if( obj_Client.State == "Spectator" )
+if( instance_exists( obj_Client ) &amp;&amp; obj_Client.State == "Spectator" )
 {
     instance_destroy();
     global.MyInst = noone;

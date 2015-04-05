@@ -4,7 +4,22 @@
     <Config>Configs\Default</Config>
   </Configs>
   <NewExtensions/>
-  <sounds name="sound"/>
+  <sounds name="sound">
+    <sound>sound\music_background1</sound>
+    <sound>sound\sound_applause</sound>
+    <sound>sound\sound_arrow</sound>
+    <sound>sound\sound_arrow2</sound>
+    <sound>sound\sound_boost</sound>
+    <sound>sound\sound_chest</sound>
+    <sound>sound\sound_coin</sound>
+    <sound>sound\sound_door</sound>
+    <sound>sound\sound_falling</sound>
+    <sound>sound\sound_footstep</sound>
+    <sound>sound\sound_inventory</sound>
+    <sound>sound\sound_item</sound>
+    <sound>sound\sound_key</sound>
+    <sound>sound\sound_switch</sound>
+  </sounds>
   <sprites name="sprites">
     <sprite>sprites\spr_wall</sprite>
     <sprite>sprites\spr_wall_accent</sprite>
@@ -163,6 +178,7 @@
       <object>objects\obj_SpeedBoost</object>
       <object>objects\obj_Health</object>
       <object>objects\obj_PowerupSpawn</object>
+      <object>objects\obj_Treasure</object>
     </objects>
     <objects name="Enemies">
       <object>objects\obj_FlameMinion</object>
@@ -212,7 +228,6 @@
       </objects>
       <object>objects\obj_Blood</object>
       <object>objects\obj_fakeExit</object>
-      <object>objects\obj_Treasure</object>
       <object>objects\obj_Loot</object>
       <object>objects\obj_Drop</object>
       <object>objects\obj_Shop</object>
