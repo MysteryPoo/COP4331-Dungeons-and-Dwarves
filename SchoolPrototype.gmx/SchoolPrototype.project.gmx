@@ -48,6 +48,7 @@
       <sprite>sprites\spr_Platemail</sprite>
       <sprite>sprites\spr_Wand</sprite>
       <sprite>sprites\spr_Shield</sprite>
+      <sprite>sprites\spr_ObeliskTarget</sprite>
     </sprites>
     <sprites name="Dwarf">
       <sprites name="Idle">
