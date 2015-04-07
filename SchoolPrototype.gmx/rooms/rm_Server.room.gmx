@@ -11,9 +11,7 @@
   <colour>0</colour>
   <showcolour>0</showcolour>
   <code>global.MyInst = noone;
-global.RestartOnDeath = false;
-with( obj_Time )
-    instance_destroy();</code>
+global.RestartOnDeath = false;</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
