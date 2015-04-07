@@ -116,7 +116,7 @@ Damage = 0;
           <argument>
             <kind>1</kind>
             <string>/// Damage Player
-if( other.id != Owner &amp;&amp; other.State != "Death" &amp;&amp; other.State != "Hit" &amp;&amp; other.IsInvincible == false)
+if( other.id != Owner &amp;&amp; other.State != "Death" &amp;&amp; other.State != "Hit" &amp;&amp; !other.IsInvincible )
 {
     if( Damage &gt; 0 )
     {
@@ -124,7 +124,8 @@ if( other.id != Owner &amp;&amp; other.State != "Death" &amp;&amp; other.State !
         other.direction = direction;
         other.speed = 10;
     }
-    other.HitPoints -= Damage;
+    if( room != rm_Client )
+        other.HitPoints -= Damage;
     if( instance_exists( obj_Server ) )
     {
         // Add a status update to the queue
