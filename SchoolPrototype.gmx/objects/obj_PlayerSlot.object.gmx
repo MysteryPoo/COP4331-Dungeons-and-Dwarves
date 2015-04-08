@@ -243,20 +243,23 @@ draw_self();
 draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
 
+draw_set_font( fnt_Shop );
+
+draw_text_colour( x + 128, y + 56, PlayerName, c_blue, c_black, c_black, c_black, 1 );
+
 if( Ready )
 {
-    draw_text_colour( x + 128, y + 56, PlayerName, c_green, c_green, c_black, c_black, 1 );
     image_index = 1;    
 }
 else
 {
-    draw_text_colour( x + 128, y + 56, PlayerName, c_red, c_red, c_black, c_black, 1 );
     image_index = 0;
 }
 
 
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);
+draw_set_font( -1 );
 </string>
           </argument>
         </arguments>
