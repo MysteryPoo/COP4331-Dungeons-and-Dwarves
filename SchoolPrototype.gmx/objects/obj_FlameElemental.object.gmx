@@ -290,6 +290,7 @@ if( State == "Attack" )
             <string>/// Charge
 if( State == "Charge_Start" )
 {
+    audio_play_sound(sound_fireball, 3, false);
     State = "Charge";
     StateTimer = 40;
     sprite_index = spr_FireElemental_Walk;

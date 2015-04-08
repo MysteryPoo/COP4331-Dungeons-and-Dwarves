@@ -541,6 +541,8 @@ if( State == "Morph" )
             <string>/// Death
 if( State == "Death_Start" )
 {
+    // play death sound
+    audio_play_sound(sound_minion_die, 1, false);
     State = "Death";
     StateTimer = 5;
     if( instance_exists( ParentTorch ) )

@@ -660,6 +660,8 @@ if( State == "Hit_Start" )
     State = "Hit";
     StateTimer = 15;
     // Change animation
+    // play sound
+    audio_play_sound(sound_grunt_loud, 2, false);
 }
 if( State == "Hit" )
 {
@@ -703,6 +705,8 @@ if( State == "Hit" )
             <string>/// Death
 if( State == "Death_Start" )
 {
+    // sound
+    audio_play_sound(sound_scream, 3, false);
     sprite_index = spr_player_death;
     image_index = 0;
     speed = 0;
