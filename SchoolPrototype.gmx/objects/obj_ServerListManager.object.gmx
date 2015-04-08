@@ -29,7 +29,7 @@
 MaxServers = 10;
 ServerList[ MaxServers ] = 0;
 for( var s = 0; s &lt; MaxServers; ++s )
-    ServerList[ s ] = instance_create( 256, 32 + (64 + 32) * s, obj_JoinServer );
+    ServerList[ s ] = instance_create( room_width/5 - 256, 32 + (64 + 32) * s, obj_JoinServer );
 </string>
           </argument>
         </arguments>
