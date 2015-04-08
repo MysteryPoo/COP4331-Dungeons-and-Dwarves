@@ -102,6 +102,7 @@
   <backgrounds name="background">
     <background>background\bg_floor</background>
     <background>background\bg_Wall_Tile</background>
+    <background>background\bg_Splash</background>
   </backgrounds>
   <paths name="paths">
     <path>paths\path_Guard_LightsOn</path>
