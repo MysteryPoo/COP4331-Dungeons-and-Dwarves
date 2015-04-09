@@ -141,7 +141,6 @@
       <object>objects\obj_Treasure</object>
       <object>objects\obj_Loot</object>
       <object>objects\obj_Drop</object>
-      <object>objects\obj_Wallet</object>
     </objects>
     <objects name="Bridge">
       <object>objects\obj_Bridge</object>
@@ -173,21 +172,17 @@
     <objects name="Lobby">
       <object>objects\obj_PlayerSlot</object>
     </objects>
-    <objects name="Shop">
-      <object>objects\obj_Labels</object>
-    </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\rm_Shop</room>
-    <room>rooms\rm_Maze</room>
-    <room>rooms\rm_Avoidance</room>
-    <room>rooms\rm_Sneak</room>
-    <room>rooms\rm_Bridge</room>
-    <room>rooms\rm_MontyHall</room>
     <room>rooms\rm_MainMenu</room>
     <room>rooms\rm_Server</room>
     <room>rooms\rm_Test</room>
+    <room>rooms\rm_Bridge</room>
+    <room>rooms\rm_Sneak</room>
     <room>rooms\rm_ServerList</room>
+    <room>rooms\rm_MontyHall</room>
+    <room>rooms\rm_Maze</room>
+    <room>rooms\rm_Avoidance</room>
     <room>rooms\rm_Select</room>
     <room>rooms\rm_Ice</room>
     <room>rooms\rm_Main</room>
