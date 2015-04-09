@@ -826,7 +826,8 @@ visible = true;
           <argument>
             <kind>1</kind>
             <string>/// Armor Button
-instance_create( 0, 0, obj_ArmorButton );
+if( room != rm_Lobby )
+    instance_create( 0, 0, obj_ArmorButton );
 </string>
           </argument>
         </arguments>
