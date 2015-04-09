@@ -131,7 +131,7 @@ if( State == "Hit_Start" )
 {
     State = "Hit";
     StateTimer = 15;
-    DetectionRadius = 256;
+    audio_play_sound( sound_hit, 2, false );
     // Change animation
 }
 if( State == "Hit" )
@@ -144,7 +144,7 @@ if( State == "Hit" )
         speed = 0;
     if( StateTimer == 0 )
     {
-        State = "Idle_Start";
+        State = "Chase_Start";
         visible = true;
     }
     if( HitPoints &lt;= 0 )
@@ -152,6 +152,35 @@ if( State == "Hit" )
         State = "Death_Start";
         visible = true;
     }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Depth
+if( instance_exists( obj_Dwarf ) )
+{
+    var inst = instance_nearest( x, y, obj_Dwarf );
+    if( y &gt; inst.y )
+        depth = inst.depth - 1;
+    else
+        depth = inst.depth + 1;
 }
 </string>
           </argument>

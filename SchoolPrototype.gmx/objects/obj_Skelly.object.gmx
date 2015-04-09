@@ -86,7 +86,7 @@ StateTimer = 0;
           <argument>
             <kind>1</kind>
             <string>/// Override DetectionRadius
-DetectionRadius = 64;
+DetectionRadius = 96;
 </string>
           </argument>
         </arguments>
@@ -236,7 +236,7 @@ if( State == "Chase" )
     if( _Near != noone )
         if( point_distance( x, y, _Near.x, _Near.y ) &lt; 32 )
             State = "Attack_Start";
-        else if( scr_CanDetectPlayer( DetectionRadius * 1.5 ) )
+        else if( scr_CanDetectPlayer( DetectionRadius * 3 ) )
             scr_Chase( 3, _Near );
         else
             State = "Idle_Start";
@@ -272,7 +272,6 @@ if( State == "Attack_Start" )
     StateTimer = 60;
     image_index = 1;
     image_speed = 0;
-    DetectionRadius = 64;
     // Attack
     var _sword = instance_create( x, y, obj_Sword );
     _sword.Owner = id;
@@ -313,35 +312,6 @@ if( State == "Death" )
 {
     instance_create( x, y, obj_Treasure );
     instance_destroy();
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Depth
-if( instance_exists( obj_Dwarf ) )
-{
-    var inst = instance_nearest( x, y, obj_Dwarf );
-    if( y &gt; inst.y )
-        depth = inst.depth - 1;
-    else
-        depth = inst.depth + 1;
 }
 </string>
           </argument>

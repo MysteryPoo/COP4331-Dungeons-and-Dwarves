@@ -19,6 +19,12 @@
     <sound>sound\sound_item</sound>
     <sound>sound\sound_key</sound>
     <sound>sound\sound_switch</sound>
+    <sound>sound\sound_fireball</sound>
+    <sound>sound\sound_grunt_loud</sound>
+    <sound>sound\sound_hit</sound>
+    <sound>sound\sound_minion_die</sound>
+    <sound>sound\sound_scream</sound>
+    <sound>sound\sound_sword</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\spr_wall</sprite>
