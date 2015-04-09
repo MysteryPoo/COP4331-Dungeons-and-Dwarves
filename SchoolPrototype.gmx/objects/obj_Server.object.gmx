@@ -968,6 +968,7 @@ switch( type_event )
                 ds_list_delete( PlayerList, s );
                 // Notify clients of the disconnect
                 buffer_seek( Buffer, buffer_seek_start, 0 );
+                buffer_write( Buffer, buffer_u8, 4 );
                 buffer_write( Buffer, buffer_u8, socket );
                 for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
                 {
