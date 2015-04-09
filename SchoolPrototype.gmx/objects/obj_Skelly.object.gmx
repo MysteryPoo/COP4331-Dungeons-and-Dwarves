@@ -275,6 +275,7 @@ if( State == "Attack_Start" )
     // Attack
     var _sword = instance_create( x, y, obj_Sword );
     _sword.Owner = id;
+    _sword.Damage = 20;
     _sword.image_angle = direction;
     _sword.visible = false;
 }
