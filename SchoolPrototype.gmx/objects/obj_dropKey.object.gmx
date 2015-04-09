@@ -27,9 +27,28 @@
             <kind>1</kind>
             <string>///No animation
 image_speed = 0;
-
-globalvar monsterCreated;
-monsterCreated = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Switch state
+Flipped = false;
 </string>
           </argument>
         </arguments>
@@ -53,10 +72,14 @@ monsterCreated = false;
           <argument>
             <kind>1</kind>
             <string>///Drop key
-var inst = instance_create(480, 400, obj_Key);
-if(monsterCreated == false){
-    var enemy = instance_create(900, 300, obj_Guard);
-    monsterCreated = true;
+if( !Flipped )
+{
+    Flipped = true;
+    instance_create( 192, 432, obj_Key );
+    instance_create( 192, 432, obj_Skelly );
+    instance_create( 384, 368, obj_Skelly );
+    instance_create( 448, 432, obj_Skelly );
+    instance_create( 384, 496, obj_Skelly );
 }
 </string>
           </argument>

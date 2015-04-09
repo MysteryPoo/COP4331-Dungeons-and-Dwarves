@@ -43,12 +43,117 @@ if( instance_exists( obj_Gesture1 ) )
 with( other )
     instance_destroy();
 global.Waiting = true;
-/*
-++global.Map;
-if( global.Map &lt; 5 )
-    room_goto( obj_Client.MapList[| global.Map ] );
-else
-    room_goto( rm_Client );*/
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Give player reward
+if( instance_exists( obj_Client ) )
+{
+    var _Quality = 3;
+    for( var s = 0; s &lt; ds_list_size( obj_Client.SocketList ); ++s )
+    {
+        var _lMap = obj_Client.SocketList[| s ];
+        if( _lMap[? "Socket" ] != obj_Client.NetworkID &amp;&amp; _lMap[? "Ready" ] )
+            --_Quality;
+    }
+    switch( _Quality )
+    {
+        case 3:
+            ds_list_add( obj_Inventory.Inventory, choose(
+                    obj_Bow_3,
+                    obj_Spike_3,
+                    obj_Ninja_3,
+                    obj_Platemail_3,
+                    obj_PoisonWand_3,
+                    obj_FireWand_3,
+                    obj_Agile_3,
+                    obj_Shield_3 ) );
+            break;
+        case 2:
+            ds_list_add( obj_Inventory.Inventory, choose(
+                    obj_Bow_2,
+                    obj_Spike_2,
+                    obj_Ninja_2,
+                    obj_Platemail_2,
+                    obj_Bomb,
+                    obj_FireWand,
+                    obj_PoisonWand,
+                    obj_Agile_2,
+                    obj_Shield_2 ) );
+            break;
+        case 1:
+            ds_list_add( obj_Inventory.Inventory, choose(
+                    obj_Bow,
+                    obj_Spike,
+                    obj_Ninja,
+                    obj_Platemail,
+                    obj_Shield,
+                    obj_Agile ) );
+            break;
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Destroy
+instance_destroy();
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Play Sound
+if( !sound_isplaying( sound_applause ) )
+    audio_play_sound( sound_applause, 2, false );
 </string>
           </argument>
         </arguments>

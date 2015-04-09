@@ -2,7 +2,7 @@
 <object>
   <spriteName>spr_ball</spriteName>
   <solid>0</solid>
-  <visible>-1</visible>
+  <visible>0</visible>
   <depth>0</depth>
   <persistent>-1</persistent>
   <parentName>&lt;undefined&gt;</parentName>
@@ -129,7 +129,7 @@ if( instance_exists( obj_Client ) )
           <argument>
             <kind>1</kind>
             <string>/// Visibility
-if( global.Waiting )
+if( global.Waiting &amp;&amp; room != rm_Lobby )
 {
     if( instance_exists( obj_Client ) )
     {

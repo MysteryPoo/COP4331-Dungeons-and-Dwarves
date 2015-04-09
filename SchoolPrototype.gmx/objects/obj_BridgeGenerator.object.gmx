@@ -34,8 +34,11 @@ for( var s = 0; s &lt; 10; ++s )
     Section[ 2 ] = instance_create( nextX, y, obj_Bridge );
     Section[ 1 ] = instance_create( nextX, y + 32, obj_Bridge );
     Section[ 0 ] = instance_create( nextX, y + 64, obj_Bridge );
-    breakSec = choose( 0, 1, 2 );
-    Section[ breakSec ].image_index = 1;
+    if( s &gt; 0 )
+    {
+        breakSec = choose( 0, 1, 2 );
+        Section[ breakSec ].image_index = 1;
+    }
     instance_create( nextX + 32, y, obj_Bridge );
     instance_create( nextX + 32, y + 32, obj_Bridge );
     instance_create( nextX + 32, y + 64, obj_Bridge );

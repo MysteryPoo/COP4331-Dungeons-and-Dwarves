@@ -63,8 +63,8 @@ Released = false;
 if( device_mouse_check_button_pressed( 1, mb_left ) )
 {
     /// Enable gesture tracking
-    mxs = device_mouse_x( 1 );
-    mys = device_mouse_y( 1 );
+    mxs = device_mouse_x( 1 ) - view_xview[ 0 ];
+    mys = device_mouse_y( 1 ) - view_yview[ 0 ];
     dist = 0;
     max_dist = 0;
     scale = 0;
@@ -74,9 +74,11 @@ if( device_mouse_check_button( 1, mb_left ) )
 {
     Touched = true;
     /// Update Touch
-    mx = device_mouse_x( 1 );
-    my = device_mouse_y( 1 );
+    mx = device_mouse_x( 1 ) - view_xview[ 0 ];
+    my = device_mouse_y( 1 ) - view_yview[ 0 ];
     dist = point_distance( mxs, mys, mx, my );
+    if( dist &gt; 64 )
+        dist = 64;
     if( dist &gt; max_dist )
         max_dist = dist;
     if( max_dist &gt; 0 )
@@ -181,6 +183,14 @@ else if( keyboard_check_released( vk_numpad2 ) )
     visible = true;
     max_dist = 100;
 }
+else if( keyboard_check_released( vk_numpad5 ) )
+{
+    Released = true;
+    scale = 1;
+    direction = global.MyInst.direction;
+    visible = true;
+    max_dist = 1;
+}
 </string>
           </argument>
         </arguments>
@@ -204,10 +214,16 @@ else if( keyboard_check_released( vk_numpad2 ) )
           <argument>
             <kind>1</kind>
             <string>/// Debug draw
-draw_circle( mxs, mys, 8, false );
-draw_circle( mxs, mys, max_dist, true );
-draw_arrow( mxs, mys, mx, my, 10 );
-draw_text( mxs, mys, string( direction ) );
+if( instance_exists( global.MyInst ) )
+{
+    var _sx = global.MyInst.x
+    var _sy = global.MyInst.y
+    var _xx = _sx + ( mx - mxs );
+    var _yy = _sy + ( my - mys );
+    //draw_circle( _sx, _sy, 8, false );
+    draw_circle( _sx, _sy, max_dist, true );
+    draw_arrow( _sx, _sy, _xx, _yy, 10 );
+}
 </string>
           </argument>
         </arguments>

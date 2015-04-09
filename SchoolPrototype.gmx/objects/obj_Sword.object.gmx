@@ -62,7 +62,29 @@ Owner = noone;
           <argument>
             <kind>1</kind>
             <string>/// Damage
-Damage = 20;
+Damage = 5;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Sound
+audio_play_sound( sound_sword, 2, false );
 </string>
           </argument>
         </arguments>
@@ -86,10 +108,10 @@ Damage = 20;
           <argument>
             <kind>1</kind>
             <string>/// Align Position
-if( Owner != noone )
+if( Owner != noone &amp;&amp; instance_exists( Owner ) )
 {
-    x = Owner.x;
-    y = Owner.y - 8;
+    x = Owner.x + 16 * dcos( Owner.direction );
+    y = Owner.y - 16 * dsin( Owner.direction );
 }
 </string>
           </argument>

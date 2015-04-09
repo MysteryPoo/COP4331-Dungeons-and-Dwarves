@@ -20,7 +20,17 @@ switch( msgid ) {
             if( _lMap[? "Socket" ] == socket )
             {
                 var _pMap = _lMap[? "PositionMap" ];
-                //if( point_distance( _pMap[? "X" ], _pMap[? "Y" ], _x, _y ) < 32 )
+                if( Map == 5 )
+                {
+                    if( point_distance( _pMap[? "X" ], _pMap[? "Y" ], _x, _y ) < 32 )
+                    {
+                        _pMap[? "X" ]           = _x;
+                        _pMap[? "Y" ]           = _y;
+                        _pMap[? "Direction" ]   = _dir;
+                        _pMap[? "Speed" ]       = _speed;
+                    }
+                }
+                else
                 {
                     _pMap[? "X" ]           = _x;
                     _pMap[? "Y" ]           = _y;
@@ -64,12 +74,18 @@ switch( msgid ) {
             _gMap[? "Y" ] = 0;
             _lMap[? "GestureMap" ] = _gMap;
             ds_list_add( PlayerList, _lMap );
-            StartTimer = 30 * 10;   // Reset countdown until game start
+            StartTimer = 30 * 60;   // Reset countdown until game start
             // Update player count on Lobby Server
             buffer_seek( Buffer, buffer_seek_start, 0 );
             buffer_write( Buffer, buffer_u8, 2 );
             buffer_write( Buffer, buffer_u8, ds_list_size( PlayerList ) );
             network_send_packet( LobbyServer, Buffer, buffer_tell( Buffer ) );
+            // Reset Ready status
+            for( var s = 0; s < ds_list_size( PlayerList ); ++s )
+            {
+                var _lMap = PlayerList[| s ];
+                _lMap[? "Ready" ] = false;
+            }
         }
         if( ds_list_size( PlayerList ) > 1 && State != "Running" )
             State = "Gathering";
@@ -113,18 +129,18 @@ switch( msgid ) {
             if( _lMap[? "Socket" ] == socket )
             {
                 _lMap[? "Ready" ] = _ready;
+                // Notify Clients
+                buffer_seek( Buffer, buffer_seek_start, 0 );
+                buffer_write( Buffer, buffer_u8, 6 );
+                buffer_write( Buffer, buffer_u8, 1 );
+                buffer_write( Buffer, buffer_u8, _lMap[? "Socket" ] );
+                buffer_write( Buffer, buffer_bool, _lMap[? "Ready" ] );
+                for( var s = 0; s < ds_list_size( SocketList ); ++s )
+                {
+                    network_send_packet( SocketList[| s ] , Buffer, buffer_tell( Buffer ) );
+                }
                 break;
             }
-        }
-        // Notify Clients
-        buffer_seek( Buffer, buffer_seek_start, 0 );
-        buffer_write( Buffer, buffer_u8, 6 );
-        buffer_write( Buffer, buffer_u8, 1 );
-        buffer_write( Buffer, buffer_u8, _lMap[? "Socket" ] );
-        buffer_write( Buffer, buffer_bool, _lMap[? "Ready" ] );
-        for( var s = 0; s < ds_list_size( SocketList ); ++s )
-        {
-            network_send_packet( SocketList[| s ] , Buffer, buffer_tell( Buffer ) );
         }
         break;
     case 7: // Update map

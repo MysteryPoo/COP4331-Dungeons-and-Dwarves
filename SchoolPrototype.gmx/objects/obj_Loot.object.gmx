@@ -48,7 +48,9 @@ image_blend = c_green;
           <argument>
             <kind>1</kind>
             <string>/// Random Item
-Item = choose( obj_Bomb, obj_Spike, obj_Bow, obj_Bow_2, obj_Bow_3 );
+Item = choose( obj_Bomb, obj_Spike, obj_Bow, obj_Bow_2, obj_Bow_3, obj_Ninja,
+               obj_Ninja_2, obj_Ninja_3, obj_Platemail, obj_Platemail_2, obj_Platemail_3,
+               obj_Shield, obj_Shield_2, obj_Shield_3 );
 Item_Sprite = -1;
 </string>
           </argument>

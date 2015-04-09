@@ -62,7 +62,7 @@ Owner = noone;
           <argument>
             <kind>1</kind>
             <string>/// MaxSpeed
-MaxSpeed = 10;
+MaxSpeed = 5;
 </string>
           </argument>
         </arguments>
@@ -108,7 +108,14 @@ alarm[ 0 ] = 30 * 5;
           <argument>
             <kind>1</kind>
             <string>/// Explosion
-instance_create( x, y, obj_Explosion );
+var _explosions = 6;
+var _angle = 0;
+repeat( _explosions )
+{
+    var _expl = instance_create( x + 16 * dcos( _angle ), y - 16 * dsin( _angle ), obj_Explosion );
+    _expl.Damage = 25;
+    _angle += 360 / _explosions;
+}
 instance_destroy();
 </string>
           </argument>
