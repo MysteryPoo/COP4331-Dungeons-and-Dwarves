@@ -939,10 +939,13 @@ switch( type_event )
         network_send_packet( socket, Buffer, buffer_tell( Buffer ) );
         if( State == "Running" )
         {
+            var _MapIndex = MapList[| Map ];
+            if( Map == 5 )
+                _MapIndex = "rm_Client";
             // Send the current map to the new client
             buffer_seek( Buffer, buffer_seek_start, 0 );
             buffer_write( Buffer, buffer_u8, 11 );
-            buffer_write( Buffer, buffer_string, MapList[| Map ] );
+            buffer_write( Buffer, buffer_string, _MapIndex );
             network_send_packet( socket, Buffer, buffer_tell( Buffer ) );
         }
         break;
