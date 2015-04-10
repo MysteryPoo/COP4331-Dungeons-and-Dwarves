@@ -11,10 +11,6 @@
   <colour>0</colour>
   <showcolour>-1</showcolour>
   <code>/// Place the player
-global.StartX = 90;
-global.StartY = 160;
-var inst = instance_create( global.StartX, global.StartY, obj_Dwarf );
-global.MyInst = inst;
 global.RestartOnDeath = true;</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
@@ -265,6 +261,7 @@ global.RestartOnDeath = true;</code>
     <instance objName="obj_Treasure" x="1248" y="416" name="inst_2DC29BF8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="176" y="496" name="inst_6859C994" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="224" y="128" name="inst_D4070645" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Dwarf" x="96" y="160" name="Dwarf_Bridge" locked="0" code="" scaleX="0.25" scaleY="0.25" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_floor" x="64" y="576" w="32" h="32" xo="0" yo="0" id="10003950" name="inst_CEE9FF96" depth="1000001" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

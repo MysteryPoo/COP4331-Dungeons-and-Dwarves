@@ -29,7 +29,7 @@
 MaxServers = 10;
 ServerList[ MaxServers ] = 0;
 for( var s = 0; s &lt; MaxServers; ++s )
-    ServerList[ s ] = instance_create( 256, 32 + (64 + 32) * s, obj_JoinServer );
+    ServerList[ s ] = instance_create( room_width/5 - 256, 32 + (64 + 32) * s, obj_JoinServer );
 </string>
           </argument>
         </arguments>
@@ -57,60 +57,6 @@ for( var s = 0; s &lt; MaxServers; ++s )
     with( ServerList[ s ] )
         instance_destroy();
 ServerList = 0;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="6" enumb="54">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Scroll up
-for( var s = 0; s &lt; MaxServers; ++s )
-{
-    ServerList[ s ].y -= 32 + 64;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="6" enumb="53">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Scroll down
-for( var s = 0; s &lt; MaxServers; ++s )
-{
-    ServerList[ s ].y += 32 + 64;
-}
 </string>
           </argument>
         </arguments>

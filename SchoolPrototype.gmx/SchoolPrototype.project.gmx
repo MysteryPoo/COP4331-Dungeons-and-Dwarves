@@ -4,7 +4,28 @@
     <Config>Configs\Default</Config>
   </Configs>
   <NewExtensions/>
-  <sounds name="sound"/>
+  <sounds name="sound">
+    <sound>sound\music_background1</sound>
+    <sound>sound\sound_applause</sound>
+    <sound>sound\sound_arrow</sound>
+    <sound>sound\sound_arrow2</sound>
+    <sound>sound\sound_boost</sound>
+    <sound>sound\sound_chest</sound>
+    <sound>sound\sound_coin</sound>
+    <sound>sound\sound_door</sound>
+    <sound>sound\sound_falling</sound>
+    <sound>sound\sound_footstep</sound>
+    <sound>sound\sound_inventory</sound>
+    <sound>sound\sound_item</sound>
+    <sound>sound\sound_key</sound>
+    <sound>sound\sound_switch</sound>
+    <sound>sound\sound_fireball</sound>
+    <sound>sound\sound_grunt_loud</sound>
+    <sound>sound\sound_hit</sound>
+    <sound>sound\sound_minion_die</sound>
+    <sound>sound\sound_scream</sound>
+    <sound>sound\sound_sword</sound>
+  </sounds>
   <sprites name="sprites">
     <sprite>sprites\spr_wall</sprite>
     <sprite>sprites\spr_wall_accent</sprite>
@@ -32,6 +53,8 @@
       <sprite>sprites\spr_Ninja</sprite>
       <sprite>sprites\spr_Platemail</sprite>
       <sprite>sprites\spr_Wand</sprite>
+      <sprite>sprites\spr_Shield</sprite>
+      <sprite>sprites\spr_ObeliskTarget</sprite>
     </sprites>
     <sprites name="Dwarf">
       <sprites name="Idle">
@@ -76,10 +99,16 @@
     <sprites name="Lobby">
       <sprite>sprites\spr_PlayerSlot</sprite>
     </sprites>
+    <sprites name="Shop">
+      <sprite>sprites\spr_Shop_Arrow</sprite>
+      <sprite>sprites\spr_Shop_Buy</sprite>
+      <sprite>sprites\spr_Shop_Exit</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_floor</background>
     <background>background\bg_Wall_Tile</background>
+    <background>background\bg_Splash</background>
   </backgrounds>
   <paths name="paths">
     <path>paths\path_Guard_LightsOn</path>
@@ -101,6 +130,8 @@
     <font>fonts\fnt_DEMO</font>
     <font>fonts\fnt_Default</font>
     <font>fonts\fnt_LargeTimer</font>
+    <font>fonts\fnt_Default_Small</font>
+    <font>fonts\fnt_Shop</font>
   </fonts>
   <objects name="objects">
     <objects name="Weapons">
@@ -138,6 +169,16 @@
         <object>objects\obj_FireWand</object>
         <object>objects\obj_FireWand_3</object>
       </objects>
+      <objects name="Shield">
+        <object>objects\obj_Shield</object>
+        <object>objects\obj_Shield_2</object>
+        <object>objects\obj_Shield_3</object>
+      </objects>
+      <objects name="Agile Armor">
+        <object>objects\obj_Agile</object>
+        <object>objects\obj_Agile_2</object>
+        <object>objects\obj_Agile_3</object>
+      </objects>
     </objects>
     <objects name="Powerups">
       <object>objects\obj_Quiver</object>
@@ -145,6 +186,7 @@
       <object>objects\obj_SpeedBoost</object>
       <object>objects\obj_Health</object>
       <object>objects\obj_PowerupSpawn</object>
+      <object>objects\obj_Treasure</object>
     </objects>
     <objects name="Enemies">
       <object>objects\obj_FlameMinion</object>
@@ -194,9 +236,9 @@
       </objects>
       <object>objects\obj_Blood</object>
       <object>objects\obj_fakeExit</object>
-      <object>objects\obj_Treasure</object>
       <object>objects\obj_Loot</object>
       <object>objects\obj_Drop</object>
+      <object>objects\obj_Shop</object>
     </objects>
     <objects name="Bridge">
       <object>objects\obj_Bridge</object>
@@ -247,8 +289,14 @@
     <room>rooms\rm_Ice</room>
     <room>rooms\rm_Main</room>
     <room>rooms\rm_Client</room>
-    <room>rooms\rm_Big</room>
     <room>rooms\rm_Lobby</room>
+    <rooms name="Big">
+      <room>rooms\rm_Big1</room>
+      <room>rooms\rm_Big2</room>
+      <room>rooms\rm_Big3</room>
+      <room>rooms\rm_Big4</room>
+      <room>rooms\rm_Big5</room>
+    </rooms>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

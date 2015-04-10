@@ -56,7 +56,7 @@ StartTime = date_current_datetime();//date_inc_minute( date_current_datetime(), 
             <string>/// Check time left
 var minutes = floor( date_minute_span( StartTime, date_current_datetime() ) );
 var seconds = date_second_span( StartTime, date_current_datetime() ) mod 60;
-if( minutes == 0 &amp;&amp; seconds == 0 )
+if( minutes &lt;= 0 &amp;&amp; seconds &lt;= 0 )
 {
     // Out of time
     // Toggle Ready
@@ -77,6 +77,31 @@ if( minutes == 0 &amp;&amp; seconds == 0 )
         instance_destroy();
     global.Waiting = true;
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Visibility
+if( room != rm_Lobby )
+    visible = true;
+else
+    visible = false;
 </string>
           </argument>
         </arguments>

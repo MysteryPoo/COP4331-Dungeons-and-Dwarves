@@ -266,11 +266,13 @@ State = "Waiting";
 // Map List
 MapList = ds_list_create();
 ds_list_add( MapList, room_get_name( rm_Bridge ) );
-//ds_list_add( MapList, room_get_name( rm_Sneak ) );
 ds_list_add( MapList, room_get_name( rm_MontyHall ) );
 ds_list_add( MapList, room_get_name( rm_Maze ) );
 ds_list_add( MapList, room_get_name( rm_Avoidance ) );
-ds_list_add( MapList, room_get_name( rm_Big ) );
+ds_list_add( MapList, room_get_name( rm_Big1 ) );
+ds_list_add( MapList, room_get_name( rm_Big4 ) );
+ds_list_add( MapList, room_get_name( rm_Big5 ) );
+randomize();
 ds_list_shuffle( MapList );
 Map = 0;
 </string>
@@ -726,7 +728,7 @@ if( !ds_queue_empty( AttackQueue ) )
             for( var s = 0; s &lt; Players; ++s )
             {
                 var _lMap = PlayerList[| s ];
-                if( _lMap[? "Map" ] == 5 )
+                if( Map == 5 )
                 {
                     var _inst = noone;
                     if( _lMap[? "Socket" ] == _aMap[? "Socket" ] )
@@ -937,10 +939,13 @@ switch( type_event )
         network_send_packet( socket, Buffer, buffer_tell( Buffer ) );
         if( State == "Running" )
         {
+            var _MapIndex = MapList[| Map ];
+            if( Map == 5 )
+                _MapIndex = "rm_Client";
             // Send the current map to the new client
             buffer_seek( Buffer, buffer_seek_start, 0 );
             buffer_write( Buffer, buffer_u8, 11 );
-            buffer_write( Buffer, buffer_string, MapList[| Map ] );
+            buffer_write( Buffer, buffer_string, _MapIndex );
             network_send_packet( socket, Buffer, buffer_tell( Buffer ) );
         }
         break;
@@ -966,6 +971,7 @@ switch( type_event )
                 ds_list_delete( PlayerList, s );
                 // Notify clients of the disconnect
                 buffer_seek( Buffer, buffer_seek_start, 0 );
+                buffer_write( Buffer, buffer_u8, 4 );
                 buffer_write( Buffer, buffer_u8, socket );
                 for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
                 {

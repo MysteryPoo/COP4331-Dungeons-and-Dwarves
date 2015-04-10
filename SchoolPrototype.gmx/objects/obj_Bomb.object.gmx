@@ -108,8 +108,14 @@ alarm[ 0 ] = 30 * 5;
           <argument>
             <kind>1</kind>
             <string>/// Explosion
-var _expl = instance_create( x, y, obj_Explosion );
-_expl.Damage = 25;
+var _explosions = 6;
+var _angle = 0;
+repeat( _explosions )
+{
+    var _expl = instance_create( x + 16 * dcos( _angle ), y - 16 * dsin( _angle ), obj_Explosion );
+    _expl.Damage = 25;
+    _angle += 360 / _explosions;
+}
 instance_destroy();
 </string>
           </argument>

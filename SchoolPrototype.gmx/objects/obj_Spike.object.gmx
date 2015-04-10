@@ -133,7 +133,7 @@ else
           <argument>
             <kind>1</kind>
             <string>/// Position
-if( Owner != noone &amp;&amp; instance_exists( Owner ) )
+if( instance_exists( Owner ) )
 {
     x = Owner.x + Range * dcos( direction ) * dsin( Life );
     y = Owner.y - Range * dsin( direction ) * dsin( Life );

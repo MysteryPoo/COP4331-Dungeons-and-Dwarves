@@ -120,6 +120,28 @@ if( ds_exists( DoorID, ds_type_list ) )
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>if( image_index == 0 &amp;&amp; !sound_isplaying( sound_switch ) )
+    audio_play_sound( sound_switch, 2, false );
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>/// Turn on torch
 if( TorchID != noone )
     if( ds_exists( TorchID, ds_type_list ) )

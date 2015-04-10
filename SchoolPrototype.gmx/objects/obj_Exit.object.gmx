@@ -82,7 +82,9 @@ if( instance_exists( obj_Client ) )
                     obj_Ninja_3,
                     obj_Platemail_3,
                     obj_PoisonWand_3,
-                    obj_FireWand_3 ) );
+                    obj_FireWand_3,
+                    obj_Agile_3,
+                    obj_Shield_3 ) );
             break;
         case 2:
             ds_list_add( obj_Inventory.Inventory, choose(
@@ -92,14 +94,18 @@ if( instance_exists( obj_Client ) )
                     obj_Platemail_2,
                     obj_Bomb,
                     obj_FireWand,
-                    obj_PoisonWand ) );
+                    obj_PoisonWand,
+                    obj_Agile_2,
+                    obj_Shield_2 ) );
             break;
         case 1:
             ds_list_add( obj_Inventory.Inventory, choose(
                     obj_Bow,
                     obj_Spike,
                     obj_Ninja,
-                    obj_Platemail ) );
+                    obj_Platemail,
+                    obj_Shield,
+                    obj_Agile ) );
             break;
     }
 }
@@ -125,6 +131,29 @@ if( instance_exists( obj_Client ) )
             <kind>1</kind>
             <string>/// Destroy
 instance_destroy();
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Play Sound
+if( !sound_isplaying( sound_applause ) )
+    audio_play_sound( sound_applause, 2, false );
 </string>
           </argument>
         </arguments>

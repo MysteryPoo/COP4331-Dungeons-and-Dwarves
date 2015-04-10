@@ -20,7 +20,17 @@ switch( msgid ) {
             if( _lMap[? "Socket" ] == socket )
             {
                 var _pMap = _lMap[? "PositionMap" ];
-                //if( point_distance( _pMap[? "X" ], _pMap[? "Y" ], _x, _y ) < 32 )
+                if( Map == 5 )
+                {
+                    if( point_distance( _pMap[? "X" ], _pMap[? "Y" ], _x, _y ) < 32 )
+                    {
+                        _pMap[? "X" ]           = _x;
+                        _pMap[? "Y" ]           = _y;
+                        _pMap[? "Direction" ]   = _dir;
+                        _pMap[? "Speed" ]       = _speed;
+                    }
+                }
+                else
                 {
                     _pMap[? "X" ]           = _x;
                     _pMap[? "Y" ]           = _y;
@@ -70,6 +80,12 @@ switch( msgid ) {
             buffer_write( Buffer, buffer_u8, 2 );
             buffer_write( Buffer, buffer_u8, ds_list_size( PlayerList ) );
             network_send_packet( LobbyServer, Buffer, buffer_tell( Buffer ) );
+            // Reset Ready status
+            for( var s = 0; s < ds_list_size( PlayerList ); ++s )
+            {
+                var _lMap = PlayerList[| s ];
+                _lMap[? "Ready" ] = false;
+            }
         }
         if( ds_list_size( PlayerList ) > 1 && State != "Running" )
             State = "Gathering";
