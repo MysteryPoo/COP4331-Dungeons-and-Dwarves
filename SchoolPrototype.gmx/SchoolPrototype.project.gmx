@@ -274,8 +274,14 @@
     <objects name="Big">
       <object>objects\obj_DoorShut</object>
     </objects>
+    <objects name="Shop">
+      <object>objects\obj_Labels</object>
+      <object>objects\obj_RandomButton</object>
+      <object>objects\obj_UpgradeButton</object>
+    </objects>
   </objects>
   <rooms name="rooms">
+    <room>rooms\rm_Shop</room>
     <room>rooms\rm_MainMenu</room>
     <room>rooms\rm_Server</room>
     <room>rooms\rm_Test</room>
