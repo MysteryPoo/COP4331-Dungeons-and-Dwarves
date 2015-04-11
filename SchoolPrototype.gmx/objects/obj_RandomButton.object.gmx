@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>///Label
-Label = "null";
+Label = "";
 </string>
           </argument>
         </arguments>
@@ -127,6 +127,8 @@ else{
             <kind>1</kind>
             <string>///Draw
 draw_self();
+draw_text(x-200, y-15, "Get a random weapon");
+draw_text(x-100, y, "50 coins");
 draw_text(x-20,y+25,Label);
 </string>
           </argument>

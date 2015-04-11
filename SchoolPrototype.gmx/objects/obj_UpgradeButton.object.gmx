@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>///Label
-Label = "null";
+Label = "";
 </string>
           </argument>
         </arguments>
@@ -50,10 +50,11 @@ Label = "null";
           <argument>
             <kind>1</kind>
             <string>///Upgrade selected item
-if(obj_Inventory.SelectedWeapon == -1){
+var selected_index = obj_Inventory.SelectedWeapon;
+if(selected_index == -1){
     Label = "select a weapon";
 }
-if(obj_Inventory.SelectedWeapon == obj_Bow){
+if(obj_Inventory.Inventory[| selected_index ] == obj_Bow){
     if(obj_Inventory.Treasure &gt;=50){
         Label = "Bought a tier 2 bow";
         obj_Inventory.Treasure -= 50;
@@ -63,7 +64,7 @@ if(obj_Inventory.SelectedWeapon == obj_Bow){
         Label = "Not enough money";
     }
 }
-else if(obj_Inventory.SelectedWeapon == obj_Bow_2){
+else if(obj_Inventory.Inventory[| selected_index ] == obj_Bow_2){
     if(obj_Inventory.Treasure &gt;=100){
         Label = "Bought a tier 3 bow";
         obj_Inventory.Treasure -= 100;
@@ -73,10 +74,10 @@ else if(obj_Inventory.SelectedWeapon == obj_Bow_2){
         Label = "Not enough money";
     }
 }
-else if(obj_Inventory.SelectedWeapon == obj_Bow_3){
+else if(obj_Inventory.Inventory[| selected_index ] == obj_Bow_3){
     Label = "Bow maxed out";
 }
-else if(obj_Inventory.SelectedWeapon == obj_Spike){
+else if(obj_Inventory.Inventory[| selected_index ] == obj_Spike){
     if(obj_Inventory.Treasure &gt;= 50){
         Label = "Bought a tier 2 spike";
         obj_Inventory.Treasure -= 50;
@@ -86,7 +87,7 @@ else if(obj_Inventory.SelectedWeapon == obj_Spike){
         Label = "Not enough money";
     }
 }
-else if(obj_Inventory.SelectedWeapon == obj_Spike_2){
+else if(obj_Inventory.Inventory[| selected_index ] == obj_Spike_2){
     if(obj_Inventory.Treasure &gt;= 100){
         Label = "Bought a tier 3 spike";
         obj_Inventory.Treasure -= 100;
@@ -96,12 +97,108 @@ else if(obj_Inventory.SelectedWeapon == obj_Spike_2){
         Label = "Not enough money";
     }
 }
-else if(obj_Inventory.SelectedWeapon == obj_Spike_3){
+else if(obj_Inventory.Inventory[| selected_index ] == obj_Spike_3){
     
     Label = "Spike maxed out";
 }
-else if(obj_Inventory.SelectedWeapon == obj_Bomb){
+else if(obj_Inventory.Inventory[| selected_index ] == obj_Bomb){
     Label = "Bomb can't be upgraded";
+}
+else if(obj_Inventory.Inventory[| selected_index ] == obj_Ninja){
+    if(obj_Inventory.Treasure &gt;= 50){
+        Label = "Bought a tier 2 Ninja Armor";
+        obj_Inventory.Treasure -= 50;
+        ds_list_add(obj_Inventory.Inventory, obj_Ninja_2);
+    }
+    else{
+        Label = "Not enough money";
+    }
+}
+else if(obj_Inventory.Inventory[| selected_index ] == obj_Ninja_2){
+    if(obj_Inventory.Treasure &gt;= 100){
+        Label = "Bought a tier 3 Ninja Armor";
+        obj_Inventory.Treasure -= 100;
+        ds_list_add(obj_Inventory.Inventory, obj_Ninja_3);
+    }
+    else{
+        Label = "Not enough money";
+    }
+}
+else if(obj_Inventory.Inventory[| selected_index ] == obj_Ninja_3){
+    
+    Label = "Ninja Armor maxed out";
+}
+else if(obj_Inventory.Inventory[| selected_index ] == obj_Platemail){
+    if(obj_Inventory.Treasure &gt;= 50){
+        Label = "Bought a tier 2 Platemail";
+        obj_Inventory.Treasure -= 50;
+        ds_list_add(obj_Inventory.Inventory, obj_Platemail_2);
+    }
+    else{
+        Label = "Not enough money";
+    }
+}
+else if(obj_Inventory.Inventory[| selected_index ] == obj_Platemail_2){
+    if(obj_Inventory.Treasure &gt;= 100){
+        Label = "Bought a tier 3 Platemail";
+        obj_Inventory.Treasure -= 100;
+        ds_list_add(obj_Inventory.Inventory, obj_Platemail_3);
+    }
+    else{
+        Label = "Not enough money";
+    }
+}
+else if(obj_Inventory.Inventory[| selected_index ] == obj_Platemail_3){
+    
+    Label = "Platemail maxed out";
+}
+else if(obj_Inventory.Inventory[| selected_index ] == obj_Shield){
+    if(obj_Inventory.Treasure &gt;= 50){
+        Label = "Bought a tier 2 Shield";
+        obj_Inventory.Treasure -= 50;
+        ds_list_add(obj_Inventory.Inventory, obj_Shield_2);
+    }
+    else{
+        Label = "Not enough money";
+    }
+}
+else if(obj_Inventory.Inventory[| selected_index ] == obj_Shield_2){
+    if(obj_Inventory.Treasure &gt;= 100){
+        Label = "Bought a tier 3 Sheild";
+        obj_Inventory.Treasure -= 100;
+        ds_list_add(obj_Inventory.Inventory, obj_Shield_3);
+    }
+    else{
+        Label = "Not enough money";
+    }
+}
+else if(obj_Inventory.Inventory[| selected_index ] == obj_Shield_3){
+    
+    Label = "Sheild maxed out";
+}
+else if(obj_Inventory.Inventory[| selected_index ] == obj_Agile){
+    if(obj_Inventory.Treasure &gt;= 50){
+        Label = "Bought a tier 2 Agile Armor";
+        obj_Inventory.Treasure -= 50;
+        ds_list_add(obj_Inventory.Inventory, obj_Agile_2);
+    }
+    else{
+        Label = "Not enough money";
+    }
+}
+else if(obj_Inventory.Inventory[| selected_index ] == obj_Agile_2){
+    if(obj_Inventory.Treasure &gt;= 100){
+        Label = "Bought a tier 3 Agile Armor";
+        obj_Inventory.Treasure -= 100;
+        ds_list_add(obj_Inventory.Inventory, obj_Agile_3);
+    }
+    else{
+        Label = "Not enough money";
+    }
+}
+else if(obj_Inventory.Inventory[| selected_index ] == obj_Agile_3){
+    
+    Label = "Agile Armor maxed out";
 }
 </string>
           </argument>
@@ -126,8 +223,8 @@ else if(obj_Inventory.SelectedWeapon == obj_Bomb){
           <argument>
             <kind>1</kind>
             <string>///Draw
-
 draw_self();
+draw_text(x-250, y-5, "Upgrade selected weapons");
 draw_text(x-20, y+25, Label);
 </string>
           </argument>
@@ -146,5 +243,8 @@ draw_text(x-20, y+25, Label);
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
-  <PhysicsShapePoints/>
+  <PhysicsShapePoints>
+    <point>16,16</point>
+    <point>16,16</point>
+  </PhysicsShapePoints>
 </object>
