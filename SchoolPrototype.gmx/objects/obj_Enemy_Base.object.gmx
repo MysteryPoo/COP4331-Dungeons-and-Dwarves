@@ -213,7 +213,7 @@ if (other.State != "Death" &amp;&amp; other.State != "Hit" &amp;&amp; other.IsIn
 {
     other.State = "Hit_Start";
     other.HitPoints -= Damage;
-    other.direction = -other.direction;
+    other.direction = -direction;
     other.speed = 10;
 }
 </string>
@@ -243,8 +243,6 @@ if( State != "Hit" &amp;&amp; State != "Death" &amp;&amp; other.Owner != id )
 {
     State = "Hit_Start";
     HitPoints -= other.Damage;
-    direction = other.direction;
-    speed = 10;
 }
 /*
 // Placeholder
