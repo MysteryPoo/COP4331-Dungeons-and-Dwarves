@@ -2,7 +2,7 @@
 <object>
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
-  <visible>0</visible>
+  <visible>-1</visible>
   <depth>0</depth>
   <persistent>-1</persistent>
   <parentName>&lt;undefined&gt;</parentName>
@@ -685,6 +685,7 @@ if( _id == PlayerNameMsg )
           <argument>
             <kind>1</kind>
             <string>/// Debug
+/*
 if( isConnected &gt; -1 )
     draw_text( 5 , 5 , "Client Connected: YES" );
 else
@@ -705,6 +706,7 @@ for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
     }
     draw_text( 5, 128 + 16 * s, "( " + string( _pMap[? "X" ] ) + ", " + string( _pMap[? "Y" ] ) + " )" );
 }
+*/
 </string>
           </argument>
         </arguments>
