@@ -665,8 +665,13 @@ if( State == "Hit_Start" )
 }
 if( State == "Hit" )
 {
+    var _newCol;
+    if( image_blend == c_white )
+        _newCol = c_red;
+    else
+        _newCol = c_white;
     if( StateTimer mod 5 == 0 )
-        visible = !visible;
+        image_blend = _newCol;
     if( StateTimer mod 2.5 == 0 &amp;&amp; StateTimer != 15 )
         speed *= 0.1;
     if( speed &lt; 1 )
@@ -674,12 +679,12 @@ if( State == "Hit" )
     if( StateTimer == 0 )
     {
         State = "Idle_Start";
-        visible = true;
+        image_blend = c_white;
     }
     if( HitPoints &lt;= 0 )
     {
         State = "Death_Start";
-        visible = true;
+        image_blend = c_white;
     }
 }
 </string>
@@ -709,6 +714,7 @@ if( State == "Death_Start" )
     audio_play_sound(sound_scream, 3, false);
     sprite_index = spr_player_death;
     image_index = 0;
+    image_speed = 1;
     speed = 0;
     State = "Death";
     StateTimer = 30 * 2;
@@ -774,10 +780,9 @@ if( State == "Fall" )
     else if( StateTimer == 0 )
     {
         State = "Idle_Start";
-        x = global.StartX;
-        y = global.StartY;
         image_xscale = 0.25;
         image_yscale = 0.25;
+        room_goto( room );
     }
 }
 </string>

@@ -62,32 +62,30 @@ Owner = noone;
           <argument>
             <kind>1</kind>
             <string>/// Damage
-Damage = 5;
+Damage = 30;
 </string>
           </argument>
         </arguments>
       </action>
       <action>
         <libid>1</libid>
-        <id>211</id>
-        <kind>0</kind>
+        <id>603</id>
+        <kind>7</kind>
         <userelative>0</userelative>
         <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_sound</functionname>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
         <codestring></codestring>
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
         <arguments>
           <argument>
-            <kind>6</kind>
-            <sound>sound_sword</sound>
-          </argument>
-          <argument>
-            <kind>3</kind>
-            <string>0</string>
+            <kind>1</kind>
+            <string>/// Sound
+audio_play_sound( sound_sword, 2, false );
+</string>
           </argument>
         </arguments>
       </action>

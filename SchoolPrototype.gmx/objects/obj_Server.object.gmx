@@ -728,7 +728,7 @@ if( !ds_queue_empty( AttackQueue ) )
             for( var s = 0; s &lt; Players; ++s )
             {
                 var _lMap = PlayerList[| s ];
-                if( _lMap[? "Map" ] == 5 )
+                if( Map == 5 )
                 {
                     var _inst = noone;
                     if( _lMap[? "Socket" ] == _aMap[? "Socket" ] )
@@ -880,8 +880,8 @@ if( State == "Gathering" )
     }
     if( ds_list_size( PlayerList ) &lt; 2 )
         _allReady = false;
-    if( StartTimer &gt; 10 &amp;&amp; _allReady )
-        StartTimer = 11;
+    if( StartTimer &gt; 10 * 30 &amp;&amp; _allReady )
+        StartTimer = 10 * 30;
     if( StartTimer &gt; 0 )
         --StartTimer;
     else
@@ -939,10 +939,13 @@ switch( type_event )
         network_send_packet( socket, Buffer, buffer_tell( Buffer ) );
         if( State == "Running" )
         {
+            var _MapIndex = MapList[| Map ];
+            if( Map == 5 )
+                _MapIndex = "rm_Client";
             // Send the current map to the new client
             buffer_seek( Buffer, buffer_seek_start, 0 );
             buffer_write( Buffer, buffer_u8, 11 );
-            buffer_write( Buffer, buffer_string, MapList[| Map ] );
+            buffer_write( Buffer, buffer_string, _MapIndex );
             network_send_packet( socket, Buffer, buffer_tell( Buffer ) );
         }
         break;
@@ -968,6 +971,7 @@ switch( type_event )
                 ds_list_delete( PlayerList, s );
                 // Notify clients of the disconnect
                 buffer_seek( Buffer, buffer_seek_start, 0 );
+                buffer_write( Buffer, buffer_u8, 4 );
                 buffer_write( Buffer, buffer_u8, socket );
                 for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
                 {

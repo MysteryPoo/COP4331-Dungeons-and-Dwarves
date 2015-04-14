@@ -131,7 +131,7 @@ FlameCount = 1;
           <argument>
             <kind>1</kind>
             <string>/// Override DetectionRadius
-DetectionRadius = 32;
+DetectionRadius = 128;
 </string>
           </argument>
         </arguments>
@@ -154,6 +154,28 @@ DetectionRadius = 32;
             <kind>1</kind>
             <string>/// Override Hit Points
 HitPoints = 5;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Override Damage
+Damage = 20;
 </string>
           </argument>
         </arguments>
@@ -325,9 +347,9 @@ if( State == "Idle" )
         else
             State = "Idle_Start";
     }
-    // Run away if the player is nearby
+    // Chase player if nearby
     if( scr_CanDetectPlayer( DetectionRadius ) )
-        State = "Flee_Start";
+        State = "Chase_Start";
     // Check if another flame is nearby and merge
     x -= 10000;
     var _other = instance_nearest( x + 10000, y, object_index );
@@ -370,7 +392,7 @@ if( State == "Wander" )
     if( StateTimer == 0 )
         State = "Idle_Start";
     if( scr_CanDetectPlayer( DetectionRadius ) )
-        State = "Flee_Start";
+        State = "Chase_Start";
     /*if( StateTimer == 0 )
     {
         StateTimer = 15;
@@ -406,24 +428,57 @@ if( State == "Wander" )
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Flee
-if( State == "Flee_Start" )
+            <string>/// Chase
+if( State == "Chase_Start" )
 {
-    State = "Flee";
+    State = "Chase";
     StateTimer = 30;
-    LandX = x;
-    LandY = y;
-    var _FleeFrom = instance_nearest( x, y, obj_Dwarf );
-    scr_Flee( 2, _FleeFrom );
 }
-if( State == "Flee" )
+if( State == "Chase" )
+{
+    var _Near = instance_nearest( x, y, obj_Dwarf );
+    if( _Near != noone )
+        //if( point_distance( x, y, _Near.x, _Near.y ) &lt; 64 )
+            //State = "Charge_Start";
+        if( scr_CanDetectPlayer( DetectionRadius * 3 ) )
+            scr_Chase( 3, _Near );
+        else
+            State = "Idle_Start";
+    else
+        State = "Idle_Start";
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Wait
+if( State == "Wait_Start" )
+{
+    audio_play_sound(sound_fireball, 3, false);
+    State = "Wait";
+    StateTimer = 30;
+    image_speed = 0.2;
+}
+if( State == "Wait" )
 {
     if( StateTimer == 0 )
-    {
         State = "Idle_Start";
-        // Reset DetectionRadius
-        DetectionRadius = 32;
-    }
 }
 </string>
           </argument>
@@ -459,8 +514,12 @@ if( State == "Merge" )
     {
         scr_Chase( 2, _other );
     }
-    if( scr_CanDetectPlayer( DetectionRadius ) )
-        State = "Flee_Start";
+    else
+    {
+        State = "Idle_Start";
+    }
+    //if( scr_CanDetectPlayer( DetectionRadius ) )
+        //State = "Flee_Start";
 }
 </string>
           </argument>
@@ -560,6 +619,44 @@ if( State == "Death" )
         instance_destroy();
     }
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_Dwarf">
+      <action>
+        <libid>1</libid>
+        <id>604</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_inherited</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Wait
+State = "Wait_Start";
 </string>
           </argument>
         </arguments>

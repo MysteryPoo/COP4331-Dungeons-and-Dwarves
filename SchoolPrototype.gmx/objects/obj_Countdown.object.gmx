@@ -77,7 +77,7 @@ alarm[0] = room_speed;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Check for client connections
+            <string>/// Check for client connections
 var currentCount = ds_list_size( obj_Client.SocketList );
 
 
@@ -91,6 +91,37 @@ if(currentCount != clientCount)
     else if(currentCount &lt; 2)
         alarm[0] = -1; //Stop countdown?
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Jump timer to 10 seconds if everyone is ready
+var _allReady = true;
+for( var s = 0; s &lt; ds_list_size( obj_Client.SocketList ); ++s )
+{
+    var _lMap = obj_Client.SocketList[|s];
+    if( !_lMap[? "Ready" ] )
+        _allReady = false;
+}
+
+if( _allReady &amp;&amp; countdownTime &gt; 10 )
+    countdownTime = 10;
 </string>
           </argument>
         </arguments>
@@ -117,20 +148,20 @@ if(currentCount != clientCount)
 draw_set_halign(fa_center);
 if( clientCount &gt; 1 )
 {
-    draw_set_font(fnt_Default);
-    draw_text(room_width/2, 32, countdownText);
+    draw_set_font(fnt_LargeTimer);
+    draw_text_colour(room_width/2, room_height/2 - 60, countdownText, c_yellow, c_yellow, c_gray, c_red, 1 );
     
     draw_set_font(fnt_LargeTimer);
     
     if(countdownTime &lt;= 15)
-        draw_text_color(room_width/2, 60, string(countdownTime),  c_red, c_red, c_black, c_black, 1);
+        draw_text_colour(room_width/2, room_height/2+60, string(countdownTime),  c_red, c_red, c_black, c_black, 1);
     else 
-        draw_text_color(room_width/2, 60, string(countdownTime), c_green, c_green, c_black, c_black, 1);
+        draw_text_colour(room_width/2, room_height/2 + 60, string(countdownTime), c_green, c_green, c_black, c_black, 1);
 }
 else
 {
-    draw_set_font( fnt_Default );
-    draw_text( room_width/2, 32, "Awaiting more players..." );
+    draw_set_font( fnt_LargeTimer );
+    draw_text( room_width/2 + 32, room_height/2 + 60, "Awaiting more players..." );
 }
 
 draw_set_font(-1);

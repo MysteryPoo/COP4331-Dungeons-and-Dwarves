@@ -647,6 +647,8 @@ switch( type_event )
           <argument>
             <kind>1</kind>
             <string>/// Process name
+if( room != rm_Lobby )
+    exit;
 var _id = ds_map_find_value( async_load, "id" );
 if( _id == PlayerNameMsg )
 {
@@ -685,6 +687,7 @@ if( _id == PlayerNameMsg )
           <argument>
             <kind>1</kind>
             <string>/// Debug
+/*
 if( isConnected &gt; -1 )
     draw_text( 5 , 5 , "Client Connected: YES" );
 else
@@ -692,7 +695,7 @@ else
 draw_text( 5, 32, "My network ID: " + string( NetworkID ) );
 draw_text( 5, 32 + 16, "Ping: " + string( Ping ) );
 draw_text( 5, 32 + 32, "State: " + State );
-
+*/
 for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
 {
     var _lMap = SocketList[| s ];
@@ -703,7 +706,7 @@ for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
         if( _inst.image_alpha == 1 )
             draw_text( _inst.x, _inst.y + 32, _lMap[? "Name" ] );
     }
-    draw_text( 5, 128 + 16 * s, "( " + string( _pMap[? "X" ] ) + ", " + string( _pMap[? "Y" ] ) + " )" );
+    //draw_text( 5, 128 + 16 * s, "( " + string( _pMap[? "X" ] ) + ", " + string( _pMap[? "Y" ] ) + " )" );
 }
 </string>
           </argument>
@@ -726,6 +729,7 @@ for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
           <argument>
             <kind>1</kind>
             <string>/// Spectating
+/*
 if( State == "Spectator" )
 {
     draw_set_font( fnt_DEMO );
@@ -745,7 +749,7 @@ else if( global.Waiting )
     draw_set_font( -1 );
     draw_set_colour( c_green );
     draw_set_halign( fa_left );
-}
+}*/
 </string>
           </argument>
         </arguments>

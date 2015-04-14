@@ -42,7 +42,7 @@ global.RestartOnDeath = true;</code>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
   </backgrounds>
   <views>
-    <view visible="-1" objName="obj_Dwarf" xview="0" yview="0" wview="512" hview="384" xport="0" yport="0" wport="1024" hport="768" hborder="512" vborder="384" hspeed="5" vspeed="5"/>
+    <view visible="-1" objName="obj_Dwarf" xview="0" yview="0" wview="480" hview="270" xport="0" yport="0" wport="1920" hport="1080" hborder="480" vborder="270" hspeed="5" vspeed="5"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
@@ -101,8 +101,8 @@ global.RestartOnDeath = true;</code>
     <instance objName="obj_Wall" x="480" y="384" name="inst_50ABE31A" locked="0" code="" scaleX="3" scaleY="3" colour="4294967295" rotation="0"/>
     <instance objName="obj_Wall" x="608" y="384" name="inst_D8128DF5" locked="0" code="" scaleX="3" scaleY="3" colour="4294967295" rotation="0"/>
     <instance objName="obj_Exit" x="32" y="304" name="inst_9057CCC5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="48" y="272" name="inst_7CFF3A52" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="48" y="336" name="inst_1B4DB26F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="48" y="272" name="inst_7CFF3A52" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
+    <instance objName="obj_Torch" x="48" y="336" name="inst_1B4DB26F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
     <instance objName="obj_Guard" x="688" y="240" name="inst_B64EB52B" locked="0" code="var node = 0;&#xA;x = path_get_point_x( path_Avoidance_small, node );&#xA;y = path_get_point_y( path_Avoidance_small, node );&#xA;path_position = ( 1 / path_get_number( path_Avoidance_small ) ) * node;&#xA;path_speed = -path_speed;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Atmosphere" x="64" y="0" name="inst_053E7542" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
