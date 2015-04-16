@@ -31,6 +31,8 @@
     <sound>sound\music_background_v2_nodrums</sound>
     <sound>sound\music_background_v2_otherdrums</sound>
     <sound>sound\music_background_v3_fast</sound>
+    <sound>sound\sound_skeleton</sound>
+    <sound>sound\sound_switch_door</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\spr_wall</sprite>
