@@ -470,7 +470,9 @@ if( State == "Chase" )
             <string>/// Wait
 if( State == "Wait_Start" )
 {
-    audio_play_sound(sound_fireball, 3, false);
+    if( !audio_is_playing( sound_fireball ) &amp;&amp; !audio_is_playing( sound_falling ) )
+        audio_play_sound(sound_fireball, 3, false);
+        
     State = "Wait";
     StateTimer = 30;
     image_speed = 0.2;
@@ -657,6 +659,7 @@ if( State == "Death" )
             <kind>1</kind>
             <string>/// Wait
 State = "Wait_Start";
+
 </string>
           </argument>
         </arguments>

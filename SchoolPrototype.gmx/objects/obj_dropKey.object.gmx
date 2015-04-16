@@ -80,6 +80,8 @@ if( !Flipped )
     instance_create( 384, 368, obj_Skelly );
     instance_create( 448, 432, obj_Skelly );
     instance_create( 384, 496, obj_Skelly );
+    // play the key sound
+    audio_play_sound(sound_key, 3, false);
 }
 </string>
           </argument>
