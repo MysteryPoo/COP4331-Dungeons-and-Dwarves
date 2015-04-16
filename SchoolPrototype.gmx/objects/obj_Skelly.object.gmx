@@ -308,6 +308,8 @@ if( State == "Attack" )
 if( State == "Death_Start" )
 {
     State = "Death";
+    // play the sound
+    audio_play_sound(sound_skeleton, 2, false);
 }
 if( State == "Death" )
 {

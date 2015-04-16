@@ -25,6 +25,12 @@
     <sound>sound\sound_minion_die</sound>
     <sound>sound\sound_scream</sound>
     <sound>sound\sound_sword</sound>
+    <sound>sound\music_background_v0</sound>
+    <sound>sound\music_background_v1</sound>
+    <sound>sound\music_background_v2_drums</sound>
+    <sound>sound\music_background_v2_nodrums</sound>
+    <sound>sound\music_background_v2_otherdrums</sound>
+    <sound>sound\music_background_v3_fast</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\spr_wall</sprite>
