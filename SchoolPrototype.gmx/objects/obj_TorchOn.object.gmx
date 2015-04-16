@@ -120,8 +120,9 @@ if( ds_exists( DoorID, ds_type_list ) )
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if( image_index == 0 &amp;&amp; !sound_isplaying( sound_switch_door ) )
-    audio_play_sound( sound_switch_door, 2, false );
+            <string>/// Play Sound
+if( image_index == 0 &amp;&amp; !sound_isplaying( sound_door ) )
+    audio_play_sound( sound_door, 2, false );
 </string>
           </argument>
         </arguments>
