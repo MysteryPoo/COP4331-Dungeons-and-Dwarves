@@ -804,10 +804,7 @@ if( State == "Fall" )
     }
     else if( StateTimer == 0 )
     {
-        State = "Idle_Start";
-        image_xscale = 0.25;
-        image_yscale = 0.25;
-        room_goto( room );
+        State = "Death";
     }
 }
 </string>
