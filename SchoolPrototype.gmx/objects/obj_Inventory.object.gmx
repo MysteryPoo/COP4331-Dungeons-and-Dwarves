@@ -80,7 +80,7 @@ global.MyWeapon = noone;
             <kind>1</kind>
             <string>/// Ammo Map
 Ammo = ds_map_create();
-Ammo[? "Arrows" ] = 5;
+Ammo[? "Arrows" ] = 10;
 Ammo[? "Bombs" ] = 5;
 Ammo[? "Spikes" ] = 1; // Arbitrary positive value. They never decrement.
 Ammo[? "Mana" ] = 100;
@@ -200,6 +200,28 @@ SelectedWeapon = -1;
             <kind>1</kind>
             <string>/// Mana Tick
 alarm[ 0 ] = 30;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Default Items
+ds_list_add( Inventory, obj_Bow, obj_Bomb );
 </string>
           </argument>
         </arguments>
