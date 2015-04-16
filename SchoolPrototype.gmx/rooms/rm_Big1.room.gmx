@@ -90,16 +90,16 @@ global.RestartOnDeath = true;</code>
     <instance objName="obj_Door" x="336" y="368" name="inst_8160FA61" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Door" x="336" y="144" name="inst_E010A1D8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Door" x="336" y="400" name="inst_46EAE4B1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="720" y="1504" name="inst_5663316D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
+    <instance objName="obj_Skelly" x="288" y="2048" name="inst_3139D843" locked="0" code="" scaleX="0.150000005960464" scaleY="0.150000005960464" colour="4294967295" rotation="0"/>
     <instance objName="obj_Door" x="464" y="1232" name="inst_2E6DEDC1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_DoorShut" x="544" y="704" name="Switch_Big_3" locked="0" code="SwitchID = Switch_Big_3;&#xA;&#xA;DoorID1 = 210;&#xA;DoorID2 = 211;&#xA;DoorID3 = 220;&#xA;DoorID4 = 221;&#xA;DoorID5 = 230;&#xA;DoorID6 = 231;&#xA;&#xA;Direction = &quot;Down&quot;;&#xA;" scaleX="4" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="416" y="1568" name="inst_626202C0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_DoorShut" x="96" y="512" name="Switch_Big_0" locked="0" code="SwitchID = Switch_Big_0;&#xA;&#xA;DoorID1 = 110;&#xA;DoorID2 = 111;&#xA;&#xA;Direction = &quot;Down&quot;;&#xA;" scaleX="4" scaleY="2" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="720" y="1504" name="inst_C6488E0E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="720" y="1376" name="inst_0443B3A8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="496" y="1376" name="inst_27EECEF6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="496" y="1664" name="inst_9DEDA60E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Time" x="128" y="16" name="inst_A287A50C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="528" y="528" name="inst_9C800669" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="48" y="864" name="inst_8CC299CA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
+    <instance objName="obj_Skelly" x="320" y="864" name="inst_F2AF2D35" locked="0" code="" scaleX="0.150000005960464" scaleY="0.150000005960464" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="48" y="2016" name="inst_9DEDA60E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
+    <instance objName="obj_Torch" x="464" y="1488" name="inst_32B67306" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
     <instance objName="obj_Treasure" x="768" y="768" name="inst_1CF8E247" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Wall" x="384" y="2208" name="inst_72114DAB" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="480" y="1920" name="inst_E2639552" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -111,9 +111,9 @@ global.RestartOnDeath = true;</code>
     <instance objName="obj_Wall" x="384" y="1952" name="inst_51777142" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="obj_Wall" x="256" y="1952" name="inst_281FA285" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="obj_Wall" x="256" y="2080" name="inst_F3D5D021" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="48" y="128" name="inst_612DCF42" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="160" y="80" name="inst_9CF19E02" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="528" y="1296" name="inst_05154886" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="48" y="304" name="inst_612DCF42" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
+    <instance objName="obj_Torch" x="192" y="80" name="inst_9CF19E02" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="592" y="816" name="inst_6D066675" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
     <instance objName="obj_Wall" x="480" y="2368" name="inst_C27CE7D6" locked="0" code="" scaleX="3" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Torch" x="464" y="336" name="inst_E4038B70" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
     <instance objName="obj_Treasure" x="800" y="832" name="inst_FBB2920A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -121,7 +121,7 @@ global.RestartOnDeath = true;</code>
     <instance objName="obj_Treasure" x="736" y="800" name="inst_3219E0DC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="800" y="768" name="inst_083236BD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="800" y="800" name="inst_66DE4539" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="48" y="192" name="inst_895EF4A1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
+    <instance objName="obj_Torch" x="48" y="208" name="inst_895EF4A1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
     <instance objName="obj_Treasure" x="544" y="1664" name="inst_B8D9193D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="672" y="1664" name="inst_FC608E18" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="544" y="1344" name="inst_C6966EBA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -155,13 +155,13 @@ global.RestartOnDeath = true;</code>
     <instance objName="obj_SpeedBoost" x="256" y="1504" name="inst_83D062E9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_SpeedBoost" x="672" y="2000" name="inst_31F3D126" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Exit" x="560" y="2352" name="inst_F5C443FD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="496" y="1632" name="inst_CDC1A79A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
+    <instance objName="obj_Skelly" x="480" y="2304" name="inst_AD18479E" locked="0" code="" scaleX="0.150000005960464" scaleY="0.150000005960464" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="480" y="1888" name="inst_F8ABD9FA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Torch" x="368" y="80" name="inst_6A986B8F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_SpeedBoost" x="656" y="448" name="inst_ED0E426B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Atmosphere" x="160" y="16" name="inst_53F24CCF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="496" y="1344" name="inst_709C8715" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="528" y="1712" name="inst_FDD6BA82" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
+    <instance objName="obj_Torch" x="48" y="1552" name="inst_26125E9D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
+    <instance objName="obj_Skelly" x="288" y="2304" name="inst_FC0CC1AE" locked="0" code="" scaleX="0.150000005960464" scaleY="0.150000005960464" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="608" y="1664" name="inst_1244897D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="640" y="1664" name="inst_79635DE2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="576" y="1616" name="inst_FF413FA7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -176,7 +176,7 @@ global.RestartOnDeath = true;</code>
     <instance objName="obj_Treasure" x="256" y="704" name="inst_97B7BCBC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="176" y="800" name="inst_6BF15C8B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="480" y="928" name="inst_E7E072EF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="96" y="80" name="inst_F6C38A8D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="256" y="80" name="inst_F6C38A8D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="768" y="832" name="inst_2560201C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Torch" x="208" y="1168" name="inst_A38F3E8F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="736" y="768" name="inst_FAD779E3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -191,10 +191,9 @@ global.RestartOnDeath = true;</code>
     <instance objName="obj_Skelly" x="480" y="1984" name="inst_C9ACBC5A" locked="0" code="" scaleX="0.150000005960464" scaleY="0.150000005960464" colour="4294967295" rotation="0"/>
     <instance objName="obj_Skelly" x="96" y="2272" name="inst_EF681DF7" locked="0" code="" scaleX="0.150000005960464" scaleY="0.150000005960464" colour="4294967295" rotation="0"/>
     <instance objName="obj_Skelly" x="224" y="2176" name="inst_A5E28C5D" locked="0" code="" scaleX="0.150000005960464" scaleY="0.150000005960464" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Skelly" x="288" y="2304" name="inst_FC0CC1AE" locked="0" code="" scaleX="0.150000005960464" scaleY="0.150000005960464" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Skelly" x="320" y="864" name="inst_F2AF2D35" locked="0" code="" scaleX="0.150000005960464" scaleY="0.150000005960464" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Skelly" x="480" y="2304" name="inst_AD18479E" locked="0" code="" scaleX="0.150000005960464" scaleY="0.150000005960464" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Skelly" x="288" y="2048" name="inst_3139D843" locked="0" code="" scaleX="0.150000005960464" scaleY="0.150000005960464" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="288" y="2352" name="inst_AB6502FE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
+    <instance objName="obj_Torch" x="528" y="2048" name="inst_6C664944" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
+    <instance objName="obj_Torch" x="288" y="1744" name="inst_4C609D41" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_Wall_Tile" x="736" y="960" w="32" h="32" xo="0" yo="0" id="10004133" name="inst_B1668DB7" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
