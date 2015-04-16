@@ -236,7 +236,7 @@ global.RestartOnDeath = true;</code>
     <instance objName="obj_Atmosphere" x="160" y="16" name="inst_53F24CCF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="736" y="800" name="inst_3219E0DC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_SpeedBoost" x="1952" y="1088" name="inst_92471C9A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Door" x="1840" y="1328" name="inst_B6AFDB1E" locked="0" code="Exit = true;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Door" x="1840" y="1328" name="inst_B6AFDB1E" locked="0" code="Exit = true;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Exit" x="1840" y="1360" name="inst_46E0361F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
     <instance objName="obj_Skelly" x="176" y="720" name="inst_0BE4568E" locked="0" code="" scaleX="0.150000005960464" scaleY="0.150000005960464" colour="4294967295" rotation="0"/>
     <instance objName="obj_Skelly" x="480" y="1008" name="inst_5908ADF1" locked="0" code="" scaleX="0.150000005960464" scaleY="0.150000005960464" colour="4294967295" rotation="0"/>
@@ -256,6 +256,7 @@ global.RestartOnDeath = true;</code>
     <instance objName="obj_Torch" x="1488" y="1456" name="inst_796E7BC0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
     <instance objName="obj_Torch" x="976" y="976" name="inst_CFBEC273" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Torch" x="1024" y="1840" name="inst_FAEE5AC7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
+    <instance objName="obj_Key" x="1088" y="1408" name="inst_39F8F14B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_Wall_Tile" x="1856" y="896" w="32" h="32" xo="0" yo="0" id="10003780" name="inst_D137C4C5" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
