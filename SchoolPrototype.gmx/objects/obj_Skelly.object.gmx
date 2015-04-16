@@ -309,7 +309,11 @@ if( State == "Death_Start" )
 {
     State = "Death";
     // play the sound
-    audio_play_sound(sound_skeleton, 2, false);
+    // audio_play_sound(sound_skeleton, 2, false);
+    emitter_skelly = audio_emitter_create();
+    audio_emitter_position(emitter_skelly, x, y, 0);
+    audio_play_sound_on(emitter_skelly, sound_skeleton, false, 10);
+    audio_emitter_falloff(emitter_skelly, 10 , 20, 1);
 }
 if( State == "Death" )
 {

@@ -17,7 +17,7 @@ display_set_gui_size( 480, 270 );
 
 global.Waiting = false;
 
-audio_play_sound( music_background1, 2, true );</code>
+//audio_play_sound( music_background_v2_drums, 1, true );</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>

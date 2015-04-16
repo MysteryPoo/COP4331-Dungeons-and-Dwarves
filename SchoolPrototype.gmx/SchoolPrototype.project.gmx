@@ -31,6 +31,7 @@
     <sound>sound\music_background_v2_nodrums</sound>
     <sound>sound\music_background_v2_otherdrums</sound>
     <sound>sound\music_background_v3_fast</sound>
+    <sound>sound\sound_skeleton</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\spr_wall</sprite>
@@ -217,6 +218,7 @@
     <objects name="Generic">
       <object>objects\obj_Torch</object>
       <object>objects\obj_Button</object>
+      <object>objects\obj_Listener</object>
       <object>objects\obj_Dwarf</object>
       <object>objects\obj_Ball</object>
       <object>objects\obj_Wall</object>
