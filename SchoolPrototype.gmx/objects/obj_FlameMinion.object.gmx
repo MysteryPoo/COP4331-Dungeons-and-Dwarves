@@ -486,7 +486,10 @@ if( State == "Wait_Start" )
 if( State == "Wait" )
 {
     if( StateTimer == 0 )
+    {
         State = "Idle_Start";
+        audio_emitter_free(emitter_fireball);
+    }
 }
 </string>
           </argument>
@@ -629,6 +632,7 @@ if( State == "Death" )
         if( instance_exists( ParentTorch ) )
             ParentTorch.On = true;
         instance_destroy();
+        audio_emitter_free(emitter_minion);
     }
 }
 </string>

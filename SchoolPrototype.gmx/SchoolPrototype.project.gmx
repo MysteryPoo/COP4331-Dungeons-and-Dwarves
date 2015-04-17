@@ -247,6 +247,7 @@
       <object>objects\obj_Loot</object>
       <object>objects\obj_Drop</object>
       <object>objects\obj_Shop</object>
+      <object>objects\obj_Listener</object>
     </objects>
     <objects name="Bridge">
       <object>objects\obj_Bridge</object>
