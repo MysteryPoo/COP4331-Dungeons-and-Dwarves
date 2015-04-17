@@ -8,7 +8,7 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="2" enumb="0">
+    <event eventtype="4" ename="obj_Dwarf">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -25,14 +25,16 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Free emitter
-audio_emitter_free(emitter_boost);
+            <string>/// Create the emitter
+var emit;
+emit = instance_create(x, y, obj_Emitter);
+emit.sid = sound_boost;
+emit.fref = 300;
+emit.fmax = 600;
 </string>
           </argument>
         </arguments>
       </action>
-    </event>
-    <event eventtype="4" ename="obj_Dwarf">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -72,37 +74,7 @@ other.alarm[ 0 ] = 60;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Emit Sound Speedboost
-if( !sound_isplaying( sound_boost ) )
-{
-    emitter_boost = audio_emitter_create();
-    audio_emitter_position(emitter_boost, x, y, 0);
-    audio_emitter_falloff(emitter_boost, 100, 200, 1);
-    audio_play_sound_on(emitter_boost, sound_boost, false, 2);
-}
-// audio_play_sound( sound_boost, 2, false );
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
             <string>/// Destroy
-alarm[0] = 60;
 instance_destroy();
 </string>
           </argument>

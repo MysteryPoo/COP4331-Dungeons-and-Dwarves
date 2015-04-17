@@ -8,30 +8,6 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>spr_wall</maskName>
   <events>
-    <event eventtype="2" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Free emitter
-audio_emitter_free(emitter_bombs);
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="4" ename="obj_Dwarf">
       <action>
         <libid>1</libid>
@@ -49,12 +25,12 @@ audio_emitter_free(emitter_bombs);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Play Sound
-emitter_bombs = audio_emitter_create();
-audio_emitter_position(emitter_bombs, x, y, 0);
-audio_emitter_falloff(emitter_bombs, 10, 20, 1);
-audio_play_sound_on(emitter_bombs, sound_item, false, 2);
-// audio_play_sound( sound_item, 2, false );
+            <string>/// Create the emitter
+var emit;
+emit = instance_create(x, y, obj_Emitter);
+emit.sid = sound_item;
+emit.fref = 10;
+emit.fmax = 20;
 </string>
           </argument>
         </arguments>
@@ -81,7 +57,6 @@ if( other.id == global.MyInst )
     if( instance_exists( obj_Inventory ) )
         obj_Inventory.Ammo[? "Bombs" ] += 10;
 }
-alarm[0] = 15;
 instance_destroy();
 </string>
           </argument>
