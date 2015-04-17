@@ -52,7 +52,7 @@ Label = "";
             <string>///Add random weapon
 weapons = ds_list_create();
 randomize();
-var numWeaponTypes = 3;//Update for new weapons. 
+var numWeaponTypes = 8;//Update for new weapons. 
 var rand = irandom(numWeaponTypes-1);
 if(obj_Inventory.Treasure &gt;= 50){
     obj_Inventory.Treasure -= 50;
@@ -97,7 +97,84 @@ if(obj_Inventory.Treasure &gt;= 50){
             ds_list_add(obj_Inventory.Inventory, obj_Spike);
             Label = "Bought a spike!";
             break;
-        
+        case 3:
+            var i;
+            for(i = 0; i &lt; ds_list_size(obj_Inventory.Inventory); i++){
+                if(ds_list_find_value(obj_Inventory.Inventory, i) == obj_Ninja){
+                    ds_list_add(obj_Inventory.Inventory, obj_Ninja_2);
+                    Label = "Bought a tier 2 Ninja Armor!";
+                    break;
+                }
+                if(ds_list_find_value(obj_Inventory.Inventory, i) == obj_Ninja_2 || ds_list_find_value(obj_Inventory.Inventory, i) == obj_Ninja_3){
+                    ds_list_add(obj_Inventory.Inventory, obj_Ninja_3);
+                    Label = "Bought a tier 3 Ninja Armor!";
+                    break;
+                }
+           
+            }
+            ds_list_add(obj_Inventory.Inventory, obj_Ninja);
+            Label = "Bought a Ninja Armor!";
+            break;
+        case 4:
+            var i;
+            for(i = 0; i &lt; ds_list_size(obj_Inventory.Inventory); i++){
+                if(ds_list_find_value(obj_Inventory.Inventory, i) == obj_Platemail){
+                    ds_list_add(obj_Inventory.Inventory, obj_Platemail_2);
+                    Label = "Bought a tier 2 Platemail Armor!";
+                    break;
+                }
+                if(ds_list_find_value(obj_Inventory.Inventory, i) == obj_Platemail_2 || ds_list_find_value(obj_Inventory.Inventory, i) == obj_Platemail_3){
+                    ds_list_add(obj_Inventory.Inventory, obj_Platemail_3);
+                    Label = "Bought a tier 3 Platemail Armor!";
+                    break;
+                }
+           
+            }
+            ds_list_add(obj_Inventory.Inventory, obj_Platemail);
+            Label = "Bought a Platemail Armor!";
+            break;
+       case 5:
+            var i;
+            for(i = 0; i &lt; ds_list_size(obj_Inventory.Inventory); i++){
+                if(ds_list_find_value(obj_Inventory.Inventory, i) == obj_Shield){
+                    ds_list_add(obj_Inventory.Inventory, obj_Shield_2);
+                    Label = "Bought a tier 2 Shield!";
+                    break;
+                }
+                if(ds_list_find_value(obj_Inventory.Inventory, i) == obj_Shield_2 || ds_list_find_value(obj_Inventory.Inventory, i) == obj_Shield_3){
+                    ds_list_add(obj_Inventory.Inventory, obj_Shield_3);
+                    Label = "Bought a tier 3 Shield!";
+                    break;
+                }
+           
+            }
+            ds_list_add(obj_Inventory.Inventory, obj_Shield);
+            Label = "Bought a Shield!";
+            break;
+       case 6:
+            var i;
+            for(i = 0; i &lt; ds_list_size(obj_Inventory.Inventory); i++){
+                if(ds_list_find_value(obj_Inventory.Inventory, i) == obj_PoisonWand){
+                    ds_list_add(obj_Inventory.Inventory, obj_PoisonWand_3);
+                    Label = "Bought a tier 3 Poison Wand!";
+                    break;
+                }           
+            }
+            ds_list_add(obj_Inventory.Inventory, obj_PoisonWand);
+            Label = "Bought a Fire Wand!";
+            break; 
+       case 7:
+            var i;
+            for(i = 0; i &lt; ds_list_size(obj_Inventory.Inventory); i++){
+                if(ds_list_find_value(obj_Inventory.Inventory, i) == obj_FireWand){
+                    ds_list_add(obj_Inventory.Inventory, obj_FireWand_3);
+                    Label = "Bought a tier 3 Fire Wand!";
+                    break;
+                }           
+            }
+            ds_list_add(obj_Inventory.Inventory, obj_FireWand);
+            Label = "Bought a Fire Wand!";
+            break; 
     }
 }
 else{
