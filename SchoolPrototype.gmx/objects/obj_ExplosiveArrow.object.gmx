@@ -135,6 +135,7 @@ audio_emitter_falloff(emitter_explosivearrow, 20 , 40, 1);
             <string>/// Explode
 instance_create( x, y, obj_Explosion );
 instance_destroy();
+audio_emitter_free(emitter_explosivearrow);
 </string>
           </argument>
         </arguments>
@@ -160,6 +161,7 @@ instance_destroy();
             <string>/// Explode
 instance_create( x, y, obj_Explosion );
 instance_destroy();
+audio_emitter_free(emitter_explosivearrow);
 </string>
           </argument>
         </arguments>
@@ -201,6 +203,7 @@ if( other.id != Owner )
 {
     instance_create( x, y, obj_Explosion );
     instance_destroy();
+    audio_emitter_free(emitter_explosivearrow);
 }
 </string>
           </argument>

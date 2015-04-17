@@ -310,7 +310,10 @@ if( State == "Charge_Start" )
 if( State == "Charge" )
 {
     if( StateTimer == 0 )
+    {
         State = "Idle_Start";
+        audio_emitter_free(emitter_fireball);
+    }
 }
 </string>
           </argument>
