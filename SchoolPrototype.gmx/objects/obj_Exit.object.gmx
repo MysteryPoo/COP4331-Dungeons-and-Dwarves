@@ -125,9 +125,12 @@ if( instance_exists( obj_Client ) )
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Play Sound
-if( !sound_isplaying( sound_applause ) )
-    audio_play_sound( sound_applause, 2, false );
+            <string>/// Create the emitter
+var emit;
+emit = instance_create(x, y, obj_Emitter);
+emit.sid = sound_applause;
+emit.fref = 10;
+emit.fmax = 20;  
 </string>
           </argument>
         </arguments>

@@ -25,9 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Speed boost
-other.SpeedScale = 3;
-other.alarm[ 0 ] = 60;
+            <string>/// Create the emitter
+var emit;
+emit = instance_create(x, y, obj_Emitter);
+emit.sid = sound_boost;
+emit.fref = 300;
+emit.fmax = 600;
 </string>
           </argument>
         </arguments>
@@ -48,15 +51,9 @@ other.alarm[ 0 ] = 60;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Emit Sound Speedboost
-if( !sound_isplaying( sound_boost ) )
-{
-    emitter_boost = audio_emitter_create();
-    audio_emitter_position(emitter_boost, x, y, 0);
-    audio_emitter_falloff(emitter_boost, 10, 20, 1);
-    audio_play_sound_on(emitter_boost, sound_boost, false, 2);
-}
-// audio_play_sound( sound_boost, 2, false );
+            <string>/// Speed boost
+other.SpeedScale = 3;
+other.alarm[ 0 ] = 60;
 </string>
           </argument>
         </arguments>

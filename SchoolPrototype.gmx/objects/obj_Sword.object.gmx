@@ -88,7 +88,30 @@ emitter_sword = audio_emitter_create();
 audio_emitter_position(emitter_sword, x, y, 0);
 audio_emitter_falloff(emitter_sword, 10, 20, 1);
 audio_play_sound_on(emitter_sword, sound_sword, false, 10);
-
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Free the emitter
+audio_emitter_free(emitter_sword);
 </string>
           </argument>
         </arguments>
@@ -140,7 +163,6 @@ if( Owner != noone &amp;&amp; instance_exists( Owner ) )
           <argument>
             <kind>1</kind>
             <string>/// Destroy
-audio_emitter_free(emitter_sword);
 instance_destroy();
 </string>
           </argument>

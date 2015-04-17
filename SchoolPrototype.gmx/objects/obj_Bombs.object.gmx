@@ -25,13 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Give bombs
-if( other.id == global.MyInst )
-{
-    if( instance_exists( obj_Inventory ) )
-        obj_Inventory.Ammo[? "Bombs" ] += 10;
-}
-instance_destroy();
+            <string>/// Create the emitter
+var emit;
+emit = instance_create(x, y, obj_Emitter);
+emit.sid = sound_item;
+emit.fref = 10;
+emit.fmax = 20;
 </string>
           </argument>
         </arguments>
@@ -52,12 +51,13 @@ instance_destroy();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Play Sound
-emitter_bombs = audio_emitter_create();
-audio_emitter_position(emitter_bombs, x, y, 0);
-audio_emitter_falloff(emitter_bombs, 10, 20, 1);
-audio_play_sound_on(emitter_bombs, sound_item, false, 2);
-// audio_play_sound( sound_item, 2, false );
+            <string>/// Give bombs
+if( other.id == global.MyInst )
+{
+    if( instance_exists( obj_Inventory ) )
+        obj_Inventory.Ammo[? "Bombs" ] += 10;
+}
+instance_destroy();
 </string>
           </argument>
         </arguments>

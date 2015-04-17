@@ -56,11 +56,10 @@ if( instance_exists( obj_Dwarf ) )
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Emit Sound Treasure
-emitter_treasure = audio_emitter_create();
-audio_emitter_position(emitter_treasure, x, y, 0);
-audio_emitter_falloff(emitter_treasure, 10, 20, 1);
-audio_play_sound_on(emitter_treasure, sound_coin, false, 2);
+            <string>/// Add Treasure
+if( other.id == global.MyInst )
+    if( instance_exists( obj_Inventory ) )
+        obj_Inventory.Treasure += 10;
 </string>
           </argument>
         </arguments>
@@ -81,10 +80,12 @@ audio_play_sound_on(emitter_treasure, sound_coin, false, 2);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Add Treasure
-if( other.id == global.MyInst )
-    if( instance_exists( obj_Inventory ) )
-        obj_Inventory.Treasure += 10;
+            <string>/// Create the emitter
+var emit;
+emit = instance_create(x, y, obj_Emitter);
+emit.sid = sound_coin;
+emit.fref = 10;
+emit.fmax = 20;
 </string>
           </argument>
         </arguments>
