@@ -734,19 +734,32 @@ if( State == "Death" )
         image_speed = 0;
     if( StateTimer == 0 )
     {
-        if( room == rm_Client || room == rm_Server )
+        if( room == rm_Client )
             instance_destroy();
+        else if( room == rm_Server )
+        {
+            for( var p = 0; p &lt; ds_list_size( obj_Server.PlayerList ); ++p )
+            {
+                var _lMap = obj_Server.PlayerList[|p];
+                if( _lMap[?"Instance"] == id )
+                {
+                    with( obj_Server )
+                    {
+                        buffer_seek( Buffer, buffer_seek_start, 0 );
+                        buffer_write( Buffer, buffer_u8, 11 );
+                        buffer_write( Buffer, buffer_string, "rm_MainMenu" );
+                        network_send_packet( _lMap[?"Socket"], Buffer, buffer_tell( Buffer ) );
+                        network_destroy( _lMap[?"Socket"] );
+                    }
+                }
+            }
+            instance_destroy();
+        }
         else
         {
-            if( global.RestartOnDeath &amp;&amp; !global.Waiting )
+            if( !global.Waiting )
             {
                 room_goto( room );
-            }
-            else
-            {
-                State = "Idle_Start";
-                //x = global.StartX;
-                //y = global.StartY;
             }
         }
     }
