@@ -743,6 +743,7 @@ if( State == "Death" )
                 var _lMap = obj_Server.PlayerList[|p];
                 if( _lMap[?"Instance"] == id )
                 {
+                    var _deadsocket = _lMap[?"Socket"];
                     with( obj_Server )
                     {
                         buffer_seek( Buffer, buffer_seek_start, 0 );
@@ -750,6 +751,42 @@ if( State == "Death" )
                         buffer_write( Buffer, buffer_string, "rm_MainMenu" );
                         network_send_packet( _lMap[?"Socket"], Buffer, buffer_tell( Buffer ) );
                         network_destroy( _lMap[?"Socket"] );
+                        // Really messy code below
+                        var socket = _deadsocket;
+                        for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
+                        {
+                            if( SocketList[| s ] == socket )
+                                ds_list_delete( SocketList, s );
+                        }
+                        for( var s = 0; s &lt; ds_list_size( PlayerList ); ++s )
+                        {
+                            var _lMap = PlayerList[| s ];
+                            if( _lMap[? "Socket" ] == socket )
+                            {
+                                var _inst = _lMap[? "Instance" ];
+                                if( instance_exists( _inst ) )
+                                    with( _inst )
+                                        instance_destroy();
+                                ds_map_destroy( _lMap[? "PositionMap" ] );
+                                ds_map_destroy( _lMap[? "GestureMap" ] );
+                                ds_map_destroy( _lMap );
+                                ds_list_delete( PlayerList, s );
+                                // Notify clients of the disconnect
+                                buffer_seek( Buffer, buffer_seek_start, 0 );
+                                buffer_write( Buffer, buffer_u8, 4 );
+                                buffer_write( Buffer, buffer_u8, socket );
+                                for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
+                                {
+                                    network_send_packet( SocketList[| s ], Buffer, buffer_tell( Buffer ) );
+                                }
+                            }
+                        }
+                        // Update player count on Lobby Server
+                        buffer_seek( Buffer, buffer_seek_start, 0 );
+                        buffer_write( Buffer, buffer_u8, 2 );
+                        buffer_write( Buffer, buffer_u8, ds_list_size( PlayerList ) );
+                        network_send_packet( LobbyServer, Buffer, buffer_tell( Buffer ) );
+                        // End of really messy code
                     }
                 }
             }
