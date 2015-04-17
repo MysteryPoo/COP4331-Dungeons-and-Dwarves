@@ -40,7 +40,7 @@
           <argument>
             <kind>1</kind>
             <string>/// Use
-EffectDuration = 60;
+EffectDuration = 120;
 
 alarm[0] = EffectDuration;
 </string>
