@@ -20,7 +20,8 @@ ds_list_shuffle( Exits );
 var Real = Exits[| 0 ];
 with( Real )
     instance_change( obj_Exit, true );
-ds_list_destroy( Exits );</code>
+ds_list_destroy( Exits );
+instance_create(0, 0, obj_Listener);</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>

@@ -114,7 +114,7 @@ switch( msgid ) {
             var _name = buffer_read( buffer, buffer_string );
             var _found = false;
             if( _name == Name )
-                State = "Game";
+                State = "Game";     // No longer spectator
             for( var s = 0; s < ds_list_size( SocketList ); ++s )
             {
                 var _lMap = SocketList[| s ];
@@ -233,6 +233,7 @@ switch( msgid ) {
             global.Waiting = false;
         else
             global.Waiting = true;
-        room_goto( _map );
+        if( room != _map )
+            room_goto( _map );
         break;
 }

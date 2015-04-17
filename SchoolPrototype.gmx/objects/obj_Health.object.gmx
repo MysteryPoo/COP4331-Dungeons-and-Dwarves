@@ -73,7 +73,11 @@ instance_destroy();
           <argument>
             <kind>1</kind>
             <string>/// Play Sound
-audio_play_sound( sound_item, 2, false );
+emitter_health = audio_emitter_create();
+audio_emitter_position(emitter_health, x, y, 0);
+audio_emitter_falloff(emitter_health, 10, 20, 1);
+audio_play_sound_on(emitter_health, sound_item, false, 2);
+// audio_play_sound( sound_item, 2, false );
 </string>
           </argument>
         </arguments>

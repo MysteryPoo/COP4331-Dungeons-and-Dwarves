@@ -62,7 +62,7 @@ Owner = noone;
           <argument>
             <kind>1</kind>
             <string>/// Damage
-Damage = 5;
+Damage = 30;
 </string>
           </argument>
         </arguments>
@@ -84,7 +84,11 @@ Damage = 5;
           <argument>
             <kind>1</kind>
             <string>/// Sound
-audio_play_sound( sound_sword, 2, false );
+emitter_sword = audio_emitter_create();
+audio_emitter_position(emitter_sword, x, y, 0);
+audio_emitter_falloff(emitter_sword, 10, 20, 1);
+audio_play_sound_on(emitter_sword, sound_sword, false, 10);
+
 </string>
           </argument>
         </arguments>
@@ -136,6 +140,7 @@ if( Owner != noone &amp;&amp; instance_exists( Owner ) )
           <argument>
             <kind>1</kind>
             <string>/// Destroy
+audio_emitter_free(emitter_sword);
 instance_destroy();
 </string>
           </argument>

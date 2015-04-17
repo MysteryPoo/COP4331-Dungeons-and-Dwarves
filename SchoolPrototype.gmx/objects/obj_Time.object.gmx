@@ -98,7 +98,7 @@ if( minutes &lt;= 0 &amp;&amp; seconds &lt;= 0 )
           <argument>
             <kind>1</kind>
             <string>/// Visibility
-if( room != rm_Lobby )
+if( room != rm_Lobby &amp;&amp; !global.Waiting )
     visible = true;
 else
     visible = false;

@@ -72,7 +72,7 @@ Wall = instance_create( x - 16, y - 16, obj_Wall );
           <argument>
             <kind>1</kind>
             <string>/// Play Sound
-audio_play_sound( choose( sound_door, sound_chest ), 2, false );
+// audio_play_sound( choose( sound_door, sound_chest ), 2, false );
 </string>
           </argument>
         </arguments>

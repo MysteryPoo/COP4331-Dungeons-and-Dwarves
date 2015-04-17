@@ -48,7 +48,7 @@ Owner = noone;
           <argument>
             <kind>1</kind>
             <string>/// Use
-EffectDuration = 15;
+EffectDuration = 30;
 
 alarm[0] = EffectDuration;
 

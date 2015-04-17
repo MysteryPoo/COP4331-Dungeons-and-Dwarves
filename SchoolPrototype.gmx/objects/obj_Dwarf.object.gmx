@@ -661,7 +661,11 @@ if( State == "Hit_Start" )
     StateTimer = 15;
     // Change animation
     // play sound
-    audio_play_sound(sound_grunt_loud, 2, false);
+    emitter_grunt = audio_emitter_create();
+    audio_emitter_position(emitter_grunt, x, y, 0);
+    audio_play_sound_on(emitter_grunt, sound_grunt_loud, false, 2);
+    audio_emitter_falloff(emitter_grunt, 5 , 10, 1);
+    // audio_play_sound(sound_grunt_loud, 2, false);
 }
 if( State == "Hit" )
 {
@@ -711,7 +715,12 @@ if( State == "Hit" )
 if( State == "Death_Start" )
 {
     // sound
-    audio_play_sound(sound_scream, 3, false);
+    // audio_play_sound(sound_scream, 3, false);
+    emitter_scream = audio_emitter_create();
+    audio_emitter_position(emitter_scream, x, y, 0);
+    audio_play_sound_on(emitter_scream, sound_scream, false, 3);
+    audio_emitter_falloff(emitter_scream, 10 , 20, 1);
+    
     sprite_index = spr_player_death;
     image_index = 0;
     image_speed = 1;
@@ -768,7 +777,11 @@ if( State == "Fall_Start" )
     speed = 0;
     State = "Fall";
     StateTimer = 30 * 2;
-    audio_play_sound( sound_falling, 2, false );
+    // audio_play_sound( sound_falling, 2, false );
+    emitter_fall = audio_emitter_create();
+    audio_emitter_position(emitter_fall, x, y, 0);
+    audio_play_sound_on(emitter_fall, sound_falling, false, 2);
+    audio_emitter_falloff(emitter_fall, 5 , 10, 1);
 }
 if( State == "Fall" )
 {
@@ -779,11 +792,7 @@ if( State == "Fall" )
     }
     else if( StateTimer == 0 )
     {
-        State = "Idle_Start";
-        x = global.StartX;
-        y = global.StartY;
-        image_xscale = 0.25;
-        image_yscale = 0.25;
+        State = "Death";
     }
 }
 </string>
@@ -812,7 +821,12 @@ if( State == "Fall" )
 hasKey = true;
 with( other )
     instance_destroy();
-audio_play_sound( sound_key, 2, false );
+// play sound    
+emitter_key = audio_emitter_create();
+audio_emitter_position(emitter_key, x, y, 0);
+audio_play_sound_on(emitter_key, sound_key, false, 3);
+audio_emitter_falloff(emitter_key, 10 , 20, 1);
+// audio_play_sound( sound_key, 2, false );
 </string>
           </argument>
         </arguments>

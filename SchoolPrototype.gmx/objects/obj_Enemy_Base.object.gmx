@@ -131,7 +131,12 @@ if( State == "Hit_Start" )
 {
     State = "Hit";
     StateTimer = 15;
-    audio_play_sound( sound_hit, 2, false );
+    // emitter hit
+    emitter_hit = audio_emitter_create();
+    audio_emitter_position(emitter_hit, x, y, 0);
+    audio_emitter_falloff(emitter_hit, 100, 200, 1);
+    audio_play_sound_on(emitter_hit, sound_hit, false, 2);
+    // audio_play_sound( sound_hit, 2, false );
     // Change animation
 }
 if( State == "Hit" )

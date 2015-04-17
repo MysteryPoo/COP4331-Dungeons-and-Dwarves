@@ -880,8 +880,8 @@ if( State == "Gathering" )
     }
     if( ds_list_size( PlayerList ) &lt; 2 )
         _allReady = false;
-    if( StartTimer &gt; 10 &amp;&amp; _allReady )
-        StartTimer = 11;
+    if( StartTimer &gt; 10 * 30 &amp;&amp; _allReady )
+        StartTimer = 10 * 30;
     if( StartTimer &gt; 0 )
         --StartTimer;
     else
