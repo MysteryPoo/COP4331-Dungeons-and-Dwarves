@@ -176,29 +176,33 @@ else if(obj_Inventory.Inventory[| selected_index ] == obj_Shield_3){
     
     Label = "Sheild maxed out";
 }
-else if(obj_Inventory.Inventory[| selected_index ] == obj_Agile){
-    if(obj_Inventory.Treasure &gt;= 50){
-        Label = "Bought a tier 2 Agile Armor";
-        obj_Inventory.Treasure -= 50;
-        ds_list_add(obj_Inventory.Inventory, obj_Agile_2);
-    }
-    else{
-        Label = "Not enough money";
-    }
-}
-else if(obj_Inventory.Inventory[| selected_index ] == obj_Agile_2){
+else if(obj_Inventory.Inventory[| selected_index ] == obj_PoisonWand){
     if(obj_Inventory.Treasure &gt;= 100){
-        Label = "Bought a tier 3 Agile Armor";
+        Label = "Bought a tier 3 Poison Wand";
         obj_Inventory.Treasure -= 100;
-        ds_list_add(obj_Inventory.Inventory, obj_Agile_3);
+        ds_list_add(obj_Inventory.Inventory, obj_PoisonWand_3);
     }
     else{
         Label = "Not enough money";
     }
 }
-else if(obj_Inventory.Inventory[| selected_index ] == obj_Agile_3){
+else if(obj_Inventory.Inventory[| selected_index ] == obj_PoisonWand_3){
     
-    Label = "Agile Armor maxed out";
+    Label = "Poison Wand maxed out";
+}
+else if(obj_Inventory.Inventory[| selected_index ] == obj_FireWand){
+    if(obj_Inventory.Treasure &gt;= 100){
+        Label = "Bought a tier 3 Fire Wand";
+        obj_Inventory.Treasure -= 100;
+        ds_list_add(obj_Inventory.Inventory, obj_FireWand_3);
+    }
+    else{
+        Label = "Not enough money";
+    }
+}
+else if(obj_Inventory.Inventory[| selected_index ] == obj_FireWand_3){
+    
+    Label = "Fire Wand maxed out";
 }
 </string>
           </argument>
