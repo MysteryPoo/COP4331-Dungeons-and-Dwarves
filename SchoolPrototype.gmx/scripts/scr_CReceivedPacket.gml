@@ -228,7 +228,12 @@ switch( msgid ) {
         }
         //ds_list_add( MapList, rm_Client );
         if( instance_exists( obj_Time ) )
-            obj_Time.StartTime = date_inc_minute( date_current_datetime(), 3 );
+        {
+            if( _map == "rm_Shop" )
+                obj_Time.StartTime = date_inc_minute( date_current_datetime(), 1 );
+            else
+                obj_Time.StartTime = date_inc_minute( date_current_datetime(), 3 );
+        }
         if( State != "Spectator" )
             global.Waiting = false;
         else

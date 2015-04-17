@@ -795,7 +795,23 @@ if( _allReady &amp;&amp; Map &lt; 2 )
     }
     ++Map;
 }
-else if( _allReady &amp;&amp; Map != 5)
+else if( _allReady &amp;&amp; Map == 2 )
+{
+    Map = 4;
+    for( var p = 0; p &lt; ds_list_size( PlayerList ); ++p )
+    {
+        var _lMap = PlayerList[| p ];
+        _lMap[? "Ready" ] = false;
+    }
+    buffer_seek( Buffer, buffer_seek_start, 0 );
+    buffer_write( Buffer, buffer_u8, 11 );
+    buffer_write( Buffer, buffer_string, "rm_Shop" );
+    for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
+    {
+        network_send_packet( SocketList[| s ], Buffer, buffer_tell( Buffer ) );
+    }
+}
+else if( _allReady &amp;&amp; Map == 4 )
 {
     Map = 5;
     for( var p = 0; p &lt; ds_list_size( PlayerList ); ++p )
