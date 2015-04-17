@@ -149,7 +149,13 @@ instance_destroy();
             <kind>1</kind>
             <string>/// Play Sound
 if( !sound_isplaying( sound_applause ) )
-    audio_play_sound( sound_applause, 2, false );
+{
+    emitter_applause = audio_emitter_create();
+    audio_emitter_position(emitter_applause, x, y, 0);
+    audio_play_sound_on(emitter_applause, sound_applause, false, 2);
+    audio_emitter_falloff(emitter_applause, 10 , 20, 1);
+    // audio_play_sound( sound_applause, 2, false );
+}
 </string>
           </argument>
         </arguments>

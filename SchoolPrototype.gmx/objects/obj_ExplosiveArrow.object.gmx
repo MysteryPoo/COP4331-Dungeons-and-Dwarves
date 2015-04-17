@@ -106,7 +106,10 @@ Damage = 15;
           <argument>
             <kind>1</kind>
             <string>/// Sound
-audio_play_sound( sound_arrow, 2, false );
+emitter_explosivearrow = audio_emitter_create();
+audio_emitter_position(emitter_explosivearrow, x, y, 0);
+audio_play_sound_on(emitter_explosivearrow, sound_arrow, false, 10);
+audio_emitter_falloff(emitter_explosivearrow, 20 , 40, 1);
 </string>
           </argument>
         </arguments>
