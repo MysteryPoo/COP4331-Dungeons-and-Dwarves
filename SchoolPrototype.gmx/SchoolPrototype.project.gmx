@@ -111,6 +111,8 @@
       <sprite>sprites\spr_Shop_Arrow</sprite>
       <sprite>sprites\spr_Shop_Buy</sprite>
       <sprite>sprites\spr_Shop_Exit</sprite>
+      <sprite>sprites\spr_Shop_Upgrade</sprite>
+      <sprite>sprites\spr_Shop_Random</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -289,9 +291,9 @@
     </objects>
   </objects>
   <rooms name="rooms">
+    <room>rooms\rm_Shop</room>
     <room>rooms\rm_Server</room>
     <room>rooms\rm_MainMenu</room>
-    <room>rooms\rm_Shop</room>
     <room>rooms\rm_Test</room>
     <room>rooms\rm_Bridge</room>
     <room>rooms\rm_Sneak</room>
