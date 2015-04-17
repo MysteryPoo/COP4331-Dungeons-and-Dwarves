@@ -470,8 +470,14 @@ if( State == "Chase" )
             <string>/// Wait
 if( State == "Wait_Start" )
 {
-    if( !audio_is_playing( sound_fireball ) &amp;&amp; !audio_is_playing( sound_falling ) )
-        audio_play_sound(sound_fireball, 3, false);
+    if( !audio_is_playing( sound_fireball ) )
+    {
+        emitter_fireball = audio_emitter_create();
+        audio_emitter_position(emitter_fireball, x, y, 0);
+        audio_play_sound_on(emitter_fireball, sound_fireball, false, 1);
+        audio_emitter_falloff(emitter_fireball, 10 , 20, 1);    
+    }
+        // audio_play_sound(sound_fireball, 3, false);
         
     State = "Wait";
     StateTimer = 30;
@@ -603,7 +609,11 @@ if( State == "Morph" )
 if( State == "Death_Start" )
 {
     // play death sound
-    audio_play_sound(sound_minion_die, 1, false);
+    emitter_minion = audio_emitter_create();
+    audio_emitter_position(emitter_minion, x, y, 0);
+    audio_play_sound_on(emitter_minion, sound_minion_die, false, 1);
+    audio_emitter_falloff(emitter_minion, 10 , 20, 1);
+    // audio_play_sound(sound_minion_die, 1, false);
     State = "Death";
     StateTimer = 5;
     if( instance_exists( ParentTorch ) )
