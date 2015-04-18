@@ -798,6 +798,8 @@ if( State == "Death" )
             {
                 room_goto( room );
             }
+            else
+                instance_destroy();
         }
     }
 }

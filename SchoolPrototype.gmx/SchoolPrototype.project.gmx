@@ -125,7 +125,6 @@
     <path>paths\path_Avoidance_small</path>
   </paths>
   <scripts name="scripts">
-    <script>scripts\scr_SReceivedPacket.gml</script>
     <script>scripts\scr_CanDetectPlayer.gml</script>
     <script>scripts\scr_CReceivedPacket.gml</script>
     <script>scripts\scr_Flee.gml</script>
@@ -135,6 +134,10 @@
     <script>scripts\scr_Wander.gml</script>
     <script>scripts\scr_Angle24Dir.gml</script>
     <script>scripts\scr_isUsable.gml</script>
+    <scripts name="Server">
+      <script>scripts\scr_SReceivedPacket.gml</script>
+      <script>scripts\scr_RandomMap.gml</script>
+    </scripts>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_DEMO</font>
@@ -216,6 +219,7 @@
       <object>objects\obj_Inventory</object>
       <object>objects\obj_Spectate</object>
       <object>objects\obj_ArmorButton</object>
+      <object>objects\obj_Listener</object>
     </objects>
     <object>objects\obj_DEMO</object>
     <objects name="Generic">
@@ -292,8 +296,8 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_Server</room>
-    <room>rooms\rm_Shop</room>
     <room>rooms\rm_MainMenu</room>
+    <room>rooms\rm_Shop</room>
     <room>rooms\rm_Test</room>
     <room>rooms\rm_Bridge</room>
     <room>rooms\rm_Sneak</room>

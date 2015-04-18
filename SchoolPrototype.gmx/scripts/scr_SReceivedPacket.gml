@@ -20,7 +20,7 @@ switch( msgid ) {
             if( _lMap[? "Socket" ] == socket )
             {
                 var _pMap = _lMap[? "PositionMap" ];
-                if( Map == 5 )
+                if( Map == "rm_Client" )
                 {
                     if( point_distance( _pMap[? "X" ], _pMap[? "Y" ], _x, _y ) < 32 )
                     {
@@ -61,7 +61,6 @@ switch( msgid ) {
             _lMap[? "Socket" ]  = socket;
             _lMap[? "Instance" ] = noone;
             _lMap[? "Name" ]    = _name;
-            _lMap[? "Map" ] = 0;
             _lMap[? "Ready" ] = false;
             var _pMap = ds_map_create();
             _pMap[? "X" ]       = 100;

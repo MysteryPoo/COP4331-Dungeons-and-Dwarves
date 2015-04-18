@@ -146,6 +146,7 @@ SocketList = ds_list_create();
             <kind>1</kind>
             <string>/// Player List
 PlayerList = ds_list_create();
+alarm[1] = 10;
 </string>
           </argument>
         </arguments>
@@ -263,18 +264,8 @@ StartTimer = 30 * 60;
             <kind>1</kind>
             <string>/// Server State
 State = "Waiting";
-// Map List
-MapList = ds_list_create();
-ds_list_add( MapList, room_get_name( rm_Bridge ) );
-ds_list_add( MapList, room_get_name( rm_MontyHall ) );
-ds_list_add( MapList, room_get_name( rm_Maze ) );
-ds_list_add( MapList, room_get_name( rm_Avoidance ) );
-ds_list_add( MapList, room_get_name( rm_Big1 ) );
-ds_list_add( MapList, room_get_name( rm_Big4 ) );
-ds_list_add( MapList, room_get_name( rm_Big5 ) );
-randomize();
-ds_list_shuffle( MapList );
-Map = 0;
+// Initial Map
+Map = scr_RandomMap();
 </string>
           </argument>
         </arguments>
@@ -321,28 +312,6 @@ while( !ds_queue_empty( AttackQueue ) )
     ds_map_destroy( _aMap );
 }
 ds_queue_destroy( AttackQueue );
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Delete MapList
-ds_list_destroy( MapList );
 </string>
           </argument>
         </arguments>
@@ -416,21 +385,39 @@ network_send_packet( LobbyServer, Buffer, buffer_tell( Buffer ) );
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Update Maps
-alarm[ 1 ] = -1;// 30 * 3;
-var Players = ds_list_size( PlayerList );
-var Sockets = ds_list_size( SocketList );
-// Snapshot of dungeon progress
+            <string>/// Reset Alarm
+alarm[1] = 15;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Send Names
 buffer_seek( Buffer, buffer_seek_start, 0 );
-buffer_write( Buffer, buffer_u8, 8 );
-buffer_write( Buffer, buffer_u8, Players );
-for( var s = 0; s &lt; Players; ++s )
+buffer_write( Buffer, buffer_u8, 7 );
+buffer_write( Buffer, buffer_u8, ds_list_size( PlayerList ) );
+for( var p = 0; p &lt; ds_list_size( PlayerList ); ++p )
 {
-    var _lMap = PlayerList[| s ];
-    buffer_write( Buffer, buffer_u8, _lMap[? "Socket" ] );
-    buffer_write( Buffer, buffer_u8, _lMap[? "Map" ] );
+    var _lMap = PlayerList[|p];
+    buffer_write( Buffer, buffer_u8, _lMap[?"Socket"] );
+    buffer_write( Buffer, buffer_string, _lMap[?"Name"] );
 }
-for( var s = 0; s &lt; Sockets; ++s )
+for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
 {
     network_send_packet( SocketList[| s ], Buffer, buffer_tell( Buffer ) );
 }
@@ -527,7 +514,7 @@ for( var s = 0; s &lt; Players; ++s )
 {
     var _lMap = PlayerList[| s ];
     var _dwarf = _lMap[? "Instance" ];
-    if( Map == 5 )
+    if( Map == "rm_Client" )
     {
         var _pMap = _lMap[? "PositionMap" ];
         var _gMap = _lMap[? "GestureMap" ];
@@ -728,7 +715,7 @@ if( !ds_queue_empty( AttackQueue ) )
             for( var s = 0; s &lt; Players; ++s )
             {
                 var _lMap = PlayerList[| s ];
-                if( Map == 5 )
+                if( Map == "rm_Client" )
                 {
                     var _inst = noone;
                     if( _lMap[? "Socket" ] == _aMap[? "Socket" ] )
@@ -772,14 +759,15 @@ if( !ds_queue_empty( AttackQueue ) )
             <kind>1</kind>
             <string>/// Next Map
 // Check if everyone is ready/done with the map
-_allReady = true;
+var _allReady = true;
+var _FinalMap = ( Map == "rm_Client" || Map == "rm_Shop" );
 for( var p = 0; p &lt; ds_list_size( PlayerList ); ++p )
 {
     var _lMap = PlayerList[| p ];
     if( !_lMap[? "Ready" ] )
         _allReady = false;
 }
-if( _allReady &amp;&amp; Map &lt; 2 )
+if( false )//_allReady &amp;&amp; !_FinalMap )
 {
     for( var p = 0; p &lt; ds_list_size( PlayerList ); ++p )
     {
@@ -788,16 +776,16 @@ if( _allReady &amp;&amp; Map &lt; 2 )
     }
     buffer_seek( Buffer, buffer_seek_start, 0 );
     buffer_write( Buffer, buffer_u8, 11 );
-    buffer_write( Buffer, buffer_string, MapList[| Map ] );
+    buffer_write( Buffer, buffer_string, Map );
     for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
     {
         network_send_packet( SocketList[| s ], Buffer, buffer_tell( Buffer ) );
     }
-    ++Map;
+    Map = "rm_Dragon";
 }
-else if( _allReady &amp;&amp; Map == 2 )
+else if( _allReady &amp;&amp; Map != "rm_Shop" &amp;&amp; Map != "rm_Client" )
 {
-    Map = 4;
+    Map = "rm_Shop";
     for( var p = 0; p &lt; ds_list_size( PlayerList ); ++p )
     {
         var _lMap = PlayerList[| p ];
@@ -805,15 +793,15 @@ else if( _allReady &amp;&amp; Map == 2 )
     }
     buffer_seek( Buffer, buffer_seek_start, 0 );
     buffer_write( Buffer, buffer_u8, 11 );
-    buffer_write( Buffer, buffer_string, "rm_Shop" );
+    buffer_write( Buffer, buffer_string, Map );
     for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
     {
         network_send_packet( SocketList[| s ], Buffer, buffer_tell( Buffer ) );
     }
 }
-else if( _allReady &amp;&amp; Map == 4 )
+else if( _allReady &amp;&amp; Map != "rm_Client" )
 {
-    Map = 5;
+    Map = "rm_Client";
     for( var p = 0; p &lt; ds_list_size( PlayerList ); ++p )
     {
         var _lMap = PlayerList[| p ];
@@ -821,7 +809,7 @@ else if( _allReady &amp;&amp; Map == 4 )
     }
     buffer_seek( Buffer, buffer_seek_start, 0 );
     buffer_write( Buffer, buffer_u8, 11 );
-    buffer_write( Buffer, buffer_string, "rm_Client" );
+    buffer_write( Buffer, buffer_string, Map );
     for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
     {
         network_send_packet( SocketList[| s ], Buffer, buffer_tell( Buffer ) );
@@ -859,8 +847,7 @@ if( State != "Waiting" )
         // Start Timer
         StartTimer = 30 * 60;
         // Reshuffle map order
-        ds_list_shuffle( MapList );
-        Map = 0;
+        Map = scr_RandomMap();
     }
 }
 </string>
@@ -904,9 +891,16 @@ if( State == "Gathering" )
     {
         State = "Running";
         alarm[ 0 ] = 3;
+        // Reset Ready Status
+        for( var p = 0; p &lt; ds_list_size( PlayerList ); ++p )
+        {
+            var _lMap = PlayerList[| p ];
+            _lMap[? "Ready" ] = false;
+        }
+        // Send the map
         buffer_seek( Buffer, buffer_seek_start, 0 );
         buffer_write( Buffer, buffer_u8, 11 );
-        buffer_write( Buffer, buffer_string, MapList[| Map ] );
+        buffer_write( Buffer, buffer_string, Map );
         for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
         {
             network_send_packet( SocketList[| s ], Buffer, buffer_tell( Buffer ) );
@@ -955,13 +949,10 @@ switch( type_event )
         network_send_packet( socket, Buffer, buffer_tell( Buffer ) );
         if( State == "Running" )
         {
-            var _MapIndex = MapList[| Map ];
-            if( Map == 5 )
-                _MapIndex = "rm_Client";
             // Send the current map to the new client
             buffer_seek( Buffer, buffer_seek_start, 0 );
             buffer_write( Buffer, buffer_u8, 11 );
-            buffer_write( Buffer, buffer_string, _MapIndex );
+            buffer_write( Buffer, buffer_string, Map );
             network_send_packet( socket, Buffer, buffer_tell( Buffer ) );
         }
         break;
@@ -1035,14 +1026,7 @@ draw_text( 0 , 0 , "Server Status: " + string( Server &gt;= 0 ) );
 draw_text( 0, 32, "Port: " + string( Port ) );
 draw_text( 0 , 64 , "Total Clients: " + string( ds_list_size( SocketList ) ) );
 
-for( var m = 0; m &lt; 5; ++m )
-{
-    draw_text( 500, 50 + 32 * m, MapList[| m ] );
-}
-if( Map != 5 )
-    draw_text( 700, 50, "Current Map: " + MapList[| Map ] );
-else
-    draw_text( 700, 50, "Current Map: Final" );
+draw_text( 700, 50, "Current Map: " + Map );
 
 for( var s = 0; s &lt; ds_list_size( PlayerList ); ++s )
 {
@@ -1060,7 +1044,6 @@ for( var s = 0; s &lt; ds_list_size( PlayerList ); ++s )
     }
     draw_text( 32 + 100 * s, 128 + 128 * s, string( _pMap[? "X" ] ) + ", " + string(
             _pMap[? "Y" ] ) );
-    draw_text( 32 + 100 * s, 128 + 32 + 128 * s, string( _lMap[? "Map" ] ) );
 }
 </string>
           </argument>

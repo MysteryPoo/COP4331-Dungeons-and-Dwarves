@@ -229,7 +229,7 @@ switch( msgid ) {
         //ds_list_add( MapList, rm_Client );
         if( instance_exists( obj_Time ) )
         {
-            if( _map == "rm_Shop" )
+            if( _map == rm_Shop )
                 obj_Time.StartTime = date_inc_minute( date_current_datetime(), 1 );
             else
                 obj_Time.StartTime = date_inc_minute( date_current_datetime(), 3 );
@@ -238,6 +238,9 @@ switch( msgid ) {
             global.Waiting = false;
         else
             global.Waiting = true;
+        if( _map == rm_MainMenu )
+            with( obj_Inventory )
+                instance_destroy();
         if( room != _map )
             room_goto( _map );
         break;
