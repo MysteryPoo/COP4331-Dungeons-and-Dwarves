@@ -55,7 +55,7 @@ switch( msgid ) {
         break;
     case 4: // Set Name -> Client requesting a player slot
         var _name = buffer_read( buffer, buffer_string );
-        if( ds_list_size( PlayerList ) < 4 )
+        if( ds_list_size( PlayerList ) < 8 )
         {
             var _lMap = ds_map_create();
             _lMap[? "Socket" ]  = socket;

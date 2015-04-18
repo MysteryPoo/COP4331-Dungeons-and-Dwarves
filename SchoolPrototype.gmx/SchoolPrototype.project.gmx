@@ -220,6 +220,7 @@
       <object>objects\obj_Spectate</object>
       <object>objects\obj_ArmorButton</object>
       <object>objects\obj_Listener</object>
+      <object>objects\obj_Emitter</object>
     </objects>
     <object>objects\obj_DEMO</object>
     <objects name="Generic">
@@ -253,8 +254,6 @@
       <object>objects\obj_Loot</object>
       <object>objects\obj_Drop</object>
       <object>objects\obj_Shop</object>
-      <object>objects\obj_Listener</object>
-      <object>objects\obj_Emitter</object>
     </objects>
     <objects name="Bridge">
       <object>objects\obj_Bridge</object>

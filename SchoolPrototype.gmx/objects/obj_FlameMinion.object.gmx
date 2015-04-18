@@ -175,7 +175,7 @@ HitPoints = 5;
           <argument>
             <kind>1</kind>
             <string>/// Override Damage
-Damage = 20;
+Damage = 10;
 </string>
           </argument>
         </arguments>

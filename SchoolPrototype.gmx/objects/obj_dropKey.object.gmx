@@ -75,11 +75,11 @@ Flipped = false;
 if( !Flipped )
 {
     Flipped = true;
-    instance_create( 192, 432, obj_Key );
-    instance_create( 192, 432, obj_Skelly );
-    instance_create( 384, 368, obj_Skelly );
-    instance_create( 448, 432, obj_Skelly );
-    instance_create( 384, 496, obj_Skelly );
+    instance_create( 192, 384, obj_Key );
+    instance_create( 192, 384, obj_Skelly );
+    instance_create( 384, 256, obj_Skelly );
+    instance_create( 512, 384, obj_Skelly );
+    instance_create( 384, 512, obj_Skelly );
     // play the key sound
     audio_play_sound(sound_key, 3, false);
 }

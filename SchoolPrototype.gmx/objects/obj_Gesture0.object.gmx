@@ -195,7 +195,7 @@ var yy = my + view_yview[ 0 ];
 draw_circle( sx, sy, 8, false );
 draw_circle( sx, sy, max_dist, true );
 draw_arrow( sx, sy, xx, yy, 10 );
-draw_text( sx, sy, string( direction ) );
+//draw_text( sx, sy, string( direction ) );
 </string>
           </argument>
         </arguments>

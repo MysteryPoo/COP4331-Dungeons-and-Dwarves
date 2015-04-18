@@ -26,8 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>/// Update listener position
-if( instance_exists( global.MyInst ) )
-    audio_listener_position( global.MyInst.x , global.MyInst.y, 0);
+if( instance_exists( view_object[0] ) )
+    audio_listener_position( view_object[0].x , view_object[0].y, 0);
 </string>
           </argument>
         </arguments>

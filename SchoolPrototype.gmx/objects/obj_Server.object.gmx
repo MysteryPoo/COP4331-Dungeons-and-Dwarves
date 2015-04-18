@@ -265,6 +265,7 @@ StartTimer = 30 * 60;
             <string>/// Server State
 State = "Waiting";
 // Initial Map
+randomize();
 Map = scr_RandomMap();
 </string>
           </argument>
@@ -769,6 +770,7 @@ for( var p = 0; p &lt; ds_list_size( PlayerList ); ++p )
 }
 if( false )//_allReady &amp;&amp; !_FinalMap )
 {
+    Map = "rm_Dragon";
     for( var p = 0; p &lt; ds_list_size( PlayerList ); ++p )
     {
         var _lMap = PlayerList[| p ];
@@ -781,7 +783,6 @@ if( false )//_allReady &amp;&amp; !_FinalMap )
     {
         network_send_packet( SocketList[| s ], Buffer, buffer_tell( Buffer ) );
     }
-    Map = "rm_Dragon";
 }
 else if( _allReady &amp;&amp; Map != "rm_Shop" &amp;&amp; Map != "rm_Client" )
 {
@@ -799,7 +800,7 @@ else if( _allReady &amp;&amp; Map != "rm_Shop" &amp;&amp; Map != "rm_Client" )
         network_send_packet( SocketList[| s ], Buffer, buffer_tell( Buffer ) );
     }
 }
-else if( _allReady &amp;&amp; Map != "rm_Client" )
+else if( _allReady &amp;&amp; Map == "rm_Shop" )
 {
     Map = "rm_Client";
     for( var p = 0; p &lt; ds_list_size( PlayerList ); ++p )

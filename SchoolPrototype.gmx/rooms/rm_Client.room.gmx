@@ -14,7 +14,8 @@
 global.RestartOnDeath = false;
 with( obj_Time )
     instance_destroy();
-audio_stop_sound(music_background_v3_fast);
+audio_stop_all();
+audio_play_sound( music_background_v2_drums, 2, true );
 instance_create(0, 0, obj_Listener);</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>

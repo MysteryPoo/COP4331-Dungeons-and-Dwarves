@@ -55,18 +55,18 @@ instance_create(0, 0, obj_Listener);</code>
   <instances>
     <instance objName="obj_Gesture1" x="32" y="0" name="inst_8D5A7295" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Gesture0" x="0" y="0" name="inst_8527F1C5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Wall" x="864" y="288" name="inst_CCC855FB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="752" y="496" name="Torch_Bridge_3b" locked="0" code="On = false;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="880" y="304" name="Torch_Bridge_4a" locked="0" code="On = false;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Treasure" x="1248" y="416" name="inst_2DC29BF8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="752" y="496" name="Torch_Bridge_3b" locked="0" code="On = false;&#xA;Alive = false;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="880" y="304" name="Torch_Bridge_4a" locked="0" code="On = false;&#xA;Alive = false;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Pit" x="960" y="144" name="inst_3F56EF2E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="592" y="304" name="Torch_Bridge_2a" locked="0" code="On = false;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="592" y="304" name="Torch_Bridge_2a" locked="0" code="On = false;&#xA;Alive = false;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Pit" x="448" y="464" name="inst_26CEA11D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
     <instance objName="obj_Pit" x="768" y="336" name="inst_C924391E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Wall" x="736" y="480" name="inst_46DE1395" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Wall" x="736" y="288" name="inst_BCF8182F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Treasure" x="1248" y="256" name="inst_9248A443" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Treasure" x="176" y="496" name="inst_6859C994" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Door" x="208" y="560" name="Door_Bridge_3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Wall" x="576" y="288" name="inst_56C4CCB5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Wall" x="576" y="480" name="inst_D0970E65" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Treasure" x="224" y="128" name="inst_D4070645" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Treasure" x="1088" y="256" name="inst_7C7FDA16" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Torch" x="144" y="560" name="inst_53408828" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="240" y="496" name="inst_81FC4E5A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Torch" x="400" y="848" name="inst_67BEDAE8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -78,7 +78,7 @@ instance_create(0, 0, obj_Listener);</code>
     <instance objName="obj_Saw" x="912" y="1072" name="inst_D7D5C6B5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="1344" y="1024" name="inst_A519D379" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="256" y="608" name="inst_6DAD7E8B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Wall" x="864" y="480" name="inst_D6CE34AA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Treasure" x="1088" y="416" name="inst_87235FD5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Wall" x="1344" y="128" name="inst_82D01CBA" locked="0" code="" scaleX="1" scaleY="4" colour="4294967295" rotation="0"/>
     <instance objName="obj_Wall" x="960" y="480" name="inst_1DCE40ED" locked="0" code="" scaleX="12" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Pit" x="576" y="336" name="inst_E48FDCFE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
@@ -90,14 +90,14 @@ instance_create(0, 0, obj_Listener);</code>
     <instance objName="obj_Treasure" x="160" y="608" name="inst_1ADEEEFF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Torch" x="944" y="1008" name="inst_070327F8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Torch" x="1008" y="496" name="inst_68389533" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="432" y="304" name="Torch_Bridge_1a" locked="0" code="On = false;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="432" y="304" name="Torch_Bridge_1a" locked="0" code="On = false;&#xA;Alive = false;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Torch" x="1360" y="416" name="inst_92F573DD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Torch" x="944" y="976" name="inst_8EEFD279" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
     <instance objName="obj_Torch" x="1424" y="272" name="inst_627599E0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Wall" x="32" y="128" name="inst_75537BCA" locked="0" code="" scaleX="1" scaleY="32" colour="4294967295" rotation="0"/>
     <instance objName="obj_Torch" x="160" y="1136" name="inst_05878EA6" locked="0" code="visible = false;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
     <instance objName="obj_Pit" x="576" y="464" name="inst_856D0A9B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="432" y="496" name="Torch_Bridge_1b" locked="0" code="On = false;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="432" y="496" name="Torch_Bridge_1b" locked="0" code="On = false;&#xA;Alive = false;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Torch" x="560" y="1136" name="inst_39AA2BD7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
     <instance objName="obj_Torch" x="1104" y="944" name="inst_3745245E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
     <instance objName="obj_Torch" x="624" y="1136" name="inst_15100222" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
@@ -142,10 +142,10 @@ instance_create(0, 0, obj_Listener);</code>
     <instance objName="obj_Pit" x="960" y="464" name="inst_4C69F1A0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
     <instance objName="obj_Pit" x="832" y="336" name="inst_A0462C3F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
     <instance objName="obj_Pit" x="800" y="336" name="inst_EF7D74CE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="880" y="496" name="Torch_Bridge_4b" locked="0" code="On = false;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="880" y="496" name="Torch_Bridge_4b" locked="0" code="On = false;&#xA;Alive = false;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_TorchOn" x="208" y="464" name="inst_39B08C3D" locked="0" code="DoorID = Door_Bridge_3;&#xA;TorchID = ds_list_create();&#xA;ds_list_add( TorchID, Torch_Bridge_1a, Torch_Bridge_1b );&#xA;ds_list_add( TorchID, Torch_Bridge_S_a, Torch_Bridge_S_b, Torch_Bridge_S_c );&#xA;ds_list_add( TorchID, Torch_Bridge_S_d, Torch_Bridge_S_e, Torch_Bridge_S_f );&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Wall" x="416" y="288" name="inst_E7122C70" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Wall" x="416" y="480" name="inst_C5BEDCB9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Dwarf" x="96" y="160" name="Dwarf_Bridge" locked="0" code="" scaleX="0.25" scaleY="0.25" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Treasure" x="240" y="848" name="inst_E720FB0A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Pit" x="384" y="464" name="inst_7A380AF3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
     <instance objName="obj_Pit" x="672" y="336" name="inst_484C3A60" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
     <instance objName="obj_Pit" x="608" y="336" name="inst_FD95ABB5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
@@ -159,8 +159,8 @@ instance_create(0, 0, obj_Listener);</code>
     <instance objName="obj_Wall" x="864" y="960" name="inst_C47879B9" locked="0" code="" scaleX="5" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="obj_Torch" x="1200" y="496" name="inst_10E8CE15" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Torch" x="48" y="976" name="inst_771A80BA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="592" y="496" name="Torch_Bridge_2b" locked="0" code="On = false;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="752" y="304" name="Torch_Bridge_3a" locked="0" code="On = false;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="592" y="496" name="Torch_Bridge_2b" locked="0" code="On = false;&#xA;Alive = false;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="752" y="304" name="Torch_Bridge_3a" locked="0" code="On = false;&#xA;Alive = false;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Pit" x="960" y="160" name="inst_4A9D3264" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
     <instance objName="obj_Pit" x="960" y="192" name="inst_6F2A59E1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
     <instance objName="obj_Pit" x="544" y="464" name="inst_2386E6AA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
@@ -181,10 +181,10 @@ instance_create(0, 0, obj_Listener);</code>
     <instance objName="obj_Torch" x="1392" y="928" name="inst_E1E3ABA1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
     <instance objName="obj_TorchOn" x="944" y="912" name="inst_43400BB5" locked="0" code="TorchID = ds_list_create();&#xA;ds_list_add( TorchID, Torch_Bridge_3a, Torch_Bridge_3b );&#xA;DoorID = ds_list_create();&#xA;ds_list_add( DoorID, Door_Bridge_2, Door_Bridge_Treasure );&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_TorchOn" x="1264" y="944" name="inst_250A2067" locked="0" code="TorchID = ds_list_create();&#xA;ds_list_add( TorchID, Torch_Bridge_4a, Torch_Bridge_4b );&#xA;DoorID = Door_Bridge_Bridge;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="48" y="224" name="inst_73171FF2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
+    <instance objName="obj_Torch" x="48" y="256" name="inst_73171FF2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
     <instance objName="obj_Torch" x="48" y="384" name="inst_C6830955" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
     <instance objName="obj_Torch" x="1392" y="1024" name="inst_07F43A33" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="144" y="112" name="inst_B4DD8693" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="176" y="112" name="inst_B4DD8693" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Light" x="64" y="0" name="inst_DFE5DDD3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Door" x="944" y="1152" name="Door_Bridge_Treasure" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Torch" x="1312" y="1136" name="inst_42E85CBB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
@@ -255,14 +255,6 @@ instance_create(0, 0, obj_Listener);</code>
     <instance objName="obj_Treasure" x="208" y="752" name="inst_40EC0848" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="176" y="848" name="inst_E2FBF329" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="208" y="848" name="inst_A0DA0310" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Treasure" x="240" y="848" name="inst_E720FB0A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Treasure" x="1088" y="256" name="inst_7C7FDA16" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Treasure" x="1248" y="256" name="inst_9248A443" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Treasure" x="1088" y="416" name="inst_87235FD5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Treasure" x="1248" y="416" name="inst_2DC29BF8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Treasure" x="176" y="496" name="inst_6859C994" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Treasure" x="224" y="128" name="inst_D4070645" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Dwarf" x="96" y="160" name="Dwarf_Bridge" locked="0" code="" scaleX="0.25" scaleY="0.25" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_floor" x="64" y="576" w="32" h="32" xo="0" yo="0" id="10003950" name="inst_CEE9FF96" depth="1000001" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

@@ -941,6 +941,8 @@ draw_sprite( sprite_index, image_index, 0, 0 );
           <argument>
             <kind>1</kind>
             <string>/// Open, Opened, Close
+draw_set_colour( c_green );
+draw_set_font( -1 );
 if( State == "Open" || State == "Opened" || State == "Close" )
 {
     draw_rectangle_colour( x, y + 32, x + 32 * WeaponCount, y + 64, c_yellow, c_orange, c_yellow, c_black, true );
