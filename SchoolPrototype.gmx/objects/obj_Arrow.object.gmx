@@ -115,6 +115,30 @@ audio_emitter_falloff(emitter_arrow, 20 , 40, 1);
         </arguments>
       </action>
     </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Free the emitter
+audio_emitter_free(emitter_arrow);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="2" enumb="0">
       <action>
         <libid>1</libid>
@@ -133,7 +157,6 @@ audio_emitter_falloff(emitter_arrow, 20 , 40, 1);
           <argument>
             <kind>1</kind>
             <string>/// Destroy the arrow
-audio_emitter_free(emitter_arrow);
 instance_destroy();
 </string>
           </argument>

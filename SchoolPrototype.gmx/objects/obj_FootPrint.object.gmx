@@ -47,12 +47,36 @@ image_alpha = random(1);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Play Sound
+            <string>/// Create the emitter
 emitter_footstep = audio_emitter_create();
 audio_emitter_position(emitter_footstep, x, y, 0);
+audio_emitter_falloff(emitter_footstep, 10, 20, 1);
 audio_play_sound_on(emitter_footstep, sound_footstep, false, 1);
-audio_emitter_falloff(emitter_footstep, 10 , 20, 1);
-// audio_play_sound( sound_footstep, 2, false );
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// FRee emitter
+audio_emitter_free(emitter_footstep);
 </string>
           </argument>
         </arguments>
