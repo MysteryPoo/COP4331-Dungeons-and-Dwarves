@@ -63,7 +63,7 @@ with( obj_Inventory )
   <instances>
     <instance objName="obj_PlayGame" x="960" y="480" name="inst_105C97D8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ExitGame" x="960" y="736" name="inst_6756B1A9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Button" x="96" y="64" name="inst_382FDC5D" locked="0" code="image_blend = c_green;&#xA;Room = rm_Test;&#xA;Label = &quot;Show off room&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Button" x="96" y="64" name="inst_382FDC5D" locked="0" code="image_blend = c_green;&#xA;Room = rm_Big1;&#xA;Label = &quot;Show off room&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

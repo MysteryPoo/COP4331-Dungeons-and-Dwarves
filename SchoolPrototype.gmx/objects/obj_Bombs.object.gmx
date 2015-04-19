@@ -6,7 +6,7 @@
   <depth>0</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
-  <maskName>spr_wall</maskName>
+  <maskName>spr_ball</maskName>
   <events>
     <event eventtype="4" ename="obj_Dwarf">
       <action>
@@ -81,9 +81,9 @@ instance_destroy();
           <argument>
             <kind>1</kind>
             <string>/// Draw
-draw_sprite_ext( spr_bomb, 0, x - 4, y - 4, 1, 1, 90, c_white, 1 );
-draw_sprite_ext( spr_bomb, 0, x + 4, y - 4, 1, 1, 90, c_white, 1 );
-draw_sprite_ext( spr_bomb, 0, x, y, 1, 1, 90, c_white, 1 );
+draw_sprite_ext( spr_bomb, 0, x - 4, y - 4, 0.1, 0.1, 90, c_white, 1 );
+draw_sprite_ext( spr_bomb, 0, x + 4, y - 4, 0.1, 0.1, 90, c_white, 1 );
+draw_sprite_ext( spr_bomb, 0, x, y, 0.1, 0.1, 90, c_white, 1 );
 </string>
           </argument>
         </arguments>

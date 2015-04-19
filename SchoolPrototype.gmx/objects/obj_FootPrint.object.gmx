@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>/// Random alpha
-image_alpha = random(1);
+image_alpha = random_range(0.7, 1);
 </string>
           </argument>
         </arguments>
@@ -53,6 +53,29 @@ audio_emitter_position(emitter_footstep, x, y, 0);
 audio_emitter_falloff(emitter_footstep, 10, 20, 1);
 audio_play_sound_on(emitter_footstep, sound_footstep, false, 1);
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Scale
+image_xscale = 0.1;
+image_yscale = 0.1;
 </string>
           </argument>
         </arguments>

@@ -50,7 +50,7 @@ alarm[ 0 ] = 5;
           <argument>
             <kind>1</kind>
             <string>/// Reset Alarm
-alarm[ 0 ] = 30;
+alarm[ 0 ] = 3;
 </string>
           </argument>
         </arguments>

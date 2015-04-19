@@ -36,7 +36,6 @@
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\spr_wall</sprite>
-    <sprite>sprites\spr_wall_accent</sprite>
     <sprite>sprites\spr_player</sprite>
     <sprite>sprites\spr_player_death</sprite>
     <sprite>sprites\spr_ball</sprite>
@@ -63,6 +62,7 @@
       <sprite>sprites\spr_Wand</sprite>
       <sprite>sprites\spr_Shield</sprite>
       <sprite>sprites\spr_ObeliskTarget</sprite>
+      <sprite>sprites\spr_Poison</sprite>
     </sprites>
     <sprites name="Dwarf">
       <sprites name="Idle">
@@ -81,6 +81,8 @@
       <sprite>sprites\spr_Exclamation</sprite>
       <sprite>sprites\spr_drop</sprite>
       <sprite>sprites\spr_Bag</sprite>
+      <sprite>sprites\spr_MineCart</sprite>
+      <sprite>sprites\spr_Statue</sprite>
     </sprites>
     <sprites name="MainMenu">
       <sprite>sprites\spr_PlayGame</sprite>
@@ -103,6 +105,7 @@
     <sprites name="Powerups">
       <sprite>sprites\spr_SpeedBoost</sprite>
       <sprite>sprites\spr_Heatlh</sprite>
+      <sprite>sprites\spr_Quiver</sprite>
     </sprites>
     <sprites name="Lobby">
       <sprite>sprites\spr_PlayerSlot</sprite>
@@ -119,6 +122,14 @@
     <background>background\bg_floor</background>
     <background>background\bg_Wall_Tile</background>
     <background>background\bg_Splash</background>
+    <background>background\bg_Rock1</background>
+    <background>background\bg_Rock2</background>
+    <background>background\bg_MiningRock</background>
+    <background>background\bg_Plant1</background>
+    <background>background\bg_Plant2</background>
+    <background>background\bg_DiningTable</background>
+    <background>background\bg_Chemistry</background>
+    <background>background\bg_DeadPrisoner</background>
   </backgrounds>
   <paths name="paths">
     <path>paths\path_Guard_LightsOn</path>
@@ -195,6 +206,7 @@
     </objects>
     <objects name="Powerups">
       <object>objects\obj_Quiver</object>
+      <object>objects\obj_ManaPotion</object>
       <object>objects\obj_Bombs</object>
       <object>objects\obj_SpeedBoost</object>
       <object>objects\obj_Health</object>
@@ -233,6 +245,7 @@
       <object>objects\obj_Door</object>
       <object>objects\obj_Exit</object>
       <object>objects\obj_Key</object>
+      <object>objects\obj_MineCart</object>
       <objects name="Traps">
         <object>objects\obj_Saw</object>
         <object>objects\obj_Launcher</object>
@@ -254,6 +267,8 @@
       <object>objects\obj_Loot</object>
       <object>objects\obj_Drop</object>
       <object>objects\obj_Shop</object>
+      <object>objects\obj_TombStone</object>
+      <object>objects\obj_Statue</object>
     </objects>
     <objects name="Bridge">
       <object>objects\obj_Bridge</object>
@@ -296,11 +311,11 @@
     </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\rm_Server</room>
     <room>rooms\rm_MainMenu</room>
+    <room>rooms\rm_Server</room>
+    <room>rooms\rm_Bridge</room>
     <room>rooms\rm_Shop</room>
     <room>rooms\rm_Test</room>
-    <room>rooms\rm_Bridge</room>
     <room>rooms\rm_Sneak</room>
     <room>rooms\rm_ServerList</room>
     <room>rooms\rm_MontyHall</room>

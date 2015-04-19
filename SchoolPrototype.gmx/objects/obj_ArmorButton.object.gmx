@@ -320,7 +320,7 @@ if (Ready)
         
         // Draw the weapon sprite.
         if (temp_sprite != noone)
-            draw_sprite(temp_sprite, 0, x, y);
+            draw_sprite_ext(temp_sprite, 0, x, y, 0.2, 0.2, 0, c_white, 1 );
     }
     else
     {

@@ -919,7 +919,7 @@ var WeaponCount = ds_list_size( Inventory );
           <argument>
             <kind>1</kind>
             <string>/// Draw bag
-draw_sprite( sprite_index, image_index, 0, 0 );
+draw_sprite_ext( sprite_index, image_index, 0, 0, 0.2, 0.2, 0, c_white, 1 );
 </string>
           </argument>
         </arguments>
@@ -962,9 +962,9 @@ if( State == "Open" || State == "Opened" || State == "Close" )
             case obj_Bow_2:
             case obj_Bow_3:
                 if( Ammo[? "Arrows" ] &gt; 0 )
-                    draw_sprite_ext( SpriteMap[? "Bow" ], 0, _x, _y, 1, 1, 0, c_white, 1 );
+                    draw_sprite_ext( SpriteMap[? "Bow" ], 0, _x, _y, 0.2, 0.2, 0, c_white, 1 );
                 else
-                    draw_sprite_ext( SpriteMap[? "Bow" ], 0, _x, _y, 1, 1, 0, c_red, 1 );
+                    draw_sprite_ext( SpriteMap[? "Bow" ], 0, _x, _y, 0.2, 0.2, 0, c_red, 1 );
                 draw_set_halign( fa_center );
                 draw_text( _x, _y, string( Ammo[? "Arrows" ] ) );
                 draw_set_halign( fa_left );
@@ -976,9 +976,9 @@ if( State == "Open" || State == "Opened" || State == "Close" )
                 break;
             case obj_Bomb:
                 if( Ammo[? "Bombs" ] &gt; 0 )
-                    draw_sprite_ext( SpriteMap[? "Bomb" ], 0, _x, _y, 1, 1, 0, c_white, 1 );
+                    draw_sprite_ext( SpriteMap[? "Bomb" ], 0, _x, _y, 0.1, 0.1, 0, c_white, 1 );
                 else
-                    draw_sprite_ext( SpriteMap[? "Bomb" ], 0, _x, _y, 1, 1, 0, c_red, 1 );
+                    draw_sprite_ext( SpriteMap[? "Bomb" ], 0, _x, _y, 0.1, 0.1, 0, c_red, 1 );
                 draw_set_halign( fa_center );
                 draw_text( _x, _y, string( Ammo[? "Bombs" ] ) );
                 draw_set_halign( fa_left );
@@ -986,19 +986,19 @@ if( State == "Open" || State == "Opened" || State == "Close" )
             case obj_Ninja:
             case obj_Ninja_2:
             case obj_Ninja_3:
-                draw_sprite_ext( SpriteMap[? "Ninja" ], 0, _x, _y, 1, 1, 0, c_white, 1 );
+                draw_sprite_ext( SpriteMap[? "Ninja" ], 0, _x, _y, 0.2, 0.2, 0, c_white, 1 );
                 break;
             case obj_Platemail:
             case obj_Platemail_2:
             case obj_Platemail_3:
-                draw_sprite_ext( SpriteMap[? "Platemail" ], 0, _x, _y, 1, 1, 0, c_white, 1 );
+                draw_sprite_ext( SpriteMap[? "Platemail" ], 0, _x, _y, 0.2, 0.2, 0, c_white, 1 );
                 break;
             case obj_PoisonWand:
             case obj_PoisonWand_3:
                 if( Ammo[? "Mana" ] &gt;= 20 )
-                    draw_sprite_ext( SpriteMap[? "Wand" ], 0, _x, _y, 1, 1, 0, c_white, 1 );
+                    draw_sprite_ext( SpriteMap[? "Wand" ], 0, _x, _y, 0.1, 0.1, 0, c_white, 1 );
                 else
-                    draw_sprite_ext( SpriteMap[? "Wand" ], 0, _x, _y, 1, 1, 0, c_red, 1 );
+                    draw_sprite_ext( SpriteMap[? "Wand" ], 0, _x, _y, 0.1, 0.1, 0, c_red, 1 );
                 draw_set_halign( fa_center );
                 draw_text( _x, _y, string( floor( Ammo[? "Mana" ] / 20 ) ) );
                 draw_set_halign( fa_left );
@@ -1006,9 +1006,9 @@ if( State == "Open" || State == "Opened" || State == "Close" )
             case obj_FireWand:
             case obj_FireWand_3:
                 if( Ammo[? "Mana" ] &gt;= 10 )
-                    draw_sprite_ext( SpriteMap[? "Wand" ], 0, _x, _y, 1, 1, 0, c_white, 1 );
+                    draw_sprite_ext( SpriteMap[? "Wand" ], 0, _x, _y, 0.1, 0.1, 0, c_white, 1 );
                 else
-                    draw_sprite_ext( SpriteMap[? "Wand" ], 0, _x, _y, 1, 1, 0, c_red, 1 );
+                    draw_sprite_ext( SpriteMap[? "Wand" ], 0, _x, _y, 0.1, 0.1, 0, c_red, 1 );
                 draw_set_halign( fa_center );
                 draw_text( _x, _y, string( floor( Ammo[? "Mana" ] / 10 ) ) );
                 draw_set_halign( fa_left );
@@ -1047,7 +1047,7 @@ if( State == "Open" || State == "Opened" || State == "Close" )
           <argument>
             <kind>1</kind>
             <string>/// Draw Treasure
-draw_sprite( spr_Treasure1, 0, display_get_gui_width() - 32, 16 );
+draw_sprite_ext( spr_Treasure1, 0, display_get_gui_width() - 32, 16, 0.1, 0.1, 0, c_white, 1 );
 draw_set_halign( fa_right );
 draw_text( display_get_gui_width() - 64, 16, string( Treasure ) );
 draw_set_halign( fa_left );

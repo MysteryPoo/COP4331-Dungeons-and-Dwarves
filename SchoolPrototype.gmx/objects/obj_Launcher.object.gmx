@@ -74,10 +74,10 @@ Shoot = false;
             <string>/// Shoot
 if( Shoot )
 {
-    var proj = instance_create( x + 32 * dcos( image_angle ), y - 32 * dsin( image_angle ), Projectile );
+    var proj = instance_create( x + 40 * dcos( image_angle ), y - 40 * dsin( image_angle ), Projectile );
     proj.direction = image_angle;
     proj.image_angle = image_angle;
-    proj.speed = 6;
+    proj.speed = 4;
     Shoot = false;
 }
 </string>

@@ -717,7 +717,8 @@ if( State == "Death_Start" )
     emit.fref = 10;
     emit.fmax = 20;
     
-    sprite_index = spr_player_death;
+    visible = false;
+    instance_create( x, y, obj_TombStone );
     image_index = 0;
     image_speed = 1;
     speed = 0;
