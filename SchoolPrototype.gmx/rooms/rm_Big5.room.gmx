@@ -70,15 +70,15 @@ instance_create(0, 0, obj_Listener);</code>
     <instance objName="obj_Door" x="1712" y="176" name="inst_07EBB8F0" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
     <instance objName="obj_Dwarf" x="80" y="112" name="Dwarf_Big" locked="0" code="" scaleX="0.25" scaleY="0.25" colour="4294967295" rotation="0"/>
     <instance objName="obj_Wall" x="448" y="288" name="inst_BF1C8252" locked="0" code="" scaleX="2" scaleY="4" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Treasure" x="2848" y="192" name="inst_B0CF9F7A" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="2960" y="704" name="inst_4DC50D09" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="270"/>
     <instance objName="obj_Wall" x="448" y="480" name="inst_356FA26E" locked="0" code="" scaleX="4" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="obj_SpeedBoost" x="2656" y="704" name="inst_C1E5A8F6" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="2784" y="576" name="inst_13BAF6BF" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="2784" y="1024" name="inst_B97E3C16" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Treasure" x="2912" y="256" name="inst_341FDC81" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="1312" y="80" name="inst_E2D9F5E4" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="2592" y="832" name="inst_4CDA3E35" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
     <instance objName="obj_DoorShut" x="2528" y="192" name="Switch_Big_12" locked="0" code="SwitchID = Switch_Big_12;&#xA;&#xA;DoorID1 = 320;&#xA;DoorID2 = 321;&#xA;DoorID3 = 230;&#xA;DoorID4 = 231;&#xA;&#xA;Direction = &quot;Right&quot;;&#xA;" scaleX="0.25" scaleY="0.25" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Treasure" x="2448" y="576" name="inst_34A56CD4" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
+    <instance objName="obj_MineCart" x="2432" y="576" name="inst_63B110C2" locked="0" code="" scaleX="0.25" scaleY="0.25" colour="4294967295" rotation="180"/>
     <instance objName="obj_Door" x="1680" y="176" name="inst_F166A865" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
     <instance objName="obj_SpeedBoost" x="160" y="512" name="inst_493DE61B" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
     <instance objName="obj_SpeedBoost" x="1536" y="384" name="inst_FA6402AA" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
@@ -129,7 +129,7 @@ instance_create(0, 0, obj_Listener);</code>
     <instance objName="obj_Treasure" x="1184" y="288" name="inst_EDCF8B52" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
     <instance objName="obj_SpeedBoost" x="656" y="448" name="inst_ED0E426B" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="2336" y="1088" name="inst_B214724C" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Key" x="2720" y="576" name="inst_A931D3B9" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Key" x="2720" y="576" name="inst_A931D3B9" locked="0" code="" scaleX="0.0500000007450581" scaleY="0.0500000007450581" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="2720" y="704" name="inst_CD44480F" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
     <instance objName="obj_Exit" x="2928" y="912" name="inst_9A37CFA5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
     <instance objName="obj_Treasure" x="1152" y="288" name="inst_B4DDE09D" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
@@ -165,11 +165,11 @@ instance_create(0, 0, obj_Listener);</code>
     <instance objName="obj_Treasure" x="2208" y="256" name="inst_2E9D13E6" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
     <instance objName="obj_Door" x="80" y="432" name="inst_A7D0236D" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
     <instance objName="obj_Door" x="2480" y="560" name="inst_DDB4E251" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Treasure" x="2912" y="192" name="inst_76EF1AE2" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="1600" y="176" name="inst_EADBDB84" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="180"/>
     <instance objName="obj_Treasure" x="1120" y="320" name="inst_202F6FAD" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="1536" y="576" name="inst_9DE26DDB" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="2112" y="560" name="inst_653B4261" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Skelly" x="2912" y="224" name="inst_0423A42B" locked="0" code="" scaleX="0.150000005960464" scaleY="0.150000005960464" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="2480" y="768" name="inst_9411CDD1" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="90"/>
     <instance objName="obj_Skelly" x="2528" y="800" name="inst_2D9045B4" locked="0" code="" scaleX="0.150000005960464" scaleY="0.150000005960464" colour="4294967295" rotation="0"/>
     <instance objName="obj_Skelly" x="2656" y="576" name="inst_4A9839E6" locked="0" code="" scaleX="0.150000005960464" scaleY="0.150000005960464" colour="4294967295" rotation="0"/>
     <instance objName="obj_Skelly" x="2816" y="448" name="inst_89198672" locked="0" code="" scaleX="0.150000005960464" scaleY="0.150000005960464" colour="4294967295" rotation="0"/>
@@ -177,23 +177,25 @@ instance_create(0, 0, obj_Listener);</code>
     <instance objName="obj_Skelly" x="2912" y="832" name="inst_0A9C3853" locked="0" code="" scaleX="0.150000005960464" scaleY="0.150000005960464" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="2560" y="832" name="inst_DC68B189" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="2528" y="800" name="inst_A40C46C4" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Treasure" x="2912" y="224" name="inst_1816A4E0" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Treasure" x="2880" y="192" name="inst_E0DFBD44" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Treasure" x="2816" y="192" name="inst_A9AA4426" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Treasure" x="2912" y="288" name="inst_AD0485C9" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch" x="2480" y="448" name="inst_057B7AAF" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="90"/>
+    <instance objName="obj_Torch" x="2720" y="880" name="inst_C75A59CD" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="180"/>
+    <instance objName="obj_Torch" x="2960" y="336" name="inst_3A8D6EFF" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="270"/>
+    <instance objName="obj_Torch" x="912" y="80" name="inst_3F959726" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="2624" y="832" name="inst_22682259" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="2528" y="736" name="inst_C86E019D" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="2848" y="704" name="inst_EF78BCC1" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="2592" y="448" name="inst_6CC5966D" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
     <instance objName="obj_Torch" x="272" y="80" name="inst_FDC5F371" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="912" y="80" name="inst_3F959726" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="1312" y="80" name="inst_E2D9F5E4" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Torch" x="1600" y="176" name="inst_EADBDB84" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="2480" y="448" name="inst_057B7AAF" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="2480" y="768" name="inst_9411CDD1" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Torch" x="2720" y="880" name="inst_C75A59CD" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Torch" x="2960" y="704" name="inst_4DC50D09" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="270"/>
-    <instance objName="obj_Torch" x="2960" y="336" name="inst_3A8D6EFF" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="270"/>
+    <instance objName="obj_MineCart" x="2528" y="256" name="inst_F0A714EC" locked="0" code="" scaleX="0.25" scaleY="0.25" colour="4294967295" rotation="270"/>
+    <instance objName="obj_Wall" x="2496" y="512" name="inst_80D1042A" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Wall" x="2496" y="624" name="inst_D4D70788" locked="0" code="" scaleX="1.5" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Wall" x="2496" y="224" name="inst_74D7DBF8" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Wall" x="2864" y="160" name="inst_4E6DF508" locked="0" code="" scaleX="2.5" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Wall" x="2880" y="224" name="inst_085B8D93" locked="0" code="" scaleX="2" scaleY="1.5" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Wall" x="2832" y="832" name="inst_04740D93" locked="0" code="" scaleX="1.5" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Wall" x="176" y="192" name="inst_824DFED5" locked="0" code="" scaleX="2.59999990463257" scaleY="3.40000009536743" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Wall" x="192" y="96" name="inst_D20A9419" locked="0" code="" scaleX="2.20000004768372" scaleY="1.5" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Wall" x="256" y="416" name="inst_A5ADC876" locked="0" code="" scaleX="-2.20000004768372" scaleY="-1.5" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_Wall_Tile" x="1248" y="320" w="32" h="32" xo="0" yo="0" id="10003675" name="inst_5E09A662" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -2061,6 +2063,24 @@ instance_create(0, 0, obj_Listener);</code>
     <tile bgName="bg_Wall_Tile" x="2848" y="864" w="32" h="32" xo="32" yo="64" id="10018730" name="inst_893F9159" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_Wall_Tile" x="1632" y="176" w="32" h="32" xo="96" yo="0" id="10021136" name="inst_5AD024C8" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_Wall_Tile" x="1632" y="160" w="32" h="32" xo="96" yo="0" id="10021137" name="inst_3F61454E" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_Chemistry" x="192" y="80" w="476" h="526" xo="0" yo="0" id="10021605" name="inst_8D01EEC2" depth="90000" locked="0" colour="4294967295" scaleX="0.150000005960464" scaleY="0.150000005960464"/>
+    <tile bgName="bg_Chemistry" x="256" y="432" w="476" h="526" xo="0" yo="0" id="10021606" name="inst_FA59FE1D" depth="90000" locked="0" colour="4294967295" scaleX="-0.150000005960464" scaleY="-0.150000005960464"/>
+    <tile bgName="bg_Plant1" x="240" y="192" w="153" h="299" xo="0" yo="0" id="10021607" name="inst_D26D3A6F" depth="90000" locked="0" colour="4294967295" scaleX="0.150000005960464" scaleY="0.150000005960464"/>
+    <tile bgName="bg_Plant1" x="208" y="192" w="153" h="299" xo="0" yo="0" id="10021608" name="inst_111D7886" depth="90000" locked="0" colour="4294967295" scaleX="0.150000005960464" scaleY="0.150000005960464"/>
+    <tile bgName="bg_Plant1" x="176" y="192" w="153" h="299" xo="0" yo="0" id="10021609" name="inst_E9D13D6F" depth="90000" locked="0" colour="4294967295" scaleX="0.150000005960464" scaleY="0.150000005960464"/>
+    <tile bgName="bg_Plant1" x="192" y="224" w="153" h="299" xo="0" yo="0" id="10021610" name="inst_06E4851E" depth="90000" locked="0" colour="4294967295" scaleX="0.150000005960464" scaleY="0.150000005960464"/>
+    <tile bgName="bg_Plant1" x="224" y="224" w="153" h="299" xo="0" yo="0" id="10021611" name="inst_F403D5AF" depth="90000" locked="0" colour="4294967295" scaleX="0.150000005960464" scaleY="0.150000005960464"/>
+    <tile bgName="bg_Plant1" x="176" y="256" w="153" h="299" xo="0" yo="0" id="10021612" name="inst_9F1A7448" depth="90000" locked="0" colour="4294967295" scaleX="0.150000005960464" scaleY="0.150000005960464"/>
+    <tile bgName="bg_Plant1" x="208" y="256" w="153" h="299" xo="0" yo="0" id="10021613" name="inst_E3864368" depth="90000" locked="0" colour="4294967295" scaleX="0.150000005960464" scaleY="0.150000005960464"/>
+    <tile bgName="bg_Plant1" x="240" y="256" w="153" h="299" xo="0" yo="0" id="10021614" name="inst_C7A3D164" depth="90000" locked="0" colour="4294967295" scaleX="0.150000005960464" scaleY="0.150000005960464"/>
+    <tile bgName="bg_MiningRock" x="2496" y="512" w="346" h="194" xo="0" yo="0" id="10021622" name="inst_F03A5545" depth="90000" locked="0" colour="4294967295" scaleX="0.150000005960464" scaleY="0.150000005960464"/>
+    <tile bgName="bg_MiningRock" x="2528" y="544" w="346" h="194" xo="0" yo="0" id="10021623" name="inst_9C8C47BB" depth="90000" locked="0" colour="4294967295" scaleX="0.150000005960464" scaleY="0.150000005960464"/>
+    <tile bgName="bg_Rock1" x="2496" y="656" w="296" h="178" xo="0" yo="0" id="10021624" name="inst_E0382604" depth="90000" locked="0" colour="4294967295" scaleX="0.150000005960464" scaleY="0.150000005960464"/>
+    <tile bgName="bg_Rock2" x="2496" y="624" w="308" h="185" xo="0" yo="0" id="10021625" name="inst_F88AA9C7" depth="90000" locked="0" colour="4294967295" scaleX="0.150000005960464" scaleY="0.150000005960464"/>
+    <tile bgName="bg_Rock1" x="2880" y="160" w="296" h="178" xo="0" yo="0" id="10021626" name="inst_63ECB6DA" depth="90000" locked="0" colour="4294967295" scaleX="0.150000005960464" scaleY="0.150000005960464"/>
+    <tile bgName="bg_Rock1" x="2864" y="192" w="296" h="178" xo="0" yo="0" id="10021627" name="inst_813B688C" depth="90000" locked="0" colour="4294967295" scaleX="0.150000005960464" scaleY="0.150000005960464"/>
+    <tile bgName="bg_Rock1" x="2880" y="240" w="296" h="178" xo="0" yo="0" id="10021628" name="inst_0C8DE0C4" depth="90000" locked="0" colour="4294967295" scaleX="0.150000005960464" scaleY="0.150000005960464"/>
+    <tile bgName="bg_Rock1" x="2832" y="832" w="296" h="178" xo="0" yo="0" id="10021629" name="inst_56EE503C" depth="90000" locked="0" colour="4294967295" scaleX="0.150000005960464" scaleY="0.150000005960464"/>
   </tiles>
   <PhysicsWorld>0</PhysicsWorld>
   <PhysicsWorldTop>0</PhysicsWorldTop>
