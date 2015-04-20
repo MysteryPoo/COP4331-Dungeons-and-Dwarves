@@ -109,7 +109,7 @@ Damage = 10;
 emitter_arrow = audio_emitter_create();
 audio_emitter_position(emitter_arrow, x, y, 0);
 audio_play_sound_on(emitter_arrow, sound_arrow, false, 10);
-audio_emitter_falloff(emitter_arrow, 20 , 40, 1);
+audio_emitter_falloff(emitter_arrow, 200 , 400, 1);
 </string>
           </argument>
         </arguments>

@@ -146,6 +146,7 @@ if( _allReady &amp;&amp; countdownTime &gt; 10 )
             <kind>1</kind>
             <string>///Draw countdown 
 draw_set_halign(fa_center);
+draw_set_colour( c_blue );
 if( clientCount &gt; 1 )
 {
     draw_set_font(fnt_LargeTimer);
@@ -161,7 +162,9 @@ if( clientCount &gt; 1 )
 else
 {
     draw_set_font( fnt_LargeTimer );
-    draw_text( room_width/2 + 32, room_height/2 + 60, "Awaiting more players..." );
+    draw_set_halign( fa_center );
+    draw_set_colour( c_red );
+    draw_text_transformed( room_width*0.5, 0, "Need more players...", 0.5, 0.5, 0 );
 }
 
 draw_set_font(-1);

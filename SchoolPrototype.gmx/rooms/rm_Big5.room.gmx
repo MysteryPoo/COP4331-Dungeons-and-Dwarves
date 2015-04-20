@@ -56,7 +56,7 @@ instance_create(0, 0, obj_Listener);</code>
     <instance objName="obj_Gesture0" x="32" y="16" name="inst_221E9350" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Wall" x="0" y="64" name="inst_DCEF596F" locked="0" code="" scaleX="76" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Wall" x="128" y="416" name="inst_09EBFA8C" locked="0" code="" scaleX="12" scaleY="2" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Door" x="112" y="432" name="inst_50EB1E92" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Door" x="112" y="432" name="inst_50EB1E92" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="90"/>
     <instance objName="obj_Wall" x="32" y="96" name="inst_E0F69E98" locked="0" code="" scaleX="1" scaleY="14" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="2528" y="768" name="inst_F472A4A5" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="2720" y="320" name="inst_B66FD47B" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
@@ -67,7 +67,7 @@ instance_create(0, 0, obj_Listener);</code>
     <instance objName="obj_Wall" x="320" y="160" name="inst_D94EF300" locked="0" code="" scaleX="2" scaleY="6" colour="4294967295" rotation="0"/>
     <instance objName="obj_Wall" x="576" y="224" name="inst_429D8600" locked="0" code="" scaleX="4" scaleY="6" colour="4294967295" rotation="0"/>
     <instance objName="obj_Wall" x="384" y="160" name="inst_826AFD0B" locked="0" code="" scaleX="26" scaleY="2" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Door" x="1712" y="176" name="inst_07EBB8F0" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Door" x="1712" y="176" name="inst_07EBB8F0" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="90"/>
     <instance objName="obj_Dwarf" x="80" y="112" name="Dwarf_Big" locked="0" code="" scaleX="0.25" scaleY="0.25" colour="4294967295" rotation="0"/>
     <instance objName="obj_Wall" x="448" y="288" name="inst_BF1C8252" locked="0" code="" scaleX="2" scaleY="4" colour="4294967295" rotation="0"/>
     <instance objName="obj_Torch" x="2960" y="704" name="inst_4DC50D09" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="270"/>
@@ -79,7 +79,7 @@ instance_create(0, 0, obj_Listener);</code>
     <instance objName="obj_Treasure" x="2592" y="832" name="inst_4CDA3E35" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
     <instance objName="obj_DoorShut" x="2528" y="192" name="Switch_Big_12" locked="0" code="SwitchID = Switch_Big_12;&#xA;&#xA;DoorID1 = 320;&#xA;DoorID2 = 321;&#xA;DoorID3 = 230;&#xA;DoorID4 = 231;&#xA;&#xA;Direction = &quot;Right&quot;;&#xA;" scaleX="0.25" scaleY="0.25" colour="4294967295" rotation="90"/>
     <instance objName="obj_MineCart" x="2432" y="576" name="inst_63B110C2" locked="0" code="" scaleX="0.25" scaleY="0.25" colour="4294967295" rotation="180"/>
-    <instance objName="obj_Door" x="1680" y="176" name="inst_F166A865" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Door" x="1680" y="176" name="inst_F166A865" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="90"/>
     <instance objName="obj_SpeedBoost" x="160" y="512" name="inst_493DE61B" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
     <instance objName="obj_SpeedBoost" x="1536" y="384" name="inst_FA6402AA" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
     <instance objName="obj_SpeedBoost" x="2336" y="128" name="inst_CE124D7D" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
@@ -154,7 +154,7 @@ instance_create(0, 0, obj_Listener);</code>
     <instance objName="obj_Torch" x="2496" y="1264" name="inst_19C4FCD4" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="2336" y="192" name="inst_0E971519" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
     <instance objName="obj_Torch" x="48" y="208" name="inst_895EF4A1" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="90"/>
-    <instance objName="obj_Door" x="2928" y="880" name="inst_A37A8F66" locked="0" code="Exit = true;" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Door" x="2928" y="880" name="inst_A37A8F66" locked="0" code="Exit = true;" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="90"/>
     <instance objName="obj_Treasure" x="1936" y="432" name="inst_4E39009A" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
     <instance objName="obj_Torch" x="2496" y="1264" name="inst_4F7D8FC5" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
     <instance objName="obj_Skelly" x="2720" y="192" name="inst_86C688D6" locked="0" code="" scaleX="0.150000005960464" scaleY="0.150000005960464" colour="4294967295" rotation="0"/>
@@ -163,7 +163,7 @@ instance_create(0, 0, obj_Listener);</code>
     <instance objName="obj_SpeedBoost" x="1952" y="128" name="inst_6E33644B" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
     <instance objName="obj_SpeedBoost" x="480" y="128" name="inst_C5DE8882" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
     <instance objName="obj_Treasure" x="2208" y="256" name="inst_2E9D13E6" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Door" x="80" y="432" name="inst_A7D0236D" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Door" x="80" y="432" name="inst_A7D0236D" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="90"/>
     <instance objName="obj_Door" x="2480" y="560" name="inst_DDB4E251" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
     <instance objName="obj_Torch" x="1600" y="176" name="inst_EADBDB84" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="180"/>
     <instance objName="obj_Treasure" x="1120" y="320" name="inst_202F6FAD" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>

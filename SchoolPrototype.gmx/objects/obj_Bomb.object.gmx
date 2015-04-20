@@ -139,6 +139,14 @@ repeat( _explosions )
     _expl.Damage = 25;
     _angle += 360 / _explosions;
 }
+
+/// create the emitter object
+var emit;
+emit = instance_create(x, y, obj_Emitter);
+emit.sid = sound_explosion;
+emit.fref = 100;
+emit.fmax = 200;
+
 instance_destroy();
 </string>
           </argument>

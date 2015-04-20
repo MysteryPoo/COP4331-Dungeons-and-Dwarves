@@ -58,9 +58,10 @@ if(obj_Inventory.Treasure &gt;= 50){
     obj_Inventory.Treasure -= 50;
     switch(rand){
         case 0: 
-            ds_list_add(obj_Inventory.Inventory, obj_Bomb);
-            Label = "Bought a bomb!";
-            break;
+            //ds_list_add(obj_Inventory.Inventory, obj_Bomb);
+            //Label = "Bought a bomb!";
+            
+            //break;
         case 1:
             var i;
             for(i = 0; i &lt; ds_list_size(obj_Inventory.Inventory); i++){
@@ -76,8 +77,8 @@ if(obj_Inventory.Treasure &gt;= 50){
                 }
            
             }
-            ds_list_add(obj_Inventory.Inventory, obj_Bow);
-            Label = "Bought a bow";
+            //ds_list_add(obj_Inventory.Inventory, obj_Bow);
+            //Label = "Bought a bow";
             break;
         case 2:
             var i;
@@ -110,7 +111,6 @@ if(obj_Inventory.Treasure &gt;= 50){
                     Label = "Bought a tier 3 Ninja Armor!";
                     break;
                 }
-           
             }
             ds_list_add(obj_Inventory.Inventory, obj_Ninja);
             Label = "Bought a Ninja Armor!";
@@ -161,7 +161,7 @@ if(obj_Inventory.Treasure &gt;= 50){
                 }           
             }
             ds_list_add(obj_Inventory.Inventory, obj_PoisonWand);
-            Label = "Bought a Fire Wand!";
+            Label = "Bought a Poison Wand!";
             break; 
        case 7:
             var i;

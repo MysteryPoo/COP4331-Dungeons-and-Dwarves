@@ -34,6 +34,7 @@
     <sound>sound\sound_skeleton</sound>
     <sound>sound\sound_switch_door</sound>
     <sound>sound\sound_dragon</sound>
+    <sound>sound\sound_explosion</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\spr_wall</sprite>
@@ -322,6 +323,10 @@
       <object>objects\obj_FlameJet</object>
       <object>objects\obj_FlameJetController</object>
     </objects>
+    <objects name="GameOver">
+      <object>objects\obj_Restart</object>
+      <object>objects\obj_GameOverText</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_MainMenu</room>
@@ -347,6 +352,11 @@
       <room>rooms\rm_Big5</room>
     </rooms>
     <room>rooms\rm_Dragon</room>
+    <rooms name="GameOver">
+      <room>rooms\rm_Failure</room>
+      <room>rooms\rm_GameOver</room>
+      <room>rooms\rm_Victory</room>
+    </rooms>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

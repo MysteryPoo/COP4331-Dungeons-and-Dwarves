@@ -1,5 +1,7 @@
 /// scr_RandomMap()
 var MapList;
+MapList[8] = "rm_Big3";
+MapList[7] = "rm_Big2";
 MapList[6] = "rm_Big5";
 MapList[5] = "rm_Big4";
 MapList[4] = "rm_Big1";

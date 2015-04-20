@@ -212,6 +212,14 @@ AttackQueue = ds_queue_create();
           <argument>
             <kind>1</kind>
             <string>/// Spawn Points
+SpawnX[ 7 ] = 352;
+SpawnY[ 7 ] = 864;
+SpawnX[ 6 ] = 1632;
+SpawnY[ 6 ] = 960;
+SpawnX[ 5 ] = 1344;
+SpawnY[ 5 ] = 800;
+SpawnX[ 4 ] = 736;
+SpawnY[ 4 ] = 992;
 SpawnX[ 3 ] = 352;
 SpawnY[ 3 ] = 480;
 SpawnX[ 2 ] = 1600;
@@ -267,6 +275,7 @@ State = "Waiting";
 // Initial Map
 randomize();
 Map = "rm_Bridge";
+SpawnIndex = 0;
 </string>
           </argument>
         </arguments>
@@ -543,9 +552,9 @@ for( var s = 0; s &lt; Players; ++s )
         var _gMap = _lMap[? "GestureMap" ];
         if( !instance_exists( _dwarf ) )
         {
-            var _random_spawn = irandom( 3 );
-            _pMap[? "X" ] = SpawnX[ _random_spawn ];
-            _pMap[? "Y" ] = SpawnY[ _random_spawn ];
+            //var _random_spawn = irandom( 3 );
+            _pMap[? "X" ] = SpawnX[ SpawnIndex ];
+            _pMap[? "Y" ] = SpawnY[ SpawnIndex++ ];
             _dwarf = instance_create( _pMap[? "X" ], _pMap[? "Y" ], obj_Dwarf );
             _dwarf.netID = _lMap[? "Socket" ];
             _lMap[? "Instance" ] = _dwarf;
@@ -882,6 +891,8 @@ if( State != "Waiting" )
         StartTimer = 30 * 60;
         // Reshuffle map order
         Map = scr_RandomMap();
+        // Reset Spawns
+        SpawnIndex = 0;
     }
 }
 </string>
@@ -964,6 +975,29 @@ if( State == "Gathering" )
             <string>/// Pause Timer
 if( Pause &gt; 0 )
     --Pause;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Index Safety
+if( SpawnIndex &gt; 7 )
+    SpawnIndex = 0;
 </string>
           </argument>
         </arguments>

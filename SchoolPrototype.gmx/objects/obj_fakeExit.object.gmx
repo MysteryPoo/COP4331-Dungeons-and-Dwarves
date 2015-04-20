@@ -26,6 +26,10 @@
           <argument>
             <kind>1</kind>
             <string>///Reset Level
+if( instance_exists( obj_Inventory ) )
+{
+    obj_Inventory.Treasure = floor( obj_Inventory.Treasure * 0.3 );
+}
 room_goto(rm_MontyHall);
 </string>
           </argument>

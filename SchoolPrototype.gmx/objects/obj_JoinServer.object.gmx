@@ -119,6 +119,29 @@ image_alpha = 0.7;
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Scale
+image_xscale = 1.5;
+image_yscale = 1.5;
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="6" enumb="4">
       <action>
@@ -173,10 +196,14 @@ if( Port &gt; 0 )
 if( Port &gt; 0 )
 {
     draw_self();
-    draw_text( x + 10, y + 10, "Name: " + Name );
-    draw_text( x + 10, y + 16 + 10, "Players: " + string( Players ) );
+    draw_set_font( -1 );
+    draw_set_color( c_black );
+    draw_set_halign( fa_left );
+    draw_text_transformed( x + 10, y + 10, "Name: " + Name, 1.5, 1.5, 0 );
+    draw_text_transformed( x + 10, y + 16 + 10, "Players: " + string( Players ), 1.5, 1.5, 0 );
     //draw_text( x + 10, y + 32 + 10, "IP: " + IP );
     //draw_text( x + 10 + 200, y + 32 + 10, "Port: " + string( Port ) );
+    draw_text_transformed( x + 10 + 400, y + 32, "CLICK HERE", 3, 3, 0 );
 }
 </string>
           </argument>

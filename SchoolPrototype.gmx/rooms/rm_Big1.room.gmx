@@ -205,6 +205,15 @@ instance_create(0, 0, obj_Listener);</code>
     <instance objName="obj_Wall" x="224" y="1376" name="inst_40F03369" locked="0" code="" scaleX="4.5" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="obj_FlameElemental" x="288" y="864" name="inst_2BAB50B0" locked="0" code="" scaleX="0.5" scaleY="0.5" colour="4294967295" rotation="0"/>
     <instance objName="obj_FlameElemental" x="432" y="848" name="inst_D71CFB68" locked="0" code="" scaleX="0.5" scaleY="0.5" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Health" x="288" y="1040" name="inst_54E0BB34" locked="0" code="" scaleX="0.25" scaleY="0.25" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Health" x="320" y="1040" name="inst_55E745DD" locked="0" code="" scaleX="0.25" scaleY="0.25" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Health" x="128" y="704" name="inst_31D58949" locked="0" code="" scaleX="0.25" scaleY="0.25" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Health" x="96" y="1648" name="inst_20B6351F" locked="0" code="" scaleX="0.25" scaleY="0.25" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Health" x="352" y="2176" name="inst_792CC20E" locked="0" code="" scaleX="0.25" scaleY="0.25" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Health" x="352" y="2176" name="inst_1A791D78" locked="0" code="" scaleX="0.25" scaleY="0.25" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Health" x="352" y="2048" name="inst_1798F09E" locked="0" code="" scaleX="0.25" scaleY="0.25" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Health" x="224" y="2048" name="inst_F77FFDE4" locked="0" code="" scaleX="0.25" scaleY="0.25" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Health" x="224" y="2176" name="inst_7BB90042" locked="0" code="" scaleX="0.25" scaleY="0.25" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_Wall_Tile" x="736" y="960" w="32" h="32" xo="0" yo="0" id="10004133" name="inst_B1668DB7" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

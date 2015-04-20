@@ -596,6 +596,42 @@ else
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Check for Victory
+if( room == rm_Client )
+{
+    if( ds_list_size( SocketList ) &lt;= 1 )
+    {
+        if( State == "Spectator" )
+        {
+            room_goto( rm_GameOver );
+        }
+        else
+        {
+            room_goto( rm_Victory );
+        }
+        instance_destroy();
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="7" enumb="68">
       <action>
@@ -703,6 +739,9 @@ for( var s = 0; s &lt; ds_list_size( SocketList ); ++s )
     var _pMap = _lMap[? "PositionMap" ];
     if( instance_exists( _inst ) )
     {
+        draw_set_font( -1 );
+        draw_set_halign( fa_center );
+        draw_set_colour( c_white );
         if( _inst.image_alpha == 1 )
             draw_text( _inst.x, _inst.y + 32, _lMap[? "Name" ] );
     }

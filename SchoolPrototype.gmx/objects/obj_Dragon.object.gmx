@@ -141,7 +141,7 @@ ProjectileSpeed = 7;
           <argument>
             <kind>1</kind>
             <string>/// Reset Alarm
-alarm[0] = 30 * irandom_range( 3, 10 );
+alarm[0] = 30 * irandom_range( 1, 4 );
 </string>
           </argument>
         </arguments>
@@ -186,7 +186,7 @@ audio_play_sound( sound_dragon, 50, false );
             <kind>1</kind>
             <string>/// Shoot
 if( instance_exists( obj_Dwarf ) )
-    scr_Fire( obj_Dwarf );
+    scr_FireAt( Projectile, obj_Dwarf.x, obj_Dwarf.y );
 </string>
           </argument>
         </arguments>

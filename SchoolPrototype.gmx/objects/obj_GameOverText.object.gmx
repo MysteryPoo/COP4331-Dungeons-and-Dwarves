@@ -2,13 +2,13 @@
 <object>
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
-  <visible>0</visible>
+  <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="0" enumb="0">
+    <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -25,38 +25,25 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Server List
-MaxServers = 10;
-ServerList[ MaxServers ] = 0;
-for( var s = 0; s &lt; MaxServers; ++s )
-    ServerList[ s ] = instance_create( room_width/5 - 256, 32 + (64 + 64) * s, obj_JoinServer );
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="1" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Cleanup
-for( var s = 0; s &lt; MaxServers; ++s )
-    with( ServerList[ s ] )
-        instance_destroy();
-ServerList = 0;
+            <string>/// Draw
+draw_set_font( fnt_LargeTimer );
+draw_set_colour( c_red );
+draw_set_halign( fa_center );
+switch( room )
+{
+    case rm_Failure:
+        draw_text( room_width*0.5, 100, "YOU LOSE!" );
+        break;
+    case rm_Victory:
+        draw_text( room_width*0.5, 100, "YOU WIN!!!!!!" );
+        break;
+    case rm_GameOver:
+        draw_text( room_width*0.5, 100, "Game Over" );
+        break;
+}
+draw_set_colour( c_yellow );
+draw_set_font( fnt_Default );
+draw_text( room_width*0.5, 500, "Thanks for playing!" );
 </string>
           </argument>
         </arguments>

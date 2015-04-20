@@ -86,7 +86,7 @@ Damage = 30;
             <string>/// Sound
 emitter_sword = audio_emitter_create();
 audio_emitter_position(emitter_sword, x, y, 0);
-audio_emitter_falloff(emitter_sword, 10, 20, 1);
+audio_emitter_falloff(emitter_sword, 200, 400, 1);
 audio_play_sound_on(emitter_sword, sound_sword, false, 10);
 </string>
           </argument>

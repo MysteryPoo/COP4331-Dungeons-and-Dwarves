@@ -99,7 +99,7 @@ if( !Flipped )
 {
     Flipped = true;
     instance_create( 192, 384, obj_Key );
-    instance_create( 192, 384, obj_Skelly );
+    instance_create( 192, 384, obj_FlameElemental );
     instance_create( 384, 256, obj_Skelly );
     instance_create( 512, 384, obj_Skelly );
     instance_create( 384, 512, obj_Skelly );

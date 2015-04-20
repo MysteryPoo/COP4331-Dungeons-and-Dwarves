@@ -174,7 +174,7 @@ else if(obj_Inventory.Inventory[| selected_index ] == obj_Shield_2){
 }
 else if(obj_Inventory.Inventory[| selected_index ] == obj_Shield_3){
     
-    Label = "Sheild maxed out";
+    Label = "Shield maxed out";
 }
 else if(obj_Inventory.Inventory[| selected_index ] == obj_PoisonWand){
     if(obj_Inventory.Treasure &gt;= 100){

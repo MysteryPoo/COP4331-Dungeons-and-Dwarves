@@ -714,8 +714,8 @@ if( State == "Death_Start" )
     var emit;
     emit = instance_create(x, y, obj_Emitter);
     emit.sid = sound_scream;
-    emit.fref = 10;
-    emit.fmax = 20;
+    emit.fref = 350;
+    emit.fmax = 700;
     
     visible = false;
     var _Tombstone = instance_create( x, y, obj_TombStone );
@@ -741,7 +741,11 @@ if( State == "Death" )
     if( StateTimer == 0 )
     {
         if( room == rm_Client &amp;&amp; global.MyInst == id )
-            room_goto( rm_MainMenu );
+        {
+            room_goto( rm_Failure );
+            with( obj_Client )
+                instance_destroy();
+        }
         else if( room == rm_Server )
         {
             for( var p = 0; p &lt; ds_list_size( obj_Server.PlayerList ); ++p )
@@ -796,6 +800,14 @@ if( State == "Death" )
         }
         else
         {
+            if( instance_exists( obj_Inventory ) )
+            {
+                if( id == global.MyInst )
+                {
+                    obj_Inventory.Treasure *= 0.5;
+                    obj_Inventory.Treasure = floor( obj_Inventory.Treasure );
+                }
+            }
             if( !global.Waiting )
             {
                 room_goto( room );
@@ -842,8 +854,8 @@ if( State == "Fall" )
 {
     if( image_xscale &gt; 0 )
     {
-        image_xscale -= 0.1;
-        image_yscale -= 0.1;
+        image_xscale -= 0.01;
+        image_yscale -= 0.01;
     }
     else if( StateTimer == 0 )
     {
@@ -979,6 +991,48 @@ draw_self();
             <string>/// Draw Hit Points
 if( image_alpha == 1 )
     draw_rectangle_colour( x - 16, y + 16, x - 16 + 32 * HitPoints / 100, y + 20, c_maroon, c_red, c_black, c_red, false );
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Arrows to opponents
+if( instance_exists( obj_Client ) )
+{
+    if( ds_list_size( obj_Client.SocketList ) &lt; 4 )
+    {
+        with( obj_Dwarf )
+        {
+            if( id != global.MyInst )
+            {
+                var _dir = point_direction( other.x, other.y, x, y );
+                draw_set_colour( c_red );
+                draw_set_alpha( 0.5 );
+                draw_arrow( other.x + lengthdir_x( 8, _dir )*2,
+                            other.y + lengthdir_y( 8, _dir )*2,
+                            other.x + lengthdir_x( 8, _dir )*3,
+                            other.y + lengthdir_y( 8, _dir )*3,
+                            8 );
+                draw_set_alpha( 1 );
+            }
+        }
+    }
+}
 </string>
           </argument>
         </arguments>
