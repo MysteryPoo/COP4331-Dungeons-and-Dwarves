@@ -53,6 +53,7 @@ image_speed = 0;
 if( image_index == 1 &amp;&amp; other.State != "Fall" )
 {
     other.State = "Fall_Start";
+    image_index = 2;
 }
 </string>
           </argument>

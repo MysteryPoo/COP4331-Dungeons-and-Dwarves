@@ -131,8 +131,8 @@ audio_emitter_falloff(emitter_explosivearrow, 20 , 40, 1);
           <argument>
             <kind>1</kind>
             <string>/// Scale
-image_xscale = 0.166;
-image_yscale = 0.166;
+image_xscale = 0.1;
+image_yscale = 0.1;
 </string>
           </argument>
         </arguments>

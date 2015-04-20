@@ -972,7 +972,7 @@ if( State == "Open" || State == "Opened" || State == "Close" )
             case obj_Spike:
             case obj_Spike_2:
             case obj_Spike_3:
-                draw_sprite_ext( SpriteMap[? "Spike" ], 0, _x, _y, 1, 1, 0, c_white, 1 );
+                draw_sprite_ext( SpriteMap[? "Spike" ], 0, _x, _y, 0.1, 0.1, 0, c_white, 1 );
                 break;
             case obj_Bomb:
                 if( Ammo[? "Bombs" ] &gt; 0 )
@@ -1016,7 +1016,7 @@ if( State == "Open" || State == "Opened" || State == "Close" )
             case obj_Shield:
             case obj_Shield_2:
             case obj_Shield_3:
-                draw_sprite_ext( SpriteMap[? "Shield" ], 0, _x, _y, 1, 1, 0, c_white, 1 );
+                draw_sprite_ext( SpriteMap[? "Shield" ], 0, _x, _y, 0.1, 0.1, 0, c_white, 1 );
                 break;
             case obj_Agile:
             case obj_Agile_2:

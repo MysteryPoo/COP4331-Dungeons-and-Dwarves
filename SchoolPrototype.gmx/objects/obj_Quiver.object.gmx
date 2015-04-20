@@ -54,7 +54,7 @@ image_yscale = 0.1;
 if( other.id == global.MyInst )
 {
     if( instance_exists( obj_Inventory ) )
-        obj_Inventory.Ammo[? "Arrows" ] += 10;
+        obj_Inventory.Ammo[? "Arrows" ] += 6;
 }
 /// create the emitter object
 var emit;

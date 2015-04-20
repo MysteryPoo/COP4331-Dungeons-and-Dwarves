@@ -33,6 +33,7 @@
     <sound>sound\music_background_v3_fast</sound>
     <sound>sound\sound_skeleton</sound>
     <sound>sound\sound_switch_door</sound>
+    <sound>sound\sound_dragon</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\spr_wall</sprite>
@@ -63,6 +64,7 @@
       <sprite>sprites\spr_Shield</sprite>
       <sprite>sprites\spr_ObeliskTarget</sprite>
       <sprite>sprites\spr_Poison</sprite>
+      <sprite>sprites\spr_SpikeBall</sprite>
     </sprites>
     <sprites name="Dwarf">
       <sprites name="Idle">
@@ -83,6 +85,7 @@
       <sprite>sprites\spr_Bag</sprite>
       <sprite>sprites\spr_MineCart</sprite>
       <sprite>sprites\spr_Statue</sprite>
+      <sprite>sprites\spr_Fireball</sprite>
     </sprites>
     <sprites name="MainMenu">
       <sprite>sprites\spr_PlayGame</sprite>
@@ -101,11 +104,13 @@
       <sprite>sprites\spr_Skelly_Idle</sprite>
       <sprite>sprites\spr_Skelly_Attack</sprite>
       <sprite>sprites\spr_Skelly_Walk</sprite>
+      <sprite>sprites\spr_Dragon</sprite>
     </sprites>
     <sprites name="Powerups">
       <sprite>sprites\spr_SpeedBoost</sprite>
       <sprite>sprites\spr_Heatlh</sprite>
       <sprite>sprites\spr_Quiver</sprite>
+      <sprite>sprites\spr_ManaPot</sprite>
     </sprites>
     <sprites name="Lobby">
       <sprite>sprites\spr_PlayerSlot</sprite>
@@ -177,6 +182,7 @@
         <object>objects\obj_Spike_3</object>
       </objects>
       <object>objects\obj_Fireball</object>
+      <object>objects\obj_FireballDragon</object>
       <objects name="Ninja Armor">
         <object>objects\obj_Ninja</object>
         <object>objects\obj_Ninja_2</object>
@@ -219,6 +225,7 @@
       <object>objects\obj_Skelly</object>
       <object>objects\obj_Obelisk</object>
       <object>objects\obj_ObeliskTarget</object>
+      <object>objects\obj_Dragon</object>
     </objects>
     <objects name="Engine">
       <object>objects\obj_Light</object>
@@ -309,6 +316,12 @@
       <object>objects\obj_RandomButton</object>
       <object>objects\obj_UpgradeButton</object>
     </objects>
+    <objects name="Dragon">
+      <object>objects\obj_DragonSwitch</object>
+      <object>objects\obj_DragonController</object>
+      <object>objects\obj_FlameJet</object>
+      <object>objects\obj_FlameJetController</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_MainMenu</room>
@@ -333,6 +346,7 @@
       <room>rooms\rm_Big4</room>
       <room>rooms\rm_Big5</room>
     </rooms>
+    <room>rooms\rm_Dragon</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

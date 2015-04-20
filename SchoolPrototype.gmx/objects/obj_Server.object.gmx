@@ -266,7 +266,29 @@ StartTimer = 30 * 60;
 State = "Waiting";
 // Initial Map
 randomize();
-Map = scr_RandomMap();
+Map = "rm_Bridge";
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Pause Timer
+Pause = 0;
 </string>
           </argument>
         </arguments>
@@ -765,12 +787,21 @@ var _FinalMap = ( Map == "rm_Client" || Map == "rm_Shop" );
 for( var p = 0; p &lt; ds_list_size( PlayerList ); ++p )
 {
     var _lMap = PlayerList[| p ];
-    if( !_lMap[? "Ready" ] )
+    if( Pause == 0 )
+    {
+        if( !_lMap[? "Ready" ] )
+            _allReady = false;
+    }
+    else
+    {
+        _lMap[?"Ready"] = false;
         _allReady = false;
+    }
 }
-if( false )//_allReady &amp;&amp; !_FinalMap )
+if( _allReady &amp;&amp; Map != "rm_Dragon" &amp;&amp; Map != "rm_Shop" &amp;&amp; Map != "rm_Client" )
 {
     Map = "rm_Dragon";
+    Pause = room_speed * 2;
     for( var p = 0; p &lt; ds_list_size( PlayerList ); ++p )
     {
         var _lMap = PlayerList[| p ];
@@ -784,9 +815,10 @@ if( false )//_allReady &amp;&amp; !_FinalMap )
         network_send_packet( SocketList[| s ], Buffer, buffer_tell( Buffer ) );
     }
 }
-else if( _allReady &amp;&amp; Map != "rm_Shop" &amp;&amp; Map != "rm_Client" )
+else if( _allReady &amp;&amp; Map == "rm_Dragon" )
 {
     Map = "rm_Shop";
+    Pause = room_speed * 2;
     for( var p = 0; p &lt; ds_list_size( PlayerList ); ++p )
     {
         var _lMap = PlayerList[| p ];
@@ -803,6 +835,7 @@ else if( _allReady &amp;&amp; Map != "rm_Shop" &amp;&amp; Map != "rm_Client" )
 else if( _allReady &amp;&amp; Map == "rm_Shop" )
 {
     Map = "rm_Client";
+    Pause = room_speed * 2;
     for( var p = 0; p &lt; ds_list_size( PlayerList ); ++p )
     {
         var _lMap = PlayerList[| p ];
@@ -908,6 +941,29 @@ if( State == "Gathering" )
         }
     }
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Pause Timer
+if( Pause &gt; 0 )
+    --Pause;
 </string>
           </argument>
         </arguments>

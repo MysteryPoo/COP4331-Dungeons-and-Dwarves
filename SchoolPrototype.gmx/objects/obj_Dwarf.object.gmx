@@ -718,7 +718,16 @@ if( State == "Death_Start" )
     emit.fmax = 20;
     
     visible = false;
-    instance_create( x, y, obj_TombStone );
+    var _Tombstone = instance_create( x, y, obj_TombStone );
+    if( instance_exists( obj_Client ) )
+    {
+        for( var s = 0; s &lt; ds_list_size( obj_Client.SocketList ); ++s )
+        {
+            var _lMap = obj_Client.SocketList[|s];
+            if( _lMap[?"Instance"] == id )
+                _Tombstone.Name = _lMap[?"Name"];
+        }
+    }
     image_index = 0;
     image_speed = 1;
     speed = 0;
