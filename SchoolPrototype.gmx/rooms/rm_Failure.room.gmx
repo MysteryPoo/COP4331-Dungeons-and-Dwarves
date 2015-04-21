@@ -52,7 +52,7 @@
   </views>
   <instances>
     <instance objName="obj_GameOverText" x="0" y="0" name="inst_CB3154E5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Restart" x="416" y="896" name="inst_DB357972" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_ExitGame" x="416" y="896" name="inst_D29C28E1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

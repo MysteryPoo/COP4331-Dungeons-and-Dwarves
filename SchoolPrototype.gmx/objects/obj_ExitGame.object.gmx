@@ -27,6 +27,8 @@
             <kind>1</kind>
             <string>/// Setup
 image_speed = 0;
+with( obj_Client )
+    instance_destroy();
 </string>
           </argument>
         </arguments>
